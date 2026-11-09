@@ -223,3 +223,4 @@ py -m http.server 8000
 - **MPQ** = Mo'PaQ — รูปแบบ archive ของ Blizzard (เข้ารหัส sector-based)
 - **JASS** = ภาษา scripting ของ Warcraft III
 - ตัวละครอนิเมะทั้งหมดเป็นต้นฉบับของโปรเจกต์นี้ ไม่ใช่ตัวละครจาก Fate โดยตรง แต่ได้รับแรงบันดาลใจจากธีม Grail War
+"# anime-extra-random-defense" 
