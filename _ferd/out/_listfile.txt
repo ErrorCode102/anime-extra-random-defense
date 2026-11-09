@@ -1,0 +1,1165 @@
+Archer1.blp
+Archer2.blp
+Archer3.blp
+Archer4.blp
+Arcueid_Body.blp
+Arcueid_Body2.blp
+Arcueid_Eyes2.blp
+Arcueid_Face.blp
+Arcueid_Hair.blp
+Arcueid_Spell.blp
+Arcueid_Spell2.blp
+Atalanta_Arrow.blp
+Atalanta_Body.blp
+Atalanta_Bow.blp
+Atalanta_Hair.blp
+Atalanta_Head.blp
+BB.blp
+Button Heroine X\CSMS\ACT\BTN_BLUE.blp
+Button Heroine X\CSMS\PAS\BTN_BLUE.blp
+Button Heroine X\EXCA\ACT\BTN_BLUE.blp
+Button Heroine X\EXCA\PAS\BTN_BLUE.blp
+Button Heroine X\LNGO\ACT\BTN_BLUE.blp
+Button Heroine X\LNGO\PAS\BTN_BLUE.blp
+Button Heroine X\PASAltriaFace\BTN_BLUE.blp
+Button Jeanne\LPUC\ACT\BTN_BLUE.blp
+Button Jeanne\LPUC\PAS\BTN_BLUE.blp
+Button Melt Penguin\BLUS\ACT\BTN_BLUE.blp
+Button Melt Penguin\BLUS\PAS\BTN_BLUE.blp
+Button Melt Penguin\ENVY\PAS\BTN_BLUE.blp
+Button Melt Penguin\SWLK\PAS\BTN_BLUE.blp
+Button Melt Penguin\UICO\EX\BTN_BLUE.blp
+Button Pendragon\EXCA\PAS\BTN_BLUE.blp
+Chulainn\Lancer.mdx
+Chulainn\m_cuf_eye.1.blp
+Chulainn\s_cuf_body.blp
+Chulainn\s_cuf_face.blp
+Chulainn\s_cuf_hair.blp
+Chulainn\s_cuf_larm.blp
+Chulainn\s_cuf_wpn01.blp
+Chulainn\s_cuf_wpn02.blp
+ClericBeast.blp
+DataField.blp
+Doodads\Arrow.mdx
+Doodads\Circle.mdx
+Doodads\Sky.mdx
+Doodads\Stand\Rare.mdx
+DustWave.blp
+Elizabeth.blp
+ElizabethAlter.blp
+emblem\Model4x.mdx
+FeatherAuraWhite.blp
+FexrandyTileset.blp
+FX Aura Power Field\Aura Power Field.mdx
+FX Aura Void\Aura Void.mdx
+FX Aura Void\MDRD_Flashb1.blp
+FX Aura Void\MDRD_glow1.blp
+FX Aura Void\MDRD_lightning_4x4.blp
+FX Galatin\Discharge Red.mdx
+FX Galatin\Galatin.mdx
+FX Kiburst\FX Kiburst Blue.mdx
+FX Kiburst\FX Kiburst Yellow.mdx
+FX Power Charge\FX Power Charge Blue.mdx
+FX Slash Cross Blue\lianzhan.mdx
+FX Slash Cross Red\lianzhan.mdx
+FX Slash Cross\zhanji-blue.blp
+FX\Alqueid\Gnaden.blp
+FX\Alqueid\Gnaden_Air.mdx
+FX\Alqueid\Gnaden_Impact.mdx
+FX\Alqueid\Gnaden_Meteor.mdx
+FX\Atalanta\RainOfArrow.mdx
+FX\Atalanta\Ray.mdx
+FX\Base\Nuclear.mdx
+FX\BB\Aura0.mdx
+FX\BB\Aura1.mdx
+FX\BB\CCC.mdx
+FX\BB\Wiminar.mdx
+FX\Blackhole\Blackhole.mdx
+FX\BloodExplosion\BloodExplosion.mdx
+FX\BloodSlam\BloodSlam.mdx
+FX\Cenarionfury.mdx
+FX\ClockRune.mdx
+FX\CrossGlowYellow\cross.blp
+FX\CrossGlowYellow\glow1.mdx
+FX\CrossGlowYellow\glow2.mdx
+FX\CrossGlowYellow\glow3.mdx
+FX\CrossGlowYellow\glow4.mdx
+FX\CrossGlowYellow\ring.blp
+FX\Drake\Cannon.MDX
+FX\Elizabeth\Aura0.mdx
+FX\Elizabeth\Aura1.mdx
+FX\Elizabeth\Sonic.mdx
+FX\Elizabeth\Wake.mdx
+FX\Elizabeth\Wave.mdx
+FX\ElizabethAlter\Aura.mdx
+FX\ElizabethAlter\Stomp.mdx
+FX\ElizabethAlter\Wave.mdx
+FX\Elkidu\Goo_flow_stateblacklow.blp
+FX\Elkidu\Mr.War3_JSSSL.blp
+FX\Elkidu\Mr.War3_JSSSL.mdx
+FX\Enkidu\EnumaShackle.mdx
+FX\Enkidu\Shackle.mdx
+FX\GatherSouls.mdx
+FX\Gawain\Sun.mdx
+FX\Gilgamesh\Aura0.mdx
+FX\Gilgamesh\Enuma.mdx
+FX\Gilgamesh\Shackle.mdx
+FX\Gilgamesh\Shower.mdx
+FX\GodKnows.mdx
+FX\johabTarget.mdx
+FX\Karen\Sword.mdx
+FX\Kiara\Aura0.mdx
+FX\Kiara\Aura1.mdx
+FX\Kiara\Aura2.mdx
+FX\Kiara\Burst.mdx
+FX\Kiara\Instant.mdx
+FX\Kiara\Soul.mdx
+FX\KingSaber\Aura0.mdx
+FX\Kirei\AuraVoid.mdx
+FX\LionBeam\Core.blp
+FX\LionBeam\LionBeam.mdx
+FX\LionBeam\LionBeamPurple.mdx
+FX\LionBeam\Rim.blp
+FX\LionKing\Missle.mdx
+FX\NecroticBlast.mdx
+FX\Nero\AuraFeather.mdx
+FX\Nero\AuraLight.mdx
+FX\Nero\LausPhaks.mdx
+FX\Nero\Ultimate.mdx
+FX\NuclearBlue\NuclearBlue.mdx
+FX\Okita\Aura0.mdx
+FX\Okita\Aura1.mdx
+FX\Okita\Ronin.mdx
+FX\ProgressSellBar\Bar.mdx
+FX\ShadowAssault.mdx
+FX\Slash\Blue.mdx
+FX\Slash\Pink.mdx
+FX\Slash\Red.mdx
+FX\SvShirou\Break.mdx
+FX\SvShirou\Shower.mdx
+FX\Tamamo\AuraVoid.mdx
+FX\Tamamo\core.mdx
+FX\Tosaka\Aura0.mdx
+FX\Tosaka\Entry.mdx
+FX\Tosaka\Jewel.mdx
+FX\Vlad\Bladespear.mdx
+FX\Vlad\Kazicle.mdx
+FXRD Interface Backdrop\BGChallenge.mdx
+FXRD Interface Backdrop\IMGChallengeBorder.blp
+FXRD Interface Button Continue\BTNContinue.blp
+FXRD Interface Button Continue\BTNContinue.mdx
+FXRD Interface Button Dummy\BTN64x64.mdx
+FXRD Interface Button Exit\BTNExit.blp
+FXRD Interface Button Exit\BTNExit.mdx
+FXRD Interface Challenge Notation\MSGChallenge.blp
+FXRD Interface Challenge Notation\PANChallengeNotation.mdx
+FXRD Interface Challenge Notation\SPRChallengeMark.blp
+FXRD Interface Challenge Notation\SPRChallengeStar.blp
+FXRD Interface Challenge\BTNChallengeFrame.blp
+FXRD Interface Challenge\BTNChallengeFrame.mdx
+FXRD Interface Faction Altera Summary\DSCRAltera.blp
+FXRD Interface Faction Altera Summary\DSCRAltera.mdx
+FXRD Interface Faction Another Summary\DSCRAnother.blp
+FXRD Interface Faction Another Summary\DSCRAnother.mdx
+FXRD Interface Faction BB Summary\DSCRBB.blp
+FXRD Interface Faction BB Summary\DSCRBB.mdx
+FXRD Interface Faction Nero Summary\DSCRNero.blp
+FXRD Interface Faction Nero Summary\DSCRNero.mdx
+FXRD Interface Faction Random Summary\DSCRRandom.blp
+FXRD Interface Faction Random Summary\DSCRRandom.mdx
+FXRD Interface Faction Tamamo Summary\DSCRTamamo.blp
+FXRD Interface Faction Tamamo Summary\DSCRTamamo.mdx
+FXRD Interface Level\BTNElite1.blp
+FXRD Interface Level\BTNElite1.mdx
+FXRD Interface Level\BTNElite2.blp
+FXRD Interface Level\BTNElite2.mdx
+FXRD Interface Level\BTNElite3.blp
+FXRD Interface Level\BTNElite3.mdx
+FXRD Interface Level\BTNElite4.blp
+FXRD Interface Level\BTNElite4.mdx
+FXRD Interface Level\BTNHell1.blp
+FXRD Interface Level\BTNHell1.mdx
+FXRD Interface Level\BTNHell2.blp
+FXRD Interface Level\BTNHell2.mdx
+FXRD Interface Level\BTNHell3.blp
+FXRD Interface Level\BTNHell3.mdx
+FXRD Interface Level\BTNHell4.blp
+FXRD Interface Level\BTNHell4.mdx
+FXRD Interface Level\BTNNovice1.blp
+FXRD Interface Level\BTNNovice1.mdx
+FXRD Interface Level\BTNNovice2.blp
+FXRD Interface Level\BTNNovice2.mdx
+FXRD Interface Level\BTNNovice3.blp
+FXRD Interface Level\BTNNovice3.mdx
+FXRD Interface Level\BTNNovice4.blp
+FXRD Interface Level\BTNNovice4.mdx
+FXRD Interface Level\MSGElite1.blp
+FXRD Interface Level\MSGElite1.mdx
+FXRD Interface Level\MSGElite2.blp
+FXRD Interface Level\MSGElite2.mdx
+FXRD Interface Level\MSGElite3.blp
+FXRD Interface Level\MSGElite3.mdx
+FXRD Interface Level\MSGElite4.blp
+FXRD Interface Level\MSGElite4.mdx
+FXRD Interface Level\MSGHell1.blp
+FXRD Interface Level\MSGHell1.mdx
+FXRD Interface Level\MSGHell2.blp
+FXRD Interface Level\MSGHell2.mdx
+FXRD Interface Level\MSGHell3.blp
+FXRD Interface Level\MSGHell3.mdx
+FXRD Interface Level\MSGHell4.blp
+FXRD Interface Level\MSGHell4.mdx
+FXRD Interface Level\MSGNovice1.blp
+FXRD Interface Level\MSGNovice1.mdx
+FXRD Interface Level\MSGNovice2.blp
+FXRD Interface Level\MSGNovice2.mdx
+FXRD Interface Level\MSGNovice3.blp
+FXRD Interface Level\MSGNovice3.mdx
+FXRD Interface Level\MSGNovice4.blp
+FXRD Interface Level\MSGNovice4.mdx
+FXRD Sound Leveling\UI_BnetLevelUp_00.wav
+FXRD Sound Leveling\UI_CurrentLevel_Lp_1a.wav
+FXRD Sound Leveling\UI_Levels_Health_1.wav
+FXRD Sound Leveling\UI_LevelsEarned_1.wav
+FXRD UI Tag Difficulty\TAGVictoryElite_1.blp
+FXRD UI Tag Difficulty\TAGVictoryElite_1.mdx
+FXRD UI Tag Difficulty\TAGVictoryElite_2.blp
+FXRD UI Tag Difficulty\TAGVictoryElite_2.mdx
+FXRD UI Tag Difficulty\TAGVictoryElite_3.blp
+FXRD UI Tag Difficulty\TAGVictoryElite_3.mdx
+FXRD UI Tag Difficulty\TAGVictoryElite_4.blp
+FXRD UI Tag Difficulty\TAGVictoryElite_4.mdx
+FXRD UI Tag Difficulty\TAGVictoryHell_1.blp
+FXRD UI Tag Difficulty\TAGVictoryHell_1.mdx
+FXRD UI Tag Difficulty\TAGVictoryHell_2.blp
+FXRD UI Tag Difficulty\TAGVictoryHell_2.mdx
+FXRD UI Tag Difficulty\TAGVictoryHell_3.blp
+FXRD UI Tag Difficulty\TAGVictoryHell_3.mdx
+FXRD UI Tag Difficulty\TAGVictoryHell_4.blp
+FXRD UI Tag Difficulty\TAGVictoryHell_4.mdx
+FXRD\BG\Fade\BGFade.mdx
+FXRD\Buttons\BTN256x256.mdx
+FXRD\Buttons\BTN256x64.mdx
+FXRD\Buttons\BTNFactionAltera.mdx
+FXRD\Buttons\BTNFactionAnother.mdx
+FXRD\Buttons\BTNFactionBB.mdx
+FXRD\Buttons\BTNFactionHighlighter.mdx
+FXRD\Buttons\BTNFactionNero.mdx
+FXRD\Buttons\BTNFactionRandom.mdx
+FXRD\Buttons\BTNFactionTamamo.mdx
+FXRD\Buttons\BTNGameDifficulty.mdx
+FXRD\Buttons\BTNGameMode.mdx
+FXRD\Buttons\BTNReady.mdx
+FXRD\Buttons\Challenge\BTNChallenge_1.mdx
+FXRD\Buttons\Challenge\BTNConfirm.blp
+FXRD\Buttons\Challenge\BTNConfirm_1.mdx
+FXRD\Buttons\Challenge\BTNPanalty.blp
+FXRD\FX\AfterImpact\AfterImpact.mdx
+FXRD\FX\AlmostFail\BlackSpoil.mdx
+FXRD\FX\AoE\AoE.blp
+FXRD\FX\AoE\AoE.mdx
+FXRD\FX\AoE\AoESingle.mdx
+FXRD\FX\BathoryCastle\BathoryCastle.blp
+FXRD\FX\BathoryCastle\BathoryCastle.mdx
+FXRD\FX\BigFireSlash\BigFireSlash.blp
+FXRD\FX\BigFireSlash\BigFireSlash.mdx
+FXRD\FX\BigFireSlash\BigFireSlash_Black.blp
+FXRD\FX\BossIndicator\BossIndicator.mdx
+FXRD\FX\GilSword\GilSword.mdx
+FXRD\FX\Glare\Glare.mdx
+FXRD\FX\GoldTimer\Base.blp
+FXRD\FX\GoldTimer\GoldTimer.mdx
+FXRD\FX\GoldTimer\Needle.blp
+FXRD\FX\HeavyRain\HeavyRain.blp
+FXRD\FX\HeavyRain\HeavyRain.mdx
+FXRD\FX\HeroesofStorm\HeroesofStorm.blp
+FXRD\FX\HeroesofStorm\HeroesofStorm.mdx
+FXRD\FX\HeroesofStorm\HeroesofStorm2.blp
+FXRD\FX\JeanneAlterSpell\JeanneAlterSpell.blp
+FXRD\FX\JeanneAlterSpell\JeanneAlterSpell1.mdx
+FXRD\FX\JeanneAlterSpell\JeanneAlterSpell2.mdx
+FXRD\FX\JeanneAlterSpell\JeanneAlterSpell_Cloud.blp
+FXRD\Interface\BG\BG_Indicator.blp
+FXRD\Interface\BG\BG_MSG_DATASTATE.mdx
+FXRD\Interface\BG\BG_MSG_DECRYPTING.blp
+FXRD\Interface\BG\BG_MSG_FIRSTPLAY.blp
+FXRD\Interface\BG\BG_MSG_LOADABLE.blp
+FXRD\Interface\BG\BG_MSG_LOADABLE.mdx
+FXRD\Interface\BG\BG_MSG_LOADBLOCK.blp
+FXRD\Interface\BG\BG_MSG_LOADED.blp
+FXRD\Interface\BG\BG_MSG_LOADED_MASTER.blp
+FXRD\Interface\BG\BG_MSG_LOADFAIL.blp
+FXRD\Interface\BG\BG_MSG_LOADING.blp
+FXRD\Interface\BG\BG_MSG_LOADING.mdx
+FXRD\Interface\BG\ICO_Altera.mdx
+FXRD\Interface\BG\ICO_Another.mdx
+FXRD\Interface\BG\ICO_Nero.mdx
+FXRD\Interface\BG\ICO_Tamamo.mdx
+FXRD\Interface\BG\Indicator.mdx
+FXRD\Interface\BG\TierMilestone.blp
+FXRD\Interface\BG\TierMilestone_Master.blp
+FXRD\Interface\BG\TierMilestone_Master.mdx
+FXRD\Interface\BG\TierMilestone_Max.blp
+FXRD\Interface\BG\TierMilestone_Max.mdx
+FXRD\Interface\BG\TierMilestone_Norm.mdx
+FXRD\Interface\BG\UIBlocker.mdx
+FXRD\Interface\Docker\P1.mdx
+FXRD\Interface\Docker\P2.mdx
+FXRD\Interface\Docker\P3.mdx
+FXRD\Interface\Docker\P4.mdx
+FXRD\Numbers\BlueNeon\0.mdx
+FXRD\Numbers\BlueNeon\1.mdx
+FXRD\Numbers\BlueNeon\2.mdx
+FXRD\Numbers\BlueNeon\3.mdx
+FXRD\Numbers\BlueNeon\4.mdx
+FXRD\Numbers\BlueNeon\5.mdx
+FXRD\Numbers\BlueNeon\6.mdx
+FXRD\Numbers\BlueNeon\7.mdx
+FXRD\Numbers\BlueNeon\8.mdx
+FXRD\Numbers\BlueNeon\9.mdx
+FXRD\Numbers\BlueNeon\S.mdx
+FXRD\Numbers\GoldNeon\0.mdx
+FXRD\Numbers\GoldNeon\1.mdx
+FXRD\Numbers\GoldNeon\2.mdx
+FXRD\Numbers\GoldNeon\3.mdx
+FXRD\Numbers\GoldNeon\4.mdx
+FXRD\Numbers\GoldNeon\5.mdx
+FXRD\Numbers\GoldNeon\6.mdx
+FXRD\Numbers\GoldNeon\7.mdx
+FXRD\Numbers\GoldNeon\8.mdx
+FXRD\Numbers\GoldNeon\9.mdx
+FXRD\Numbers\GoldNeon\S.mdx
+FXRD\Portrait\PORT_TAMAMO_1.mdx
+FXRD\Portrait\PORTAltera.mdx
+FXRD\Portrait\PORTAltera_Master.mdx
+FXRD\Portrait\PORTAnother.mdx
+FXRD\Portrait\PORTAnother_Master.mdx
+FXRD\Portrait\PORTBB.mdx
+FXRD\Portrait\PORTBB_Master.mdx
+FXRD\Portrait\PORTNero.mdx
+FXRD\Portrait\PORTNero_Master.mdx
+FXRD\Portrait\PORTRandom.mdx
+FXRD\Portrait\Tamamo2\PORT_TAMAMO_2.blp
+FXRD\Portrait\Tamamo2\PORT_TAMAMO_2.mdx
+FXRD\Servants\Andersen_V2\Andersen_V2.blp
+FXRD\Servants\Andersen_V2\Andersen_V2.mdx
+FXRD\Servants\BB_V2\BB_V2.mdx
+FXRD\Servants\BB_V2\Body.blp
+FXRD\Servants\BB_V2\Sword.blp
+FXRD\Servants\Nero\SaberExtra_body01.blp
+FXRD\Servants\Nero\SaberExtra_body02.blp
+FXRD\Servants\Nero\SaberExtra_eye.blp
+FXRD\Servants\Nero\SaberExtra_face.blp
+FXRD\Servants\Nero\SaberExtra_wep.blp
+FXRD\Servants\Nero\SaberNero.mdx
+FXRD\Servants\SpecialTower\SpecialTower.blp
+FXRD\Servants\SpecialTower\SpecialTower.mdx
+FXRD\Tags\Challenge\MSGChallenge_1.mdx
+FXRD\Tags\Challenge\MSGPanalty.blp
+FXRD\Tags\Difficulty\Brutal.blp
+FXRD\Tags\Difficulty\Easy.blp
+FXRD\Tags\Difficulty\Hard.blp
+FXRD\Tags\Difficulty\MSGDiff.mdx
+FXRD\Tags\Difficulty\Normal.blp
+FXRD\Tags\GameMode\ModeChallenge.blp
+FXRD\Tags\GameMode\ModeSingle.blp
+FXRD\Tags\GameMode\ModeSpeedrun.blp
+FXRD\Tags\GameMode\ModeTeam.blp
+FXRD\Tags\GameMode\MSGMode.mdx
+FXRD\Tags\General\TAG_BB.mdx
+FXRD\Tags\General\TAG_Random.mdx
+FXRD\Tags\General\TAGAltera.mdx
+FXRD\Tags\General\TAGAnother.mdx
+FXRD\Tags\General\TAGNero.mdx
+FXRD\Tags\General\TAGTamamo.mdx
+FXRD\Tags\Victory\RESLevelBrutal.blp
+FXRD\Tags\Victory\RESLevelBrutal_1.mdx
+FXRD\Tags\Victory\RESLevelEasy.blp
+FXRD\Tags\Victory\RESLevelEasy_1.mdx
+FXRD\Tags\Victory\RESLevelHard.blp
+FXRD\Tags\Victory\RESLevelHard_1.mdx
+FXRD\Tags\Victory\RESLevelNormal.blp
+FXRD\Tags\Victory\RESLevelNormal_1.mdx
+FXRD\Tags\Victory\RESModeChallenge.blp
+FXRD\Tags\Victory\RESModeChallenge_1.mdx
+FXRD\Tags\Victory\RESModeSingle.blp
+FXRD\Tags\Victory\RESModeSingle_1.mdx
+FXRD\Tags\Victory\RESModeSpeedrun.blp
+FXRD\Tags\Victory\RESModeSpeedrun_1.mdx
+FXRD\Tags\Victory\RESModeTeam.blp
+FXRD\Tags\Victory\RESModeTeam_1.mdx
+FXRD\Tags\Victory\RESXpAdditive.blp
+FXRD\Tags\Victory\RESXpAdditive_1.mdx
+FXRD\Tags\Victory\RESXpDefault.blp
+FXRD\Tags\Victory\RESXpDefault_1.mdx
+FXRD\Tags\Victory\RESXpFinal.blp
+FXRD\Tags\Victory\RESXpFinal_1.mdx
+FXRD\Terrains\Floor\FloorPanel.mdx
+FXRD\Terrains\Floor\WaterPanel.blp
+FXRD\Terrains\Floor\WaterPanel.mdx
+FXRD\Terrains\Pedestal\Cliff_FXRD_Black.blp
+FXRD\Terrains\Pedestal\Cliff_FXRD_White.blp
+FXRD\Terrains\Pedestal\PedestalPlayer.mdx
+FXRD\Terrains\Pedestal\StashPlayer.mdx
+FXRD\Textures\Buttons\BTNDiffPhotonicAbyss.blp
+FXRD\Textures\Buttons\BTNDiffSakuraLabyrinth.blp
+FXRD\Textures\Buttons\BTNDiffSeraph.blp
+FXRD\Textures\Buttons\BTNDiffTraining.blp
+FXRD\Textures\Buttons\BTNFactionAltera.blp
+FXRD\Textures\Buttons\BTNFactionAltera_Master.blp
+FXRD\Textures\Buttons\BTNFactionAnother.blp
+FXRD\Textures\Buttons\BTNFactionAnother_Master.blp
+FXRD\Textures\Buttons\BTNFactionBB.blp
+FXRD\Textures\Buttons\BTNFactionBB_Master.blp
+FXRD\Textures\Buttons\BTNFactionHighlight.blp
+FXRD\Textures\Buttons\BTNFactionNero.blp
+FXRD\Textures\Buttons\BTNFactionNero_Master.blp
+FXRD\Textures\Buttons\BTNFactionRandom.blp
+FXRD\Textures\Buttons\BTNFactionRandom_Master.blp
+FXRD\Textures\Buttons\BTNFactionTamamo.blp
+FXRD\Textures\Buttons\BTNFactionTamamo_Master.blp
+FXRD\Textures\Buttons\BTNModeIndiv.blp
+FXRD\Textures\Buttons\BTNModeSpeedrun.blp
+FXRD\Textures\Buttons\BTNModeTeam.blp
+FXRD\Textures\Buttons\BTNModeTwillight.blp
+FXRD\Textures\Buttons\BTNReady.blp
+FXRD\Textures\Buttons\BTNReadyOff.blp
+FXRD\Textures\Common\ICOAltera.blp
+FXRD\Textures\Common\ICOAnother.blp
+FXRD\Textures\Common\ICONero.blp
+FXRD\Textures\Common\ICOTamamo.blp
+FXRD\Textures\Common\IMGAltera.blp
+FXRD\Textures\Common\IMGAltera_Master.blp
+FXRD\Textures\Common\IMGAnother.blp
+FXRD\Textures\Common\IMGAnother_Master.blp
+FXRD\Textures\Common\IMGBB.blp
+FXRD\Textures\Common\IMGBB_Master.blp
+FXRD\Textures\Common\IMGNero.blp
+FXRD\Textures\Common\IMGNero_Master.blp
+FXRD\Textures\Common\IMGRandom.blp
+FXRD\Textures\Common\IMGTamamo.blp
+FXRD\Textures\Common\TAGAltera.blp
+FXRD\Textures\Common\TAGAltera_Master.blp
+FXRD\Textures\Common\TAGAnother.blp
+FXRD\Textures\Common\TAGAnother_Master.blp
+FXRD\Textures\Common\TAGBB.blp
+FXRD\Textures\Common\TAGBB_Master.blp
+FXRD\Textures\Common\TAGNero.blp
+FXRD\Textures\Common\TAGNero_Master.blp
+FXRD\Textures\Common\TAGRandom.blp
+FXRD\Textures\Common\TAGRandom_Master.blp
+FXRD\Textures\Common\TAGTamamo.blp
+FXRD\Textures\Common\TAGTamamo_Master.blp
+FXRD\Textures\Common\UserMiniDocker.blp
+FXRD\Textures\Number\BlueNeon\0.blp
+FXRD\Textures\Number\BlueNeon\1.blp
+FXRD\Textures\Number\BlueNeon\2.blp
+FXRD\Textures\Number\BlueNeon\3.blp
+FXRD\Textures\Number\BlueNeon\4.blp
+FXRD\Textures\Number\BlueNeon\5.blp
+FXRD\Textures\Number\BlueNeon\6.blp
+FXRD\Textures\Number\BlueNeon\7.blp
+FXRD\Textures\Number\BlueNeon\8.blp
+FXRD\Textures\Number\BlueNeon\9.blp
+FXRD\Textures\Number\BlueNeon\S.blp
+FXRD\Textures\Number\GoldNeon\0.blp
+FXRD\Textures\Number\GoldNeon\1.blp
+FXRD\Textures\Number\GoldNeon\2.blp
+FXRD\Textures\Number\GoldNeon\3.blp
+FXRD\Textures\Number\GoldNeon\4.blp
+FXRD\Textures\Number\GoldNeon\5.blp
+FXRD\Textures\Number\GoldNeon\6.blp
+FXRD\Textures\Number\GoldNeon\7.blp
+FXRD\Textures\Number\GoldNeon\8.blp
+FXRD\Textures\Number\GoldNeon\9.blp
+FXRD\Textures\Number\GoldNeon\S.blp
+genericglow1.blp
+Gilgamesh.blp
+Gilgamesh_Spell2.blp
+Interface\BackgroundStarSphere\Background.mdx
+Kiara.blp
+KireiBody.blp
+KireiBody2.blp
+KireiFace.blp
+KireiSword.blp
+LoadingV2\loadBar.tga
+LoadingV2\loadbar1.tga
+LoadingV2\Loading.mdx
+LoadingV2\loading.tga
+Lubu.blp
+m_cuf_eye.1.blp
+MegaBlast2.blp
+mr.war3_fgdring.blp
+mr.war3_fgdring2.blp
+mr.war3_jssfj.blp
+mr.war3_ketr.blp
+Mr.War3_SSSL.blp
+Mr.War3_YMFW.blp
+Mr1.blp
+Mr2.blp
+Music\YouAreMyKing_Part_A.mp3
+Music\YouAreMyKing_Part_B.mp3
+NDW.blp
+NDW_R.blp
+NeroEmperor.blp
+passion lip.blp
+passion lip00.blp
+passion lip01.blp
+passion lip02.blp
+passion lip03.blp
+Pedestal\Bridge.mdx
+Pedestal\Fence.mdx
+Pedestal\GachaZone.mdx
+Pedestal\Zone.mdx
+ReplaceableTextures\CommandButtons\Alexander\BTNAlex_A.blp
+ReplaceableTextures\CommandButtons\Alexander\BTNAlex_B.blp
+ReplaceableTextures\CommandButtons\Alexander\BTNAlex_C.blp
+ReplaceableTextures\CommandButtons\Alexander\BTNAlex_EX.blp
+ReplaceableTextures\CommandButtons\Alexander\BTNAlex_S.blp
+ReplaceableTextures\CommandButtons\Alqueid\BTNAlqueid_A.blp
+ReplaceableTextures\CommandButtons\Alqueid\BTNAlqueid_B.blp
+ReplaceableTextures\CommandButtons\Alqueid\BTNAlqueid_C.blp
+ReplaceableTextures\CommandButtons\Alqueid\BTNAlqueid_EX.blp
+ReplaceableTextures\CommandButtons\Alqueid\BTNAlqueid_S.blp
+ReplaceableTextures\CommandButtons\Altera\BUFFBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Andersen\BTNAndersen_A.blp
+ReplaceableTextures\CommandButtons\Andersen\BTNAndersen_B.blp
+ReplaceableTextures\CommandButtons\Andersen\BTNAndersen_C.blp
+ReplaceableTextures\CommandButtons\Andersen\BTNAndersen_S.blp
+ReplaceableTextures\CommandButtons\Astef\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Atalanta\BTNAtalanta_A.blp
+ReplaceableTextures\CommandButtons\Atalanta\BTNAtalanta_B.blp
+ReplaceableTextures\CommandButtons\Atalanta\BTNAtalanta_C.blp
+ReplaceableTextures\CommandButtons\Atalanta\BTNAtalanta_D.blp
+ReplaceableTextures\CommandButtons\Atalanta\BTNAtalanta_E.blp
+ReplaceableTextures\CommandButtons\Atalanta\BTNAtalanta_S.blp
+ReplaceableTextures\CommandButtons\AtalantaAlter\BTNAlterAtalanta_A.blp
+ReplaceableTextures\CommandButtons\AtalantaAlter\BTNAlterAtalanta_EX.blp
+ReplaceableTextures\CommandButtons\AtalantaAlter\BTNAlterAtalanta_S.blp
+ReplaceableTextures\CommandButtons\Atila\BTNAtila_A.blp
+ReplaceableTextures\CommandButtons\Atila\BTNAtila_B.blp
+ReplaceableTextures\CommandButtons\Atila\BTNAtila_EX.blp
+ReplaceableTextures\CommandButtons\Atila\BTNAtila_S.blp
+ReplaceableTextures\CommandButtons\Atila\BTNAtila_T.blp
+ReplaceableTextures\CommandButtons\BathoryAlter\BTNBathoryAlter_A.blp
+ReplaceableTextures\CommandButtons\BathoryAlter\BTNBathoryAlter_S.blp
+ReplaceableTextures\CommandButtons\BB\AKILBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\BB\AKILPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\BB\BTN_SS.blp
+ReplaceableTextures\CommandButtons\BB\BTNBB_A.blp
+ReplaceableTextures\CommandButtons\BB\BTNBB_B.blp
+ReplaceableTextures\CommandButtons\BB\BTNBB_EX.blp
+ReplaceableTextures\CommandButtons\BB\BTNBB_S.blp
+ReplaceableTextures\CommandButtons\BB\SCCCBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\BB\SCCCPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Bride\BTNBride_A.blp
+ReplaceableTextures\CommandButtons\Bride\BTNBride_S.blp
+ReplaceableTextures\CommandButtons\BTN_Astef_C.blp
+ReplaceableTextures\CommandButtons\BTN_Astef_D.blp
+ReplaceableTextures\CommandButtons\BTN_Nero_Dormus.blp
+ReplaceableTextures\CommandButtons\BTN_Saber_Avalon.blp
+ReplaceableTextures\CommandButtons\BTNAlqueid.blp
+ReplaceableTextures\CommandButtons\BTNAtalanta.blp
+ReplaceableTextures\CommandButtons\BTNBmana.blp
+ReplaceableTextures\CommandButtons\BTNCCC.blp
+ReplaceableTextures\CommandButtons\BTNChate.blp
+ReplaceableTextures\CommandButtons\BTNChulainn.blp
+ReplaceableTextures\CommandButtons\BTNElizabethAlter.blp
+ReplaceableTextures\CommandButtons\BTNEmiyaServant.blp
+ReplaceableTextures\CommandButtons\BTNFlag.blp
+ReplaceableTextures\CommandButtons\BTNFrancis.blp
+ReplaceableTextures\CommandButtons\BTNGawain.blp
+ReplaceableTextures\CommandButtons\BTNGilKun.blp
+ReplaceableTextures\CommandButtons\BTNGilKun_Super.blp
+ReplaceableTextures\CommandButtons\BTNKiara.blp
+ReplaceableTextures\CommandButtons\BTNKingprotea.blp
+ReplaceableTextures\CommandButtons\BTNKingSaber.blp
+ReplaceableTextures\CommandButtons\BTNKirei.blp
+ReplaceableTextures\CommandButtons\BTNLeeSM.blp
+ReplaceableTextures\CommandButtons\BTNMoonCell.blp
+ReplaceableTextures\CommandButtons\BTNNero.blp
+ReplaceableTextures\CommandButtons\BTNOkita.blp
+ReplaceableTextures\CommandButtons\BTNResourceManaStone.blp
+ReplaceableTextures\CommandButtons\BTNShiki.blp
+ReplaceableTextures\CommandButtons\BTNTamamo.blp
+ReplaceableTextures\CommandButtons\BTNTamamoKick.blp
+ReplaceableTextures\CommandButtons\BTNTosaka.blp
+ReplaceableTextures\CommandButtons\BTNVlad.blp
+ReplaceableTextures\CommandButtons\Chulainn\BTNChulainn_A.blp
+ReplaceableTextures\CommandButtons\Chulainn\BTNChulainn_B.blp
+ReplaceableTextures\CommandButtons\Chulainn\BTNChulainn_C.blp
+ReplaceableTextures\CommandButtons\Chulainn\BTNChulainn_EX.blp
+ReplaceableTextures\CommandButtons\Chulainn\BTNChulainn_S.blp
+ReplaceableTextures\CommandButtons\Data\BTNData_A.blp
+ReplaceableTextures\CommandButtons\Data\BTNData_C.blp
+ReplaceableTextures\CommandButtons\Data\BTNData_X.blp
+ReplaceableTextures\CommandButtons\Drake\BTNFrancis_A.blp
+ReplaceableTextures\CommandButtons\Drake\BTNFrancis_B.blp
+ReplaceableTextures\CommandButtons\Drake\BTNFrancis_S.blp
+ReplaceableTextures\CommandButtons\Drake\EX\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Elizabeth\BTNElizabeth_A.blp
+ReplaceableTextures\CommandButtons\Elizabeth\BTNElizabeth_B.blp
+ReplaceableTextures\CommandButtons\Elizabeth\BTNElizabeth_EX.blp
+ReplaceableTextures\CommandButtons\Elizabeth\BTNElizabeth_S.blp
+ReplaceableTextures\CommandButtons\Emiya\BTNEmiya_A.blp
+ReplaceableTextures\CommandButtons\Emiya\BTNEmiya_B.blp
+ReplaceableTextures\CommandButtons\Emiya\BTNEmiya_C.blp
+ReplaceableTextures\CommandButtons\Emiya\BTNEmiya_EX.blp
+ReplaceableTextures\CommandButtons\Emiya\BTNEmiya_S.blp
+ReplaceableTextures\CommandButtons\Enkidou\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Enkidu\ENUMA\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Enkidu\ENUMAPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Enkidu\NAMMUPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Enkidu\SHAPEPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\FrankenStein\BTN_SS.blp
+ReplaceableTextures\CommandButtons\FrankenStein\CHRG\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\FrankenStein\CHRGPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\FrankenStein\GALVPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Gawain\BTNGawain_A.blp
+ReplaceableTextures\CommandButtons\Gawain\BTNGawain_B.blp
+ReplaceableTextures\CommandButtons\Gawain\BTNGawain_C.blp
+ReplaceableTextures\CommandButtons\Gawain\BTNGawain_D.blp
+ReplaceableTextures\CommandButtons\Gawain\BTNGawain_E.blp
+ReplaceableTextures\CommandButtons\Gawain\BTNGawain_EX.blp
+ReplaceableTextures\CommandButtons\Gawain\BTNGawain_S.blp
+ReplaceableTextures\CommandButtons\Gilgamesh\BTNGilgamesh_A.blp
+ReplaceableTextures\CommandButtons\Gilgamesh\BTNGilgamesh_B.blp
+ReplaceableTextures\CommandButtons\Gilgamesh\BTNGilgamesh_EX.blp
+ReplaceableTextures\CommandButtons\Gilgamesh\BTNGilgamesh_S.blp
+ReplaceableTextures\CommandButtons\HeroineX\BTN_SSS.blp
+ReplaceableTextures\CommandButtons\Jeanne\BTNJeanne_A.blp
+ReplaceableTextures\CommandButtons\Jeanne\BTNJeanne_B.blp
+ReplaceableTextures\CommandButtons\Jeanne\BTNJeanne_EX.blp
+ReplaceableTextures\CommandButtons\Jeanne\BTNJeanne_S.blp
+ReplaceableTextures\CommandButtons\JeanneAlter\BTNJeanneAlter_A.blp
+ReplaceableTextures\CommandButtons\JeanneAlter\BTNJeanneAlter_EX.blp
+ReplaceableTextures\CommandButtons\JeanneAlter\BTNJeanneAlter_S.blp
+ReplaceableTextures\CommandButtons\Karna\BTNKarna_A.blp
+ReplaceableTextures\CommandButtons\Karna\BTNKarna_B.blp
+ReplaceableTextures\CommandButtons\Karna\BTNKarna_C.blp
+ReplaceableTextures\CommandButtons\Karna\BTNKarna_EX.blp
+ReplaceableTextures\CommandButtons\Karna\BTNKarna_S.blp
+ReplaceableTextures\CommandButtons\Kiara\BTNKiara_EX.blp
+ReplaceableTextures\CommandButtons\Kingprotea\EX\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Kirei\BTNKirei_A.blp
+ReplaceableTextures\CommandButtons\Kirei\BTNKirei_B.blp
+ReplaceableTextures\CommandButtons\Kirei\BTNKirei_C.blp
+ReplaceableTextures\CommandButtons\Kirei\BTNKirei_D.blp
+ReplaceableTextures\CommandButtons\Kirei\BTNKirei_E.blp
+ReplaceableTextures\CommandButtons\Kirei\BTNKirei_EX.blp
+ReplaceableTextures\CommandButtons\Kirei\BTNKirei_S.blp
+ReplaceableTextures\CommandButtons\LeeSM\BTNLeeSM_A.blp
+ReplaceableTextures\CommandButtons\LeeSM\BTNLeeSM_B.blp
+ReplaceableTextures\CommandButtons\LeeSM\BTNLeeSM_C.blp
+ReplaceableTextures\CommandButtons\LeeSM\BTNLeeSM_D.blp
+ReplaceableTextures\CommandButtons\LeeSM\BTNLeeSM_EX.blp
+ReplaceableTextures\CommandButtons\LeeSM\BTNLeeSM_S.blp
+ReplaceableTextures\CommandButtons\LionKing\BEAMBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\LionKing\BEAMPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\LionKing\BTN_SS.blp
+ReplaceableTextures\CommandButtons\LionKing\HSPRBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Lubu\BTNLubu_A.blp
+ReplaceableTextures\CommandButtons\Lubu\BTNLubu_B.blp
+ReplaceableTextures\CommandButtons\Lubu\BTNLubu_C.blp
+ReplaceableTextures\CommandButtons\Lubu\BTNLubu_D.blp
+ReplaceableTextures\CommandButtons\Lubu\BTNLubu_EX.blp
+ReplaceableTextures\CommandButtons\Lubu\BTNLubu_S.blp
+ReplaceableTextures\CommandButtons\Maidusa\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Mashu\BLOKBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Mashu\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Mashu\BUFFBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Mashu\CAMEBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Mashu\CAMEPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Mashu\RESTBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Medusa\BTNMedusa_A.blp
+ReplaceableTextures\CommandButtons\Medusa\BTNMedusa_B.blp
+ReplaceableTextures\CommandButtons\Medusa\BTNMedusa_C.blp
+ReplaceableTextures\CommandButtons\Medusa\BTNMedusa_D.blp
+ReplaceableTextures\CommandButtons\Medusa\BTNMedusa_S.blp
+ReplaceableTextures\CommandButtons\Medusa\EX\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Meltlilith\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Meltlilith\BTN_SSS.blp
+ReplaceableTextures\CommandButtons\Meltlilith\GAHAKPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Meltlilith\NERVPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Meltlilith\SARABTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Meltlilith\SARAPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Meltlilith\VIRGINBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Meltlilith\VIRGINPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Mooncell\BTNMoonCell_T.blp
+ReplaceableTextures\CommandButtons\Nero\BTNNero_A.blp
+ReplaceableTextures\CommandButtons\Nero\BTNNero_B.blp
+ReplaceableTextures\CommandButtons\Nero\BTNNero_C.blp
+ReplaceableTextures\CommandButtons\Nero\BTNNero_EX.blp
+ReplaceableTextures\CommandButtons\Nero\BTNNero_S.blp
+ReplaceableTextures\CommandButtons\Passion\BTNPassion_A.blp
+ReplaceableTextures\CommandButtons\Passion\BTNPassion_B.blp
+ReplaceableTextures\CommandButtons\Passion\BTNPassion_C.blp
+ReplaceableTextures\CommandButtons\Passion\BTNPassion_EX.blp
+ReplaceableTextures\CommandButtons\Passion\BTNPassion_S.blp
+ReplaceableTextures\CommandButtons\Passive\CounterHealHP\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Passive\CounterHealMP\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Passive\CounterShield\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Passive\ImmuneKnockback\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Passive\ImmuneStun\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Pendragon\BTNPendragon_A.blp
+ReplaceableTextures\CommandButtons\Pendragon\BTNPendragon_B.blp
+ReplaceableTextures\CommandButtons\Pendragon\BTNPendragon_C.blp
+ReplaceableTextures\CommandButtons\Pendragon\BTNPendragon_EX.blp
+ReplaceableTextures\CommandButtons\Pendragon\BTNPendragon_S.blp
+ReplaceableTextures\CommandButtons\PendragonAlter\BTNPendragonAlter_A.blp
+ReplaceableTextures\CommandButtons\PendragonAlter\BTNPendragonAlter_B.blp
+ReplaceableTextures\CommandButtons\PendragonAlter\BTNPendragonAlter_S.blp
+ReplaceableTextures\CommandButtons\Rhyme\BTNRhyme_A.blp
+ReplaceableTextures\CommandButtons\Rhyme\BTNRhyme_B.blp
+ReplaceableTextures\CommandButtons\Rhyme\BTNRhyme_C.blp
+ReplaceableTextures\CommandButtons\Rhyme\BTNRhyme_D.blp
+ReplaceableTextures\CommandButtons\Rhyme\BTNRhyme_S.blp
+ReplaceableTextures\CommandButtons\Ryougi Bunny\BTN_RYOUGI_BUNNY_SSS.blp
+ReplaceableTextures\CommandButtons\Ryougi Stellar\BTN_RYOUGI_STELLAR_SP.blp
+ReplaceableTextures\CommandButtons\Ryougi\BTNRyougi_A.blp
+ReplaceableTextures\CommandButtons\Ryougi\BTNRyougi_B.blp
+ReplaceableTextures\CommandButtons\Ryougi\BTNRyougi_C.blp
+ReplaceableTextures\CommandButtons\Ryougi\BTNRyougi_EX.blp
+ReplaceableTextures\CommandButtons\Ryougi\BTNRyougi_S.blp
+ReplaceableTextures\CommandButtons\Sakura\BTNSakura_A.blp
+ReplaceableTextures\CommandButtons\Sakura\BTNSakura_B.blp
+ReplaceableTextures\CommandButtons\Sakura\BTNSakura_C.blp
+ReplaceableTextures\CommandButtons\Sakura\BTNSakura_D.blp
+ReplaceableTextures\CommandButtons\Sakura\BTNSakura_E.blp
+ReplaceableTextures\CommandButtons\Sakura\BTNSakura_S.blp
+ReplaceableTextures\CommandButtons\Scathach\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Semi\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Semi\HGOBBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Semi\HGOBPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Semi\MIJUBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Semi\TCBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Servant\Bathory\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Servant\BB\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Servant\Karna\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Servant\Lubu\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Servant\PassionLip\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Servant\Sakura\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\SS\BTN_BUTTON.blp
+ReplaceableTextures\CommandButtons\Suzuka\BTNSuzuka_A.blp
+ReplaceableTextures\CommandButtons\Suzuka\BTNSuzuka_B.blp
+ReplaceableTextures\CommandButtons\Suzuka\BTNSuzuka_S.blp
+ReplaceableTextures\CommandButtons\Tamamo\BTNTamamo_A.blp
+ReplaceableTextures\CommandButtons\Tamamo\BTNTamamo_B.blp
+ReplaceableTextures\CommandButtons\Tamamo\BTNTamamo_C.blp
+ReplaceableTextures\CommandButtons\Tamamo\BTNTamamo_D.blp
+ReplaceableTextures\CommandButtons\Tamamo\BTNTamamo_EX.blp
+ReplaceableTextures\CommandButtons\Tamamo\BTNTamamo_S.blp
+ReplaceableTextures\CommandButtons\TamamoBikini\BTNTamamoBikini_A.blp
+ReplaceableTextures\CommandButtons\TamamoBikini\BTNTamamoBikini_B.blp
+ReplaceableTextures\CommandButtons\TamamoBikini\BTNTamamoBikini_S.blp
+ReplaceableTextures\CommandButtons\TamamoCasual\BTNTamamoCasual_A.blp
+ReplaceableTextures\CommandButtons\TamamoCasual\BTNTamamoCasual_B.blp
+ReplaceableTextures\CommandButtons\TamamoCasual\BTNTamamoCasual_S.blp
+ReplaceableTextures\CommandButtons\TamamoCathedral\BTN_SP.blp
+ReplaceableTextures\CommandButtons\TamamoSummer\BTNTamamoSummer_EX.blp
+ReplaceableTextures\CommandButtons\TamamoSummer\CHRMBTN\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\TamamoSummer\CHRMPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Tosaka\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Tosaka\BTNTosaka_A.blp
+ReplaceableTextures\CommandButtons\Tosaka\BTNTosaka_B.blp
+ReplaceableTextures\CommandButtons\Tosaka\BTNTosaka_C.blp
+ReplaceableTextures\CommandButtons\Tosaka\BTNTosaka_EX.blp
+ReplaceableTextures\CommandButtons\Tosaka\BTNTosaka_S.blp
+ReplaceableTextures\CommandButtons\Tosaka\GANDPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\Tosaka\JEWLPAS\BTN_BLUE.blp
+ReplaceableTextures\CommandButtons\UI\Wisp\BTN_UI_WISP.blp
+ReplaceableTextures\CommandButtons\Vlad\BTNVlad_A.blp
+ReplaceableTextures\CommandButtons\Vlad\BTNVlad_B.blp
+ReplaceableTextures\CommandButtons\Vlad\BTNVlad_C.blp
+ReplaceableTextures\CommandButtons\Vlad\BTNVlad_D.blp
+ReplaceableTextures\CommandButtons\Vlad\BTNVlad_E.blp
+ReplaceableTextures\CommandButtons\Vlad\BTNVlad_S.blp
+ReplaceableTextures\CommandButtons\Void\BTN_SS.blp
+ReplaceableTextures\CommandButtons\Zeromodel\BTNZeromodel_A.blp
+ReplaceableTextures\CommandButtons\Zeromodel\BTNZeromodel_B.blp
+ReplaceableTextures\CommandButtons\Zeromodel\BTNZeromodel_C.blp
+ReplaceableTextures\CommandButtons\Zeromodel\BTNZeromodel_EX.blp
+ReplaceableTextures\CommandButtons\Zeromodel\BTNZeromodel_S.blp
+ReplaceableTextures\CommandButtonsDisabled\Atila\DISBTNAtila_A.blp
+ReplaceableTextures\CommandButtonsDisabled\Atila\DISBTNAtila_B.blp
+ReplaceableTextures\CommandButtonsDisabled\Atila\DISBTNAtila_EX.blp
+ReplaceableTextures\CommandButtonsDisabled\Atila\DISBTNAtila_S.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTN_BLUE.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTN_BUTTON.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTN_SS.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTN_SSS.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTN_UI_WISP.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNBB.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNElizabeth.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNFashionRip.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNKarna.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNLubu.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNResourceManaStone.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNSakura.blp
+ReplaceableTextures\CommandButtonsDisabled\DISBTNTamamoKick.blp
+ReplaceableTextures\CommandButtonsDisabled\DISPAS_Andersen_HumanObserve.blp
+ReplaceableTextures\CommandButtonsDisabled\Gawain\DISBTNGawain_D.blp
+ReplaceableTextures\CommandButtonsDisabled\Gawain\DISBTNGawain_E.blp
+ReplaceableTextures\PassiveButtons\PAS_Alqueid_Gnaden.blp
+ReplaceableTextures\PassiveButtons\PAS_Alqueid_Rail.blp.blp
+ReplaceableTextures\PassiveButtons\PAS_Alqueid_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Andersen_HumanObserve.blp
+ReplaceableTextures\PassiveButtons\PAS_Astef_A.blp
+ReplaceableTextures\PassiveButtons\PAS_Astef_B.blp
+ReplaceableTextures\PassiveButtons\PAS_Astef_C.blp
+ReplaceableTextures\PassiveButtons\PAS_Astef_D.blp
+ReplaceableTextures\PassiveButtons\PAS_Atalanta_Cloak.blp
+ReplaceableTextures\PassiveButtons\PAS_Atalanta_Ray.blp
+ReplaceableTextures\PassiveButtons\PAS_BB_CCC.blp
+ReplaceableTextures\PassiveButtons\PAS_BB_Five.blp
+ReplaceableTextures\PassiveButtons\PAS_BB_Goblet.blp
+ReplaceableTextures\PassiveButtons\PAS_BB_Seven.BLP
+ReplaceableTextures\PassiveButtons\PAS_BB_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Elizabeth_Chate.blp
+ReplaceableTextures\PassiveButtons\PAS_Elizabeth_Heart.blp
+ReplaceableTextures\PassiveButtons\PAS_Elizabeth_Hunt.blp
+ReplaceableTextures\PassiveButtons\PAS_Elizabeth_Multi.blp
+ReplaceableTextures\PassiveButtons\PAS_Elizabeth_Sakani.blp
+ReplaceableTextures\PassiveButtons\PAS_Emiya_BPhant.blp
+ReplaceableTextures\PassiveButtons\PAS_Emiya_Exc.blp
+ReplaceableTextures\PassiveButtons\PAS_Flip_Blast.blp
+ReplaceableTextures\PassiveButtons\PAS_Flip_Slam.blp
+ReplaceableTextures\PassiveButtons\PAS_Flip_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Francis_Cannon.blp
+ReplaceableTextures\PassiveButtons\PAS_Francis_Gold.blp
+ReplaceableTextures\PassiveButtons\PAS_Francis_Ship.blp
+ReplaceableTextures\PassiveButtons\PAS_Francis_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Gawain_Bless.BLP
+ReplaceableTextures\PassiveButtons\PAS_Gawain_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Gilgamesh_Gate.blp
+ReplaceableTextures\PassiveButtons\PAS_Gilgamesh_Shackle.blp
+ReplaceableTextures\PassiveButtons\PAS_Gilgamesh_Shower.blp
+ReplaceableTextures\PassiveButtons\PAS_Gilgamesh_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Gilkun_Bmana.blp
+ReplaceableTextures\PassiveButtons\PAS_Irisviel_Cook.blp
+ReplaceableTextures\PassiveButtons\PAS_Jack_Crit.blp
+ReplaceableTextures\PassiveButtons\PAS_Karna_Brahma.blp
+ReplaceableTextures\PassiveButtons\PAS_Karna_Crit.blp
+ReplaceableTextures\PassiveButtons\PAS_Karna_Khunda.blp
+ReplaceableTextures\PassiveButtons\PAS_Karna_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Kiara_Aura.blp
+ReplaceableTextures\PassiveButtons\PAS_Kiara_CCC.blp
+ReplaceableTextures\PassiveButtons\PAS_Kiara_Drag.blp
+ReplaceableTextures\PassiveButtons\PAS_Kiara_Multishot.blp
+ReplaceableTextures\PassiveButtons\PAS_Kiara_Splash.blp
+ReplaceableTextures\PassiveButtons\PAS_Kirei_Senrei.blp
+ReplaceableTextures\PassiveButtons\PAS_Kirei_Sword.blp
+ReplaceableTextures\PassiveButtons\PAS_LeeSM_Houken.blp
+ReplaceableTextures\PassiveButtons\PAS_LeeSM_OneKill.blp
+ReplaceableTextures\PassiveButtons\PAS_LeeSM_Punch.blp
+ReplaceableTextures\PassiveButtons\PAS_LeeSM_Tiger.blp
+ReplaceableTextures\PassiveButtons\PAS_Lubu_Horse.blp
+ReplaceableTextures\PassiveButtons\PAS_Lubu_Spear.blp
+ReplaceableTextures\PassiveButtons\PAS_Lubu_Ultimate.BLP
+ReplaceableTextures\PassiveButtons\PAS_Nero_Dormus.blp
+ReplaceableTextures\PassiveButtons\PAS_Nero_Sing.blp
+ReplaceableTextures\PassiveButtons\PAS_Nero_Splash.blp
+ReplaceableTextures\PassiveButtons\PAS_Nero_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Okita_Blink.blp
+ReplaceableTextures\PassiveButtons\PAS_Okita_Crit.BLP
+ReplaceableTextures\PassiveButtons\PAS_Okita_Flag.blp
+ReplaceableTextures\PassiveButtons\PAS_Okita_Haori.blp
+ReplaceableTextures\PassiveButtons\PAS_Okita_Three.blp
+ReplaceableTextures\PassiveButtons\PAS_Saber_Avalon.blp
+ReplaceableTextures\PassiveButtons\PAS_Saber_Spear.blp
+ReplaceableTextures\PassiveButtons\PAS_Semi_DS.blp
+ReplaceableTextures\PassiveButtons\PAS_Semi_Miju.blp
+ReplaceableTextures\PassiveButtons\PAS_Semi_TC.blp
+ReplaceableTextures\PassiveButtons\PAS_Ska_Knowledge.blp
+ReplaceableTextures\PassiveButtons\PAS_Ska_Rune.blp
+ReplaceableTextures\PassiveButtons\PAS_Splash_Magical.blp
+ReplaceableTextures\PassiveButtons\PAS_SvShirou_Broken.blp
+ReplaceableTextures\PassiveButtons\PAS_SvShirou_Shower.blp
+ReplaceableTextures\PassiveButtons\PAS_SvShirou_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Tamamo_Fork.blp
+ReplaceableTextures\PassiveButtons\PAS_Tamamo_Hell.blp
+ReplaceableTextures\PassiveButtons\PAS_Tamamo_Mil.blp
+ReplaceableTextures\PassiveButtons\PAS_Tamamo_NormBless.blp
+ReplaceableTextures\PassiveButtons\PAS_Tamamo_PowerBless.blp
+ReplaceableTextures\PassiveButtons\PAS_Tamamo_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PAS_Vlad_GouKOu.blp
+ReplaceableTextures\PassiveButtons\PAS_Vlad_Kemono.blp
+ReplaceableTextures\PassiveButtons\PAS_Vlad_Ultimate.blp
+ReplaceableTextures\PassiveButtons\PASBeleph.blp
+ReplaceableTextures\PassiveButtons\PASDemonRain.blp
+ReplaceableTextures\PassiveButtons\PASEssenceOfCelerity.blp
+ReplaceableTextures\PassiveButtons\PASEternal.blp
+ReplaceableTextures\PassiveButtons\PASHeartFreezer.blp
+ReplaceableTextures\PassiveButtons\PASHetairoi.blp
+ReplaceableTextures\PassiveButtons\PASLeben.blp
+ReplaceableTextures\PassiveButtons\PASNeroBlabe.blp
+ReplaceableTextures\PassiveButtons\PASNurseryUltimate.blp
+ReplaceableTextures\PassiveButtons\PASRenew.blp
+ReplaceableTextures\PassiveButtons\PASSwordCamelot.blp
+ReplaceableTextures\PassiveButtons\PASTamamoKick.blp
+ReplaceableTextures\PassiveButtons\PASWhirlpool.blp
+ReplaceableTextures\Selection\SelectionCircleLarge.blp
+ReplaceableTextures\Selection\SelectionCircleMed.blp
+ReplaceableTextures\Selection\SelectionCircleSmall.blp
+RibbonBlack.blp
+rin.blp
+Ryougi.blp
+saberalt.blp
+Sakura Matou01.BLP
+sakura.blp
+sakura_2.blp
+Servant Frankenstien\F1.blp
+Servant Frankenstien\F2.blp
+Servant Frankenstien\F3.blp
+Servant Frankenstien\Fhair.blp
+Servant Frankenstien\Frankenstien.mdx
+Servant Heroine X\daimaowai.blp
+Servant Heroine X\daoguang.blp
+Servant Heroine X\smokegreen.blp
+Servant Heroine X\x1_new.mdx
+Servant Jeanne\ruler_armor_fgo.blp
+Servant Jeanne\ruler_fgo.blp
+Servant Jeanne\ruler_fgo.mdx
+Servant Jeanne\ruler_fgo2.blp
+Servant King Protia\King Protia2.mdx
+Servant King Protia\King_Protia_body.blp
+Servant King Protia\King_Protia_head.blp
+Servant Medusa Maid\Rider_Maid.blp
+Servant Medusa Maid\Rider_Maid.mdx
+Servant Medusa Maid\Rider_Maid2.blp
+Servant Medusa Maid\Rider_Maid3.blp
+Servant Medusa Maid\Rider_Maid_Face.blp
+Servant Medusa\eye00.blp
+Servant Medusa\face_base.blp
+Servant Medusa\mouth00.blp
+Servant Medusa\ridaga.blp
+Servant Medusa\rider6.mdx
+Servant Medusa\tex_01.blp
+Servant Medusa\tex_02.blp
+Servant Melt Penguin\Melt_Penguin.blp
+Servant Melt Penguin\Melt_Penguin.mdx
+Servant Melt Penguin\Melt_Penguin2.blp
+Servant Melt Penguin\Melt_Penguin_Face.blp
+Servant Pendragon Alter Dress\BlackSaber.blp
+Servant Pendragon Alter Dress\BlackSaber2.blp
+Servant Pendragon Alter Dress\SaberAlter(Dress).mdx
+Servant Tamamo Cathedral\Tamamo.blp
+Servant Tamamo Cathedral\TMM.mdx
+Servant Tamamo Summer\1.blp
+Servant Tamamo Summer\2.blp
+Servant Tamamo Summer\3.blp
+Servant Tamamo Summer\4.blp
+Servant Tamamo Summer\TamamoSummer.mdx
+Servant\Alexander\Bukepal.blp
+Servant\Alexander\Rider.mdx
+Servant\Alexander\Rider2.blp
+Servant\AlterAtalanta\AlterAtalanta.blp
+Servant\AlterAtalanta\AlterAtalanta.mdx
+Servant\AlterAtalanta\AlterAtalanta_Spell.blp
+Servant\AlterAtalanta\AlterAtalanta_Spell2.blp
+Servant\AlterAtalanta\AlterAtalanta_Weapon.blp
+Servant\AlterAtalanta\AlterAtalantaBoar.blp
+Servant\AlterAtalanta\Atalanta_Hair2.blp
+Servant\AlterAtalanta\Atalanta_Head3.blp
+Servant\Bride\diezhen.blp
+Servant\Bride\Saber_Bride_Body01.blp
+Servant\Bride\Saber_Bride_Body02.blp
+Servant\Bride\Saber_Bride_Body03.blp
+Servant\Bride\Saber_Bride_Body04.blp
+Servant\Bride\Saber_Bride_Eyes.blp
+Servant\Bride\Saber_Bride_Face.blp
+Servant\Bride\Saber_Bride_Spell.blp
+Servant\Bride\Saber_Bride_Wep.blp
+Servant\Bride\saberextra9.mdx
+Servant\Data\DataFrag.mdx
+Servant\Data\DataFragDrk.mdx
+Servant\Drake\Drake.blp
+Servant\Drake\Drake.mdx
+Servant\Drake\PirateHat.mdx
+Servant\ElizabethAlter.mdx
+Servant\Gawain\Gawain.blp
+Servant\Gawain\Gawain.mdx
+Servant\Jeanne\ruler.blp
+Servant\Jeanne\ruler.mdx
+Servant\Jeanne\ruler_armor.blp
+Servant\JeanneAlter\Jeanne_Alter-Flag.blp
+Servant\JeanneAlter\Jeanne_Alter.blp
+Servant\JeanneAlter\Jeanne_Alter.mdx
+Servant\JeanneAlter\Jeanne_Alter_Armor.blp
+Servant\Medusa\Medusa.mdx
+Servant\Medusa\Rider.blp
+Servant\NeroEmperor.mdx
+Servant\Pendragon\EmperorPendragon.mdx
+Servant\Pendragon\Pendragon.mdx
+Servant\Pendragon\saber_body.blp
+Servant\Pendragon\saber_dg.blp
+Servant\Pendragon\saber_weapon.blp
+Servant\Pendragon\saber_weapon2.blp
+Servant\Scathach\Character BLP Scathach.blp
+Servant\Scathach\Character BLP Scathach_Spell.blp
+Servant\Scathach\Character BLP Scathach_Spell2.blp
+Servant\Scathach\Character BLP Scathach_Spell3.blp
+Servant\Scathach\Character BLP sikahasanpo.blp
+Servant\Scathach\Character Model Scathach.mdx
+Servant\TamamoBikini\TamamoBikini.blp
+Servant\TamamoBikini\TamamoBikini.mdx
+Servant\TamamoCasual\TamamoCasual.mdx
+Servant\TamamoCasual\TamamoCasual01.blp
+Servant\TamamoCasual\TamamoCasual02.blp
+Servant\TamamoSunny.mdx
+Servant\Zeromodel\ShadowGilgamesh.mdx
+Servant\Zeromodel\ShadowGilgamesh01.blp
+Servant\Zeromodel\ShadowGilgamesh02.blp
+Servant\Zeromodel\ShadowGilgamesh03.blp
+Servant\Zeromodel\ShadowGilgamesh04.blp
+Servants\Altera\Attila.blp
+Servants\Altera\Attila.mdx
+Servants\Astef\astef.mdx
+Servants\Astef\astef2.blp
+Servants\Astef\astef3.blp
+Servants\Enkidu\Enkidu.blp
+Servants\Enkidu\Enkidu.mdx
+Servants\Gryphon\Gryphon.mdx
+Servants\Gryphon\Gryphon_Skin01.blp
+Servants\Gryphon\Gryphon_Skin02.blp
+Servants\LionKing\LeLion.BLP
+Servants\LionKing\LeLion.mdx
+Servants\LionKing\LeLion2.BLP
+Servants\LionKing\LeLion3.BLP
+Servants\LionKing\LeLion_Face.BLP
+Servants\LionKing\LeLion_Lance.BLP
+Servants\Mashu\Shielder.mdx
+Servants\Mashu\Shielder_Body.blp
+Servants\Mashu\Shielder_Face.blp
+Servants\Mashu\Shielder_Spell.blp
+Servants\Mashu\Shielder_Spell2.blp
+Servants\Mashu\Shielder_Spell3.blp
+Servants\Melt\Meltlilith.BLP
+Servants\Melt\Meltlilith.mdx
+Servants\Melt\Meltlilith2.BLP
+Servants\Melt\Meltlilith3.BLP
+Servants\Melt\Meltlilith_TRDG.blp
+Servants\MeltWhite\Meltlilith_Dress.BLP
+Servants\MeltWhite\Meltlilith_Dress.mdx
+Servants\MeltWhite\Meltlilith_Dress2.blp
+Servants\MeltWhite\Meltlilith_Dress3.BLP
+Servants\MeltWhite\Meltlilith_TRDG.blp
+Servants\Semi\Magic_Aura.BLP
+Servants\Semi\Magic_Circle.BLP
+Servants\Semi\Semiramis.BLP
+Servants\Semi\Semiramis.mdx
+Servants\Semi\Semiramis2.BLP
+Servants\Semi\Semiramis_Face.BLP
+Servants\Semi\Semiramis_Face2.BLP
+Servants\Semi\Semiramis_Face3.BLP
+Servants\TosakaExtra\m_rin.mdx
+Servants\TosakaExtra\m_rin_body.blp
+Servants\TosakaExtra\m_rin_eye.blp
+Servants\TosakaExtra\m_rin_face.blp
+Servants\TosakaExtra\m_rin_hair.blp
+Servants\TosakaExtra\m_rin_weapon.blp
+Servants\Velber\Velber.mdx
+Servants\Velber\velber_body.blp
+Servants\Velber\velber_lava.blp
+shockwave9_mod1.blp
+Sound\Interface\BigButtonClick.wav
+Sound\Interface\ingamechatwhat1.wav
+Sound\SFXCinematicHorn.wav
+tamamonomae.blp
+TamamoSunny01.blp
+TamamoSunny02.blp
+Terrain\SellBeacon\FXRDSellBeacon.mdx
+Terrain\SellBeacon\SellBG.blp
+Terrain\SellBeacon\SellLocked.blp
+Terrain\SellBeacon\SellUnderA.blp
+Terrain\SellBeacon\SellUnderC.blp
+TerrainArt\Outland\Outland_Abyss.blp
+TerrainArt\Ruins\Ruins_LargeBricks.blp
+UI\Console\Human\HumanUI-TimeIndicator.mdx
+UI\Flat\SquareSmall.mdx
+UI\Flat\SquareTransparent.mdx
+UI\HelpStrings.txt
+Units\CommandFunc.txt
+Unused\BTNMedusa_EX.blp
+Unused\Button Medusa\GAND\ACT\BTN_BLUE.blp
+Unused\Button Medusa\GAND\PAS\BTN_BLUE.blp
+Unused\Button Medusa\GEYE\PAS\BTN_BLUE.blp
+Unused\Button Medusa\KEDU\ACT\BTN_BLUE.blp
+Unused\Button Medusa\KEDU\PAS\BTN_BLUE.blp
+V2\Andersen\Andersen.mdx
+V2\Andersen\body.blp
+V2\Andersen\head.blp
+V2\Andersen\weapon.blp
+V2\CellShard\CellShard.blp
+V2\CellShard\CellShard.mdx
+V2\GoldenBlink\GoldenBlink.mdx
+V2\JKsaber\body.blp
+V2\JKsaber\face.blp
+V2\JKsaber\JKsaber.mdx
+V2\JKsaber\knife.blp
+V2\KuroTendou\KuroTendou.mdx
+V2\Milchun\Milchun.blp
+V2\Milchun\Milchun.mdx
+V2\Milchun\MilchunImpact.blp
+V2\Milchun\MilchunPoint.blp
+V2\Nursery\Nursery.blp
+V2\Nursery\Nursery.mdx
+V2\Nursery\Nursery1.blp
+V2\Teardrop\TeardropBlue.mdx
+V2\Teardrop\TeardropYellow.mdx
+V2\WarningHex\Warning.mdx
+V2\WarningHex\WarningHex.blp
+Vlad.blp
+war3map.doo
+war3map.imp
+war3map.j
+war3map.mmp
+war3map.shd
+war3map.w3a
+war3map.w3b
+war3map.w3c
+war3map.w3d
+war3map.w3e
+war3map.w3h
+war3map.w3i
+war3map.w3q
+war3map.w3r
+war3map.w3s
+war3map.w3u
+war3map.wct
+war3map.wpm
+war3map.wtg
+war3map.wts
+war3mapExtra.txt
+war3mapImported\Archer.mdx
+war3mapImported\Arcueid_Brunestud_RedEye.mdx
+war3mapImported\Atalanta.mdx
+war3mapImported\BB.MDX
+war3mapImported\Elizabeth01.mdx
+war3mapImported\Gilgamesh - 1.mdx
+war3mapImported\Kiara.mdx
+war3mapImported\Kirei.mdx
+war3mapImported\LubuFin.mdx
+war3mapImported\MoonCellAutomaton.mdx
+war3mapImported\mr.war3_jssfc.mdx
+war3mapImported\mr.war3_ketr.mdx
+war3mapImported\Passion lip.mdx
+war3mapImported\rin.mdx
+war3mapImported\ryougi shiki.mdx
+war3mapImported\SaberAlterNM.mdx
+war3mapImported\Sakura Matou.mdx
+war3mapImported\sakuraqizi.mdx
+war3mapImported\tamamonomae.mdx
+war3mapImported\Vlad2a.mdx
+war3mapImported\YeeSM2.mdx
+war3mapMap.blp
+war3mapmisc.txt
+war3mapPreview.tga
+war3mapskin.txt
+war3mapUnits.doo
+yaya r.blp
+YeeSMBody.blp
+YeeSMBody2.blp
+YeeSMFace.blp
+YeeSMHair.blp
+Yumi.blp

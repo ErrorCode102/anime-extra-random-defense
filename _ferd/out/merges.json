@@ -1,0 +1,2418 @@
+[
+ {
+  "req": [
+   "-GAS",
+   "-BRA",
+   "-GMB"
+  ],
+  "result": "-GAX",
+  "reqNames": [
+   "[S] Gawain / Saber",
+   "[A] Nero Bride / Saber",
+   "[B] Gilgamesh / Archer"
+  ],
+  "resultName": "[EX] Knight of the Sun / Gawain"
+ },
+ {
+  "req": [
+   "-GAX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Knight of the Sun / Gawain",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-FDS",
+   "-NCA",
+   "-APB"
+  ],
+  "result": "-FDX",
+  "reqNames": [
+   "[S] Francis Drake / Rider",
+   "[A] Nero Claudius / Saber",
+   "[B] Artoria Alter / Saber"
+  ],
+  "resultName": "[EX] Pioneer of the Stars / Francis Drake"
+ },
+ {
+  "req": [
+   "-FDX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Pioneer of the Stars / Francis Drake",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-SAS",
+   "-VOA",
+   "-BBB"
+  ],
+  "result": "-SAX",
+  "reqNames": [
+   "[S] Acting Control Authority / Sakura",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code",
+   "[B] BB / MoonCancer"
+  ],
+  "resultName": "[EX] Alter Ego G / Kingprotea"
+ },
+ {
+  "req": [
+   "-SAX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Alter Ego G / Kingprotea",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-MDX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Maid / Medusa",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-JEX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] The Crimson Saint / Jeanne d'Arc",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-MDS",
+   "-JAA",
+   "-RYB"
+  ],
+  "result": "-MDX",
+  "reqNames": [
+   "[S] Medusa / Rider",
+   "[A] Jeanne d'Arc Alter / Ruler",
+   "[B] Ryougi Shiki / Assassin"
+  ],
+  "resultName": "[EX] Maid / Medusa"
+ },
+ {
+  "req": [
+   "-JES",
+   "-ATA",
+   "-TAB"
+  ],
+  "result": "-JEX",
+  "reqNames": [
+   "[S] Jeanne d'Arc / Ruler",
+   "[A] Atalanta / Archer",
+   "[B] Tamamo-no-Mae / Caster"
+  ],
+  "resultName": "[EX] The Crimson Saint / Jeanne d'Arc"
+ },
+ {
+  "req": [
+   "-VOA"
+  ],
+  "result": "-VOT",
+  "reqNames": [
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "Velber 02 / False Unknown Territory"
+ },
+ {
+  "req": [
+   "-PDB"
+  ],
+  "result": "-HXT",
+  "reqNames": [
+   "[B] Artoria / Saber"
+  ],
+  "resultName": "\u300eMysterious Heroine X\u300f / False Assassin"
+ },
+ {
+  "req": [
+   "-KAS",
+   "-STA",
+   "-KHB"
+  ],
+  "result": "-TSX",
+  "reqNames": [
+   "[S] Karna / Launcher",
+   "[A] Tamamo Vitch / Tamamo Nine",
+   "[B] Cu Chulainn / Lancer"
+  ],
+  "resultName": "[EX] Summer Tamamo / Tamamo-no-Mae"
+ },
+ {
+  "req": [
+   "-TSX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Summer Tamamo / Tamamo-no-Mae",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-TOS",
+   "-KIA",
+   "-SAB"
+  ],
+  "result": "-TOX",
+  "reqNames": [
+   "[S] Rin Tohsaka / Spiritron Hacker",
+   "[A] Kirei Kotomine / NPC",
+   "[B] Sakura / NPC"
+  ],
+  "resultName": "[EX] Jeweled Sword Zelretch / Rin Tohsaka"
+ },
+ {
+  "req": [
+   "-TOX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Jeweled Sword Zelretch / Rin Tohsaka",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-YSS",
+   "-PAA",
+   "-AQB"
+  ],
+  "result": "-FRX",
+  "reqNames": [
+   "[S] Li Shuwen / Assassin",
+   "[A] Passionlip / Alter Ego",
+   "[B] Arcueid Brunestud / Berserker"
+  ],
+  "resultName": "[EX] Frankenstein's Monster / Frankenstein"
+ },
+ {
+  "req": [
+   "-FRX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Frankenstein's Monster / Frankenstein",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-RHS",
+   "-BRA",
+   "-PDC"
+  ],
+  "result": "-MST",
+  "reqNames": [
+   "[S] Nursery Rhyme / Caster",
+   "[A] Nero Bride / Saber",
+   "[C] Artoria / Saber"
+  ],
+  "resultName": "Mash Kyrielight / False Shielder"
+ },
+ {
+  "req": [
+   "-APS",
+   "-KAS"
+  ],
+  "result": "-LKT",
+  "reqNames": [
+   "[S] Artoria Alter / Saber",
+   "[S] Karna / Launcher"
+  ],
+  "resultName": "Goddess of Rhongomyniad / False Lancer"
+ },
+ {
+  "req": [
+   "-AQS",
+   "-GMB",
+   "-ZMB"
+  ],
+  "result": "-ENT",
+  "reqNames": [
+   "[S] Arcueid Brunestud / Funny Vamp",
+   "[B] Gilgamesh / Archer",
+   "[B] ZERO-MODEL / Gilgamesh"
+  ],
+  "resultName": "Enkidu / False Lancer"
+ },
+ {
+  "req": [
+   "-MLT",
+   "-EMA"
+  ],
+  "result": "-MXT",
+  "reqNames": [
+   "Meltryllis / False Alter Ego",
+   "[A] Shirou Emiya / Archer"
+  ],
+  "resultName": "\u300eMeltryllis\u300f / False Final Ascension"
+ },
+ {
+  "req": [
+   "-SAS",
+   "-AEA",
+   "-RYA",
+   "-VOA"
+  ],
+  "result": "-MLT",
+  "reqNames": [
+   "[S] Acting Control Authority / Sakura",
+   "[A] Elisabeth Bathory Alter / Berserker",
+   "[A] Ryougi Shiki / Assassin",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "Meltryllis / False Alter Ego"
+ },
+ {
+  "req": [
+   "-ESS",
+   "-RHA",
+   "-KAA"
+  ],
+  "result": "-SET",
+  "reqNames": [
+   "[S] Iskandar / Rider",
+   "[A] Nursery Rhyme / Caster",
+   "[A] Karna / Lancer"
+  ],
+  "resultName": "Semiramis / False Assassin"
+ },
+ {
+  "req": [
+   "-JEB",
+   "-ATS"
+  ],
+  "result": "-AST",
+  "reqNames": [
+   "[B] Jeanne d'Arc / Ruler",
+   "[S] Atalanta / Archer"
+  ],
+  "resultName": "Astolfo / False Rider"
+ },
+ {
+  "req": [
+   "-AQA",
+   "-JEA",
+   "-YSA",
+   "-VOC"
+  ],
+  "result": "-AQS",
+  "reqNames": [
+   "[A] Arcueid Brunestud / Berserker",
+   "[A] Jeanne d'Arc / Ruler",
+   "[A] Li Shuwen / Assassin",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Arcueid Brunestud / Funny Vamp"
+ },
+ {
+  "req": [
+   "-AAA",
+   "-JAA",
+   "-ZMA",
+   "-VOC"
+  ],
+  "result": "-AAS",
+  "reqNames": [
+   "[A] Atalanta(Alter) / Berserker",
+   "[A] Jeanne d'Arc Alter / Ruler",
+   "[A] ZERO-MODEL / Gilgamesh",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Atalanta(Alter) / Berserker"
+ },
+ {
+  "req": [
+   "-BAA",
+   "-ATA",
+   "-FDA",
+   "-VOC"
+  ],
+  "result": "-BAS",
+  "reqNames": [
+   "[A] Elisabeth Bathory / Lancer",
+   "[A] Atalanta / Archer",
+   "[A] Francis Drake / Rider",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Elisabeth Bathory / Lancer"
+ },
+ {
+  "req": [
+   "-VLA",
+   "-AEA",
+   "-ESA",
+   "-VOC"
+  ],
+  "result": "-VLS",
+  "reqNames": [
+   "[A] Vlad III / Lancer",
+   "[A] Elisabeth Bathory Alter / Berserker",
+   "[A] Iskandar / Rider",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Vlad III / Lancer"
+ },
+ {
+  "req": [
+   "-KIA",
+   "-APA",
+   "-BBA",
+   "-VOC"
+  ],
+  "result": "-KIS",
+  "reqNames": [
+   "[A] Kirei Kotomine / NPC",
+   "[A] Artoria Alter / Saber",
+   "[A] BB / MoonCancer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Kirei Kotomine / NPC"
+ },
+ {
+  "req": [
+   "-TOA",
+   "-EMA",
+   "-SAA",
+   "-VOC"
+  ],
+  "result": "-TOS",
+  "reqNames": [
+   "[A] Rin Tohsaka / Spiritron Hacker",
+   "[A] Shirou Emiya / Archer",
+   "[A] Sakura / NPC",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Rin Tohsaka / Spiritron Hacker"
+ },
+ {
+  "req": [
+   "-PAA",
+   "-LUA",
+   "-AQA",
+   "-VOC"
+  ],
+  "result": "-PAS",
+  "reqNames": [
+   "[A] Passionlip / Alter Ego",
+   "[A] Lu Bu Fengxian / Berserker",
+   "[A] Arcueid Brunestud / Berserker",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Passionlip / Alter Ego"
+ },
+ {
+  "req": [
+   "-RYA",
+   "-FDA",
+   "-MDA",
+   "-VOC"
+  ],
+  "result": "-RYS",
+  "reqNames": [
+   "[A] Ryougi Shiki / Assassin",
+   "[A] Francis Drake / Rider",
+   "[A] Medusa / Rider",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Ryougi Shiki / Assassin"
+ },
+ {
+  "req": [
+   "-YSA",
+   "-RYA",
+   "-VLA",
+   "-VOC"
+  ],
+  "result": "-YSS",
+  "reqNames": [
+   "[A] Li Shuwen / Assassin",
+   "[A] Ryougi Shiki / Assassin",
+   "[A] Vlad III / Lancer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Li Shuwen / Assassin"
+ },
+ {
+  "req": [
+   "-JEA",
+   "-PDA",
+   "-BRA",
+   "-VOC"
+  ],
+  "result": "-JES",
+  "reqNames": [
+   "[A] Jeanne d'Arc / Ruler",
+   "[A] Artoria / Saber",
+   "[A] Nero Bride / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Jeanne d'Arc / Ruler"
+ },
+ {
+  "req": [
+   "-ESA",
+   "-GAA",
+   "-ATA",
+   "-VOC"
+  ],
+  "result": "-ESS",
+  "reqNames": [
+   "[A] Iskandar / Rider",
+   "[A] Gawain / Saber",
+   "[A] Atalanta / Archer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Iskandar / Rider"
+ },
+ {
+  "req": [
+   "-FDA",
+   "-BAA",
+   "-TOA",
+   "-VOC"
+  ],
+  "result": "-FDS",
+  "reqNames": [
+   "[A] Francis Drake / Rider",
+   "[A] Elisabeth Bathory / Lancer",
+   "[A] Rin Tohsaka / Spiritron Hacker",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Francis Drake / Rider"
+ },
+ {
+  "req": [
+   "-MDA",
+   "-YSA",
+   "-RYA",
+   "-VOC"
+  ],
+  "result": "-MDS",
+  "reqNames": [
+   "[A] Medusa / Rider",
+   "[A] Li Shuwen / Assassin",
+   "[A] Ryougi Shiki / Assassin",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Medusa / Rider"
+ },
+ {
+  "req": [
+   "-BRA",
+   "-NCA",
+   "-GOA",
+   "-VOC"
+  ],
+  "result": "-BRS",
+  "reqNames": [
+   "[A] Nero Bride / Saber",
+   "[A] Nero Claudius / Saber",
+   "[A] Suzuka Gozen / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Nero Bride / Saber"
+ },
+ {
+  "req": [
+   "-APA",
+   "-SAA",
+   "-GMA",
+   "-VOC"
+  ],
+  "result": "-APS",
+  "reqNames": [
+   "[A] Artoria Alter / Saber",
+   "[A] Sakura / NPC",
+   "[A] Gilgamesh / Archer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Artoria Alter / Saber"
+ },
+ {
+  "req": [
+   "-GOA",
+   "-AQA",
+   "-AAA",
+   "-VOC"
+  ],
+  "result": "-GOS",
+  "reqNames": [
+   "[A] Suzuka Gozen / Saber",
+   "[A] Arcueid Brunestud / Berserker",
+   "[A] Atalanta(Alter) / Berserker",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Suzuka Gozen / Saber"
+ },
+ {
+  "req": [
+   "-GAA",
+   "-ESA",
+   "-PDA",
+   "-VOC"
+  ],
+  "result": "-GAS",
+  "reqNames": [
+   "[A] Gawain / Saber",
+   "[A] Iskandar / Rider",
+   "[A] Artoria / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Gawain / Saber"
+ },
+ {
+  "req": [
+   "-PTA",
+   "-TAA",
+   "-STA",
+   "-VOC"
+  ],
+  "result": "-PTS",
+  "reqNames": [
+   "[A] Tamamo Dermo / Tamamo Nine",
+   "[A] Tamamo-no-Mae / Caster",
+   "[A] Tamamo Vitch / Tamamo Nine",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Tamamo Dermo / Tamamo Nine"
+ },
+ {
+  "req": [
+   "-STA",
+   "-PTA",
+   "-TAA",
+   "-VOC"
+  ],
+  "result": "-STS",
+  "reqNames": [
+   "[A] Tamamo Vitch / Tamamo Nine",
+   "[A] Tamamo Dermo / Tamamo Nine",
+   "[A] Tamamo-no-Mae / Caster",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Tamamo Vitch / Tamamo Nine"
+ },
+ {
+  "req": [
+   "-ANA",
+   "-KAA",
+   "-JAA",
+   "-VOC"
+  ],
+  "result": "-ANS",
+  "reqNames": [
+   "[A] Andersen / Caster",
+   "[A] Karna / Lancer",
+   "[A] Jeanne d'Arc Alter / Ruler",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Andersen / Caster"
+ },
+ {
+  "req": [
+   "-RHA",
+   "-AEA",
+   "-ANA",
+   "-VOC"
+  ],
+  "result": "-RHS",
+  "reqNames": [
+   "[A] Nursery Rhyme / Caster",
+   "[A] Elisabeth Bathory Alter / Berserker",
+   "[A] Andersen / Caster",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Nursery Rhyme / Caster"
+ },
+ {
+  "req": [
+   "-EMA",
+   "-MDA",
+   "-LUA",
+   "-VOC"
+  ],
+  "result": "-EMS",
+  "reqNames": [
+   "[A] Shirou Emiya / Archer",
+   "[A] Medusa / Rider",
+   "[A] Lu Bu Fengxian / Berserker",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Shirou Emiya / Archer"
+ },
+ {
+  "req": [
+   "-JAA",
+   "-BRA",
+   "-JEA",
+   "-VOC"
+  ],
+  "result": "-JAS",
+  "reqNames": [
+   "[A] Jeanne d'Arc Alter / Ruler",
+   "[A] Nero Bride / Saber",
+   "[A] Jeanne d'Arc / Ruler",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Jeanne d'Arc Alter / Avenger"
+ },
+ {
+  "req": [
+   "-ATA",
+   "-TOA",
+   "-KHA",
+   "-VOC"
+  ],
+  "result": "-ATS",
+  "reqNames": [
+   "[A] Atalanta / Archer",
+   "[A] Rin Tohsaka / Spiritron Hacker",
+   "[A] Cu Chulainn / Lancer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Atalanta / Archer"
+ },
+ {
+  "req": [
+   "-GOB",
+   "-YSB",
+   "-RYC"
+  ],
+  "result": "-GOA",
+  "reqNames": [
+   "[B] Suzuka Gozen / Saber",
+   "[B] Li Shuwen / Assassin",
+   "[C] Ryougi Shiki / Assassin"
+  ],
+  "resultName": "[A] Suzuka Gozen / Saber"
+ },
+ {
+  "req": [
+   "-ANB",
+   "-PAB",
+   "-KHC"
+  ],
+  "result": "-ANA",
+  "reqNames": [
+   "[B] Andersen / Caster",
+   "[B] Passionlip / Alter Ego",
+   "[C] Cu Chulainn / Lancer"
+  ],
+  "resultName": "[A] Andersen / Caster"
+ },
+ {
+  "req": [
+   "-RHB",
+   "-BBB",
+   "-SAC"
+  ],
+  "result": "-RHA",
+  "reqNames": [
+   "[B] Nursery Rhyme / Caster",
+   "[B] BB / MoonCancer",
+   "[C] Sakura / NPC"
+  ],
+  "resultName": "[A] Nursery Rhyme / Caster"
+ },
+ {
+  "req": [
+   "-GAC",
+   "-TAC"
+  ],
+  "result": "-GOB",
+  "reqNames": [
+   "[C] Gawain / Saber",
+   "[C] Tamamo-no-Mae / Caster"
+  ],
+  "resultName": "[B] Suzuka Gozen / Saber"
+ },
+ {
+  "req": [
+   "-ANC",
+   "-AQC"
+  ],
+  "result": "-ANB",
+  "reqNames": [
+   "[C] Andersen / Caster",
+   "[C] Arcueid Brunestud / Berserker"
+  ],
+  "resultName": "[B] Andersen / Caster"
+ },
+ {
+  "req": [
+   "-RHC",
+   "-ANC"
+  ],
+  "result": "-RHB",
+  "reqNames": [
+   "[C] Nursery Rhyme / Caster",
+   "[C] Andersen / Caster"
+  ],
+  "resultName": "[B] Nursery Rhyme / Caster"
+ },
+ {
+  "req": [
+   "-RHD",
+   "-GAD",
+   "-KIE"
+  ],
+  "result": "-ANC",
+  "reqNames": [
+   "[D] Nursery Rhyme / Caster",
+   "[D] Gawain / Saber",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[C] Andersen / Caster"
+ },
+ {
+  "req": [
+   "-RHD",
+   "-ATD",
+   "-SAE"
+  ],
+  "result": "-RHC",
+  "reqNames": [
+   "[D] Nursery Rhyme / Caster",
+   "[D] Atalanta / Archer",
+   "[E] Sakura / NPC"
+  ],
+  "resultName": "[C] Nursery Rhyme / Caster"
+ },
+ {
+  "req": [
+   "-NCS",
+   "-GOA",
+   "-YSB"
+  ],
+  "result": "-NCX",
+  "reqNames": [
+   "[S] Nero Claudius / Saber",
+   "[A] Suzuka Gozen / Saber",
+   "[B] Li Shuwen / Assassin"
+  ],
+  "resultName": "[EX] Mystic Code of the Emperor / Nero Claudius"
+ },
+ {
+  "req": [
+   "-NCA",
+   "-BAA",
+   "-KAA",
+   "-VOC"
+  ],
+  "result": "-NCS",
+  "reqNames": [
+   "[A] Nero Claudius / Saber",
+   "[A] Elisabeth Bathory / Lancer",
+   "[A] Karna / Lancer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Nero Claudius / Saber"
+ },
+ {
+  "req": [
+   "-PDS",
+   "-APA",
+   "-BAB"
+  ],
+  "result": "-PDX",
+  "reqNames": [
+   "[S] Artoria / Saber",
+   "[A] Artoria Alter / Saber",
+   "[B] Elisabeth Bathory / Lancer"
+  ],
+  "resultName": "[EX] Mystic Code of the Star / Artoria Pendragon"
+ },
+ {
+  "req": [
+   "-PDA",
+   "-GMA",
+   "-EMA",
+   "-VOC"
+  ],
+  "result": "-PDS",
+  "reqNames": [
+   "[A] Artoria / Saber",
+   "[A] Gilgamesh / Archer",
+   "[A] Shirou Emiya / Archer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Artoria / Saber"
+ },
+ {
+  "req": [
+   "-BBB",
+   "-SAB",
+   "-PAC"
+  ],
+  "result": "-BBA",
+  "reqNames": [
+   "[B] BB / MoonCancer",
+   "[B] Sakura / NPC",
+   "[C] Passionlip / Alter Ego"
+  ],
+  "resultName": "[A] BB / MoonCancer"
+ },
+ {
+  "req": [
+   "-AQB",
+   "-LUB",
+   "-ATC"
+  ],
+  "result": "-AAA",
+  "reqNames": [
+   "[B] Arcueid Brunestud / Berserker",
+   "[B] Lu Bu Fengxian / Berserker",
+   "[C] Atalanta / Archer"
+  ],
+  "resultName": "[A] Atalanta(Alter) / Berserker"
+ },
+ {
+  "req": [
+   "-AQB",
+   "-RYB",
+   "-MDC"
+  ],
+  "result": "-AQA",
+  "reqNames": [
+   "[B] Arcueid Brunestud / Berserker",
+   "[B] Ryougi Shiki / Assassin",
+   "[C] Medusa / Rider"
+  ],
+  "resultName": "[A] Arcueid Brunestud / Berserker"
+ },
+ {
+  "req": [
+   "-KHB",
+   "-BAB",
+   "-AQC"
+  ],
+  "result": "-AEA",
+  "reqNames": [
+   "[B] Cu Chulainn / Lancer",
+   "[B] Elisabeth Bathory / Lancer",
+   "[C] Arcueid Brunestud / Berserker"
+  ],
+  "resultName": "[A] Elisabeth Bathory Alter / Berserker"
+ },
+ {
+  "req": [
+   "-BAB",
+   "-LUB",
+   "-EMC"
+  ],
+  "result": "-BAA",
+  "reqNames": [
+   "[B] Elisabeth Bathory / Lancer",
+   "[B] Lu Bu Fengxian / Berserker",
+   "[C] Shirou Emiya / Archer"
+  ],
+  "resultName": "[A] Elisabeth Bathory / Lancer"
+ },
+ {
+  "req": [
+   "-RYB",
+   "-YSB",
+   "-RYC"
+  ],
+  "result": "-RYA",
+  "reqNames": [
+   "[B] Ryougi Shiki / Assassin",
+   "[B] Li Shuwen / Assassin",
+   "[C] Ryougi Shiki / Assassin"
+  ],
+  "resultName": "[A] Ryougi Shiki / Assassin"
+ },
+ {
+  "req": [
+   "-JEB",
+   "-TAB",
+   "-PDC"
+  ],
+  "result": "-JEA",
+  "reqNames": [
+   "[B] Jeanne d'Arc / Ruler",
+   "[B] Tamamo-no-Mae / Caster",
+   "[C] Artoria / Saber"
+  ],
+  "resultName": "[A] Jeanne d'Arc / Ruler"
+ },
+ {
+  "req": [
+   "-ESB",
+   "-GMB",
+   "-ESC"
+  ],
+  "result": "-ESA",
+  "reqNames": [
+   "[B] Iskandar / Rider",
+   "[B] Gilgamesh / Archer",
+   "[C] Iskandar / Rider"
+  ],
+  "resultName": "[A] Iskandar / Rider"
+ },
+ {
+  "req": [
+   "-MDB",
+   "-ATB",
+   "-YSC"
+  ],
+  "result": "-MDA",
+  "reqNames": [
+   "[B] Medusa / Rider",
+   "[B] Atalanta / Archer",
+   "[C] Li Shuwen / Assassin"
+  ],
+  "resultName": "[A] Medusa / Rider"
+ },
+ {
+  "req": [
+   "-NCB",
+   "-JEB",
+   "-PDC"
+  ],
+  "result": "-BRA",
+  "reqNames": [
+   "[B] Nero Claudius / Saber",
+   "[B] Jeanne d'Arc / Ruler",
+   "[C] Artoria / Saber"
+  ],
+  "resultName": "[A] Nero Bride / Saber"
+ },
+ {
+  "req": [
+   "-APB",
+   "-ESB",
+   "-NCC"
+  ],
+  "result": "-APA",
+  "reqNames": [
+   "[B] Artoria Alter / Saber",
+   "[B] Iskandar / Rider",
+   "[C] Nero Claudius / Saber"
+  ],
+  "resultName": "[A] Artoria Alter / Saber"
+ },
+ {
+  "req": [
+   "-PDB",
+   "-EMB",
+   "-KAC"
+  ],
+  "result": "-PDA",
+  "reqNames": [
+   "[B] Artoria / Saber",
+   "[B] Shirou Emiya / Archer",
+   "[C] Karna / Lancer"
+  ],
+  "resultName": "[A] Artoria / Saber"
+ },
+ {
+  "req": [
+   "-PTB",
+   "-TOB",
+   "-TAC"
+  ],
+  "result": "-PTA",
+  "reqNames": [
+   "[B] Tamamo Dermo / Tamamo Nine",
+   "[B] Rin Tohsaka / Spiritron Hacker",
+   "[C] Tamamo-no-Mae / Caster"
+  ],
+  "resultName": "[A] Tamamo Dermo / Tamamo Nine"
+ },
+ {
+  "req": [
+   "-STB",
+   "-SAB",
+   "-TAC"
+  ],
+  "result": "-STA",
+  "reqNames": [
+   "[B] Tamamo Vitch / Tamamo Nine",
+   "[B] Sakura / NPC",
+   "[C] Tamamo-no-Mae / Caster"
+  ],
+  "resultName": "[A] Tamamo Vitch / Tamamo Nine"
+ },
+ {
+  "req": [
+   "-GMB",
+   "-VLB",
+   "-TOC"
+  ],
+  "result": "-GMA",
+  "reqNames": [
+   "[B] Gilgamesh / Archer",
+   "[B] Vlad III / Lancer",
+   "[C] Rin Tohsaka / Spiritron Hacker"
+  ],
+  "resultName": "[A] Gilgamesh / Archer"
+ },
+ {
+  "req": [
+   "-ZMB",
+   "-JEB",
+   "-KHC"
+  ],
+  "result": "-JAA",
+  "reqNames": [
+   "[B] ZERO-MODEL / Gilgamesh",
+   "[B] Jeanne d'Arc / Ruler",
+   "[C] Cu Chulainn / Lancer"
+  ],
+  "resultName": "[A] Jeanne d'Arc Alter / Ruler"
+ },
+ {
+  "req": [
+   "-ZMB",
+   "-KAB",
+   "-KIC"
+  ],
+  "result": "-ZMA",
+  "reqNames": [
+   "[B] ZERO-MODEL / Gilgamesh",
+   "[B] Karna / Lancer",
+   "[C] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[A] ZERO-MODEL / Gilgamesh"
+ },
+ {
+  "req": [
+   "-ALS",
+   "-ALA",
+   "-ALB"
+  ],
+  "result": "-ALX",
+  "reqNames": [
+   "[S] Attila / Saber",
+   "[A] Attila / Saber",
+   "[B] Attila / Saber"
+  ],
+  "resultName": "[EX] Attilaight Cell / Titan Attila"
+ },
+ {
+  "req": [
+   "-ALA",
+   "-NCA",
+   "-TAA",
+   "-VOC"
+  ],
+  "result": "-ALS",
+  "reqNames": [
+   "[A] Attila / Saber",
+   "[A] Nero Claudius / Saber",
+   "[A] Tamamo-no-Mae / Caster",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Attila / Saber"
+ },
+ {
+  "req": [
+   "-ALB",
+   "-VOC"
+  ],
+  "result": "-ALA",
+  "reqNames": [
+   "[B] Attila / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[A] Attila / Saber"
+ },
+ {
+  "req": [
+   "-KIC",
+   "-LUC"
+  ],
+  "result": "-KIB",
+  "reqNames": [
+   "[C] Kirei Kotomine / NPC",
+   "[C] Lu Bu Fengxian / Berserker"
+  ],
+  "resultName": "[B] Kirei Kotomine / NPC"
+ },
+ {
+  "req": [
+   "-TOC",
+   "-SAC"
+  ],
+  "result": "-TOB",
+  "reqNames": [
+   "[C] Rin Tohsaka / Spiritron Hacker",
+   "[C] Sakura / NPC"
+  ],
+  "resultName": "[B] Rin Tohsaka / Spiritron Hacker"
+ },
+ {
+  "req": [
+   "-PAC",
+   "-RHC"
+  ],
+  "result": "-BBB",
+  "reqNames": [
+   "[C] Passionlip / Alter Ego",
+   "[C] Nursery Rhyme / Caster"
+  ],
+  "resultName": "[B] BB / MoonCancer"
+ },
+ {
+  "req": [
+   "-AQC",
+   "-ZMC"
+  ],
+  "result": "-AQB",
+  "reqNames": [
+   "[C] Arcueid Brunestud / Berserker",
+   "[C] ZERO-MODEL / Gilgamesh"
+  ],
+  "resultName": "[B] Arcueid Brunestud / Berserker"
+ },
+ {
+  "req": [
+   "-VLC",
+   "-KHC"
+  ],
+  "result": "-BAB",
+  "reqNames": [
+   "[C] Vlad III / Lancer",
+   "[C] Cu Chulainn / Lancer"
+  ],
+  "resultName": "[B] Elisabeth Bathory / Lancer"
+ },
+ {
+  "req": [
+   "-RYC",
+   "-KIC"
+  ],
+  "result": "-RYB",
+  "reqNames": [
+   "[C] Ryougi Shiki / Assassin",
+   "[C] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[B] Ryougi Shiki / Assassin"
+ },
+ {
+  "req": [
+   "-ESC",
+   "-KAC"
+  ],
+  "result": "-JEB",
+  "reqNames": [
+   "[C] Iskandar / Rider",
+   "[C] Karna / Lancer"
+  ],
+  "resultName": "[B] Jeanne d'Arc / Ruler"
+ },
+ {
+  "req": [
+   "-ESC",
+   "-EMC"
+  ],
+  "result": "-ESB",
+  "reqNames": [
+   "[C] Iskandar / Rider",
+   "[C] Shirou Emiya / Archer"
+  ],
+  "resultName": "[B] Iskandar / Rider"
+ },
+ {
+  "req": [
+   "-MDC",
+   "-YSC"
+  ],
+  "result": "-MDB",
+  "reqNames": [
+   "[C] Medusa / Rider",
+   "[C] Li Shuwen / Assassin"
+  ],
+  "resultName": "[B] Medusa / Rider"
+ },
+ {
+  "req": [
+   "-NCC",
+   "-VOC"
+  ],
+  "result": "-ALB",
+  "reqNames": [
+   "[C] Nero Claudius / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[B] Attila / Saber"
+ },
+ {
+  "req": [
+   "-PDC",
+   "-VLC"
+  ],
+  "result": "-APB",
+  "reqNames": [
+   "[C] Artoria / Saber",
+   "[C] Vlad III / Lancer"
+  ],
+  "resultName": "[B] Artoria Alter / Saber"
+ },
+ {
+  "req": [
+   "-PDC",
+   "-NCC"
+  ],
+  "result": "-PDB",
+  "reqNames": [
+   "[C] Artoria / Saber",
+   "[C] Nero Claudius / Saber"
+  ],
+  "resultName": "[B] Artoria / Saber"
+ },
+ {
+  "req": [
+   "-TAC",
+   "-TOC"
+  ],
+  "result": "-PTB",
+  "reqNames": [
+   "[C] Tamamo-no-Mae / Caster",
+   "[C] Rin Tohsaka / Spiritron Hacker"
+  ],
+  "resultName": "[B] Tamamo Dermo / Tamamo Nine"
+ },
+ {
+  "req": [
+   "-TAC",
+   "-RHC"
+  ],
+  "result": "-STB",
+  "reqNames": [
+   "[C] Tamamo-no-Mae / Caster",
+   "[C] Nursery Rhyme / Caster"
+  ],
+  "resultName": "[B] Tamamo Vitch / Tamamo Nine"
+ },
+ {
+  "req": [
+   "-ZMC",
+   "-ESC"
+  ],
+  "result": "-GMB",
+  "reqNames": [
+   "[C] ZERO-MODEL / Gilgamesh",
+   "[C] Iskandar / Rider"
+  ],
+  "resultName": "[B] Gilgamesh / Archer"
+ },
+ {
+  "req": [
+   "-SAD",
+   "-ATD",
+   "-VLE"
+  ],
+  "result": "-PAC",
+  "reqNames": [
+   "[D] Sakura / NPC",
+   "[D] Atalanta / Archer",
+   "[E] Vlad III / Lancer"
+  ],
+  "resultName": "[C] Passionlip / Alter Ego"
+ },
+ {
+  "req": [
+   "-LUD",
+   "-MDD",
+   "-GAE"
+  ],
+  "result": "-AQC",
+  "reqNames": [
+   "[D] Lu Bu Fengxian / Berserker",
+   "[D] Medusa / Rider",
+   "[E] Gawain / Saber"
+  ],
+  "resultName": "[C] Arcueid Brunestud / Berserker"
+ },
+ {
+  "req": [
+   "-LUD",
+   "-YSD",
+   "-VLE"
+  ],
+  "result": "-LUC",
+  "reqNames": [
+   "[D] Lu Bu Fengxian / Berserker",
+   "[D] Li Shuwen / Assassin",
+   "[E] Vlad III / Lancer"
+  ],
+  "resultName": "[C] Lu Bu Fengxian / Berserker"
+ },
+ {
+  "req": [
+   "-VLD",
+   "-ATD",
+   "-GAE"
+  ],
+  "result": "-KAC",
+  "reqNames": [
+   "[D] Vlad III / Lancer",
+   "[D] Atalanta / Archer",
+   "[E] Gawain / Saber"
+  ],
+  "resultName": "[C] Karna / Lancer"
+ },
+ {
+  "req": [
+   "-VLD",
+   "-LUD",
+   "-VLE"
+  ],
+  "result": "-KHC",
+  "reqNames": [
+   "[D] Vlad III / Lancer",
+   "[D] Lu Bu Fengxian / Berserker",
+   "[E] Vlad III / Lancer"
+  ],
+  "resultName": "[C] Cu Chulainn / Lancer"
+ },
+ {
+  "req": [
+   "-YSD",
+   "-RHD",
+   "-KIE"
+  ],
+  "result": "-RYC",
+  "reqNames": [
+   "[D] Li Shuwen / Assassin",
+   "[D] Nursery Rhyme / Caster",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[C] Ryougi Shiki / Assassin"
+ },
+ {
+  "req": [
+   "-YSD",
+   "-GAD",
+   "-KIE"
+  ],
+  "result": "-YSC",
+  "reqNames": [
+   "[D] Li Shuwen / Assassin",
+   "[D] Gawain / Saber",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[C] Li Shuwen / Assassin"
+ },
+ {
+  "req": [
+   "-MDD",
+   "-LUD",
+   "-GAE"
+  ],
+  "result": "-ESC",
+  "reqNames": [
+   "[D] Medusa / Rider",
+   "[D] Lu Bu Fengxian / Berserker",
+   "[E] Gawain / Saber"
+  ],
+  "resultName": "[C] Iskandar / Rider"
+ },
+ {
+  "req": [
+   "-MDD",
+   "-KID",
+   "-VLE"
+  ],
+  "result": "-MDC",
+  "reqNames": [
+   "[D] Medusa / Rider",
+   "[D] Kirei Kotomine / NPC",
+   "[E] Vlad III / Lancer"
+  ],
+  "resultName": "[C] Medusa / Rider"
+ },
+ {
+  "req": [
+   "-GAD",
+   "-VLD",
+   "-ATE"
+  ],
+  "result": "-NCC",
+  "reqNames": [
+   "[D] Gawain / Saber",
+   "[D] Vlad III / Lancer",
+   "[E] Atalanta / Archer"
+  ],
+  "resultName": "[C] Nero Claudius / Saber"
+ },
+ {
+  "req": [
+   "-GAD",
+   "-RHD",
+   "-ATE"
+  ],
+  "result": "-PDC",
+  "reqNames": [
+   "[D] Gawain / Saber",
+   "[D] Nursery Rhyme / Caster",
+   "[E] Atalanta / Archer"
+  ],
+  "resultName": "[C] Artoria / Saber"
+ },
+ {
+  "req": [
+   "-RHD",
+   "-SAD",
+   "-ATE"
+  ],
+  "result": "-TAC",
+  "reqNames": [
+   "[D] Nursery Rhyme / Caster",
+   "[D] Sakura / NPC",
+   "[E] Atalanta / Archer"
+  ],
+  "resultName": "[C] Tamamo-no-Mae / Caster"
+ },
+ {
+  "req": [
+   "-ATD",
+   "-SAD",
+   "-KIE"
+  ],
+  "result": "-EMC",
+  "reqNames": [
+   "[D] Atalanta / Archer",
+   "[D] Sakura / NPC",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[C] Shirou Emiya / Archer"
+ },
+ {
+  "req": [
+   "-ATD",
+   "-VLD",
+   "-SAE"
+  ],
+  "result": "-ZMC",
+  "reqNames": [
+   "[D] Atalanta / Archer",
+   "[D] Vlad III / Lancer",
+   "[E] Sakura / NPC"
+  ],
+  "resultName": "[C] ZERO-MODEL / Gilgamesh"
+ },
+ {
+  "req": [
+   "-ATE",
+   "-SAE"
+  ],
+  "result": "-RHD",
+  "reqNames": [
+   "[E] Atalanta / Archer",
+   "[E] Sakura / NPC"
+  ],
+  "resultName": "[D] Nursery Rhyme / Caster"
+ },
+ {
+  "req": [
+   "-VLE",
+   "-KIE"
+  ],
+  "result": "-LUD",
+  "reqNames": [
+   "[E] Vlad III / Lancer",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[D] Lu Bu Fengxian / Berserker"
+ },
+ {
+  "req": [
+   "-KIE"
+  ],
+  "result": "-KID",
+  "reqNames": [
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[D] Kirei Kotomine / NPC"
+ },
+ {
+  "req": [
+   "-GAE",
+   "-SAE"
+  ],
+  "result": "-MDD",
+  "reqNames": [
+   "[E] Gawain / Saber",
+   "[E] Sakura / NPC"
+  ],
+  "resultName": "[D] Medusa / Rider"
+ },
+ {
+  "req": [
+   "-VOC"
+  ],
+  "result": "-VOA",
+  "reqNames": [
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[A] Imaginary Cyber Daemon / Spiritrons Code"
+ },
+ {
+  "req": [
+   "-ATE",
+   "-GAE",
+   "-VLE",
+   "-SAE",
+   "-KIE"
+  ],
+  "result": "-VOC",
+  "reqNames": [
+   "[E] Atalanta / Archer",
+   "[E] Gawain / Saber",
+   "[E] Vlad III / Lancer",
+   "[E] Sakura / NPC",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[C] Imaginary Structure / Spiritrons Code"
+ },
+ {
+  "req": [
+   "-TOB",
+   "-ATB",
+   "-KIC"
+  ],
+  "result": "-TOA",
+  "reqNames": [
+   "[B] Rin Tohsaka / Spiritron Hacker",
+   "[B] Atalanta / Archer",
+   "[C] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[A] Rin Tohsaka / Spiritron Hacker"
+ },
+ {
+  "req": [
+   "-SAD",
+   "-KID",
+   "-GAE"
+  ],
+  "result": "-TOC",
+  "reqNames": [
+   "[D] Sakura / NPC",
+   "[D] Kirei Kotomine / NPC",
+   "[E] Gawain / Saber"
+  ],
+  "resultName": "[C] Rin Tohsaka / Spiritron Hacker"
+ },
+ {
+  "req": [
+   "-PDX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Mystic Code of the Star / Artoria Pendragon",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-TAX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Mystic Code of the Sun / Tamamo-no-Mae",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-NCX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Mystic Code of the Emperor / Nero Claudius",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-GMX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Genesis Mystic Code / Gilgamesh",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-LUS",
+   "-ZMA",
+   "-KHA",
+   "-VOA"
+  ],
+  "result": "-SKT",
+  "reqNames": [
+   "[S] Lu Bu Fengxian / Berserker",
+   "[A] ZERO-MODEL / Gilgamesh",
+   "[A] Cu Chulainn / Lancer",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "Scathach / False Lancer"
+ },
+ {
+  "req": [
+   "-ALX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Attilaight Cell / Titan Attila",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-BBX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Third Heterodoxy Pleasure Deva / Kiara Sessyoin",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-GMS",
+   "-JEA",
+   "-ESB"
+  ],
+  "result": "-GMX",
+  "reqNames": [
+   "[S] Gilgamesh / Archer",
+   "[A] Jeanne d'Arc / Ruler",
+   "[B] Iskandar / Rider"
+  ],
+  "resultName": "[EX] Genesis Mystic Code / Gilgamesh"
+ },
+ {
+  "req": [
+   "-FDB",
+   "-GAB",
+   "-TAC"
+  ],
+  "result": "-FDA",
+  "reqNames": [
+   "[B] Francis Drake / Rider",
+   "[B] Gawain / Saber",
+   "[C] Tamamo-no-Mae / Caster"
+  ],
+  "resultName": "[A] Francis Drake / Rider"
+ },
+ {
+  "req": [
+   "-BBS",
+   "-GAA",
+   "-ANB"
+  ],
+  "result": "-BBX",
+  "reqNames": [
+   "[S] BB / MoonCancer",
+   "[A] Gawain / Saber",
+   "[B] Andersen / Caster"
+  ],
+  "resultName": "[EX] Third Heterodoxy Pleasure Deva / Kiara Sessyoin"
+ },
+ {
+  "req": [
+   "-TAS",
+   "-LUA",
+   "-MDB"
+  ],
+  "result": "-TAX",
+  "reqNames": [
+   "[S] Tamamo-no-Mae / Caster",
+   "[A] Lu Bu Fengxian / Berserker",
+   "[B] Medusa / Rider"
+  ],
+  "resultName": "[EX] Mystic Code of the Sun / Tamamo-no-Mae"
+ },
+ {
+  "req": [
+   "-TAB",
+   "-BBB",
+   "-TAC"
+  ],
+  "result": "-TAA",
+  "reqNames": [
+   "[B] Tamamo-no-Mae / Caster",
+   "[B] BB / MoonCancer",
+   "[C] Tamamo-no-Mae / Caster"
+  ],
+  "resultName": "[A] Tamamo-no-Mae / Caster"
+ },
+ {
+  "req": [
+   "-PAS",
+   "-EMA",
+   "-PDB"
+  ],
+  "result": "-MLX",
+  "reqNames": [
+   "[S] Passionlip / Alter Ego",
+   "[A] Shirou Emiya / Archer",
+   "[B] Artoria / Saber"
+  ],
+  "resultName": "[EX] Mysterious Alter Ego \u039b / Meltryllis"
+ },
+ {
+  "req": [
+   "-MLX",
+   "-VOA"
+  ],
+  "result": "-BBT",
+  "reqNames": [
+   "[EX] Mysterious Alter Ego \u039b / Meltryllis",
+   "[A] Imaginary Cyber Daemon / Spiritrons Code"
+  ],
+  "resultName": "[\u2605] Moon Cell Automaton / Holy Grail"
+ },
+ {
+  "req": [
+   "-LUB",
+   "-AQB",
+   "-MDC"
+  ],
+  "result": "-LUA",
+  "reqNames": [
+   "[B] Lu Bu Fengxian / Berserker",
+   "[B] Arcueid Brunestud / Berserker",
+   "[C] Medusa / Rider"
+  ],
+  "resultName": "[A] Lu Bu Fengxian / Berserker"
+ },
+ {
+  "req": [
+   "-LUC",
+   "-PAC"
+  ],
+  "result": "-LUB",
+  "reqNames": [
+   "[C] Lu Bu Fengxian / Berserker",
+   "[C] Passionlip / Alter Ego"
+  ],
+  "resultName": "[B] Lu Bu Fengxian / Berserker"
+ },
+ {
+  "req": [
+   "-MDC",
+   "-ATC"
+  ],
+  "result": "-FDB",
+  "reqNames": [
+   "[C] Medusa / Rider",
+   "[C] Atalanta / Archer"
+  ],
+  "resultName": "[B] Francis Drake / Rider"
+ },
+ {
+  "req": [
+   "-KIB",
+   "-ZMB",
+   "-GAC"
+  ],
+  "result": "-KIA",
+  "reqNames": [
+   "[B] Kirei Kotomine / NPC",
+   "[B] ZERO-MODEL / Gilgamesh",
+   "[C] Gawain / Saber"
+  ],
+  "resultName": "[A] Kirei Kotomine / NPC"
+ },
+ {
+  "req": [
+   "-YSB",
+   "-NCB",
+   "-KAC"
+  ],
+  "result": "-YSA",
+  "reqNames": [
+   "[B] Li Shuwen / Assassin",
+   "[B] Nero Claudius / Saber",
+   "[C] Karna / Lancer"
+  ],
+  "resultName": "[A] Li Shuwen / Assassin"
+ },
+ {
+  "req": [
+   "-KHB",
+   "-TOB",
+   "-ESC"
+  ],
+  "result": "-KHA",
+  "reqNames": [
+   "[B] Cu Chulainn / Lancer",
+   "[B] Rin Tohsaka / Spiritron Hacker",
+   "[C] Iskandar / Rider"
+  ],
+  "resultName": "[A] Cu Chulainn / Lancer"
+ },
+ {
+  "req": [
+   "-TAC",
+   "-MDC"
+  ],
+  "result": "-TAB",
+  "reqNames": [
+   "[C] Tamamo-no-Mae / Caster",
+   "[C] Medusa / Rider"
+  ],
+  "resultName": "[B] Tamamo-no-Mae / Caster"
+ },
+ {
+  "req": [
+   "-KHC",
+   "-EMC"
+  ],
+  "result": "-KHB",
+  "reqNames": [
+   "[C] Cu Chulainn / Lancer",
+   "[C] Shirou Emiya / Archer"
+  ],
+  "resultName": "[B] Cu Chulainn / Lancer"
+ },
+ {
+  "req": [
+   "-KID",
+   "-YSD",
+   "-KIE"
+  ],
+  "result": "-KIC",
+  "reqNames": [
+   "[D] Kirei Kotomine / NPC",
+   "[D] Li Shuwen / Assassin",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[C] Kirei Kotomine / NPC"
+ },
+ {
+  "req": [
+   "-ZMC",
+   "-KHC"
+  ],
+  "result": "-ZMB",
+  "reqNames": [
+   "[C] ZERO-MODEL / Gilgamesh",
+   "[C] Cu Chulainn / Lancer"
+  ],
+  "resultName": "[B] ZERO-MODEL / Gilgamesh"
+ },
+ {
+  "req": [
+   "-YSC",
+   "-GAC"
+  ],
+  "result": "-YSB",
+  "reqNames": [
+   "[C] Li Shuwen / Assassin",
+   "[C] Gawain / Saber"
+  ],
+  "resultName": "[B] Li Shuwen / Assassin"
+ },
+ {
+  "req": [
+   "-GAE",
+   "-KIE"
+  ],
+  "result": "-YSD",
+  "reqNames": [
+   "[E] Gawain / Saber",
+   "[E] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[D] Li Shuwen / Assassin"
+ },
+ {
+  "req": [
+   "-KAB",
+   "-APB",
+   "-KHC"
+  ],
+  "result": "-KAA",
+  "reqNames": [
+   "[B] Karna / Lancer",
+   "[B] Artoria Alter / Saber",
+   "[C] Cu Chulainn / Lancer"
+  ],
+  "resultName": "[A] Karna / Lancer"
+ },
+ {
+  "req": [
+   "-KAC",
+   "-PDC"
+  ],
+  "result": "-KAB",
+  "reqNames": [
+   "[C] Karna / Lancer",
+   "[C] Artoria / Saber"
+  ],
+  "resultName": "[B] Karna / Lancer"
+ },
+ {
+  "req": [
+   "-BBA",
+   "-ANA",
+   "-KIA",
+   "-VOC"
+  ],
+  "result": "-BBS",
+  "reqNames": [
+   "[A] BB / MoonCancer",
+   "[A] Andersen / Caster",
+   "[A] Kirei Kotomine / NPC",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] BB / MoonCancer"
+ },
+ {
+  "req": [
+   "-PAB",
+   "-GMB",
+   "-NCC"
+  ],
+  "result": "-PAA",
+  "reqNames": [
+   "[B] Passionlip / Alter Ego",
+   "[B] Gilgamesh / Archer",
+   "[C] Nero Claudius / Saber"
+  ],
+  "resultName": "[A] Passionlip / Alter Ego"
+ },
+ {
+  "req": [
+   "-PAC",
+   "-AQC"
+  ],
+  "result": "-PAB",
+  "reqNames": [
+   "[C] Passionlip / Alter Ego",
+   "[C] Arcueid Brunestud / Berserker"
+  ],
+  "resultName": "[B] Passionlip / Alter Ego"
+ },
+ {
+  "req": [
+   "-TAA",
+   "-STA",
+   "-PTA",
+   "-VOC"
+  ],
+  "result": "-TAS",
+  "reqNames": [
+   "[A] Tamamo-no-Mae / Caster",
+   "[A] Tamamo Vitch / Tamamo Nine",
+   "[A] Tamamo Dermo / Tamamo Nine",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Tamamo-no-Mae / Caster"
+ },
+ {
+  "req": [
+   "-ZMA",
+   "-TAA",
+   "-APA",
+   "-VOC"
+  ],
+  "result": "-ZMS",
+  "reqNames": [
+   "[A] ZERO-MODEL / Gilgamesh",
+   "[A] Tamamo-no-Mae / Caster",
+   "[A] Artoria Alter / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] ZERO-MODEL / Gilgamesh"
+ },
+ {
+  "req": [
+   "-NCB",
+   "-MDB",
+   "-EMC"
+  ],
+  "result": "-NCA",
+  "reqNames": [
+   "[B] Nero Claudius / Saber",
+   "[B] Medusa / Rider",
+   "[C] Shirou Emiya / Archer"
+  ],
+  "resultName": "[A] Nero Claudius / Saber"
+ },
+ {
+  "req": [
+   "-NCC",
+   "-KHC"
+  ],
+  "result": "-NCB",
+  "reqNames": [
+   "[C] Nero Claudius / Saber",
+   "[C] Cu Chulainn / Lancer"
+  ],
+  "resultName": "[B] Nero Claudius / Saber"
+ },
+ {
+  "req": [
+   "-GMA",
+   "-ZMA",
+   "-TOA",
+   "-VOC"
+  ],
+  "result": "-GMS",
+  "reqNames": [
+   "[A] Gilgamesh / Archer",
+   "[A] ZERO-MODEL / Gilgamesh",
+   "[A] Rin Tohsaka / Spiritron Hacker",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Gilgamesh / Archer"
+ },
+ {
+  "req": [
+   "-KHA",
+   "-PAA",
+   "-NCA",
+   "-VOC"
+  ],
+  "result": "-KHS",
+  "reqNames": [
+   "[A] Cu Chulainn / Lancer",
+   "[A] Passionlip / Alter Ego",
+   "[A] Nero Claudius / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Cu Chulainn / Lancer"
+ },
+ {
+  "req": [
+   "-EMB",
+   "-FDB",
+   "-YSC"
+  ],
+  "result": "-EMA",
+  "reqNames": [
+   "[B] Shirou Emiya / Archer",
+   "[B] Francis Drake / Rider",
+   "[C] Li Shuwen / Assassin"
+  ],
+  "resultName": "[A] Shirou Emiya / Archer"
+ },
+ {
+  "req": [
+   "-AEA",
+   "-GOA",
+   "-JAA",
+   "-VOC"
+  ],
+  "result": "-AES",
+  "reqNames": [
+   "[A] Elisabeth Bathory Alter / Berserker",
+   "[A] Suzuka Gozen / Saber",
+   "[A] Jeanne d'Arc Alter / Ruler",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Elisabeth Bathory Alter / Berserker"
+ },
+ {
+  "req": [
+   "-VLB",
+   "-KHB",
+   "-ATC"
+  ],
+  "result": "-VLA",
+  "reqNames": [
+   "[B] Vlad III / Lancer",
+   "[B] Cu Chulainn / Lancer",
+   "[C] Atalanta / Archer"
+  ],
+  "resultName": "[A] Vlad III / Lancer"
+ },
+ {
+  "req": [
+   "-VLC",
+   "-MDC"
+  ],
+  "result": "-VLB",
+  "reqNames": [
+   "[C] Vlad III / Lancer",
+   "[C] Medusa / Rider"
+  ],
+  "resultName": "[B] Vlad III / Lancer"
+ },
+ {
+  "req": [
+   "-KAA",
+   "-KHA",
+   "-GAA",
+   "-VOC"
+  ],
+  "result": "-KAS",
+  "reqNames": [
+   "[A] Karna / Lancer",
+   "[A] Cu Chulainn / Lancer",
+   "[A] Gawain / Saber",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Karna / Launcher"
+ },
+ {
+  "req": [
+   "-GAB",
+   "-PDB",
+   "-ATC"
+  ],
+  "result": "-GAA",
+  "reqNames": [
+   "[B] Gawain / Saber",
+   "[B] Artoria / Saber",
+   "[C] Atalanta / Archer"
+  ],
+  "resultName": "[A] Gawain / Saber"
+ },
+ {
+  "req": [
+   "-GAC",
+   "-RYC"
+  ],
+  "result": "-GAB",
+  "reqNames": [
+   "[C] Gawain / Saber",
+   "[C] Ryougi Shiki / Assassin"
+  ],
+  "resultName": "[B] Gawain / Saber"
+ },
+ {
+  "req": [
+   "-SAA",
+   "-AQA",
+   "-FDA",
+   "-VOC"
+  ],
+  "result": "-SAS",
+  "reqNames": [
+   "[A] Sakura / NPC",
+   "[A] Arcueid Brunestud / Berserker",
+   "[A] Francis Drake / Rider",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Acting Control Authority / Sakura"
+ },
+ {
+  "req": [
+   "-SAB",
+   "-KIB",
+   "-TOC"
+  ],
+  "result": "-SAA",
+  "reqNames": [
+   "[B] Sakura / NPC",
+   "[B] Kirei Kotomine / NPC",
+   "[C] Rin Tohsaka / Spiritron Hacker"
+  ],
+  "resultName": "[A] Sakura / NPC"
+ },
+ {
+  "req": [
+   "-SAC",
+   "-KIC"
+  ],
+  "result": "-SAB",
+  "reqNames": [
+   "[C] Sakura / NPC",
+   "[C] Kirei Kotomine / NPC"
+  ],
+  "resultName": "[B] Sakura / NPC"
+ },
+ {
+  "req": [
+   "-EMC",
+   "-TOC"
+  ],
+  "result": "-EMB",
+  "reqNames": [
+   "[C] Shirou Emiya / Archer",
+   "[C] Rin Tohsaka / Spiritron Hacker"
+  ],
+  "resultName": "[B] Shirou Emiya / Archer"
+ },
+ {
+  "req": [
+   "-VLD",
+   "-GAD",
+   "-VLE"
+  ],
+  "result": "-VLC",
+  "reqNames": [
+   "[D] Vlad III / Lancer",
+   "[D] Gawain / Saber",
+   "[E] Vlad III / Lancer"
+  ],
+  "resultName": "[C] Vlad III / Lancer"
+ },
+ {
+  "req": [
+   "-VLE"
+  ],
+  "result": "-VLD",
+  "reqNames": [
+   "[E] Vlad III / Lancer"
+  ],
+  "resultName": "[D] Vlad III / Lancer"
+ },
+ {
+  "req": [
+   "-LUA",
+   "-VLA",
+   "-BAA",
+   "-VOC"
+  ],
+  "result": "-LUS",
+  "reqNames": [
+   "[A] Lu Bu Fengxian / Berserker",
+   "[A] Vlad III / Lancer",
+   "[A] Elisabeth Bathory / Lancer",
+   "[C] Imaginary Structure / Spiritrons Code"
+  ],
+  "resultName": "[S] Lu Bu Fengxian / Berserker"
+ },
+ {
+  "req": [
+   "-ATB",
+   "-MDB",
+   "-GAC"
+  ],
+  "result": "-ATA",
+  "reqNames": [
+   "[B] Atalanta / Archer",
+   "[B] Medusa / Rider",
+   "[C] Gawain / Saber"
+  ],
+  "resultName": "[A] Atalanta / Archer"
+ },
+ {
+  "req": [
+   "-ATC",
+   "-EMC"
+  ],
+  "result": "-ATB",
+  "reqNames": [
+   "[C] Atalanta / Archer",
+   "[C] Shirou Emiya / Archer"
+  ],
+  "resultName": "[B] Atalanta / Archer"
+ },
+ {
+  "req": [
+   "-SAD",
+   "-LUD",
+   "-ATE"
+  ],
+  "result": "-SAC",
+  "reqNames": [
+   "[D] Sakura / NPC",
+   "[D] Lu Bu Fengxian / Berserker",
+   "[E] Atalanta / Archer"
+  ],
+  "resultName": "[C] Sakura / NPC"
+ },
+ {
+  "req": [
+   "-SAE"
+  ],
+  "result": "-SAD",
+  "reqNames": [
+   "[E] Sakura / NPC"
+  ],
+  "resultName": "[D] Sakura / NPC"
+ },
+ {
+  "req": [
+   "-GAD",
+   "-KID",
+   "-GAE"
+  ],
+  "result": "-GAC",
+  "reqNames": [
+   "[D] Gawain / Saber",
+   "[D] Kirei Kotomine / NPC",
+   "[E] Gawain / Saber"
+  ],
+  "resultName": "[C] Gawain / Saber"
+ },
+ {
+  "req": [
+   "-GAE"
+  ],
+  "result": "-GAD",
+  "reqNames": [
+   "[E] Gawain / Saber"
+  ],
+  "resultName": "[D] Gawain / Saber"
+ },
+ {
+  "req": [
+   "-ATD",
+   "-MDD",
+   "-ATE"
+  ],
+  "result": "-ATC",
+  "reqNames": [
+   "[D] Atalanta / Archer",
+   "[D] Medusa / Rider",
+   "[E] Atalanta / Archer"
+  ],
+  "resultName": "[C] Atalanta / Archer"
+ },
+ {
+  "req": [
+   "-ATE"
+  ],
+  "result": "-ATD",
+  "reqNames": [
+   "[E] Atalanta / Archer"
+  ],
+  "resultName": "[D] Atalanta / Archer"
+ }
+]

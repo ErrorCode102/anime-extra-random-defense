@@ -1,0 +1,23 @@
+[WorldEditStrings]
+WESTRING_MODULE_TERRAIN=Terrain Editor
+WESTRING_MODULE_SCRIPTS=Trigger Editor
+WESTRING_MODULE_CAMPAIGN=Campaign Editor
+WESTRING_MODULE_SOUND=Sound Editor
+WESTRING_MODULE_OBJEDIT=Object Editor
+WESTRING_MODULE_OBJMAN=Object Manager
+WESTRING_MODULE_IMPORT=Import Manager
+WESTRING_MODULE_AI=AI Editor
+
+[WorldEditMisc]
+MinimumMapSize=32
+MaximumMapSize=480
+
+[Terrain]
+MaxSlope=90
+MinHeight=-2048
+MaxHeight=3712
+
+[MapExtraInfo]
+SkyModel=3
+TimeOfDay=2
+

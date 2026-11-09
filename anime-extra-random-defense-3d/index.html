@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Extra Random Defence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2l4 10 10 4-10 4-4 10-4-10-10-4 10-4z' fill='%23ffc93d'/%3E%3C/svg%3E">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div id="logo">
+      <svg class="star" viewBox="0 0 32 32"><path d="M16 2l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#ffc93d"/><path d="M16 8l2.4 6 6 2.4-6 2.4-2.4 6-2.4-6-6-2.4 6-2.4z" fill="#ff3d8e"/></svg>
+      <div><div class="t1">ANIME EXTRA</div><div class="t2">RANDOM DEFENCE</div></div>
+    </div>
+    <div id="stats">
+      <div class="stat gold" title="Gold"><span class="ic">◈</span><span id="stGold">0</span></div>
+      <div class="stat spirit" title="Spirit (upgrades gacha)"><span class="ic">✧</span><span id="stSpirit">0</span></div>
+      <div class="stat wisps" title="Wisps"><span class="ic">❋</span><span id="stWisps">0</span></div>
+      <div class="stat lives" title="Lives"><span class="ic">♥</span><span id="stLives">0</span></div>
+      <div class="stat wave" title="Wave"><span class="ic">≋</span><span id="stWave">0 / 60</span></div>
+      <div class="stat pop" title="Population"><span class="ic">⛨</span><span id="stPop">0 / 18</span></div>
+    </div>
+    <div id="controls">
+      <button class="ctl primary pulse" id="waveBtn" title="Space">▶ Start Wave</button>
+      <button class="ctl" id="autoBtn" title="Auto-start next wave">AUTO</button>
+      <button class="ctl" id="speedBtn" title="Game speed">1×</button>
+      <button class="ctl" id="pauseBtn" title="Pause (P)">⏸</button>
+      <button class="ctl on" id="soundBtn" title="Sound on/off">♪</button>
+      <button class="ctl" id="codexBtn" title="Ascension recipes">✦ Codex</button>
+      <button class="ctl" id="restartBtn" title="Restart">↺</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="stage">
+      <canvas id="game"></canvas>
+      <div id="hitFlash"></div>
+      <div id="orbitHint"><span>drag</span> orbit &nbsp;·&nbsp; <span>scroll</span> zoom &nbsp;·&nbsp; <span>click</span> a platform</div>
+      <div id="waveBanner"></div>
+      <div id="toast"></div>
+    </div>
+
+    <aside id="side">
+      <section class="panel" id="factionPanel">
+        <h3>⚑ FACTION <span id="facLv" class="facLv">Lv1</span></h3>
+        <div id="facChips"></div>
+        <div id="facTitle"><span id="facTag">A</span><b id="facName">Aurel Court</b></div>
+        <div id="facXp"><div id="facXpBar"></div></div>
+        <div id="facXpTxt">0 / 20000 XP</div>
+        <div id="facPassive"></div>
+        <button id="facActiveBtn"></button>
+        <div id="facActiveDesc"></div>
+      </section>
+
+      <section class="panel">
+        <h3>◈ SUMMONING CIRCLE <span class="gachaTag">Lv<b id="gachaLv">1</b> · <b id="gachaGrade">E</b></span></h3>
+        <button id="summonBtn">✦ SUMMON SERVANT<span class="cost">◈ <b id="summonCost">30</b> gold &nbsp;·&nbsp; key G</span></button>
+        <button id="gachaUpBtn" class="upBtn">▲ Upgrade Gacha <span class="cost">✧ 14</span></button>
+        <div id="pity">Pity boost in <b id="pityN">15</b> summons · higher gacha Lv = higher grade</div>
+      </section>
+
+      <section class="panel">
+        <h3>❋ WISP ALTAR <span style="letter-spacing:0;color:var(--ink-faint)">spend wisps</span></h3>
+        <div id="wispRow">
+          <button id="wispGold" class="wispBtn gold" title="Convert a wisp to gold">❋→◈<span>Gold</span></button>
+          <button id="wispSpirit" class="wispBtn spirit" title="Convert a wisp to spirit">❋→✧<span>Spirit</span></button>
+          <button id="wispGacha" class="wispBtn gacha" title="Convert a wisp to an E/D servant">❋→✦<span>Gacha</span></button>
+        </div>
+        <div class="wispHint">+2 wisps each wave · release servants to recover wisps</div>
+      </section>
+
+      <section class="panel" id="gamblingPanel">
+        <h3>♦ GAMBLING <span style="letter-spacing:0;color:var(--ink-faint)">risk it all</span></h3>
+        <div id="gambleTabs">
+          <button id="tabGoldGamble" class="sel">◈ Gold</button>
+          <button id="tabServantGamble">✦ Servant</button>
+        </div>
+        <div id="goldGamble">
+          <div id="goldGambleGrid"></div>
+          <div class="gambleHint">Exact FERD payouts · charges recharge over time</div>
+        </div>
+        <div id="servantGamble" style="display:none">
+          <div id="servantMode"><button id="servantModeNormal" class="sel">Normal</button><button id="servantModeSpecial">Special</button></div>
+          <div id="servantGambleGrid"></div>
+          <div class="gambleHint">Failure loses the cost · Special has +20% success</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>⛨ BENCH <span id="benchN" style="letter-spacing:0;color:var(--ink-faint)"></span></h3>
+        <div id="bench"></div>
+      </section>
+
+      <section class="panel" id="selPanel">
+        <h3>✦ SELECTED</h3>
+        <div class="none" id="selNone">Select a servant from the bench,<br>then click a platform to deploy.<br>Combine units to ascend them.</div>
+        <div id="selCard" style="display:none">
+          <div id="selHead">
+            <img id="selImg" alt="">
+            <div><div id="selName"></div><div id="selMeta"></div></div>
+          </div>
+          <div id="selStats">
+            <div><b id="ssDmg"></b><span>DMG</span></div>
+            <div><b id="ssRate"></b><span>ATK/S</span></div>
+            <div><b id="ssRange"></b><span>RANGE</span></div>
+          </div>
+          <div id="selDesc"></div>
+          <div id="recipeBox" style="display:none">
+            <div class="rt">▲ ASCENSION RECIPE → <span id="recipeResult"></span></div>
+            <div id="recipeMats"></div>
+          </div>
+          <div id="selBtns">
+            <button id="ascendBtn" style="display:none">▲ ASCEND</button>
+            <button id="sellBtn">Sell</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="logPanel">
+        <h3>≋ BATTLE LOG</h3>
+        <div id="log"></div>
+      </section>
+    </aside>
+  </main>
+</div>
+
+<!-- start -->
+<div class="overlay show" id="startOverlay">
+  <div class="box">
+    <div class="bigTitle">ANIME EXTRA<br>RANDOM DEFENCE</div>
+    <div class="subTitle">A GRAIL-WAR RANDOM TOWER DEFENCE</div>
+    <div class="howto">
+      <b>How to play</b><br>
+      <span class="k">①</span> <b>Summon</b> servants with gold. The gacha starts at <b>E</b>-grade — spend <b>✧ spirit</b> to upgrade it through <b>D·C·B·A·S</b>.<br>
+      <span class="k">②</span> Select a servant on the <b>bench</b>, click a <b>platform</b> to deploy. Population is limited!<br>
+      <span class="k">③</span> <b>Combine</b> servants by recipe to ascend the grade ladder <b>E→D→C→B→A→S→EX→★</b>. Open the <b>✦ Codex</b> for all 177 recipes.<br>
+      <span class="k">④</span> Earn <b>❋ wisps</b> each wave; convert them to gold, spirit, or free summons. Release servants to recover wisps.<br>
+      <span class="k">⑤</span> Choose a <b>Faction A–E</b> for a unique passive + active. Faction XP persists between runs. Try <b>Gold / Servant Gambling</b> if you dare.<br>
+      <span class="k">⑥</span> Enemies march the ring <b>1½ laps</b>. Survive every wave (bosses every 5). Choose your difficulty — up to <b>100 waves</b>.<br>
+      <span style="color:var(--ink-faint)">Keys: Space = wave · G = summon · P = pause · Esc = deselect</span>
+    </div>
+    <div id="diffRow"></div>
+    <button class="bigBtn" id="startBtn">ENTER THE MOON CELL</button>
+  </div>
+</div>
+
+<!-- end -->
+<div class="overlay" id="endOverlay">
+  <div class="box">
+    <div id="endTitle"></div>
+    <div id="endSub" style="color:var(--ink-dim);font-size:14px"></div>
+    <div id="endStats"></div>
+    <button class="bigBtn" id="endRestartBtn">↺ PLAY AGAIN</button>
+  </div>
+</div>
+
+<!-- codex -->
+<div class="overlay" id="codexOverlay">
+  <div class="box">
+    <div id="codexHead">
+      <h2>✦ Ascension Codex</h2>
+      <div id="codexTabs">
+        <button id="tabRecipes" class="sel">Recipes</button>
+        <button id="tabArchive">Unit Archive</button>
+      </div>
+      <button id="codexClose">✕</button>
+    </div>
+    <div id="codexBody"></div>
+  </div>
+</div>
+
+<!-- faction servant pickup -->
+<div class="overlay" id="pickupOverlay">
+  <div class="box" id="pickupBox">
+    <div id="pickupHead"><h2>✧ Servant Pickup</h2><button id="pickupClose">✕</button></div>
+    <div id="pickupTabs"></div>
+    <div id="pickupGrid"></div>
+    <div id="pickupHint"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="game.js"></script>
+<script src="scene3d.js"></script>
+</body>
+</html>
