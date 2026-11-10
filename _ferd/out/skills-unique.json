@@ -1,0 +1,1318 @@
+[
+ {
+  "n": "Boar of Divine Punishment",
+  "d": "Agrios Metamorphoses\n\nAllows to possess the power of the Calydonian Boar by wearing the pelt on the body.\n\nPassive Art\nThis Servant's basic attacks track the last target hit regardless of range.\n\nExtra Arts\nTracking attacks are 5x times faster than basic attacks, but they can no longer be accelerated in any way."
+ },
+ {
+  "n": "Bow of Heaven",
+  "d": "Tauropolos\n\n『Bow of Heaven[Tauropolos]』――goooo!\n\nPassive Art\nAtalanta's attacks ignore the Shield.\n\nExtra Arts\nEvery 100th attack will stun the target for 5 seconds"
+ },
+ {
+  "n": "Invulnerable",
+  "d": ""
+ },
+ {
+  "n": "[S] Atalanta(Alter) Merge",
+  "d": "[S] Atalanta(Alter) = [A] Atalanta(Alter) + [A] Jeanne d'Arc Alter + [A] ZERO-MODEL + [C] Imaginary Structure"
+ },
+ {
+  "n": "Fresh Blood Like Hot Water",
+  "d": "Le sang des Hongrie\n\nJealous?\n\nPassive Art\nMAX MP +2000\nThis Servant's damage is increased by 0.1% per MP."
+ },
+ {
+  "n": "Thoroughly anticlimax",
+  "d": "Ver Salgovar\n\nI'll kill you like a rat!\n\nPassive Art\nDeals additional splash damage equal to your attack damage."
+ },
+ {
+  "n": "[S] Elisabeth Bathory Alter Merge",
+  "d": "[S] Elisabeth Bathory Alter = [A] Elisabeth Bathory Alter + [A] Suzuka Gozen + [A] Jeanne d'Arc Alter + [C] Imaginary Structure"
+ },
+ {
+  "n": "Torture like a tax payer",
+  "d": "Ado Kinzas\n\nHahahahaha───! Yeah... this is it. This is it!\n\nArts Cooldown - 1 second\nSuck the electric brain of the nearby Archenemy.\n\nDeals damage through the Shield every second and restores 2 MP.\n\nThe captured target is slowed while the vampirism is maintained."
+ },
+ {
+  "n": "Sword of Mars",
+  "d": "Photon Ray\n\nDid you call me the 『Whip of Mars』...?\n\nArts Cooldown - 5 seconds\nSwing the Sword of Mars like a whip, dealing 250% damage in AoE."
+ },
+ {
+  "n": "Stab",
+  "d": "Stab\n\nThese arms held the sword of the god of war from the beginning.\n\nArts Cooldown - 3 seconds\nDeals 150% splash damage to the target."
+ },
+ {
+  "n": "[S] Attila Merge",
+  "d": "[S] Attila  = [A] Attila + [A] Nero Claudius + [A] Tamamo-no-Mae + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Attila Merge",
+  "d": "[A] Attila  = [B] Attila + [B] Attila + [C] Imaginary Structure"
+ },
+ {
+  "n": "Teardrop Photon Ray",
+  "d": "Teardrop, Photon Ray\n\nI won't take life. Only destroy your civilization. 『Photon Ray』!\n\nArts Cooldown - 30 seconds\nDeals 750% damage in AoE on the target and stuns for 3 seconds."
+ },
+ {
+  "n": "[EX] Attilaight Cell Merge",
+  "d": "[EX] Attilaight Cell = [S] Attila + [A] Attila + [B] Attila"
+ },
+ {
+  "n": "Swipe",
+  "d": "Swipe\n\nThe power of the Mars is in my hands.\n\nArts Cooldown - 30 seconds\nDeals 2000% damage in the direction of the target and stuns all caught enemies for 10 seconds."
+ },
+ {
+  "n": "Colossus",
+  "d": "Colossus\n\nIt's so huge.\n\nPassive Art\nBasic attacks deal damage in a very large AoE and unit has immunity to stun/knockback."
+ },
+ {
+  "n": "[★] Moon Cell Automaton Transform",
+  "d": "[★] Moon Cell Automaton = [EX] Attilaight Cell + [A] Imaginary Cyber Daemon\n\nYou can only have one such Servant!\nMerging results are guaranteed."
+ },
+ {
+  "n": "[S] Andersen Merge",
+  "d": "[S] Andersen = [A] Andersen + [A] Karna + [A] Jeanne d'Arc Alter + [C] Imaginary Structure"
+ },
+ {
+  "n": "Human Observation",
+  "d": "Human Observation\n\nThe only thing he can do is spin stories, so he observes and understands it more than anyone else.\n\nArts Cooldown - 10 seconds\nAmplifies the damage of 4 nearby Servants by 20% for 10 seconds.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "Rebirth",
+  "d": "Rebirth\n\nThe ability is not ready yet.\n\nArts Cooldown - ∞ seconds\nRebirth single [A] servant to make random [S] servant. (except self)\n\nNote: After 15 minutes, you can only use it once."
+ },
+ {
+  "n": "[A] Andersen Merge",
+  "d": "[A] Andersen = [B] Andersen + [B] Passionlip + [C] Cu Chulainn"
+ },
+ {
+  "n": "[B] Andersen Merge",
+  "d": "[B] Andersen = [C] Andersen + [C] Arcueid Brunestud"
+ },
+ {
+  "n": "Marchen Meine Liebens",
+  "d": "Marchen Meine Liebens\n\nA Story just for You.\n\nArts Cooldown - 10 seconds\nGives to the selected Servant Ideal Self effect.\n\nIf you give an effect to another Servant, the effect previously given is gone.\n\nEffect: Ideal Self\nAmplifies Servant's damage by 100%."
+ },
+ {
+  "n": "Vortigern",
+  "d": "Vortigern\n\nI'll devour you.\n\nPassive Art\nAttacking Enemy deals damage in large AoE and applies stiffen effect."
+ },
+ {
+  "n": "Sword of Promised Victory",
+  "d": "Excalibur Morgan\n\nHammer of the Vile King. Overturn the aurora. Swallow the light! 『Sword of Promised Victory』!\n\nArts Req - 50MP\nDeals 500% damage 5 times in very large AoE and stuns enemies for 2 seconds."
+ },
+ {
+  "n": "[S] Artoria Alter Merge",
+  "d": "[S] Artoria Alter = [A] Artoria Alter + [A] Sakura + [A] Gilgamesh + [C] Imaginary Structure"
+ },
+ {
+  "n": "허구 - 히로인X - [아르토리아 얼굴]",
+  "d": ""
+ },
+ {
+  "n": "[A] Artoria Alter Merge",
+  "d": "[A] Artoria Alter = [B] Artoria Alter + [B] Iskandar + [C] Nero Claudius"
+ },
+ {
+  "n": "Sanctification",
+  "d": "Output\n - ???\n\nDivine Spirit materials\n - [S] Artoria Alter\n - [DATA CORRUPTED]\n\nYou can only have one Sanctified Spirit Servant!\nThe result of Sanctification is guaranteed."
+ },
+ {
+  "n": "Gnaden Sturz",
+  "d": "Gnaden Sturz\n\nFake, Fake...\nFakeFakeFake!!\n\nPassive Art\nBasic attacks penetrate the shield,\nStiffen the target and slow it for 1 second.\n\nExtra Arts\nThis Servant is twice as powerful as other Servants of the same grade and is unaffected by stuns and knockbacks."
+ },
+ {
+  "n": "Blood Sisters",
+  "d": "Blut der Schwester\n\nFalse Moon!\n\nArts Cooldown - 60 seconds\nDeals 15000 damage to all captured enemies and stuns them for 5 seconds."
+ },
+ {
+  "n": "[S] Arcueid Brunestud Merge",
+  "d": "[S] Arcueid Brunestud = [A] Arcueid Brunestud + [A] Jeanne d'Arc + [A] Li Shuwen + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Arcueid Brunestud Merge",
+  "d": "[A] Arcueid Brunestud = [B] Arcueid Brunestud + [B] Ryougi Shiki + [C] Medusa"
+ },
+ {
+  "n": "[A] Atalanta(Alter) Merge",
+  "d": "[A] Atalanta(Alter) = [B] Arcueid Brunestud + [B] Lu Bu Fengxian + [C] Atalanta"
+ },
+ {
+  "n": "[B] Arcueid Brunestud Merge",
+  "d": "[B] Arcueid Brunestud = [C] Arcueid Brunestud + [C] ZERO-MODEL"
+ },
+ {
+  "n": "Open Moon Holy Grail",
+  "d": "Output\n - ???\n\nHoly Grail opening materials\n - [S] Arcueid Brunestud\n - [DATA CORRUPTED]\n\nYou can only have one Servant summoned from this Holy Grail!\nSummoning results are guaranteed."
+ },
+ {
+  "n": "Destruction Declaration",
+  "d": "Casseur De Logistille\n\nOh! What's the truth?\n\nArts Req - 100MP\nGain Destruction Declaration effect for 10 seconds.\n\nEffect: Destruction Declaration\nImmunity to stun/knockback & grants maximum acceleration.\nAt the end of the effect, all MPs are lost."
+ },
+ {
+  "n": "Down with a Touch!",
+  "d": "Trap of Argalia\n\n『Ah, so there was a lance lying around here』\nAnd he sto… silently borrowed the lance.\n\nArts Cooldown - 2 seconds\nDeals 100% damage to nearby random targets and their surroundings."
+ },
+ {
+  "n": "Magic Flute That Calls Panic",
+  "d": "La Black Luna\n\nA horn that emits a magical sound similar in nature to the roar of a dragon, the cry of a giant bird, and the neighing of a divine horse.\n\nArts Cooldown - 60 seconds\nDeals 2000% damage in AoE at target point and stuns for 10 seconds."
+ },
+ {
+  "n": "Otherworldly Phantom Horse",
+  "d": "Hippogriff\n\nShow us your true power!\n『Otherworldly Phantom Horse』!\n\nArts Cooldown - 10 seconds\nSummons the Phantasmal Hippogryph at the target point.\nThe Hippogryph is a little bit stronger than the Astolfo."
+ },
+ {
+  "n": "Double Star",
+  "d": "Double Star\n\nThese twins are as vicious as serpents――!\n\nPassive Art\nBasic attacks deal damage to 5 additional targets."
+ },
+ {
+  "n": "Sonic Wolf",
+  "d": "Sonic Wolf\n\nSonic Wolf that hits with the speed of sound. When hit directly, even the enemy with the best defense will not end without injury.\n\nPassive Art\nAtalanta's attack ignores the shield."
+ },
+ {
+  "n": "[S] Atalanta Merge",
+  "d": "[S] Atalanta = [A] Atalanta + [A] Rin Tohsaka + [A] Cu Chulainn + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Atalanta Merge",
+  "d": "[A] Atalanta = [B] Atalanta + [B] Medusa + [C] Gawain"
+ },
+ {
+  "n": "[B] Atalanta Merge",
+  "d": "[B] Atalanta = [C] Atalanta + [C] Shirou Emiya"
+ },
+ {
+  "n": "[Disassembly]",
+  "d": "Disassembles the Servant and converts it to one of its submaterials.\nCAUTION: 20% chance to fail!"
+ },
+ {
+  "n": "[C] Atalanta Merge",
+  "d": "[C] Atalanta = [D] Atalanta + [D] Medusa + [E] Atalanta"
+ },
+ {
+  "n": "[C] ZERO-MODEL Merge",
+  "d": "[C] ZERO-MODEL = [D] Atalanta + [D] Vlad III + [E] Sakura"
+ },
+ {
+  "n": "[C] Shirou Emiya Merge",
+  "d": "[C] Shirou Emiya = [D] Atalanta + [D] Sakura + [E] Kirei Kotomine"
+ },
+ {
+  "n": "[D] Atalanta Merge",
+  "d": "[D] Atalanta = [E] Atalanta + [E] Atalanta"
+ },
+ {
+  "n": "[D] Nursery Rhyme Merge",
+  "d": "[D] Nursery Rhyme = [E] Atalanta + [E] Sakura"
+ },
+ {
+  "n": "[C] Imaginary Structure Merge",
+  "d": "[C] Imaginary Structure = [E] Gawain + [E] Vlad III + [E] Atalanta + [E] Sakura + [E] Kirei Kotomine\n※This Servant can only be obtained by merging units!\n\nMerging results are guaranteed."
+ },
+ {
+  "n": "Dragon Cry Thundering Voice",
+  "d": "Kilenc Sarkany\n\nDrop the curtains. I'll give you my most valued number!! aaaa~~~\n\nArts Cooldown - 10 seconds\nDeals 10000 damage in large AoE, stuns targets for 3 seconds and slows them for 5 seconds"
+ },
+ {
+  "n": "Fresh Blood Demoness",
+  "d": "Bathory Erzsebet\n\nLast number. I'll greatly show you!! aaaa~~~~!\n\nArts Cooldown - 3 seconds\nDeals 1500 damage in large AoE and stiffens the target, slowing it for 1 second."
+ },
+ {
+  "n": "[S] Elisabeth Bathory Merge",
+  "d": "[S] Elisabeth Bathory = [A] Elisabeth Bathory + [A] Atalanta + [A] Francis Drake + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Elisabeth Bathory Merge",
+  "d": "[A] Elisabeth Bathory = [B] Elisabeth Bathory + [B] Lu Bu Fengxian + [C] Shirou Emiya"
+ },
+ {
+  "n": "Domina Coronam",
+  "d": "Domina Coronam\n\nTen Crowns\n\nPassive Art\nBasic Attacks now have a 1 second slow.\nEvery 3rd attack deals 5x damage to the target's Shield and HP, and stuns the target for 1 second.\n\nExtra Arts\nActivates when you stun an Archenemy (Boss/Mission).\nDelay the timeout by one minute.\nThis effect does not stack."
+ },
+ {
+  "n": "Golden Grail",
+  "d": "Aurea Boura\n\nThe golden grail that BB possesses. The Holy Grail that grants its owner's impudent and selfish desires.\n\nArts Cooldown - 8 seconds\nAccelerates 4 nearby servants including you by 50% for 3 seconds.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "[S] BB Merge",
+  "d": "[S] BB = [A] BB + [A] Andersen + [A] Kirei Kotomine + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] BB Merge",
+  "d": "[A] BB = [B] BB + [B] Sakura + [C] Passionlip"
+ },
+ {
+  "n": "[EX] Third Heterodoxy Pleasure Deva Merge",
+  "d": "[EX] Third Heterodoxy Pleasure Deva = [S] BB + [A] Gawain + [B] Andersen"
+ },
+ {
+  "n": "Angelica Cage",
+  "d": "Angelica Cage\n\nColossus Attila: (Omitted)...... Moon cell left a final counterattack in the sky. A route that reaches the solar system; a seal of coordinates. It's a powerful jamming for the entire galaxy.\n\nPassive Art\nMoon Cell attacks ignore the target's Shield and stop target for 0.1 seconds."
+ },
+ {
+  "n": "404 Light Years",
+  "d": "404 Light Years\n\nThe borderline that lies between the seventh layer and Moon Cell‘s core. (Omitted) ...... It’s actually an infinite distance that cannot be covered even if you try for centuries.\n\nPassive Art\nUnaffected by stuns and knockbacks.\nEvery enemy is slowed by 25%, and the efficiency of every slowdown increases from 50% to 75%."
+ },
+ {
+  "n": "Sakura Veil Grande",
+  "d": "Sakura Veil Grande\n\nThe name of the last obstacle that prevents reaching the Moon Cell's core. Also known as A Challenge to Morals.\n\nPassive Art\nAttack Speed exceeds the limitations. But in no way can it be accelerated any further."
+ },
+ {
+  "n": "Regalia",
+  "d": "Regalia\n\nA system that delegates internal security to trusted parties. Regalia is like a kingship and power to freely use the functions of the Moon Cell.\n\nArts Cooldown - ∞ seconds\nYou can grant Regalia to one of your own or allied [EX] servants. Servants with this effect will remain accelerated. Attack damage is doubled.\n\nNote: Can only be used once."
+ },
+ {
+  "n": "@Tamamo",
+  "d": ""
+ },
+ {
+  "n": "영천류 사념회봉행",
+  "d": "Eitenryu\n\nDestroy the ball as a human being, become united with God, assimilate oneself into the root of the universe to achieve enlightenment.\nThis is the state of final liberation, unchanged in the spirits.\n\nPassive Art\nBasic attacks hit all enemies within range."
+ },
+ {
+  "n": "대두칠야간법",
+  "d": "Daizushi Chiya Kanpo\n\nPretty much the monkey's nonsense──── Happiness is devastating. Immerse yourself in overflowing lust. Ufufufu... ahahahaha!\n\nPassive Art\nStiffens all enemies caught in Basic Attacks and slows them for 1 second."
+ },
+ {
+  "n": "All the World's Desire",
+  "d": "Angra Mainyu/CCC\n\nAh, Ahh──── Ahhh────\nSentient beings, Boundless, Oaths, Jubilation, Remnant, Clarity, Flame, Impossible Victory, Before One's Eyes, Distance, Immovable, Imitation, Clouds.\nBeyond the scorching paradise. Let us all go to the Land of Purity!\n\nArts Cooldown - 30 seconds\nGradually melts the target and its surroundings.\nThis debuff is permanent and the damage is increased by 100 per second.\nMultiple instances don't stack"
+ },
+ {
+  "n": "Closing Rose That Fames Stars",
+  "d": "Fax Caelestis\n\nOpen, Nuptiae Domus Aurea! Sing! 『Closing Rose That Fames Stars』!\n\nPassive Art\nEach 3rd hit will activate an additional ranged attack that deals 3x damage.\nAdditional attack has a 1 second stun and a 5 second slow."
+ },
+ {
+  "n": "Imperium of the Maiden's Flowery Words",
+  "d": "Laus Sanct Claudius\n\nBehold my talent! Listen to the thunderous applause! Praise it! The Golden Theater! 『Laus Sanct Claudius』!\n\nPassive Art\nAccelerates all servants owned by the player by 20%."
+ },
+ {
+  "n": "[S] Nero Bride Merge",
+  "d": "[S] Nero Bride = [A] Nero Bride + [A] Nero Claudius + [A] Suzuka Gozen + [C] Imaginary Structure"
+ },
+ {
+  "n": "Fake Spiral Sword",
+  "d": "Caladbolg II\n\nHeavy projection. I am the bone of my sword.\n\nPassive Art\nBasic Attacks changes from Melee to Ranged & allow you to hit 5 additional targets at once\n\nExtra Arts\nBasic attacks deal damage through the Shield\nAnd have a 20% chance to deal 3x damage."
+ },
+ {
+  "n": "Unlimited Blade Works",
+  "d": "Unlimited Blade Works\n\nI am the bone of my sword.\nSteel is my body, and fire is my blood.\nI have created over a thousand blades.\nUnknown to Death. Nor known to Life.\nHave withstood pain to create many weapons.\nYet, those hands will never hold anything.\nSo as I pray, Unlimited Blade Works.\n\nArts Req - 100MP\nDeals 50x damage to nearby enemies for 10 seconds."
+ },
+ {
+  "n": "[S] Shirou Emiya Merge",
+  "d": "[S] Shirou Emiya = [A] Shirou Emiya + [A] Medusa + [A] Lu Bu Fengxian + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Shirou Emiya Merge",
+  "d": "[A] Shirou Emiya = [B] Shirou Emiya + [B] Francis Drake + [C] Li Shuwen"
+ },
+ {
+  "n": "[B] Shirou Emiya Merge",
+  "d": "[B] Shirou Emiya = [C] Shirou Emiya + [C] Rin Tohsaka"
+ },
+ {
+  "n": "Enkidu",
+  "d": "Enkidu\n\nLet me hear a splendid cry.\n\nPassive Art\nEnkidu's Basic Attacks bind the target for 1 second."
+ },
+ {
+  "n": "Consummated Shape",
+  "d": "Consummated Shape\n\nWell done. You're all pretty good.\n\nPassive Art\nRegardless of stun duration, dispels stun on himself within 1 second."
+ },
+ {
+  "n": "O Humans, Let Us Restrain the Gods",
+  "d": "Enuma Elish\n\nThe evocation is the breath of the planet.\nI will walk together with the humans.\nTherefore ― 『O Humans, Let Us Restrain the Gods』!\n\nArts Cooldown - 60 seconds\nDeals 3000% damage to a single target and freezes it for 10 seconds."
+ },
+ {
+  "n": "Mother, Yell the Shout of Beginning",
+  "d": "Nammu Duranki\n\nMy mother is angry.\nListen to the tides of destruction.\n『Mother, Yell the Shout of Beginning』!\n\nExtra Arts\nIf the owner of Enkidu has [EX] Gilgamesh,\nthen 'O Humans, Let Us Restrain the Gods' duration and damage per hit are increased by 50%."
+ },
+ {
+  "n": "Sword of the Kupriotes",
+  "d": "Spatha\n\nStrong and light-weight, the blade can be wielded with great dexterity.\n\nArts Cooldown - 1 second\nDeals 50% damage to nearby random targets, stuns them for 0.1 second & applies 1 second of slow."
+ },
+ {
+  "n": "Army of the King",
+  "d": "Aionion Hetairoi\n\nAs long as our chests beat with ambition for the far horizon, the campaign shall never end. Raise your cries of war! 『Army of the King』! A A A A La La La La Laie - !!\n\nArts Cooldown - 30 seconds\nAmplifies the damage of 8 nearby servants by 50% for 10 seconds.\nServants of higher grade will take precedence.\n\nExtra Arts\nIrrespective of the buff, your damage is increased by 100%."
+ },
+ {
+  "n": "[S] Iskandar Merge",
+  "d": "[S] Iskandar = [A] Iskandar + [A] Gawain + [A] Atalanta + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Iskandar Merge",
+  "d": "[A] Iskandar = [B] Iskandar + [B] Gilgamesh + [C] Iskandar"
+ },
+ {
+  "n": "[B] Iskandar Merge",
+  "d": "[B] Iskandar = [C] Iskandar + [C] Shirou Emiya"
+ },
+ {
+  "n": "[B] Jeanne d'Arc Merge",
+  "d": "[B] Jeanne d'Arc = [C] Iskandar + [C] Karna"
+ },
+ {
+  "n": "Open Holy Grail of Conquest",
+  "d": "Output\n - ???\n\nHoly Grail opening materials\n - [S] Iskandar\n - [DATA CORRUPTED]\n\nYou can only have one Servant summoned from this Holy Grail!\nSummoning results are guaranteed."
+ },
+ {
+  "n": "Culverin Cannons",
+  "d": "Culverin Cannons\n\nRemember my name! Temeroso el Drago! The woman who felled the sun!\n\nArts Cooldown - 5 seconds\nDeploys 4 cannons, that deal 10000 damage."
+ },
+ {
+  "n": "Big Sister's Resplendent Plunder",
+  "d": "Helada Sol Poniendo\n\nI smell treasure... Shall we seek victory, Master?\n\nPassive Art\nEach attack plunders 3 gold from the enemy."
+ },
+ {
+  "n": "[S] Francis Drake Merge",
+  "d": "[S] Francis Drake = [A] Francis Drake + [A] Elisabeth Bathory + [A] Rin Tohsaka + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Francis Drake Merge",
+  "d": "[A] Francis Drake = [B] Francis Drake + [B] Gawain + [C] Tamamo-no-Mae"
+ },
+ {
+  "n": "[EX] Pioneer of the Stars Merge",
+  "d": "[EX] Pioneer of the Stars = [S] Francis Drake + [A] Nero Claudius + [B] Artoria Alter"
+ },
+ {
+  "n": "The Golden Hind and the Stormy Night",
+  "d": "The Golden Hind and the Stormy Night\n\n『You rascals, it's time! The King of Storms, a swarm of ghosts, this is the beginning of the Wild Hunt!!』\n\nPassive Art\nThe Golden Hind with 4 Field Culverins is summoned to support this Servant's attacks.\n\nGolden Hind is treated as a separate EX-grade Servant summoned by Francis Drake."
+ },
+ {
+  "n": "The Golden Rule",
+  "d": "The Golden Rule\n\n『Win or lose, I'll never tire of showing off!』\n\nPassive Art\nDeals additional damage equal to 25% of your gold."
+ },
+ {
+  "n": "Voyager of the Storm",
+  "d": "Voyager of the Storm\n\n『Shell them~! Away with these sea scum!』\n\nPassive Art\nAttacks have a 5% chance to set the attack speed of Francis Drake and Golden Hind to a 0.3s for 5 seconds."
+ },
+ {
+  "n": "Pioneer of the Stars",
+  "d": "Pioneer of the Stars\n\n『Not good, not good, this is still too easy!』\n\nPassive Art\nIncreases the damage of Francis Drake and Golden Hind by 200%, when they're under the effect of Voyager of the Storm."
+ },
+ {
+  "n": "Maiden's Chastity",
+  "d": "Bridal Chest\n\nUgh! Ah!\n\nPassive Art\nRestores 2 MPs every second.\nBasic attacks deal damage in AoE,\nStiffen enemies and slow them for 1 second.\nHitting enemy triggers an additional effect that neutralizes the target's Regeneration and disables Shield for 1 second."
+ },
+ {
+  "n": "Galvanism",
+  "d": "Galvanism\n\nThaumaturgical attacks involving no material existence —are converted to electricity and rendered without effect, discharged into the environment.\n\nPassive Art\nUnaffected by stuns and knockbacks.\nDamage increased by 50%."
+ },
+ {
+  "n": "Plasmacharge",
+  "d": "Plasmacharge\n\nRapidly recharges energy by fiercely spinning the Maiden's Chastity. \n\nArts Cooldown - 80 seconds\nDeals 2000% lightning damage in a very wide area and restores 200 MPs."
+ },
+ {
+  "n": "Lightning Tree of Crucifixion",
+  "d": "Blasted Tree\n\n\"With me, together, come... 『Lightning Tree of Crucifixion』!\"\n\nArts Req - 100~500MP\nDeals 500%~2500% damage depending on the consumed MP (100~500)"
+ },
+ {
+  "n": "Blade of the Devoted Plunder",
+  "d": "Blade of the Devoted\n\nEverything is for my king...\nNow pay it back!\n\nPassive Art\nEach hit plunders 30 gold from the enemy."
+ },
+ {
+  "n": "Castle of the assembled brilliant Holy Sword - Sword Camelot",
+  "d": "Sword Camelot\n\nA dazzling castle where swords meet.\n\nPassive Art\nBurns nearby enemies.\nDeals 1500 damage over 5 seconds."
+ },
+ {
+  "n": "[S] Gawain Merge",
+  "d": "[S] Gawain = [A] Gawain + [A] Iskandar + [A] Artoria + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Gawain Merge",
+  "d": "[A] Gawain = [B] Gawain + [B] Artoria + [C] Atalanta"
+ },
+ {
+  "n": "[B] Gawain Merge",
+  "d": "[B] Gawain = [C] Gawain + [C] Ryougi Shiki"
+ },
+ {
+  "n": "[B] Suzuka Gozen Merge",
+  "d": "[B] Suzuka Gozen = [C] Gawain + [C] Tamamo-no-Mae"
+ },
+ {
+  "n": "[C] Gawain Merge",
+  "d": "[C] Gawain = [D] Gawain + [D] Kirei Kotomine + [E] Gawain"
+ },
+ {
+  "n": "[C] Artoria Pendragon Merge",
+  "d": "[C] Artoria Pendragon = [D] Gawain + [D] Nursery Rhyme + [E] Atalanta"
+ },
+ {
+  "n": "[C] Nero Claudius Merge",
+  "d": "[C] Nero Claudius = [D] Gawain + [D] Vlad III + [E] Atalanta"
+ },
+ {
+  "n": "[D] Gawain Merge",
+  "d": "[D] Gawain = [E] Gawain + [E] Gawain"
+ },
+ {
+  "n": "[D] Medusa Merge",
+  "d": "[D] Medusa = [E] Gawain + [E] Sakura"
+ },
+ {
+  "n": "[D] Li Shuwen Merge",
+  "d": "[D] Li Shuwen = [E] Gawain + [E] Kirei Kotomine"
+ },
+ {
+  "n": "[EX] Knight of the Sun Merge",
+  "d": "[EX] Knight of the Sun = [S] Gawain + [A] Nero Bride + [B] Gilgamesh"
+ },
+ {
+  "n": "Numeral of The Saint",
+  "d": "Numeral of The Saint\n\nA special constitution of the Sir Gawain.\nDuring the hours between 9am and 12pm and those between 3pm and 6pm, all of his powers increase by a factor of three.\n\nPassive Art\nTime according to the SE.RA.PH:\n09:00~12:00(30s), 15:00~18:00(30s)\nDuring this time: Attack Damage, Attack Speed & MP Regeneration are tripled."
+ },
+ {
+  "n": "Belt of Bertilak",
+  "d": "Belt of Bertilak\n\n『Finally, it looks like it’s time for me to get serious.』\n\nPassive Art\nThe base MP Regeneration is increased by 10.\n\nExtra Arts\nThe effect is enhanced during the Numeral of The Saint."
+ },
+ {
+  "n": "Sword of Revolving Victory",
+  "d": "Sword of Revolving Victory\n\n『This sword is a replica of the sun. Its flame shall cleanse all the impurity of this world. Excalibur Galatine!』\n\nArts Req - 300MP\nDeals 1000% damage to the last target hit and to surrounding enemies.\n\nExtra Arts\nThe effect is enhanced during the Numeral of The Saint."
+ },
+ {
+  "n": "Nightless Charisma",
+  "d": "Nightless Charisma\n\n『Then let's be off. I only ask that we avoid traveling at night!』\n\nArts Delay - 300s\nChanges the time of SE.RA.PH to the 9AM."
+ },
+ {
+  "n": "Rain of Treasures",
+  "d": "Gate of Babylon\n\nGate of ─── Babylon!\n\nArts Cooldown - 5 seconds\nDeals 3750 splash damage to nearby random targets."
+ },
+ {
+  "n": "The Star of Creation that Split Heaven and Earth",
+  "d": "Enuma Elish\n\nIt's a blow beyond your means!\n\nArts Cooldown - 15 seconds\nDeals 15000 damage to nearby random targets and stuns them for 5 seconds.\n\nHitting Archenemies will take precedence."
+ },
+ {
+  "n": "[S] Gilgamesh Merge",
+  "d": "[S] Gilgamesh = [A] Gilgamesh + [A] ZERO-MODEL + [A] Rin Tohsaka + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Gilgamesh Merge",
+  "d": "[A] Gilgamesh = [B] Gilgamesh + [B] Vlad III + [C] Rin Tohsaka"
+ },
+ {
+  "n": "[EX] Genesis Mystic Code Merge",
+  "d": "[EX] Genesis Mystic Code = [S] Gilgamesh + [A] Jeanne d'Arc + [B] Iskandar"
+ },
+ {
+  "n": "Chains of Heaven",
+  "d": "Enkidu\n\nBow your head! It is time for judgment!\n\nArts Cooldown - 60 seconds\nBlocks the target for 10 seconds and deals 5000% damage."
+ },
+ {
+  "n": "[S] Suzuka Gozen Merge",
+  "d": "[S] Suzuka Gozen = [A] Suzuka Gozen + [A] Arcueid Brunestud + [A] Atalanta(Alter) + [C] Imaginary Structure"
+ },
+ {
+  "n": "Blessing of Wisdom",
+  "d": "Blessing of Wisdom\n\nWisdom matches that of Manjushri──\n\nArts Cooldown - 10 seconds\nImproved swordsmanship will strike five times, causing 10000 damage.\n\nExtra Arts\nEach hit slows the enemy for 2 seconds.\nEnemy takes twice as much damage and is stunned for 1 second."
+ },
+ {
+  "n": "Heavenly Demon Rain",
+  "d": "Heavenly Demon Rain\n\n 『Sword of Transcendent Wisdom and Knowledge Daishintou── Love Blast, Heavenly Demon Rain』!!\n\nArts Cooldown - 30 seconds\nFires weapons at nearby targets for 5 seconds, dealing 30000 damage."
+ },
+ {
+  "n": "[A] Suzuka Gozen Merge",
+  "d": "[A] Suzuka Gozen = [B] Suzuka Gozen + [B] Li Shuwen + [C] Ryougi Shiki"
+ },
+ {
+  "n": "Holy Lance Armor",
+  "d": "Avalon\n\nHeroine X can strengthen her power by defeating Artoria Face Servants.\n\nVictim Art\n - Damage +100%(Inactive)\n - Damage +300%(Inactive)\n - Damage +400%(Inactive)\n\nVictim Art\n???\n???\n???"
+ },
+ {
+  "n": "Sword of Unsigned Victory: Secret-Calibur",
+  "d": "Secret-Calibur\n\nSkill is not unlocked yet.\n\nLocked Art\nUnlocks at the expense of Servants classified as [A] or higher Artoria Face."
+ },
+ {
+  "n": "Nameless Nebula Sword: Rhongomynyad-LR",
+  "d": "Cross-Calibur\n\nSkill is not unlocked yet.\n\nLocked Art\nUnlocks at the expense of Servants classified as [S] or higher Artoria Face."
+ },
+ {
+  "n": "Sapphire Galaxy Id Est Cosmos",
+  "d": "Regulation of the Aether Cosmos\n\nSkill is not unlocked yet.\n\nLocked Art\nUnlocks at the expense of Servants classified as [EX] or higher Artoria Face."
+ },
+ {
+  "n": "Curse",
+  "d": "Curse\n\nEven though I told you to ignore me. To meddle with an accursed witch like me isn't some thing one should do. You will end up burning together with me.\n\nArts Cooldown - 5 seconds\nAttacking a slowed enemy deals bonus damage and stuns the target for 1 second.\n\nExtra Arts\nPermanently curses the last attacked enemy, dealing 500 damage per second and slowing them."
+ },
+ {
+  "n": "La Grondement Du Haine",
+  "d": "La Grondement Du Heine\n\nThis is the roar of my soul that was polished by hatred...『Roar, O' Rage of Mine』!\n\nArts Cooldown - 10 seconds\nDeals 5000 damage to an enemy in range and stuns it for 3 seconds."
+ },
+ {
+  "n": "[S] Jeanne d'Arc Alter Merge",
+  "d": "[S] Jeanne d'Arc Alter = [A] Jeanne d'Arc Alter + [A] Nero Bride + [A] Jeanne d'Arc + [C] Imaginary Structure"
+ },
+ {
+  "n": "God is Here With Me",
+  "d": "Luminosite Eternelle\n\nThere’s a spear-point at the tip\nSo it’s a divine sign that this flag should be used to strike the enemy\n\nArts Cooldown - 2.5 seconds\nRestores 5 MPs to nearby servants.\n'Jeanne d'Arc' can't benefit from Luminosite Eternelle."
+ },
+ {
+  "n": "The Crimson Saint",
+  "d": "La Pucelle\n\nO' Lord, I entrust this body to you—\n\nArts Req - 500MP\nUnpredictable destructive power that can annihilate anything in existence.\n\nUltimate Art\nAll enemies caught in the explosion take 50000 damage and are stunned for 10 seconds.\n\nPenalty\nSerious damage to the Spiritrons will result in 30 seconds of inactivity and waiting for Spiritrons recovery"
+ },
+ {
+  "n": "서번트 - 잔다르크 - 뤼미노지 - 체커",
+  "d": ""
+ },
+ {
+  "n": "[S] Jeanne d'Arc Merge",
+  "d": "[S] Jeanne d'Arc = [A] Jeanne d'Arc + [A] Artoria Pendragon + [A] Nero Bride + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Jeanne d'Arc Merge",
+  "d": "[A] Jeanne d'Arc = [B] Jeanne d'Arc + [B] Tamamo-no-Mae + [C] Artoria"
+ },
+ {
+  "n": "Open Holy Grail of Red Lotus",
+  "d": "Output\n - ???\n\nHoly Grail opening materials\n - [B] Jeanne d'Arc\n - [DATA CORRUPTED]\n\nYou can only have one Servant summoned from this Holy Grail!\nSummoning results are guaranteed."
+ },
+ {
+  "n": "[EX] The Crimson Saint Merge",
+  "d": "[EX] The Crimson Saint = [S] Jeanne d'Arc + [A] Atalanta + [B] Tamamo-no-Mae"
+ },
+ {
+  "n": "Charisma",
+  "d": "Charisma\n\nJeanne's figure participating in the assaults hoisting a flag raised the morale of the soldiers to the limit and united the troops.\n\nArts Cooldown - 1 second\nBoosts the damage, attack speed and movement speed of an adjacent servant by 30% for 10 seconds.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "Roar of Divinity",
+  "d": "La Grondement Du Divinite\n\nThe fire of purification from La Pucelle purifies the target.\n\nPassive Art\nWhen you hit an Archenemy, you purify the target with infinitely stacking fire until you hit another Archenemy.\n\nExtra Arts\nPurification damage damages both the target's Shield and Health, and deals 250 damage per stack."
+ },
+ {
+  "n": "Brahmastra",
+  "d": "Brahmastra\n\nO' Brahma, Cover the Earth\n\nArts Cooldown - 3 seconds\nLaunches a Beam against nearby target that deals 3000 damage."
+ },
+ {
+  "n": "O' Sun, Abide to Death",
+  "d": "Vasavi Shakti\n\nKnow the mercy of the King of Gods.\nWith this single strike,\nI shall inflict extinction.\nIndra, observe me.\nBe reduced to cinders, 『Vasavi Shakti』!\n\nArts Cooldown - 10 seconds\nSummons a Firestorm at the target location, dealing 15000 damage for 10 seconds."
+ },
+ {
+  "n": "[S] Karna Merge",
+  "d": "[S] Karna = [A] Karna + [A] Cu Chulainn + [A] Gawain + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Karna Merge",
+  "d": "[A] Karna = [B] Karna + [B] Artoria Alter + [C] Cu Chulainn"
+ },
+ {
+  "n": "[B] Karna Merge",
+  "d": "[B] Karna = [C] Karna + [C] Artoria"
+ },
+ {
+  "n": "[EX] Summer Tamamo Merge",
+  "d": "[EX] Summer Tamamo = [S] Karna + [A] Tamamo Vitch + [B] Cu Chulainn"
+ },
+ {
+  "n": "Spear play - Median Lance",
+  "d": "Spear play - Median Lance\n\nCrush it, Median Lance!\n\nPassive Art\nEach attack against the same enemy increases damage by 20%, up to 300%.\n\nResets the damage whenever target changes."
+ },
+ {
+  "n": "Ath nGabla: Shoal of Four Branches",
+  "d": "Ath nGabla: Shoal of Four Branches\n\nI just don't die that much.\n\nCounter Stun\nDispels all stun attacks.\nAfter that, grants you maximum movement speed for 5 seconds.\n\nPassive Art\nIt has higher maneuverability compared to a typical Lancer class."
+ },
+ {
+  "n": "[S] Cu Chulainn Merge",
+  "d": "[S] Cu Chulainn = [A] Cu Chulainn + [A] Passionlip + [A] Nero Claudius + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Cu Chulainn Merge",
+  "d": "[A] Cu Chulainn = [B] Cu Chulainn + [B] Rin Tohsaka + [C] Iskandar"
+ },
+ {
+  "n": "[A] Elisabeth Bathory Alter Merge",
+  "d": "[A] Elisabeth Bathory Alter = [B] Cu Chulainn + [B] Elisabeth Bathory + [C] Arcueid Brunestud"
+ },
+ {
+  "n": "[B] Cu Chulainn Merge",
+  "d": "[B] Cu Chulainn = [C] Cu Chulainn + [C] Shirou Emiya"
+ },
+ {
+  "n": "Barbed Spear that Pierces with Death - Gáe Bolg",
+  "d": "Gáe Bolg\n\nI'll have your heart!\n『Barbed Spear that Pierces with Death』!\n\nPassive Art\nLow chance (5%) to inflict 50x damage through the shield.\n\nTargets hit by the Gáe Bolg will be stunned for 5 seconds.\n\nAttacks against Archenemies (Missions/Bosses) have a lower chance (2%)."
+ },
+ {
+  "n": "Baptism Rite",
+  "d": "Kyrie Eleison\n\n─────\"May God have mercy of this soul\"\n\nArts Cooldown - 10 seconds\nDeals 10000 damage through the Shield over 2 seconds to the random target in range and stuns it for 2 seconds."
+ },
+ {
+  "n": "Bajiquan",
+  "d": "Deathfist\n\nI thought you'd be quiet, but...\nIt's really hard to be brought to a place like this.\n\nPassive Art\nEvery third attack against the same enemy inflicts 4200 additional Shield damage, stunning them for 1 second.\n\nExtra Arts\nImmediately after hitting an enemy, movement speed is maximized."
+ },
+ {
+  "n": "[S] Kirei Kotomine Merge",
+  "d": "[S] Kirei Kotomine = [A] Kirei Kotomine + [A] Artoria Alter + [A] BB + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Kirei Kotomine Merge",
+  "d": "[A] Kirei Kotomine = [B] Kirei Kotomine + [B] ZERO-MODEL + [C] Gawain"
+ },
+ {
+  "n": "[B] Kirei Kotomine Merge",
+  "d": "[B] Kirei Kotomine = [C] Kirei Kotomine + [C] Lu Bu Fengxian"
+ },
+ {
+  "n": "[C] Kirei Kotomine Merge",
+  "d": "[C] Kirei Kotomine = [D] Kirei Kotomine + [D] Li Shuwen + [E] Kirei Kotomine"
+ },
+ {
+  "n": "[D] Kirei Kotomine Merge",
+  "d": "[D] Kirei Kotomine = [E] Kirei Kotomine + [E] Kirei Kotomine"
+ },
+ {
+  "n": "Divine Spirit",
+  "d": "Divine Spirit\n\nAccept my protection.\nThis is your world, End of the World.\n\nPassive Art\nAll stats have been greatly increased through the Divine Spirit."
+ },
+ {
+  "n": "Lion King’s Judgement",
+  "d": "Rhongomyniad\n\nHoly Lance, weigh anchor.\n\nPassive Art\nBasic attacks by the Goddess Rhongomyniad trigger four additional strikes.\nEach additional strike will cause damage equal to 200% of the original attack and will cause a Small Unit to be stunned for 1 second."
+ },
+ {
+  "n": "The Lance that Shines to the Ends of the World",
+  "d": "The Lance that Shines to the Ends of the World\n\nI've expanded the land, built cities, crossed the ocean, and split the heavens.\nAll for... what...?\nHoly Lance, tell me of the end!\n『The Lance that Shines to the Ends of the World』!\n\nArts Cooldown - 60 seconds\nFires a slow-tracking projectile, dealing 1 million damage to both HP and Shield of the target. Duration: 10 seconds."
+ },
+ {
+  "n": "Armistice",
+  "d": "Armistice\n\nSpear, it's not enough to face each other.\n\nPassive Art\nWhen a basic attack hits, it tracks the target and hits 2 additional times for 1800 damage.\n\nExtra Arts\n+1 additional hit against an Enemy. It deals 1800 (+900) damage."
+ },
+ {
+  "n": "Immortal Red Hare",
+  "d": "Immortal Red Hare\n\nRed Hare, you still haven't died.\n\nPassive Art\nEach time a basic attack hits, the attack speed is increased by 20%, up to a maximum of 100%.\n\nIncreased attack speed lasts for 5 seconds.\n\nExtra Arts\nThis servant is not affected by stuns and knockbacks."
+ },
+ {
+  "n": "[S] Lu Bu Fengxian Merge",
+  "d": "[S] Lu Bu Fengxian = [A] Lu Bu Fengxian + [A] Vlad III + [A] Elisabeth Bathory + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Lu Bu Fengxian Merge",
+  "d": "[A] Lu Bu Fengxian = [B] Lu Bu Fengxian + [B] Arcueid Brunestud + [C] Medusa"
+ },
+ {
+  "n": "[B] Lu Bu Fengxian Merge",
+  "d": "[B] Lu Bu Fengxian = [C] Lu Bu Fengxian + [C] Passionlip"
+ },
+ {
+  "n": "[C] Lu Bu Fengxian Merge",
+  "d": "[C] Lu Bu Fengxian = [D] Lu Bu Fengxian + [D] Li Shuwen + [E] Vlad III"
+ },
+ {
+  "n": "[C] Arcueid Brunestud Merge",
+  "d": "[C] Arcueid Brunestud = [D] Lu Bu Fengxian + [D] Medusa + [E] Gawain"
+ },
+ {
+  "n": "Open Holy Grail of Champion",
+  "d": "Output\n - ???\n\nHoly Grail opening materials\n - [S] Lu Bu Fengxian\n - [DATA CORRUPTED]\n\nYou can only have one Servant summoned from this Holy Grail!\nSummoning results are guaranteed."
+ },
+ {
+  "n": "Mystic Eyes of Petrification",
+  "d": "Cybele\n\nPossess the highest level of Mystical Eyes \"Cybele\".\nHowever, they are normally sealed.\n\nArts Cooldown - 5 seconds\nPetrifies enemies in the direction of nearby enemy, which stuns them for 2 seconds and slows for 5 seconds.\n\nExtra Arts\nThis Servant deals double damage when hitting a slowed enemy.\n\nExtra Arts\nWhen this Servant hits a stunned enemy, his attack speed is boosted to its maximum."
+ },
+ {
+  "n": "Bridle of Chivalry",
+  "d": "Bellerophon\n\nI'll destroy you gently. 『Bellerophon』!\n\nArts Cooldown - 10 seconds\nDeals 5000 damage through the Shield to a single nearby target and restores 5 MP to a Servant near the target."
+ },
+ {
+  "n": "[S] Medusa Merge",
+  "d": "[S] Medusa = [A] Medusa + [A] Li Shuwen + [A] Ryougi Shiki + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Medusa Merge",
+  "d": "[A] Medusa = [B] Medusa + [B] Atalanta + [C] Li Shuwen"
+ },
+ {
+  "n": "[B] Medusa Merge",
+  "d": "[B] Medusa = [C] Medusa + [C] Li Shuwen"
+ },
+ {
+  "n": "[B] Francis Drake Merge",
+  "d": "[B] Francis Drake = [C] Medusa + [C] Atalanta"
+ },
+ {
+  "n": "[C] Medusa Merge",
+  "d": "[C] Medusa = [D] Medusa + [D] Kirei Kotomine + [E] Vlad III"
+ },
+ {
+  "n": "[C] Iskandar Merge",
+  "d": "[C] Iskandar = [D] Medusa + [D] Lu Bu Fengxian + [E] Gawain"
+ },
+ {
+  "n": "[EX] Medusa Merge",
+  "d": "[EX] Medusa = [S] Medusa + [A] Jeanne d'Arc Alter + [B] Ryougi Shiki"
+ },
+ {
+  "n": "Bridle of Chivalry Dust Cleaner!",
+  "d": "Bellerophon\n\nI'll dust it off. 『Bridle of Chivalry』!\n\nPassive Art\nBasic attacks deal damage in a small area, applying stiffness slowing enemies down for 1 second."
+ },
+ {
+  "n": "Outer-Seal, Blood Temple Hold!",
+  "d": "Bloodfort Andromeda\n\nWe've caught a degenerate.\n──How do we handle this?\n\nPassive Art\nGrabs enemy with the highest amount of HP. Enemies caught get released immediately and cannot regenerate HP & Shield. When the captured enemy is killed, grabs a new enemy.\n\nGiant units (missions/bosses) cannot be caught."
+ },
+ {
+  "n": "Mystic Eyes of Petrification!",
+  "d": "Cybele\n\nYou have good sense, you have courage,\nThere is potential. Yes───\n\n───this tranquility.\nLet's enjoy it together.\n\nArts Cooldown - 5 seconds\nUnleashes Mystic Eyes' power, inflicting 500% damage to nearby enemies and their surrounding units, stunning them for 5 seconds."
+ },
+ {
+  "n": "Self Seal, Dark Temple",
+  "d": "Breaker Gorgon\n\nNow, master.\nTell me everything.\nIf it's your wish, I'll do it anything you want───\n\nArts Cooldown - 30 seconds\nNormal attacks are enhanced for 5 seconds, hitting all enemies mercilessly."
+ },
+ {
+  "n": "Sadistic Constitution",
+  "d": "Sadistic Predisposition\n\nAugments one's aggression in battle.\nThe more one attacks, the stronger one becomes, but on the other hand, one's defensive abilities drop.\n\nArts Req - 150MP\nGain Maximized Sadism effect for 10 seconds.\n\nEffect: Maximized Sadism\nDamage increases by 50% and unit gains maximized acceleration.\nAt the end of the effect, all MPs are lost."
+ },
+ {
+  "n": "Neurological Disorder",
+  "d": "Neuropathy\n\nBecause of the clumsiness of her fingers caused by Neurological Disorder, despite her hobby of collecting figures, she cannot immerse herself in assembling garage kits.\nCurrently accepting applications for a skilled assembler!\n\nPassive Art\nGain 20% damage bonus."
+ },
+ {
+  "n": "Saraswati Meltout",
+  "d": "Sarasvati Meltout\n\nIsn't it about time for the interlopers to leave the stage?\nHehehe, ahahahaha!\n\nArts Cooldown - 60 seconds\nStrikes a vital spot of the single target, dealing 2000% damage to both HP and Shield and stunning the target for 10 seconds."
+ },
+ {
+  "n": "『Ascension』",
+  "d": "Ascension = False Meltryllis + [DATA CORRUPTED]\n\nYou can only have one such Servant!\nSummoning results are guaranteed."
+ },
+ {
+  "n": "Melt Envy",
+  "d": "Melt Envy\n\nContamination by the Seven Deadly Sins - jealousy. \nMelt Virus changed by Leviathan.\n\nArts Req - 50MP\nSummons a Leviathan for 5 seconds.\nThe Leviathan attack stiffens the enemy, dealing 200% damage.\n\nExtra Arts\nAfter the Leviathan summon expires, it explodes, dealing 100% damage in a very large AoE and slowing enemies for 3 seconds."
+ },
+ {
+  "n": "Swan Lake",
+  "d": "Swan Lake\n\nBy suppressing the skill 『Sadistic Constitution』, instead of diminishing agression and evasion, she became a dancer who beautifully captivates the audience for longer. \n\nPassive Art\nAll speed is amplified by 30%, and basic attacks are split up to 3 times to nearby enemies.\n\nExtra Arts\nRecovers 2 MP per strike."
+ },
+ {
+  "n": "서번트 - 멜트(수) - 스완 레이크 - 가속",
+  "d": ""
+ },
+ {
+  "n": "Tsunami of Seven Sins Elegy",
+  "d": "Leviathan Meltpurge\n\nFills the heavens and the earth with the sea, creating a great tsunami.\nThe sea surrounding Las Vegas is a continous evolution of this Noble Phantasm. \n\nPassive Art\nSlows nearby enemies.\n\nExtra Arts\nUnaffected by the knockback."
+ },
+ {
+  "n": "The Glass-like Summer Dew",
+  "d": "Blue Summer Palladion\n\nFinish with this! Oh, you guys? Last stroke! 『Blue Summer·Palladion』!\n\nArts Cooldown - 60 seconds\nDeals 3000% damage to HP and Shield of all enemies and stuns them for 10 seconds.\n\nExtra Arts\nSummons 5 additional Leviathan."
+ },
+ {
+  "n": "Human Order Foundation",
+  "d": "Lord Chaldeas\n\nDeploying Noble Phantasm\n\nPassive Art\nMash Kyrielight is not affected by stuns and knockbacks."
+ },
+ {
+  "n": "Obscurant Wall of Chalk",
+  "d": "Obscurant Wall of Chalk\n\nShield effect initiated.\n\nArts Req - 10MP\nArts Cooldown - 1 second\nProtects a nearby Servant from stuns and knockbacks for 10 seconds.\n\nServants of higher grade w/o immunity will take precedence."
+ },
+ {
+  "n": "Shield of Rousing Resolution",
+  "d": "Shield of Rousing Resolution\n\nStatus Up...\nI'll try my best.\n\nArts Cooldown - 40 seconds\nRestore all the mana you've spent."
+ },
+ {
+  "n": "Castle of the Distant Utopia",
+  "d": "Lord Camelot\n\nThe place that cures all wounds and dissolves all hatred, our home.\nManifest!\n『Castle of the Distant Utopia』!!\n\nArts Cooldown - 60 seconds\nRestores all nearby Servants' Mana to maximum and protects them from stuns and knockbacks for 10 seconds.\nIncreases damage of all Servants under Camelot protection by 50%"
+ },
+ {
+  "n": "Virgin Laser - Palladion",
+  "d": "Virgin Laser - Palladion\n\nM : 『Let’s do it! Make sure you say it at the same time as me, Lip!』\nP : 『U-uhh...! One, two, three...』\n\n『Please, die...!』\n\nArts Cooldown - 60 seconds\nDeals 4000% damage to a single target and puts you in Ultimate Stop state (Ignore Immunity) for 10 seconds."
+ },
+ {
+  "n": "Pavilion of Falling Flowers",
+  "d": "Rosa Ichthys\n\nLike a blooming flower!\n\nArts Cooldown - 10 seconds\nDeals 5000 AoE damage to nearby enemies for 5 seconds."
+ },
+ {
+  "n": "Thunderous Applause",
+  "d": "Palatino Plauseram\n\nHear the thundering applause!\n\nPassive Art\nEvery 5th attack will launch an additional attack that deals 5 times the damage."
+ },
+ {
+  "n": "[S] Nero Claudius Merge",
+  "d": "[S] Nero Claudius = [A] Nero Claudius + [A] Elisabeth Bathory + [A] Karna + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Nero Claudius Merge",
+  "d": "[A] Nero Claudius = [B] Nero Claudius + [B] Medusa + [C] Shirou Emiya"
+ },
+ {
+  "n": "[A] Nero Bride Merge",
+  "d": "[A] Nero Bride = [B] Nero Claudius + [B] Jeanne d'Arc + [C] Artoria"
+ },
+ {
+  "n": "[B] Nero Claudius Merge",
+  "d": "[B] Nero Claudius = [C] Nero Claudius + [C] Cu Chulainn"
+ },
+ {
+  "n": "[B] Attila Merge",
+  "d": "[B] Attila = [C] Nero Claudius + [C] Imaginary Structure"
+ },
+ {
+  "n": "[EX] Mystic Code of the Emperor Merge",
+  "d": "[EX] Mystic Code of the Emperor = [S] Nero Claudius + [A] Suzuka Gozen + [B] Li Shuwen"
+ },
+ {
+  "n": "Invitation to the Golden Debauchery Theater",
+  "d": "Aestus Domus Aurea\n\nI shall offer this gift to a full moon... Dancing scatters the flowers, and cleaves open a star! Behold the supreme beauty... and praise it! Aestus Domus Aurea!!\n\nArts Cooldown - 60 seconds\nGains Imperial Privilege effect for 15 seconds.\n\nEffect: Imperial Privilege\nAll skills damage is amplified by 100% and maintains maximum acceleration."
+ },
+ {
+  "n": "SG : Passionlip",
+  "d": "Secret Garden : Passionlip\n\nWEIGHT: O—one ton. ……Uh huh? why!?\n\nExtra Art\nDeals double damage to stunned opponents."
+ },
+ {
+  "n": "Crash & Trash",
+  "d": "Crash & Trash\n\nAll Alter Egos have special abilities. A cheat skill that evolved from skill 「Power」.\n\nPassive Art\nThis servant is slow but exceptionally powerful.\n\nExtra Arts\nYou have the stats that equal to 300% of damage."
+ },
+ {
+  "n": "[S] Passionlip Merge",
+  "d": "[S] Passionlip = [A] Passionlip + [A] Lu Bu Fengxian + [A] Arcueid Brunestud + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Passionlip Merge",
+  "d": "[A] Passionlip = [B] Passionlip + [B] Gilgamesh + [C] Nero Claudius"
+ },
+ {
+  "n": "[B] Passionlip Merge",
+  "d": "[B] Passionlip = [C] Passionlip + [C] Arcueid Brunestud"
+ },
+ {
+  "n": "[B] BB Merge",
+  "d": "[B] BB = [C] Passionlip + [C] Nursery Rhyme"
+ },
+ {
+  "n": "[EX] Mysterious Alter Ego Λ Merge",
+  "d": "[EX] Mysterious Alter Ego Λ = [S] Passionlip + [A] Shirou Emiya + [B] Artoria"
+ },
+ {
+  "n": "Strike Air",
+  "d": "Strike Air\n\nO Wind, blow!\n\nPassive Art\nBasic Attacks deal damage 2 additional times.\nAttacking Enemy deals AoE damage with stiffness effect instead of additional damage."
+ },
+ {
+  "n": "[S] Artoria Pendragon Merge",
+  "d": "[S] Artoria Pendragon = [A] Artoria Pendragon + [A] Gilgamesh + [A] Shirou Emiya + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Artoria Merge",
+  "d": "[A] Artoria = [B] Artoria + [B] Shirou Emiya + [C] Karna"
+ },
+ {
+  "n": "Emergency Notice",
+  "d": "Threatened by her own position, Artoria tries to choose the path of Surah."
+ },
+ {
+  "n": "[B] Artoria Merge",
+  "d": "[B] Artoria = [C] Artoria + [C] Nero Claudius"
+ },
+ {
+  "n": "[B] Artoria Alter Merge",
+  "d": "[B] Artoria Alter = [C] Artoria + [C] Vlad III"
+ },
+ {
+  "n": "[EX] Mystic Code of the Star Merge",
+  "d": "[EX] Mystic Code of the Star = [S] Artoria + [A] Artoria Alter + [B] Elisabeth Bathory"
+ },
+ {
+  "n": "The Everdistant Utopia",
+  "d": "Avalon\n\nHas the ability of potent healing, allowing for critical and fatal wound to be rapidly repaired to restore the health.\nActually can be called \"portable fortress\" that shuts out all interference.\n\nArts Cooldown - 60 seconds\nIncreases all nearby Servants' damage by 100% for 10 seconds.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "Curse: Chaos Heaven",
+  "d": "Curse: Chaos Heaven\n\nDo a bangle dance.\n\nPassive Art\nBasic Attacks now launch a straight line through the enemies with the slowing effect.\n\nExtra Arts\nWhen a Basic Attack hits, the Thunderbolt that deals damage equal to your damage is summoned."
+ },
+ {
+  "n": "Charm : Spirit Theft",
+  "d": "Charm : Spirit Theft\n\nI'm a good wife you know? Saving, Saving.♥\n\nPassive Art\nBasic attacks restore 1 MP."
+ },
+ {
+  "n": "[S] Tamamo Dermo Merge",
+  "d": "[S] Tamamo Dermo = [A] Tamamo Dermo + [A] Tamamo-no-Mae + [A] Tamamo Vitch + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Tamamo Dermo Merge",
+  "d": "[A] Tamamo Dermo = [B] Tamamo Dermo + [B] Rin Tohsaka + [C] Tamamo-no-Mae"
+ },
+ {
+  "n": "The Plains of Winter",
+  "d": "The Plains of Winter\n\nYou want to chase me, like a rabbit.\n\nPassive Art\nAttack damage is 3x higher.\nBasic Attacks now have splash damage and apply slow for 2 seconds."
+ },
+ {
+  "n": "Perpetual Engine Maiden Empire",
+  "d": "Queen's Glass Game\n\nBeyond beyond the rainbow plains,\nblack and white squares, the King of Games.\nRun, run, the maze of mirrors,\nfarewell, oh pitiable rabbit♪\n\nArts Cooldown - 1 second\nCleanses the stun from the player-owned servant and makes it immune to stun and knockback effects for 5 seconds.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "[S] Nursery Rhyme Merge",
+  "d": "[S] Nursery Rhyme = [A] Nursery Rhyme + [A] Elisabeth Bathory Alter + [A] Andersen + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Nursery Rhyme Merge",
+  "d": "[A] Nursery Rhyme = [B] Nursery Rhyme + [B] BB + [C] Sakura"
+ },
+ {
+  "n": "[B] Nursery Rhyme Merge",
+  "d": "[B] Nursery Rhyme = [C] Nursery Rhyme + [C] Andersen"
+ },
+ {
+  "n": "[C] Nursery Rhyme Merge",
+  "d": "[C] Nursery Rhyme = [D] Nursery Rhyme + [D] Atalanta + [E] Sakura"
+ },
+ {
+  "n": "[C] Andersen Merge",
+  "d": "[C] Andersen = [D] Nursery Rhyme + [D] Gawain + [E] Kirei Kotomine"
+ },
+ {
+  "n": "[C] Tamamo-no-Mae Merge",
+  "d": "[C] Tamamo-no-Mae = [D] Nursery Rhyme + [D] Sakura + [E] Atalanta"
+ },
+ {
+  "n": "Open Maiden's Holy Grail",
+  "d": "Output\n - ???\n\nHoly Grail opening materials\n - [S] Nursery Rhyme\n - [DATA CORRUPTED]\n\nYou can only have one Servant summoned from this Holy Grail!\nSummoning results are guaranteed."
+ },
+ {
+  "n": "Boundary of Emptiness",
+  "d": "Boundary of Emptiness\n\nDirect Death───\nVanish in the interval between Yin and Yang.\n\nPassive Art\nStrike the same target 200 times to activate.\nThe target becomes inactive and this effect cannot be canceled in any way."
+ },
+ {
+  "n": "Hero Slayer",
+  "d": "Hero Slayer\n\nYour time in this world is over. See you in hell.\n\nCounter: Stun\nCleanses the stun from this Servant, triples damage dealt for 10 seconds, and boosts all speed to the maximum."
+ },
+ {
+  "n": "[S] Ryougi Shiki Merge",
+  "d": "[S] Ryougi Shiki = [A] Ryougi Shiki + [A] Francis Drake + [A] Medusa + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Ryougi Shiki Merge",
+  "d": "[A] Ryougi Shiki = [B] Ryougi Shiki + [B] Li Shuwen + [C] Ryougi Shiki"
+ },
+ {
+  "n": "[B] Ryougi Shiki Merge",
+  "d": "[B] Ryougi Shiki = [C] Ryougi Shiki + [C] Kirei Kotomine"
+ },
+ {
+  "n": "[S] Acting Control Authority Merge",
+  "d": "[S] Acting Control Authority = [A] Sakura + [A] Arcueid Brunestud + [A] Francis Drake + [C] Imaginary Structure"
+ },
+ {
+  "n": "Spiritron Shock",
+  "d": "Qualia Strike\n\nSpiritrons Control Ability A.\n\nPassive Art\nDeals triple damage to the Enemy.\nEnemy is stunned for 3 seconds."
+ },
+ {
+  "n": "Photon Strike",
+  "d": "Photon Strike\n\nSpiritrons Control Ability B.\n\nPassive Art\nAfter a basic attack, strikes up to 4 enemies with 100% additional damage."
+ },
+ {
+  "n": "[A] Sakura Merge",
+  "d": "[A] Sakura = [B] Sakura + [B] Kirei Kotomine + [C] Rin Tohsaka"
+ },
+ {
+  "n": "Spiritrons Shock",
+  "d": "Qualia Strike\n\nSpiritrons Control Ability A.\n\nPassive Art\nDeals triple damage to the Enemy.\nEnemy is stunned for 3 seconds."
+ },
+ {
+  "n": "[B] Sakura Merge",
+  "d": "[B] Sakura = [C] Sakura + [C] Kirei Kotomine"
+ },
+ {
+  "n": "[C] Sakura Merge",
+  "d": "[C] Sakura = [D] Sakura + [D] Lu Bu Fengxian + [E] Atalanta"
+ },
+ {
+  "n": "[C] Passionlip Merge",
+  "d": "[C] Passionlip = [D] Sakura + [D] Atalanta + [E] Vlad III"
+ },
+ {
+  "n": "[C] Rin Tohsaka Merge",
+  "d": "[C] Rin Tohsaka = [D] Sakura + [D] Kirei Kotomine + [E] Gawain"
+ },
+ {
+  "n": "[D] Sakura Merge",
+  "d": "[D] Sakura = [E] Sakura + [E] Sakura"
+ },
+ {
+  "n": "Open Imaginary Holy Grail",
+  "d": "Output\n - ???\n\nHoly Grail opening materials\n - [S] Acting Control Authority\n - [DATA CORRUPTED]\n\nYou can only have one Servant summoned from this Holy Grail!\nSummoning results are guaranteed."
+ },
+ {
+  "n": "[EX] Alter Ego G Merge",
+  "d": "[EX] Alter Ego G = [S] Acting Control Authority + [A] Imaginary Cyber Daemon + [B] BB"
+ },
+ {
+  "n": "Monstrous Strength",
+  "d": "Monstrous Strength\n\n『Senior Hakuno. I. Found. You.』\n\nPassive Art\nSmall units are directly trampled by the Kingprotea attacks, they take 99,999,999 through the Shield.\n\nPenalty\nAttack speed is very slow."
+ },
+ {
+  "n": "Territory Smashing",
+  "d": "Territory Smashing\n\nAn attack from that giant Saint Graph fully operating, just by swinging, treats not 『an individual enemy』, but 『the territory』 as a target.\n\nPassive Art\nAttacks deal a 25% of damage in a large area around the target."
+ },
+ {
+  "n": "Huge Scale",
+  "d": "Huge Scale\n\n『More...bigger...』\n\nPassive Art\nThis Servant is not affected by stun and knockback effects.\n\nExtra Arts\nIf the player doesn't have an another Giant Servant ([EX] Titan Attila, [EX] Kingprotea), then\nthis servant gains 10 Attack Power every second and increases in size."
+ },
+ {
+  "n": "Grow Up Grow - [Size 1]",
+  "d": "Grow Up Grow\n\n『More...bigger!』\n\nPassive Art\nPunch attacks against Giant units deal damage to both Shield & HP and stun for 1 second & slow for 3 seconds.\n\nExtra Arts\nPunch attack deal 80% additional damage.\nThe effect is enhanced as the size increases."
+ },
+ {
+  "n": "Double Summon",
+  "d": "Double Summon\n\nAs both an Assassin and Caster, she uses this in her favour.\n\nArts Cooldown - 15 seconds\nSelects 8 nearby Servants, giving them a powerful buff for 10 seconds.\nIncreases damage and speed by 35%.\nRestore 3 MPs every second.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "Territory Creation",
+  "d": "Territory Creation\n\nIt can form an aerial garden that surpasses even the highest-grade normal Temple.\n\nArts Cooldown - 30 seconds\nCreate a territory at the target point.\nEach second deals 200% of Semiramis' damage to a random enemy in the territory range."
+ },
+ {
+  "n": "The Hanging Gardens of Babylon",
+  "d": "Hanging Gardens of Babylon\n\nGardens... float up.\n\nArts Cooldown - 60 seconds\nBabylon's Aerial Garden is summoned to the battlefield for 15 seconds.\nPlayer-owned servants within the Garden effect range are twice as fast."
+ },
+ {
+  "n": "Arrogant King's Alcohol",
+  "d": "Sikera Usum\n\nTurns the surrounding environment into \"poison\", even the air and mana itself of the surrounding area.\n\nArts Cooldown - 60 seconds\nApplies poison on the target.\nThis debuff is permanent and the damage is increased by 100 per second.\nMultiple instances don't stack"
+ },
+ {
+  "n": "허구 - 스카사하 - 일반 공격 라이트닝 효과",
+  "d": ""
+ },
+ {
+  "n": "Primordial Runes",
+  "d": "Primordial Runes\n\nBy inscribing this, you can use powerful and varied effects.\n\nArts Req - 150MP\nGains Primordial Runes effect for 10 seconds.\n\nEffect: Primordial Runes\nMaintain maximum acceleration.\nAt the end of the effect, all MPs are lost."
+ },
+ {
+  "n": "Wisdom of the Haunted Ground",
+  "d": "Wisdom of the Haunted Ground\n\nThe intellect of the abyss, acquired as a consequence of surpassing humans, killing gods and being left behind in the outside of the world.\n\nExtra Arts\nBasic attacks restores 1 MP\nYou get 5 MP by attacking the Archenemy.\n\nWhile under Primordial Runes effect, avoids all stuns and knockbacks."
+ },
+ {
+  "n": "God Slayer",
+  "d": "God Slayer\n\n『Shall I show that, if you reach the extremes of a spear blow, it is possible to kill even gods.』\n\nPassive Art\nAfter a normal attack, it deals 1% of damage equal to the remaining HP of the attacked target through the Shield.\nWhen Archenemy is a target, it has a 8% chance to activate."
+ },
+ {
+  "n": "Gáe Bolg Alter",
+  "d": "Soaring Spear of Piercing Death\n\nLet's go.\n\nArts Cooldown - 60 seconds\nImmediate death of the selected target.\nIf the target is Archenemy, it deals damage equivalent to 5% of the remaining HP instead of instant death and stuns it for 10 seconds."
+ },
+ {
+  "n": "Curse: Fiery Heaven",
+  "d": "Curse: Fiery Heaven\n\nFiery Heaven, rise up!\n\nArts Cooldown - 5 seconds\nFireball, which deals AoE damage to the random targets in range, deals up to 5000 damage."
+ },
+ {
+  "n": "Curse: Frigid Heaven",
+  "d": "Curse: Frigid Heaven\n\nGlacier, crush them!\n\nArts Cooldown - 10 seconds\nFreezing ball that causes splash damage to random targets in range, dealing 10000 damage and freezing them for 2 seconds."
+ },
+ {
+  "n": "[S] Tamamo Vitch Merge",
+  "d": "[S] Tamamo Vitch = [A] Tamamo Vitch + [A] Tamamo Dermo + [A] Tamamo-no-Mae + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Tamamo Vitch Merge",
+  "d": "[A] Tamamo Vitch = [B] Tamamo Vitch + [B] Sakura + [C] Tamamo-no-Mae"
+ },
+ {
+  "n": "Mantra: Bestial Sky",
+  "d": "Mantra: Bestial Sky\n\nI'll show you my real skills.\n\nArts Cooldown - 2 seconds\nIncreases the speed of 1 Servant by 50% and damage by 25% for 5 seconds.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "Mantra: Apothic Cave",
+  "d": "Mantra: Apothic Cave\n\nDo you think you can hurt me?\n\nArts Cooldown - 15 seconds\nDeals 15000 damage through the Shield to nearby enemies, stunning them for 5 seconds."
+ },
+ {
+  "n": "[S] Tamamo-no-Mae Merge",
+  "d": "[S] Tamamo-no-Mae = [A] Tamamo-no-Mae + [A] Tamamo Vitch + [A] Tamamo Dermo + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Tamamo-no-Mae Merge",
+  "d": "[A] Tamamo-no-Mae = [B] Tamamo-no-Mae + [B] BB + [C] Tamamo-no-Mae"
+ },
+ {
+  "n": "[B] Tamamo-no-Mae Merge",
+  "d": "[B] Tamamo-no-Mae = [C] Tamamo-no-Mae + [C] Medusa"
+ },
+ {
+  "n": "[B] Tamamo Vitch Merge",
+  "d": "[B] Tamamo Vitch = [C] Tamamo-no-Mae + [C] Nursery Rhyme"
+ },
+ {
+  "n": "[B] Tamamo Dermo Merge",
+  "d": "[B] Tamamo Dermo = [C] Tamamo-no-Mae + [C] Rin Tohsaka"
+ },
+ {
+  "n": "[EX] Mystic Code of the Sun Merge",
+  "d": "[EX] Mystic Code of the Sun = [S] Tamamo-no-Mae + [A] Lu Bu Fengxian + [B] Medusa"
+ },
+ {
+  "n": "Mantra: Merciful Sky",
+  "d": "Mantra: Merciful Sky\n\nDo you have any regrets?\n\nArts Cooldown - 10 seconds\nIncreases the speed of 6 Servants by 100% and damage by 50% for 8 seconds.\nServants of higher grade will take precedence."
+ },
+ {
+  "n": "Land of Eternal Bane",
+  "d": "Land of Eternal Bane\n\nSleep well, the flower of Higan that blooms and tears from the afterlife... Red Spider Lily Killing Stone!\n\nPassive Art\nAll enemies that approach this servant will take 500% poison damage and will be slowed for 10 seconds."
+ },
+ {
+  "n": "Charm: Polygamist Castration Fist",
+  "d": "Charm: Gyokutenhou\n\nHere we go! One, Two, Gyoku-ten-hou! This is my trump card!\n\nArts Cooldown - 60 seconds\nStrike a single target's vital point, dealing 4000% damage to both HP and Shield and incapacitating it for 10 seconds."
+ },
+ {
+  "n": "Spiritrons Bombardment",
+  "d": "call_beam(256)\n\nTohsaka Rin. I am a famous Spiritrons Hacker.\n\nPassive Art\nA normal attack strikes up to two enemies at once.\nIf you target Archenemy (Mission/Boss), attacks are focused."
+ },
+ {
+  "n": "Enhanced Alignment",
+  "d": "Enhanced Alignment\n\nI'll use it freely! A series of attacks!\n\nPassive Art\nSpiritrons Bombardment that is locked on the Enemy (except for Missions/Bosses), inflicting damage two times."
+ },
+ {
+  "n": "[S] Rin Tohsaka Merge",
+  "d": "[S] Rin Tohsaka = [A] Rin Tohsaka + [A] Shirou Emiya + [A] Sakura + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Rin Tohsaka Merge",
+  "d": "[A] Rin Tohsaka = [B] Rin Tohsaka + [B] Atalanta + [C] Kirei Kotomine"
+ },
+ {
+  "n": "[B] Rin Tohsaka Merge",
+  "d": "[B] Rin Tohsaka = [C] Rin Tohsaka + [C] Sakura"
+ },
+ {
+  "n": "[EX] Jeweled Sword Zelretch Merge",
+  "d": "[EX] Jeweled Sword Zelretch = [S] Rin Tohsaka + [A] Kirei Kotomine + [B] Sakura"
+ },
+ {
+  "n": "Jeweled Sword Zelretch",
+  "d": "Zelretch\n\nThe sword is capable of the Second Magic.\nCreates a small opening to the same area in another parallel world,\nthough any further interference is impossible.\n\nPassive Art\nBasic attacks deal damage in a very large line  and apply slow for 3 seconds.\nAttacks deal damage both to enemy Shield and HP.\nDeals half damage to the Giant Units (Missions/Bosses).\n\nPenalty\nAttack speed is very slow."
+ },
+ {
+  "n": "Divinity",
+  "d": "Divinity\n\n\"Would you like to go on a summer adventure with me?\"\n\nPassive Art\nYour damage is amplified by 100%.\nYour basic attacks have a 15% chance to deal 7x critical damage."
+ },
+ {
+  "n": "Midsummer Witchcraft",
+  "d": "Midsummer Witchcraft\n\n\"Thank you for the meal❤\"\n\nArts Cooldown - 60 seconds\nApplies Charm debuff to a single target for 5 or more seconds.\n\nEffect: Charm\nCharmed targets are stunned, receive 500% damage every second and can't regenerate Shield."
+ },
+ {
+  "n": "Goddess Metamorphosis",
+  "d": "Goddess Metamorphosis\n\nHighest form - Goddess Morph\nWhere one undergoes metamorphosis into a goddess.\nA staggering feast of buffs.\n\nArts Cooldown - 60 seconds\nGrants Goddess Metamorphosis effect for 10 seconds and restore all MP.\n\nEffect: Goddess Metamorphosis\nIncrease critical damage by 50% (10.5x)\nUnaffected by knockbacks and stuns."
+ },
+ {
+  "n": "Everlasting Summer Sunlight",
+  "d": "Everlasting Summer Sunlight - Sunshade Parasol of Master's Most Favorite Deity\n\n\"This fox can see through it all. Now, receive this 『Everlasting Summer Sunlight』!!\"\n\nArts Req - 50MP\nDeals 1500% damage to a single target and stuns it for 5 seconds."
+ },
+ {
+  "n": "Impaling Lord",
+  "d": "Kazikli Voyvoda\n\nHere, there, there, and over there.\nAll of it, every last piece-\nis a part of my Domain.\n\nPassive Art\nAttacks deal splash damage.\nAttacks against an Archenemy deal 750 additional damage.\n\nExtra Arts\nAttacks against an Archenemy slow the target for 0.5 seconds."
+ },
+ {
+  "n": "The Fortress of Impalement - Kazikli Bey",
+  "d": "Kazikli Voyvoda\n\nWife, witness this blood spilt in sacrifice, so that it may appease thy thirst.\nKazikli Bey!\n\nArts Cooldown - 20 seconds\nDeals continuous damage in the AoE around random targets in range.\n\nA rising thorn deals 10000 damage for 5 seconds.\n\nExtra Arts\nTargets hit by Thorns are slowed for 1 second.\nAlso stuns, if it's an Enemy."
+ },
+ {
+  "n": "[S] Vlad III Merge",
+  "d": "[S] Vlad III = [A] Vlad III + [A] Elisabeth Bathory Alter + [A] Iskandar + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Vlad III Merge",
+  "d": "[A] Vlad III = [B] Vlad III + [B] Cu Chulainn + [C] Atalanta"
+ },
+ {
+  "n": "[B] Vlad III Merge",
+  "d": "[B] Vlad III = [C] Vlad III + [C] Medusa"
+ },
+ {
+  "n": "[B] Elisabeth Bathory Merge",
+  "d": "[B] Elisabeth Bathory = [C] Vlad III + [C] Cu Chulainn"
+ },
+ {
+  "n": "[C] Vlad III Merge",
+  "d": "[C] Vlad III = [D] Vlad III + [D] Gawain + [E] Vlad III"
+ },
+ {
+  "n": "[C] Cu Chulainn Merge",
+  "d": "[C] Cu Chulainn = [D] Vlad III + [D] Lu Bu Fengxian + [E] Vlad III"
+ },
+ {
+  "n": "[C] Karna Merge",
+  "d": "[C] Karna = [D] Vlad III + [D] Atalanta + [E] Gawain"
+ },
+ {
+  "n": "[D] Vlad III Merge",
+  "d": "[D] Vlad III = [E] Vlad III + [E] Vlad III"
+ },
+ {
+  "n": "[D] Lu Bu Fengxian Merge",
+  "d": "[D] Lu Bu Fengxian = [E] Vlad III + [E] Kirei Kotomine"
+ },
+ {
+  "n": "서번트 - 전뇌마 - 기술 A - 고속 타격(실)",
+  "d": ""
+ },
+ {
+  "n": "[Transformation]",
+  "d": "When you use this ability, this unit will become a random A-grade servant every minute.\n\nYou can't transform back into Imaginary Cyber Daemon."
+ },
+ {
+  "n": "Activate Lunar Drill",
+  "d": "Output\n - ???\n\nMaterials\n - [A] Imaginary Cyber Daemon\n - [DATA CORRUPTED]\n\nOnly one unit can be deployed by using this way.\nSummoning results are guaranteed."
+ },
+ {
+  "n": "서번트 - 구조체 - 기술 A - 고속 타격(실)",
+  "d": ""
+ },
+ {
+  "n": "[A] Imaginary Cyber Daemon Merge",
+  "d": "[A] Imaginary Cyber Daemon = [C] Imaginary Structure + [C] Imaginary Structure + [C] Imaginary Structure + [C] Imaginary Structure + [C] Imaginary Structure\n※This Servant can only be obtained by merging units!\n\nMerging results are guaranteed."
+ },
+ {
+  "n": "Planetary Drill",
+  "d": "Planetary Drill\n\nConsumes nearby Spirits, dealing fixed 100% damage.\n\nPassive Art\nYou can attack while moving, and always maintain your maximum attack speed."
+ },
+ {
+  "n": "허구 - 벨버 - 기술 A - 행성 천공(실)",
+  "d": ""
+ },
+ {
+  "n": "Holy Bombardment",
+  "d": "Anti-Seraph\n\nShatters anti-cell shards, dealing effective damage to all enemy targets caught within attackable range.\n\nArts Cooldown - 10 seconds\nShatters all enemies' health and shields within a radius with 1000% of damage.\n\nExtra Arts\nSmall units are stunned for 1 second and slowed for 3 second."
+ },
+ {
+  "n": "Ascension",
+  "d": "Ascension\n\nIt's a powerful Servant from beyond the realm of the unknown.\n\nArts Cooldown - ∞ seconds\nSummons a random [EX] grade Servant.\n\nSummoned Servant gains an Perfect Unknown effect, boosting damage and speed by 50%."
+ },
+ {
+  "n": "Super Bajiquan",
+  "d": "Bajiquan\n\nUgh, it won't go as planned!\n\nPassive Art\nStiffens the target whenever a basic attack hits.\nIn addition, increases attack speed by 40%, up to 200%.\nIncreased attack speed lasts for 5 seconds."
+ },
+ {
+  "n": "Stalking Tiger",
+  "d": "Fierce Tiger Forcibly Climbs a Mountain\n\n■■■■■――.\n\nArts Req - 35MP\nThe next attack deals 900% damage in triple hit combo and stuns the target for 3 seconds."
+ },
+ {
+  "n": "[S] Li Shuwen Merge",
+  "d": "[S] Li Shuwen = [A] Li Shuwen + [A] Ryougi Shiki + [A] Vlad III + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] Li Shuwen Merge",
+  "d": "[A] Li Shuwen = [B] Li Shuwen + [B] Nero Claudius + [C] Karna"
+ },
+ {
+  "n": "[B] Li Shuwen Merge",
+  "d": "[B] Li Shuwen = [C] Li Shuwen + [C] Gawain"
+ },
+ {
+  "n": "[C] Li Shuwen Merge",
+  "d": "[C] Li Shuwen = [D] Li Shuwen + [D] Gawain + [E] Kirei Kotomine"
+ },
+ {
+  "n": "[C] Ryougi Shiki Merge",
+  "d": "[C] Ryougi Shiki = [D] Li Shuwen + [D] Nursery Rhyme + [E] Kirei Kotomine"
+ },
+ {
+  "n": "[EX] Frankenstein's Monster Merge",
+  "d": "[EX] Frankenstein's Monster = [S] Li Shuwen + [A] Passionlip + [B] Arcueid Brunestud"
+ },
+ {
+  "n": "The King's Treasure",
+  "d": "Gate of Babylon\n\n...\n\nArts Req - 20MP\nLaunches the arms forward, dealing 1000% total damage."
+ },
+ {
+  "n": "[S] ZERO-MODEL Merge",
+  "d": "[S] ZERO-MODEL = [A] ZERO-MODEL + [A] Tamamo-no-Mae + [A] Artoria Alter + [C] Imaginary Structure"
+ },
+ {
+  "n": "[A] ZERO-MODEL Merge",
+  "d": "[A] ZERO-MODEL = [B] ZERO-MODEL + [B] Karna + [C] Kirei Kotomine"
+ },
+ {
+  "n": "[A] Jeanne d'Arc Alter Merge",
+  "d": "[A] Jeanne d'Arc Alter = [B] ZERO-MODEL + [B] Jeanne d'Arc + [C] Cu Chulainn"
+ },
+ {
+  "n": "[B] ZERO-MODEL Merge",
+  "d": "[B] ZERO-MODEL = [C] ZERO-MODEL + [C] Cu Chulainn"
+ },
+ {
+  "n": "[B] Gilgamesh Merge",
+  "d": "[B] Gilgamesh = [C] ZERO-MODEL + [C] Iskandar"
+ }
+]

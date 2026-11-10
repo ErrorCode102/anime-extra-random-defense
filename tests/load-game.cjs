@@ -41,7 +41,7 @@ function loadGame() {
   context.window = context;
   vm.createContext(context);
   const root = path.resolve(__dirname, '..', 'anime-extra-random-defense-3d');
-  for (const file of ['i18n.js', 'data.js', 'ferd-skills.js', 'game.js']) {
+  for (const file of ['i18n.js', 'data.js', 'ferd-skills.js', 'ferd-skills-th.js', 'game.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, { filename: file });
   }
   return context;

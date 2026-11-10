@@ -3,10 +3,12 @@ const assert = require('node:assert/strict');
 const { loadGame } = require('./load-game.cjs');
 
 const FACTION_KEYS = ['aurel', 'kitsune', 'steppe', 'echo', 'mooncell'];
+const masterBasic = ctx => ctx.Game.addFactionXp(1e9); // D/E require a mastered basic faction
 
 test('each faction is frozen for the whole run and rejects in-play changes', () => {
   for (const key of FACTION_KEYS) {
     const ctx = loadGame();
+    masterBasic(ctx);
     assert.equal(ctx.Game.setFaction(key), true);
     ctx.Game.startGame();
     assert.equal(ctx.Game.S.factionKey, key);
@@ -29,6 +31,7 @@ test('each faction is frozen for the whole run and rejects in-play changes', () 
 
 test('start options can lock a faction without changing the saved menu preference first', () => {
   const ctx = loadGame();
+  masterBasic(ctx);
   ctx.Game.startGame({ factionKey: 'mooncell' });
   assert.equal(ctx.Game.S.factionKey, 'mooncell');
   assert.equal(ctx.Game.S.players[0].faction, 'mooncell');
@@ -37,6 +40,7 @@ test('start options can lock a faction without changing the saved menu preferenc
 
 test('returning to the menu unlocks selection for the next run', () => {
   const ctx = loadGame();
+  masterBasic(ctx);
   ctx.Game.setFaction('aurel');
   ctx.Game.startGame();
   assert.equal(ctx.Game.setFaction('echo'), false);

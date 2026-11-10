@@ -85,10 +85,24 @@ function freshState(diffKey, playerCount=1){
     pity:0, kills:0, summons:0, ascensions:0, goldEarned:0, startTime:0,
     shake:0, leakFlash:0, time:0,
     facCd:{seal:0,focus:0,super:0}, focusT:0, focusUid:null, facUiT:0,
+    collectionDone:false,
+    penalties:[], waveSpawnCount:0, stasisT:0, stormT:0,
     gambleStocks:Object.fromEntries(GOLD_GAMBLES.map(g=>[g.key,{n:g.charges,t:0}])),
   };
 }
 S = freshState('practice');
+
+/* ---------------- penalties ---------------- */
+let selectedPenalties = new Set();
+const hasPen = k => S.penalties.includes(k);
+function togglePenalty(key){
+  if (!PENALTY_BY_KEY[key]) return false;
+  if (S.mode!=='menu' && S.mode!=='lobby'){ toast(t('penalty.locked'), true); return false; }
+  selectedPenalties.has(key) ? selectedPenalties.delete(key) : selectedPenalties.add(key);
+  AudioFX.click();
+  buildPenalties(); syncPenaltyBtn();
+  return selectedPenalties.has(key);
+}
 
 const popUsed = () => S.field.reduce((n,u)=>n+(u?UNIT_BY_ID[u.id].pop:0),0);
 const gradeVal = g => ({E:1,D:2,C:3,B:4,A:5,S:6,EX:7,STAR:8}[g]||1);
@@ -131,6 +145,7 @@ const factionUnlocked = f => !f.reqMaster || basicMastered();
 function addFactionXp(amount){
   const st = factionSave.fac[curFaction().key];
   if (st.lv >= FACTION_MAX_LEVEL) return;
+  if (S.penalties.length >= 5) amount *= 2;
   st.xp += Math.round(amount);
   let leveled = false;
   while (st.lv < FACTION_MAX_LEVEL && st.xp >= FACTION_XP_REQ[st.lv-1]){ st.xp -= FACTION_XP_REQ[st.lv-1]; st.lv++; leveled=true; }
@@ -295,7 +310,7 @@ function buildGambling(){
 function buildServantGambles(){
   const grid=$('servantGambleGrid'); grid.innerHTML='';
   SERVANT_GAMBLES.forEach(g=>{
-    const chance=servantSpecial?g.special:g.chance;
+    const chance=servantChance(g);
     const b=document.createElement('button');
     b.className='gambleBtn'; b.id='servant_'+g.key;
     b.style.borderColor=GRADES[g.grades[g.grades.length-1]].color;
@@ -306,6 +321,10 @@ function buildServantGambles(){
   $('servantModeNormal').classList.toggle('sel',!servantSpecial);
   $('servantModeSpecial').classList.toggle('sel',servantSpecial);
 }
+function gambleAllowed(kind, key){
+  if (!hasPen('nurfGacha')) return true;
+  return kind==='gold' ? (key==='g10'||key==='g100') : key==='ED';
+}
 function syncGambling(){
   if (!$('goldGambleGrid')) return;
   $('tabGoldGamble').classList.toggle('sel',gambleTab==='gold');
@@ -314,17 +333,18 @@ function syncGambling(){
   $('servantGamble').style.display=gambleTab==='servant'?'block':'none';
   GOLD_GAMBLES.forEach(g=>{
     const st=S.gambleStocks[g.key], b=$('gamble_'+g.key);
-    b.disabled=S.mode!=='play'||S.gold<g.cost||st.n<1;
+    b.disabled=S.mode!=='play'||S.gold<g.cost||st.n<1||!gambleAllowed('gold',g.key);
     $('stock_'+g.key).textContent=t('gamble.charges',{n:st.n,max:g.charges})+(st.n<g.charges?t('gamble.next',{s:Math.ceil(g.cd-st.t)}):'');
   });
   SERVANT_GAMBLES.forEach(g=>{
     const b=$('servant_'+g.key);
-    b.disabled=S.mode!=='play'||S.gold<g.cost||S.spirit<g.spirit||!S.bench.includes(null);
+    b.disabled=S.mode!=='play'||S.gold<g.cost||S.spirit<g.spirit||!S.bench.includes(null)||!gambleAllowed('servant',g.key);
   });
 }
 function doGoldGamble(key){
   const g=GOLD_GAMBLES.find(x=>x.key===key);
   if (S.mode!=='play'||!g) return;
+  if (!gambleAllowed('gold',key)) return toast(t('penalty.gambleBlocked'), true);
   const st=S.gambleStocks[key];
   if (st.n<1) return toast(t('gamble.noCharges'), true);
   if (S.gold<g.cost) return toast(t('toast.noGold'), true);
@@ -353,11 +373,12 @@ function servantChance(g){
 function doServantGamble(key){
   const g=SERVANT_GAMBLES.find(x=>x.key===key);
   if (S.mode!=='play'||!g) return;
+  if (!gambleAllowed('servant',key)) return toast(t('penalty.gambleBlocked'), true);
   if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
   if (S.gold<g.cost) return toast(t('toast.noGold'), true);
   if (S.spirit<g.spirit) return toast(t('toast.noSpirit'), true);
   S.gold-=g.cost; S.spirit-=g.spirit;
-  const chance=servantSpecial?g.special:g.chance;
+  const chance=servantChance(g);
   if (Math.random()*100<chance){
     S.summons++;
     giveServant(pick(g.grades), t(servantSpecial?'src.specialGamble':'src.servantGamble'));
@@ -398,19 +419,23 @@ function buildFactionChips(){
   const box=$('facChips'); box.innerHTML='';
   const startRow=$('startFactionRow'); startRow.innerHTML='';
   FACTIONS.forEach(f=>{
+    const lk=!factionUnlocked(f);
     const b=document.createElement('button');
-    b.className='facChip'; b.dataset.k=f.key; b.style.color=f.color; b.title=f.name;
-    b.innerHTML=`<i>${f.icon}</i><b>${f.tag}</b>`;
+    b.className='facChip'+(lk?' locked':''); b.dataset.k=f.key; b.style.color=f.color; b.title=f.name;
+    b.innerHTML=`<i>${lk?'🔒':f.icon}</i><b>${f.tag}</b>`;
     b.onclick=()=>setFaction(f.key);
     box.appendChild(b);
     const choice=document.createElement('button');
-    choice.className='facChoice'; choice.dataset.k=f.key; choice.style.color=f.color;
-    choice.innerHTML=`<i>${f.icon}</i><b>${f.tag}</b><span>${f.name}</span>`;
+    choice.className='facChoice'+(lk?' locked':''); choice.dataset.k=f.key; choice.style.color=f.color;
+    choice.innerHTML=`<i>${lk?'🔒':f.icon}</i><b>${f.tag}</b><span>${f.name}</span>${lk?`<em>${t('fac.unlockNeed')}</em>`:''}`;
     choice.onclick=()=>setFaction(f.key);
     startRow.appendChild(choice);
   });
 }
+let facUnlockSig='';
 function syncFaction(){
+  const sig=FACTIONS.map(f=>factionUnlocked(f)?1:0).join('');
+  if (sig!==facUnlockSig){ facUnlockSig=sig; buildFactionChips(); }
   const f=curFaction(), lv=facLevel(), st=factionSave.fac[f.key];
   const locked = S.mode !== 'menu' && S.mode !== 'lobby';
   for (const c of [...$('facChips').children, ...$('startFactionRow').children]){
@@ -423,7 +448,7 @@ function syncFaction(){
   }
   $('factionPanel').classList.toggle('locked', locked);
   $('facLockNote').textContent = locked ? t('fac.lockLocked') : t('fac.lockMenu');
-  $('startFactionDesc').textContent = `${tl(f,'passive')} ${t('fac.activeWord')} ${f.activeName} — ${tl(f,'activeDesc')}`;
+  $('startFactionDesc').textContent = (f.traits||[]).map(tr=>getLang()==='th'?tr.th:tr.en).join(' ') + ' ' + t('fac.activeWord') + ' ' + f.activeName + (factionUnlocked(f)?'':' — '+t('fac.unlockNeed'));
   $('facName').textContent=f.name; $('facName').style.color=f.color;
   $('facTag').textContent=f.tag; $('facTag').style.background=f.color;
   $('facLv').textContent = facMastered()?t('fac.mastered'):t('fac.lv',{lv});
@@ -431,14 +456,14 @@ function syncFaction(){
   $('facXpBar').style.width = (lv>=FACTION_MAX_LEVEL?100:Math.min(100,st.xp/req*100))+'%';
   $('facXpBar').style.background=f.color;
   $('facXpTxt').textContent = lv>=FACTION_MAX_LEVEL?t('fac.xpMaster'):t('fac.xp',{xp:st.xp,req});
-  $('facPassive').textContent=tl(f,'passive');
+  $('facPassive').innerHTML=(f.traits||[]).map(tr=>`<div class="facTrait">${esc(getLang()==='th'?tr.th:tr.en)}</div>`).join('');
   const btn=$('facActiveBtn');
   btn.style.borderColor=f.color; btn.style.color=f.color;
   let sub='', dis=S.mode!=='play';
   if (f.activeType==='supergold'){ sub=S.facCd.super>0?`${Math.ceil(S.facCd.super)}s`:`◈${f.cost}`; dis=dis||S.facCd.super>0||S.gold<f.cost; }
   else if (f.activeType==='pickup'){ sub=t('fac.pickupSub'); dis=dis||S.wisps<1||!S.bench.includes(null); }
   else if (f.activeType==='fusion'){ sub=t('fac.fusionSub',{n:FUSION_COUNT}); }
-  else if (f.key==='steppe'){ sub=S.facCd.seal>0?`${Math.ceil(S.facCd.seal)}s`:t('fac.cdSub',{n:f.cd}); dis=dis||S.facCd.seal>0; }
+  else if (f.activeType==='crest'){ sub=S.facCd.seal>0?`${Math.ceil(S.facCd.seal)}s`:t('fac.cdSub',{n:f.cd}); dis=dis||S.facCd.seal>0; }
   else if (f.key==='echo'){ sub=S.facCd.focus>0?`${Math.ceil(S.facCd.focus)}s`:t('fac.cdSub',{n:f.cd}); dis=dis||S.facCd.focus>0; }
   btn.disabled=dis;
   btn.innerHTML=`${f.icon} ${f.activeName} <span class="cost">${sub}</span>`;
@@ -506,11 +531,13 @@ function matStatus(recipe, baseRef){
   });
 }
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function skillName(s){ return getLang()==='th' ? (FERD_NAME_TH[s.name]||s.name) : s.name; }
+function skillDesc(s){ return getLang()==='th' ? (FERD_DESC_TH[s.desc]||s.desc) : s.desc; }
 function skillsHTML(u, wrapClass){
   const list = u.ferdSkills || [];
   if (!list.length) return '';
   return `<div class="${wrapClass}"><div class="skHead">${t('sel.skill')}</div>` +
-    list.map(s=>`<div class="sk"><b class="skn">${esc(s.name)}</b>${s.desc?`<span class="skd">${esc(s.desc).replace(/\n/g,'<br>')}</span>`:''}</div>`).join('') +
+    list.map(s=>`<div class="sk"><b class="skn">${esc(skillName(s))}</b>${s.desc?`<span class="skd">${esc(skillDesc(s)).replace(/\n/g,'<br>')}</span>`:''}</div>`).join('') +
     `</div>`;
 }
 function renderSelected(){
@@ -565,17 +592,32 @@ function renderSelected(){
 function giveServant(grade, source){
   const idx = S.bench.indexOf(null);
   if (idx===-1){ toast(t('toast.benchFull'), true); return false; }
-  const pool = GACHA_POOL[grade];
+  const pool = GACHA_POOL[grade] || UNITS.filter(u=>u.grade===grade).map(u=>u.id);
   const id = pick(pool);
   const u = UNIT_BY_ID[id];
-  S.bench[idx] = { uid:uidSeq++, id, cd:0 };
+  S.bench[idx] = { uid:uidSeq++, id, cd: curFaction().key==='kitsune' ? 0 : 3 };
   AudioFX.summon(grade);
   const epic = grade==='S'||grade==='EX'||grade==='STAR';
   log(`${source} [${GRADES[grade].label}] ${u.name}`, epic?'epic':grade==='A'?'gold':'');
   if (epic) toast(t('summon.epicToast',{grade:GRADES[grade].label,name:u.name}));
+  if (S.mode==='play' && curFaction().key==='kitsune' && S.enemies.some(e=>!e.dead)){
+    S.enemies.forEach(e=>{ if(!e.dead) damageEnemy(e, 2000*facMul(), {stun:1}); });
+    S.shake = Math.max(S.shake, 5);
+    log(t('fac.thunderLog'), 'good');
+  }
   renderBench(idx); syncStats();
   if (S.sel) renderSelected();
+  checkCollection();
   return true;
+}
+function checkCollection(){
+  if (curFaction().key!=='mooncell' || S.collectionDone) return;
+  const ids = new Set([...S.bench,...S.field].filter(Boolean).map(u=>u.id).filter(id=>UNIT_BY_ID[id].grade==='A'));
+  if (ids.size < 5) return;
+  S.collectionDone = true;
+  giveServant('EX', t('src.collection'));
+  banner(t('banner.collection'));
+  log(t('fac.collectLog'), 'epic');
 }
 function summon(){
   if (S.mode!=='play') return;
@@ -624,7 +666,7 @@ function wispToGacha(){
   if (S.mode!=='play' || S.wisps<1) return;
   if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
   S.wisps--; S.summons++;
-  const grade = S.wave<15 ? 'E' : (Math.random()<0.5?'E':'D');
+  const grade = hasPen('gachaOnlyE') ? 'E' : (S.wave<15 ? 'E' : (Math.random()<0.5?'E':'D'));
   giveServant(grade, t('src.wispGacha'));
   syncStats();
 }
@@ -661,6 +703,7 @@ function unitByUid(uid){
 }
 function sellSelected(){
   if (!S.sel) return;
+  if (hasPen('sellDisabled')) return toast(t('penalty.sellBlocked'), true);
   const arr = S.sel.loc==='bench'?S.bench:S.field;
   const u = arr[S.sel.idx]; if (!u) return;
   const def = UNIT_BY_ID[u.id];
@@ -680,7 +723,12 @@ function ascend(ri){
   if (!base || base.id!==r.base) return;
   const status = matStatus(r, S.sel);
   if (!status.every(m=>m.have)) return toast(t('toast.matsMissing'), true);
-  const res = UNIT_BY_ID[r.result];
+  let res = UNIT_BY_ID[r.result];
+  if (hasPen('johabRandom') && Math.random()<0.3){
+    res = pick(UNITS.filter(x=>x.grade===res.grade));
+    log(t('penalty.johabLog',{name:res.name}), 'bad');
+    toast(t('penalty.johabToast'), true);
+  }
   const baseDef = UNIT_BY_ID[base.id];
   if (S.sel.loc==='field' && popUsed()-baseDef.pop+res.pop > S.popCap)
     return toast(t('toast.noPop'), true);
@@ -688,12 +736,12 @@ function ascend(ri){
     const arr = m.ref.loc==='bench'?S.bench:S.field;
     arr[m.ref.idx] = null;
   });
-  base.id = r.result; base.cd = 0;
+  base.id = res.id; base.cd = 0;
   S.ascensions++;
   addFactionXp(200);
   if (curFaction().key==='echo' && Math.random()<0.05*facMul() && S.bench.includes(null)){
     const idx=S.bench.indexOf(null);
-    S.bench[idx]={uid:uidSeq++, id:r.result, cd:0};
+    S.bench[idx]={uid:uidSeq++, id:res.id, cd:0};
     log(t('fac.echoLog',{name:res.name}), 'epic');
     toast(t('fac.echoToast',{name:res.name}));
   }
@@ -705,12 +753,13 @@ function ascend(ri){
   log(t('log.ascended',{name:res.name}), 'epic');
   toast(t('toast.awakens',{name:res.name}));
   renderBench(); renderSelected(); syncStats();
+  checkCollection();
 }
 
 /* ---------------- waves & enemies ---------------- */
 function buildWave(w){
   const q = [];
-  const count = Math.min(30, 8 + Math.floor(w*0.55));
+  const count = Math.min(hasPen('raid')?60:30, (8 + Math.floor(w*0.55)) * (hasPen('raid')?2:1));
   const isBoss = w%5===0;
   for (let i=0;i<count;i++){
     let type='normal';
@@ -735,6 +784,7 @@ function startWave(){
   if (S.mode!=='play' || S.waveActive) return;
   S.wave++;
   S.waveActive = true;
+  S.waveSpawnCount = 0;
   S.spawnQueue = buildWave(S.wave);
   S.spawnT = 0.4;
   const boss = S.wave%5===0;
@@ -746,23 +796,29 @@ function startWave(){
 function spawnEnemy(type){
   const t = ETYPES[type], w = S.wave;
   const finalBoss = t.boss && w===S.diff.waves;
-  const hp = Math.round((10 + 4*w + 0.5*w*w) * t.hp * S.diff.hp * (finalBoss?1.5:1));
+  const leader = hasPen('powerfulLeader') && S.waveSpawnCount===0;
+  const raidMul = hasPen('raid') ? 0.5 : 1;
+  const hp = Math.round((10 + 4*w + 0.5*w*w) * t.hp * S.diff.hp * (finalBoss?1.5:1) * (leader?20:1) * raidMul);
   S.enemies.push({
-    uid:uidSeq++, type, d:0, hp, maxHp:hp, sp:t.sp*S.diff.speed*rand(0.92,1.08), r:t.r, color:t.color,
-    gold:Math.round((3+w*0.7)*t.gold*S.diff.gold), leak:t.leak, boss:!!t.boss,
-    armor:t.armor||0, regen:t.regen||0, slowT:0, slowF:0, stunT:0, dots:[], dead:false,
+    uid:uidSeq++, type, d:0, hp, maxHp:hp,
+    sp:t.sp*S.diff.speed*rand(0.92,1.08)*(hasPen('enemyBoost')?1.5:1), r:t.r, color:t.color,
+    gold:Math.round((3+w*0.7)*t.gold*S.diff.gold*(leader?10:1)*raidMul), leak:t.leak, boss:!!t.boss,
+    armor:t.armor||0, regen:(t.regen||0)+(hasPen('enemyHeal')?0.005:0), slowT:0, slowF:0, stunT:0, dots:[], dead:false,
+    leader,
   });
+  S.waveSpawnCount++;
 }
 function endWave(){
   S.waveActive = false;
   const interest = Math.min(60, Math.floor(S.gold*0.08));
   const bonus = Math.round((30 + S.wave*5) * S.diff.gold) + interest;
   S.gold += bonus; S.goldEarned += bonus;
-  S.wisps += CFG.wispsPerWave;
+  const wispGain = Math.max(0, CFG.wispsPerWave - (hasPen('lessWisp')?1:0));
+  S.wisps += wispGain;
   const spiritReward = curFaction().key==='kitsune' ? 2 : 1;
   S.spirit += spiritReward;
   addFactionXp(500);
-  log(t('log.waveCleared',{n:S.wave,bonus,interest:interest?t('log.interest',{n:interest}):'',wisps:CFG.wispsPerWave,spirit:spiritReward}), 'gold');
+  log(t('log.waveCleared',{n:S.wave,bonus,interest:interest?t('log.interest',{n:interest}):'',wisps:wispGain,spirit:spiritReward}), 'gold');
   bump($('stGold').parentElement);
   if (S.wave >= S.diff.waves) return gameOver(true);
   if (S.auto) S.autoT = 2.0;
@@ -782,12 +838,18 @@ function gameOver(win){
   $('endStats').innerHTML = [
     [S.wave, t('end.waves')], [S.kills, t('end.kills')], [S.summons, t('end.summons')],
     [S.ascensions, t('end.ascensions')], [Math.floor(S.goldEarned), t('end.gold')], [`${mins}:${String(secs).padStart(2,'0')}`, t('end.time')],
+    ...(S.penalties.length ? [[S.penalties.length, t('end.penalties')]] : []),
   ].map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join('');
   $('endOverlay').classList.add('show');
 }
 
 /* ---------------- combat ---------------- */
-function dmgMult(){ return (1 + 0.12 * S.field.filter(u=>u&&UNIT_BY_ID[u.id].base==='MS').length) * (S.focusT>0?1.25:1); }
+function dmgMult(){
+  const f = curFaction();
+  const head = f.key==='steppe' ? 1.15 : 1;
+  const focus = S.focusT>0 ? (f.key==='echo' ? 1.25 + (6-S.focusT)/6*2.75 : 1.25) : 1;
+  return (1 + 0.12 * S.field.filter(u=>u&&UNIT_BY_ID[u.id].base==='MS').length) * head * focus;
+}
 function damageEnemy(e, dmg, opts={}){
   if (e.dead) return;
   const real = dmg * (1 - e.armor);
@@ -802,8 +864,19 @@ function damageEnemy(e, dmg, opts={}){
     e.dead = true;
     S.kills++; S.gold += e.gold; S.goldEarned += e.gold;
     onKillReward(e, p);
+    if (hasPen('servantStun') && opts.src){
+      const killer = unitByUid(opts.src);
+      if (killer && killer.loc==='field') killer.u.stunT = Math.max(killer.u.stunT||0, 1);
+    }
     burst(p.x, p.y, e.color, e.boss?30:8);
-    if (e.boss){ S.shake = Math.max(S.shake, 9); ringFx(p.x,p.y,e.color,80); log(t('log.bossDestroyed',{gold:e.gold}), 'good'); }
+    if (e.boss){
+      S.shake = Math.max(S.shake, 9); ringFx(p.x,p.y,e.color,80); log(t('log.bossDestroyed',{gold:e.gold}), 'good');
+      if (hasPen('afterImpact')){
+        S.field.forEach(u=>{ if(u) u.stunT = Math.max(u.stunT||0, 10); });
+        S.shake = Math.max(S.shake, 12);
+        log(t('penalty.impactLog'), 'bad'); toast(t('penalty.impactToast'), true);
+      }
+    }
     AudioFX.kill();
     bump($('stGold').parentElement);
     syncStats();
@@ -823,11 +896,11 @@ function unitAttack(u, def, x, y){
   if (!inR.length) return false;
   inR.sort((a,b)=>b.e.d-a.e.d);
   const first = (S.focusT>0 && inR.find(o=>o.e.uid===S.focusUid)) || inR[0];
-  const mult = dmgMult();
+  const mult = dmgMult() * (u.crest?1.5:1) * (1+(u.grow||0)/def.dmg);
   const g = GRADES[def.grade];
   AudioFX.shoot();
   const fire = (target, dmg, extra={}) => {
-    S.projectiles.push({ uid:uidSeq++, x, y, t:target.e, tx:target.p.x, ty:target.p.y, sp:460, dmg, color:g.color, def, ...extra });
+    S.projectiles.push({ uid:uidSeq++, x, y, t:target.e, tx:target.p.x, ty:target.p.y, sp:460*(curFaction().key==='aurel'?1.25:1)*(u.crest?1.5:1), dmg, color:g.color, def, src:u.uid, ...extra });
   };
   switch (def.kind){
     case 'single': fire(first, def.dmg*mult, {greed:def.greed}); break;
@@ -857,7 +930,7 @@ function unitAttack(u, def, x, y){
         if (!cur) break;
         hit.add(cur.e);
         pts.push({x:cur.p.x,y:cur.p.y});
-        damageEnemy(cur.e, dmg, {});
+        damageEnemy(cur.e, dmg, {src:u.uid});
         dmg *= 0.75;
         const next = S.enemies.filter(e=>!e.dead&&!hit.has(e)).map(e=>({e,p:pathPos(e.d)}))
           .filter(o=>(o.p.x-cur.p.x)**2+(o.p.y-cur.p.y)**2<130*130)
@@ -868,12 +941,12 @@ function unitAttack(u, def, x, y){
       break;
     }
     case 'beam': {
-      damageEnemy(first.e, def.dmg*mult, {});
+      damageEnemy(first.e, def.dmg*mult, {src:u.uid});
       if (def.aoe){
         S.enemies.forEach(e=>{
           if (e.dead || e===first.e) return;
           const p=pathPos(e.d);
-          if ((p.x-first.p.x)**2+(p.y-first.p.y)**2 < def.aoe*def.aoe) damageEnemy(e, def.dmg*mult*0.7, {});
+          if ((p.x-first.p.x)**2+(p.y-first.p.y)**2 < def.aoe*def.aoe) damageEnemy(e, def.dmg*mult*0.7, {src:u.uid});
         });
         ringFx(first.p.x, first.p.y, g.color, def.aoe);
       }
@@ -888,7 +961,7 @@ function projectileImpact(pr){
   const hitOne = (e)=>{
     damageEnemy(e, pr.dmg, {
       crit:pr.crit, dot:pr.dot, dotT:pr.dotT, slow:pr.slow, slowT:pr.slowT,
-      stun:(pr.stunC && Math.random()<pr.stunC)?pr.stunT:0, greed:pr.greed,
+      stun:(pr.stunC && Math.random()<pr.stunC)?pr.stunT:0, greed:pr.greed, src:pr.src,
     });
   };
   if (pr.aoe){
@@ -930,6 +1003,24 @@ function update(dt){
     } else st.t=0;
   }
   if (S.focusT>0) S.focusT=Math.max(0,S.focusT-dt);
+  if (S.mode==='play' && hasPen('summonStasis')){
+    S.stasisT += dt;
+    if (S.stasisT>=20){
+      S.stasisT -= 20;
+      const targets = S.field.filter(Boolean).sort(()=>Math.random()-0.5).slice(0,2);
+      targets.forEach(u=>{ u.stunT=Math.max(u.stunT||0,3); ringFx(u.x,u.y,'#8f7bff',50); });
+      if (targets.length){ log(t('penalty.stasisLog',{n:targets.length}),'bad'); toast(t('penalty.stasisToast'),true); }
+    }
+  }
+  if (S.mode==='play' && hasPen('summonStorm')){
+    S.stormT += dt;
+    if (S.stormT>=15){
+      S.stormT -= 15;
+      const targets = S.field.filter(Boolean).sort(()=>Math.random()-0.5).slice(0,3);
+      targets.forEach(u=>{ u.stunT=Math.max(u.stunT||0,2); burst(u.x,u.y,'#3de0c8',10); });
+      if (targets.length){ S.shake=Math.max(S.shake,6); log(t('penalty.stormLog',{n:targets.length}),'bad'); toast(t('penalty.stormToast'),true); }
+    }
+  }
   S.facUiT=(S.facUiT||0)+dt;
   if (S.facUiT>0.25){ S.facUiT=0; syncFaction(); syncGambling(); }
   if (S.waveActive && S.spawnQueue.length){
@@ -973,10 +1064,11 @@ function update(dt){
   if (S.waveActive && !S.spawnQueue.length && !S.enemies.length) endWave();
   S.field.forEach((u,i)=>{
     if (!u) return;
+    if (u.stunT>0){ u.stunT=Math.max(0,u.stunT-dt); return; }
     u.cd -= dt;
     if (u.cd<=0){
       const def = UNIT_BY_ID[u.id];
-      if (unitAttack(u, def, u.x, u.y)) u.cd = 1/def.rate;
+      if (unitAttack(u, def, u.x, u.y)) u.cd = (1/def.rate)*(hasPen('servantCorrupt')?2:1);
       else u.cd = 0.08;
     }
   });
@@ -1008,7 +1100,8 @@ const CODEX_CLASSES=[...new Set(UNITS.map(u=>u.cls))];
 const CODEX_GRADES=Object.keys(GRADES);
 const CODEX_KINDS=[...new Set(UNITS.map(u=>u.kind))];
 function unitSearchText(u){
-  return [u.name,u.cls,u.grade,u.kind,u.desc,unitDesc(u),u.exTitle||'',(u.ferdSkills||[]).map(s=>s.name+' '+s.desc).join(' ')].join(' ').toLowerCase();
+  const skills=(u.ferdSkills||[]).map(s=>s.name+' '+s.desc+' '+skillName(s)+' '+skillDesc(s)).join(' ');
+  return [u.name,u.cls,u.grade,u.kind,u.desc,unitDesc(u),u.exTitle||'',skills].join(' ').toLowerCase();
 }
 function unitMatches(u){
   const f=codexFilter;
@@ -1116,8 +1209,36 @@ function buildDiffCards(){
     row.appendChild(b);
   });
 }
+/* ---------------- penalty UI ---------------- */
+function buildPenalties(){
+  const grid=$('penaltyGrid'); grid.innerHTML='';
+  const locked = S.mode!=='menu' && S.mode!=='lobby';
+  const active = locked ? S.penalties : [...selectedPenalties];
+  PENALTIES.forEach(p=>{
+    const sel = active.includes(p.key);
+    const b=document.createElement('button');
+    b.className='penCard'+(sel?' sel':'')+(locked?' locked':'');
+    b.dataset.key=p.key;
+    b.innerHTML=`<i>${p.icon}</i><div><b>${esc(tl(p,'name'))}</b><span>${esc(tl(p,'desc'))}</span></div><em>${sel?'✔':''}</em>`;
+    b.onclick=()=>togglePenalty(p.key);
+    grid.appendChild(b);
+  });
+  $('penaltyCount').textContent=t('penalty.count',{n:active.length});
+  const rw=$('penaltyReward');
+  rw.textContent=active.length>=5?t('penalty.xpBonus',{pct:100}):t('penalty.rewardNeed');
+  rw.className='penReward'+(active.length>=5?' on':'');
+  $('penaltyLockNote').textContent=locked?t('penalty.locked'):t('penalty.sub');
+}
+function syncPenaltyBtn(){
+  const n=(S.mode==='menu'||S.mode==='lobby')?selectedPenalties.size:S.penalties.length;
+  const b=$('penaltyBtn');
+  b.textContent=t('ctl.penalty')+(n?` ${n}`:'');
+  b.classList.toggle('on',n>0);
+}
+function openPenalties(){ buildPenalties(); $('penaltyOverlay').classList.add('show'); }
 function startGame(options={}){
-  const factionKey = FACTION_BY_KEY[options.factionKey] ? options.factionKey : factionSave.cur;
+  let factionKey = FACTION_BY_KEY[options.factionKey] ? options.factionKey : factionSave.cur;
+  if (!factionUnlocked(FACTION_BY_KEY[factionKey])) factionKey = 'aurel';
   const diffKey = DIFFICULTIES[options.diffKey] ? options.diffKey : selectedDiff;
   const playerCount = Math.max(1, Math.min(4, options.playerCount|0 || 1));
   S = freshState(diffKey, playerCount);
@@ -1125,22 +1246,33 @@ function startGame(options={}){
   S.players.forEach(p => { p.faction = factionKey; });
   factionSave.cur = factionKey; persistFactionSave();
   S.mode='play'; S.startTime=performance.now();
+  S.penalties = [...selectedPenalties].filter(k=>PENALTY_BY_KEY[k]);
+  if (hasPen('lifeHalf')) S.lives = Math.max(1, Math.floor(S.lives/2));
+  if (hasPen('summonStasis')) S.stasisT = 10;
+  if (hasPen('summonStorm')) S.stormT = 12;
+  if (factionKey==='echo') S.wisps = 15;
+  if (factionKey==='mooncell'){
+    const bi = S.bench.indexOf(null);
+    if (giveServant('B', t('src.bb')) && S.bench[bi]) S.bench[bi].grow = 0;
+  }
   $('startOverlay').classList.remove('show');
   $('endOverlay').classList.remove('show');
   $('log').innerHTML='';
   log(t('log.entered',{diff:tl(S.diff,'name'),waves:S.diff.waves}),'good');
   log(t('log.factionLocked',{name:curFaction().name,tag:curFaction().tag}),'good');
+  S.penalties.forEach(k=>log(t('penalty.appliedLog',{name:tl(PENALTY_BY_KEY[k],'name')}),'bad'));
+  if (S.penalties.length>=5) log(t('penalty.xpBonus',{pct:100}),'epic');
   log(t('log.summonHint',{grade:GRADES[summonGrade()].label}),'');
   banner(t('banner.defend'));
   AudioFX.wave();
-  select(null); syncStats();
+  select(null); syncStats(); syncPenaltyBtn();
   $('autoBtn').classList.remove('on');
   $('speedBtn').textContent='1×';
   $('pauseBtn').textContent='⏸';
 }
 $('startBtn').onclick=()=>{ AudioFX.ensure(); startGame(); };
-$('endRestartBtn').onclick=()=>{ AudioFX.click(); $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); S.mode='menu'; syncFaction(); };
-$('restartBtn').onclick=()=>{ AudioFX.click(); S.mode='menu'; $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); syncFaction(); };
+$('endRestartBtn').onclick=()=>{ AudioFX.click(); $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); S.mode='menu'; syncFaction(); syncPenaltyBtn(); };
+$('restartBtn').onclick=()=>{ AudioFX.click(); S.mode='menu'; $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); syncFaction(); syncPenaltyBtn(); };
 function roomFallback(){
   $('roomStatus').textContent=t('room.needServer');
   $('roomStatus').className='warn';
@@ -1177,6 +1309,11 @@ $('pauseBtn').onclick=function(){ if(S.mode!=='play')return; S.paused=!S.paused;
 $('soundBtn').onclick=function(){ AudioFX.ensure(); AudioFX.muted=!AudioFX.muted; this.classList.toggle('on',!AudioFX.muted); this.classList.toggle('off',AudioFX.muted); this.textContent=AudioFX.muted?'♪̸':'♪'; if(!AudioFX.muted)AudioFX.click(); };
 $('langBtn').onclick=()=>{ AudioFX.click(); setLang(getLang()==='th'?'en':'th'); };
 $('codexBtn').onclick=()=>{ AudioFX.click(); buildCodex('recipes'); $('codexOverlay').classList.add('show'); };
+$('penaltyBtn').onclick=()=>{ AudioFX.click(); openPenalties(); };
+$('startPenaltyBtn').onclick=()=>{ AudioFX.click(); openPenalties(); };
+$('penaltyClose').onclick=()=>{ AudioFX.click(); $('penaltyOverlay').classList.remove('show'); };
+$('penaltyDone').onclick=()=>{ AudioFX.click(); $('penaltyOverlay').classList.remove('show'); };
+$('penaltyOverlay').addEventListener('click',ev=>{ if(ev.target===$('penaltyOverlay')) $('penaltyOverlay').classList.remove('show'); });
 $('codexClose').onclick=()=>{ AudioFX.click(); $('codexOverlay').classList.remove('show'); };
 $('tabRecipes').onclick=()=>buildCodex('recipes');
 $('tabArchive').onclick=()=>buildCodex('archive');
@@ -1197,6 +1334,7 @@ document.addEventListener('keydown',ev=>{
   else if (ev.key==='p'||ev.key==='P'){ $('pauseBtn').click(); }
   else if (ev.key==='Escape'){
     if ($('pickupOverlay').classList.contains('show')) $('pickupOverlay').classList.remove('show');
+    else if ($('penaltyOverlay').classList.contains('show')) $('penaltyOverlay').classList.remove('show');
     else if ($('codexOverlay').classList.contains('show')) $('codexOverlay').classList.remove('show');
     else select(null);
   }
@@ -1218,7 +1356,7 @@ function unitDesc(u){
   return s;
 }
 function updateLangBtn(){ const b=$('langBtn'); if(b) b.textContent=getLang()==='th'?'EN':'ไทย'; }
-function onLangChange(){ updateLangBtn(); buildFactionChips(); buildGambling(); buildDiffCards(); renderBench(); syncStats(); renderSelected(); buildCodexFilters(); if($('codexOverlay').classList.contains('show'))buildCodex(codexTab); if($('pickupOverlay').classList.contains('show'))buildPickup(); }
+function onLangChange(){ updateLangBtn(); buildFactionChips(); buildGambling(); buildDiffCards(); renderBench(); syncStats(); renderSelected(); buildCodexFilters(); syncPenaltyBtn(); if($('codexOverlay').classList.contains('show'))buildCodex(codexTab); if($('pickupOverlay').classList.contains('show'))buildPickup(); if($('penaltyOverlay').classList.contains('show'))buildPenalties(); }
 
 /* ---------------- expose API for the 3D layer ---------------- */
 window.Game = {
@@ -1228,10 +1366,12 @@ window.Game = {
   placementReason:(x,y)=>placementReason(x,y,S.field), unitByUid,
   setFaction, factionActive, doFusion, addFactionXp, openPickup,
   doGoldGamble, doServantGamble,
+  togglePenalty, buildPenalties, openPenalties,
   popUsed, AudioFX, onLangChange,
 };
 UNITS.forEach(u=>{ u.ferdSkills = FERD_SKILLS[u.id] || []; });
 buildDiffCards();
+buildPenalties(); syncPenaltyBtn();
 buildFactionChips();
 buildGambling();
 renderBench();

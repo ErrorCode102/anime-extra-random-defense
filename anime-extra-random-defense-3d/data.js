@@ -463,6 +463,41 @@ const SERVANT_GAMBLES = [
   { key:'S', label:'S', grades:['S'], cost:20000, spirit:20, chance:30, special:50 },
 ];
 
+/* FERD penalty handicaps — select before the run; 5+ doubles faction XP */
+const PENALTIES = [
+  { key:'enemyBoost', icon:'☄', name:'Photon Torrent', nameTh:'โฟตอนทอร์เรนต์',
+    desc:'Enemies are 50% faster.', descTh:'ศัตรูเคลื่อนที่เร็วขึ้น 50%' },
+  { key:'servantCorrupt', icon:'☣', name:'Spiritron Pollution', nameTh:'มลพิษสปิริตรอน',
+    desc:'Player units are slowed (50%).', descTh:'ผู้รับใช้โจมตีช้าลง 50%' },
+  { key:'gachaOnlyE', icon:'✦', name:'A little makes a lot', nameTh:'น้อยแต่มาก',
+    desc:'Only E-grade units appear in the wisp draw.', descTh:'กาชาวิสป์ออกเฉพาะเกรด E' },
+  { key:'powerfulLeader', icon:'♛', name:"King's Army", nameTh:'กองทัพของราชา',
+    desc:'A very powerful mob (2000% HP, 10x bounty) leads every wave.', descTh:'ศัตรูตัวแรกของทุกเวฟมี HP 2000% และค่าหัว 10 เท่า' },
+  { key:'nurfGacha', icon:'⚠', name:'Surprise Attack', nameTh:'จู่โจมกะทันหัน',
+    desc:'Gambling is restricted to 10/100 gold and E–D servants.', descTh:'การพนันถูกจำกัด: เหลือเพียงทอง 10/100 และผู้รับใช้ E–D' },
+  { key:'johabRandom', icon:'⚄', name:'RNG Interference', nameTh:'สัญญาณแทรกจาก RNG',
+    desc:'30% chance the ascension result becomes a random same-grade servant.', descTh:'30% ที่ผลเลื่อนขั้นจะกลายเป็นผู้รับใช้สุ่มเกรดเดียวกัน' },
+  { key:'sellDisabled', icon:'✕', name:'Cash on Delivery', nameTh:'เก็บเงินปลายทาง',
+    desc:'Player units cannot be sold.', descTh:'ไม่สามารถขายผู้รับใช้แลกวิสป์ได้' },
+  { key:'enemyHeal', icon:'✚', name:'Backup Protocol', nameTh:'โปรโตคอลสำรอง',
+    desc:'All enemy units gain HP regen (0.5%/s).', descTh:'ศัตรูทุกตัวฟื้น HP 0.5% ต่อวินาที' },
+  { key:'raid', icon:'≋', name:'RAID 1', nameTh:'เรด 1',
+    desc:'Twice the enemies, each with half HP and bounty.', descTh:'ศัตรูเกิด 2 เท่า แต่ HP และค่าหัวลดลงครึ่งหนึ่ง' },
+  { key:'servantStun', icon:'⚡', name:'Aftereffect', nameTh:'ผลสะท้อนกลับ',
+    desc:'A servant that kills an enemy is stunned for 1s.', descTh:'ผู้รับใช้ที่ฆ่าศัตรูจะสตั้น 1 วินาที' },
+  { key:'lessWisp', icon:'❋', name:"We're one short", nameTh:'ขาดไปหนึ่ง',
+    desc:'Get one less wisp each wave.', descTh:'ได้วิสป์ต่อเวฟน้อยลง 1' },
+  { key:'summonStasis', icon:'◎', name:'Imaginary Stasis', nameTh:'สตาซิสจินตนาการ',
+    desc:'Every 20s a trap stuns 2 random deployed servants for 3s.', descTh:'ทุก 20 วินาที กับดักสตั้นผู้รับใช้ที่ลงสนาม 2 ตัว เป็นเวลา 3 วินาที' },
+  { key:'summonStorm', icon:'⌖', name:'Cyber Daemon Storm', nameTh:'พายุไซเบอร์ดีมอน',
+    desc:'Every 15s a storm stuns 3 random deployed servants for 2s.', descTh:'ทุก 15 วินาที พายุสตั้นผู้รับใช้ที่ลงสนาม 3 ตัว เป็นเวลา 2 วินาที' },
+  { key:'afterImpact', icon:'✸', name:'Reverse Blast', nameTh:'ระเบิดย้อนกลับ',
+    desc:'When a boss dies, every servant is stunned for 10s.', descTh:'เมื่อบอสตาย ผู้รับใช้ทั้งหมดสตั้น 10 วินาที' },
+  { key:'lifeHalf', icon:'♥', name:'Beautiful Painting', nameTh:'ภาพวาดอันงดงาม',
+    desc:'Lives are reduced by half.', descTh:'ชีวิตเริ่มต้นลดลงครึ่งหนึ่ง' },
+];
+const PENALTY_BY_KEY = Object.fromEntries(PENALTIES.map(p=>[p.key,p]));
+
 /* waypoints: enter left gate, 1.5 clockwise laps, exit right gate */
 const PATH = [
   [-30,320],[200,320],[200,130],[760,130],[760,510],[200,510],[200,320],

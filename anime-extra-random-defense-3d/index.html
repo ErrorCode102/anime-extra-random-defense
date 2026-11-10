@@ -39,6 +39,7 @@
       <button class="ctl" id="pauseBtn" data-i18n-title="ctl.pauseTitle" title="Pause (P)">⏸</button>
       <button class="ctl on" id="soundBtn" data-i18n-title="ctl.soundTitle" title="Sound on/off">♪</button>
       <button class="ctl" id="codexBtn" data-i18n="ctl.codex" data-i18n-title="ctl.codexTitle" title="Ascension recipes & unit archive">✦ Codex</button>
+      <button class="ctl" id="penaltyBtn" data-i18n-title="ctl.penaltyTitle" title="Penalty Selection / View">☣ Penalty</button>
       <button class="ctl" id="langBtn" data-i18n-title="ctl.langTitle" title="Switch language Thai / English">ไทย</button>
       <button class="ctl" id="restartBtn" data-i18n-title="ctl.restartTitle" title="Restart">↺</button>
     </div>
@@ -151,6 +152,7 @@
       <div id="startFactionDesc"></div>
     </div>
     <div id="diffRow"></div>
+    <button id="startPenaltyBtn" class="penaltyOpenBtn" data-i18n="start.penaltyBtn">☣ Penalty Selection / View</button>
     <div id="roomControls">
       <button id="soloModeBtn" class="roomMode sel" data-i18n="start.solo">Solo</button>
       <button id="createRoomBtn" class="roomMode" data-i18n="start.create">Create Room</button>
@@ -204,6 +206,21 @@
   </div>
 </div>
 
+<!-- penalty selection / view -->
+<div class="overlay" id="penaltyOverlay">
+  <div class="box" id="penaltyBox">
+    <div id="penaltyHead">
+      <h2 data-i18n="penalty.title">☣ Penalty Selection</h2>
+      <span id="penaltyCount">0 / 15</span>
+      <button id="penaltyClose">✕</button>
+    </div>
+    <div id="penaltyLockNote" data-i18n="penalty.sub">Stack handicaps to multiply faction XP. Applied at run start.</div>
+    <div id="penaltyReward" class="penReward" data-i18n="penalty.rewardNeed">Select 5 or more penalties</div>
+    <div id="penaltyGrid"></div>
+    <button id="penaltyDone" class="bigBtn" data-i18n="penalty.close">Done</button>
+  </div>
+</div>
+
 <!-- faction servant pickup -->
 <div class="overlay" id="pickupOverlay">
   <div class="box" id="pickupBox">
@@ -217,6 +234,7 @@
 <script src="i18n.js"></script>
 <script src="data.js"></script>
 <script src="ferd-skills.js"></script>
+<script src="ferd-skills-th.js"></script>
 <script src="game.js"></script>
 <script src="scene3d.js"></script>
 </body>
