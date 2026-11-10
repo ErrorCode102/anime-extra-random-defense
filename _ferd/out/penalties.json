@@ -1,0 +1,197 @@
+[
+ {
+  "index": 1,
+  "constant": "PANALTY_ENEMY_BOOST",
+  "name": "Photon Torrent",
+  "desc": "Enemies are 50% faster.",
+  "effect": "Every spawned enemy gains ability A03W (slow aura, Slo1=0.5) => +50% movement speed. [war3map.j:19672-19674; war3map.w3a A03W]",
+  "iconUnit": "n00Q",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 2,
+  "constant": "PANALTY_SERVANT_CORRUPT",
+  "name": "Spiritron Pollution",
+  "desc": "Player units are slowed (50%)",
+  "effect": "Every added Servant gains ability A08V (Slo1=-0.5) => 50% slow; tagged '『Servant Contaminated』'. [war3map.j:1292-1294, 24738-24748; war3map.w3a A08V]",
+  "iconUnit": "n00R",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 3,
+  "constant": "PANALTY_GACHA_ONLY_E",
+  "name": "A little makes a lot",
+  "desc": "Only E-grade units appear in the Draw",
+  "effect": "Wisp draws force rank=1: only E-grade Servants appear; draw building tooltip becomes 'Random [E] Servant Draw / Penalty: E-grade Only'. [war3map.j:40050-40052, 19921-19935]",
+  "iconUnit": "n00S",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 4,
+  "constant": "PANALTY_POWERFUL_LEADER",
+  "name": "King's Army",
+  "desc": "Very powerful mob (2000%) appears at the beginning of each round",
+  "effect": "First enemy of every wave gains marker A0EW, HP x20 (2000%), MP x20, bounty x10. [war3map.j:20548-20553]",
+  "iconUnit": "n00T",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 5,
+  "constant": "PANALTY_NURF_GACHA",
+  "name": "Surprise Attack",
+  "desc": "Resources/unit gambling is prohibited or restricted",
+  "effect": "Gambling buildings are downgraded: Nero H00F->H002 (loses high-rate servant gambling and Emperor's Privilege); other factions H002->H00E 'Corrupted Building' (only E/D/C servant gambling + 10G/100G gold gambling remain); BB H00Y->H00Z. [war3map.j:34875,35076,35374,35556,35678; war3map.w3u useu of H00F/H002/H00E/H00Y/H00Z]",
+  "iconUnit": "n00U",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 6,
+  "constant": "PANALTY_JOHAB_BECOME_RANDOM",
+  "name": "RNG Interference",
+  "desc": "30% chance that the merging will be reversed",
+  "effect": "30% chance (GetRandomReal(0,100) <= 30) to abort a merge and replace its result with a random Servant of the same grade; tagged '『RNG Interference』'. [war3map.j:24619-24652]",
+  "iconUnit": "n00V",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 7,
+  "constant": "PANALTY_SERVANT_SELL_DISABLED",
+  "name": "Cash on Delivery",
+  "desc": "Player units cannot be sold",
+  "effect": "Selling Servants is blocked: error sound + 'Penalty - Servants cannot be sold!'. [war3map.j:41276-41281]",
+  "iconUnit": "n00W",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 8,
+  "constant": "PANALTY_ENEMY_HEAL",
+  "name": "Backup Protocol",
+  "desc": "All enemy units gain HP regen",
+  "effect": "All enemies gain A04J and regenerate 0.5% max HP and 1% max MP per second. [war3map.j:20567-20569; war3map.w3a A04J]",
+  "iconUnit": "n00X",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 9,
+  "constant": "PANALTY_ENEMY_BONUS",
+  "name": "RAID 1",
+  "desc": "Spawn more enemy units (2x)",
+  "effect": "Enemies spawn 2x (80 per wave instead of 40); each enemy has HP/MP halved and bounty halved; life-danger warning threshold doubled. [war3map.j:20471-20477, 20555-20560, 19807-19808]",
+  "iconUnit": "n00Y",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 10,
+  "constant": "PANALTY_SERVANT_STUN",
+  "name": "Aftereffect",
+  "desc": "When player unit kills an enemy, it's stunned for a while",
+  "effect": "A Servant that kills an enemy is stunned for 1.0 s (Storm Bolt missile FX). [war3map.j:24708-24719]",
+  "iconUnit": "n00Z",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 11,
+  "constant": "PANALTY_LESS_WISP",
+  "name": "We're one short",
+  "desc": "Get one less chance(wisp) to draw units",
+  "effect": "Round wisp bounty reduced from 3 to 2 ('We're one short' activated!). [war3map.j:20267-20278]",
+  "iconUnit": "n010",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 12,
+  "constant": "PANALTY_SUMMON_STASIS",
+  "name": "Imaginary Stasis",
+  "desc": "Traps that stop the player units are periodically summoned",
+  "effect": "Every 20 s (first after 10 s) summons 2 stasis traps per player at random positions (+/-960 around start location), FXRD_FXStasisField(x,y,3,10), stopping player units. [war3map.j:24762-24795]",
+  "iconUnit": "n011",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 13,
+  "constant": "PANALTY_SUMMON_STORM",
+  "name": "Cyber Daemon Storm",
+  "desc": "There is a storm that causes player units to bounce",
+  "effect": "Summons 2 cyber typhoons (size 192) per player field that bounce/knock back player units; created 3 s after game init. [war3map.j:24817-24856]",
+  "iconUnit": "n012",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 14,
+  "constant": "PANALTY_AFTER_IMPACT",
+  "name": "Reverse Blast",
+  "desc": "Enemy giant units cause a big explosion on death",
+  "effect": "When a giant (boss) enemy dies it explodes: all player Servants stunned 10 s and knocked back (1000 range, 250 distance, 0.625 speed). [war3map.j:24663-24690]",
+  "iconUnit": "n013",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ },
+ {
+  "index": 15,
+  "constant": "PANALTY_LIFE_HALF",
+  "name": "Beautiful Painting",
+  "desc": "Lives are reduced by half",
+  "effect": "Starting lives are halved (myLife = LEVEL_LIFE / 2). [war3map.j:39757-39760]",
+  "iconUnit": "n014",
+  "reward": {
+   "minPenalties": 5,
+   "xpBonusPercent": 100,
+   "source": "FXTrig0SGameSetting___diagnoseChallenge (war3map.j:39637-39643)"
+  }
+ }
+]

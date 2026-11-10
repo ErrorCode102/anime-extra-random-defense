@@ -4,7 +4,9 @@ const path = require('node:path');
 
 function element(id = '') {
   const el = {
-    id, children: [], style: {}, dataset: {}, innerHTML: '', textContent: '',
+    id, children: [], style: {}, dataset: {}, _innerHTML: '', textContent: '',
+    get innerHTML() { return this._innerHTML; },
+    set innerHTML(v) { this._innerHTML = v; this.children.length = 0; },
     disabled: false, className: '', src: '', alt: '', title: '', onclick: null,
     classList: {
       add() {}, remove() {}, toggle() {}, contains() { return false; },
@@ -39,7 +41,7 @@ function loadGame() {
   context.window = context;
   vm.createContext(context);
   const root = path.resolve(__dirname, '..', 'anime-extra-random-defense-3d');
-  for (const file of ['data.js', 'game.js']) {
+  for (const file of ['i18n.js', 'data.js', 'ferd-skills.js', 'game.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, { filename: file });
   }
   return context;

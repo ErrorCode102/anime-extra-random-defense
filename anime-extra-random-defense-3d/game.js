@@ -66,14 +66,18 @@ const AudioFX = {
 /* ---------------- state ---------------- */
 let S = null;
 let uidSeq = 1;
-function freshState(diffKey){
+const LOCAL_PLAYER = 'p1';
+function freshState(diffKey, playerCount=1){
   const diff = DIFFICULTIES[diffKey];
+  const benchSize = CFG.benchSize + 2*(playerCount-1);
   return {
     mode:'menu', diffKey, diff,
     gold:CFG.startGold, spirit:CFG.startSpirit, wisps:CFG.startWisps, gachaLv:1,
     lives:diff.lives, wave:0,
-    bench:Array(CFG.benchSize).fill(null),
-    field:Array(SLOTS.length).fill(null),
+    playerCount, players:Array.from({length:playerCount},(_,i)=>({id:`p${i+1}`})),
+    popCap:CFG.popCap + 6*(playerCount-1), benchSize,
+    bench:Array(benchSize).fill(null),
+    field:[],
     sel:null,
     enemies:[], projectiles:[], beams:[], rings:[], particles:[], floats:[],
     spawnQueue:[], spawnT:0, waveActive:false, auto:false, autoT:0,
@@ -118,12 +122,14 @@ function loadFactionSave(){
   return base;
 }
 function persistFactionSave(){ try{ localStorage.setItem(FSAVE_KEY, JSON.stringify(factionSave)); }catch(e){} }
-const curFaction = () => FACTION_BY_KEY[factionSave.cur];
-const facLevel = () => factionSave.fac[factionSave.cur].lv;
+const curFaction = () => FACTION_BY_KEY[(S.mode !== 'menu' && S.factionKey) || factionSave.cur];
+const facLevel = () => factionSave.fac[curFaction().key].lv;
 const facMul = () => 1 + (facLevel()-1)*0.05;
 const facMastered = () => facLevel() >= FACTION_MAX_LEVEL;
+const basicMastered = () => FACTIONS.some(f=>!f.reqMaster && factionSave.fac[f.key].lv>=FACTION_MAX_LEVEL);
+const factionUnlocked = f => !f.reqMaster || basicMastered();
 function addFactionXp(amount){
-  const st = factionSave.fac[factionSave.cur];
+  const st = factionSave.fac[curFaction().key];
   if (st.lv >= FACTION_MAX_LEVEL) return;
   st.xp += Math.round(amount);
   let leveled = false;
@@ -132,22 +138,33 @@ function addFactionXp(amount){
   persistFactionSave();
   if (leveled){
     AudioFX.ascend();
-    toast(`⚑ ${curFaction().name} Lv${st.lv}${facMastered()?' — MASTERED!':''}`);
-    log(`⚑ Faction rank up → ${curFaction().name} Lv${st.lv}`, 'epic');
+    toast(t('fac.rankUp',{name:curFaction().name,lv:st.lv})+(facMastered()?t('fac.masteredSuffix'):''));
+    log(t('fac.rankUpLog',{name:curFaction().name,lv:st.lv}), 'epic');
   }
   syncFaction();
 }
 function setFaction(key){
-  if (!FACTION_BY_KEY[key] || factionSave.cur===key) return;
+  if (!FACTION_BY_KEY[key]) return false;
+  if (!factionUnlocked(FACTION_BY_KEY[key])){ toast(t('fac.unlockNeed'), true); return false; }
+  if (S.mode !== 'menu' && S.mode !== 'lobby'){
+    toast(t('fac.lockedToast'), true);
+    return false;
+  }
+  if (factionSave.cur === key) return true;
   factionSave.cur = key; persistFactionSave();
   AudioFX.click();
-  log(`⚑ Sworn to ${curFaction().name} [${curFaction().tag}]`, 'good');
+  log(t('fac.sworn',{name:curFaction().name,tag:curFaction().tag}), 'good');
   toast(`⚑ ${curFaction().name}`);
   syncFaction(); syncStats();
+  return true;
 }
 function onKillReward(e, p){
   const f = curFaction();
   addFactionXp(f.key==='mooncell' ? 150 : 100);
+  if (f.key==='mooncell'){
+    const bb = [...S.bench,...S.field].find(u=>u&&u.grow!==undefined);
+    if (bb) bb.grow += 1;
+  }
   if (f.key==='aurel' && Math.random()<0.5){
     const amt = Math.round(rand(1,15)*facMul());
     S.gold += amt; S.goldEarned += amt;
@@ -156,7 +173,7 @@ function onKillReward(e, p){
   if (f.key==='steppe' && Math.random()<0.01*facMul()){
     S.wisps += 1;
     float(p.x, p.y-e.r-6, '+❋', '#d0d0d0', 12);
-    log('❋ Spirit plunder → +1 wisp', 'good');
+    log(t('log.spiritPlunder'), 'good');
   }
 }
 function factionActive(){
@@ -164,41 +181,42 @@ function factionActive(){
   const f = curFaction();
   if (f.activeType==='supergold'){
     if (S.facCd.super>0) return;
-    if (S.gold < f.cost) return toast('Not enough gold!', true);
+    if (S.gold < f.cost) return toast(t('toast.noGold'), true);
     S.gold -= f.cost; S.facCd.super=f.cd;
     const amt=Math.floor(rand(0,25001));
     S.gold += amt; S.goldEarned += amt;
     amt<f.cost?AudioFX.err():AudioFX.summon(amt>=20000?'S':'A');
-    log(`◈ Imperial Privilege paid ◈${amt} (cost ◈${f.cost})`, amt<f.cost?'bad':amt>=10000?'epic':'gold');
-    toast(amt<f.cost?`Lost ◈${f.cost-amt}…`:amt===f.cost?'Broke even!':`Won ◈${amt-f.cost}!`);
-    if (amt>=20000) banner('◈ JACKPOT ◈');
+    log(t('fac.imperialLog',{amt,cost:f.cost}), amt<f.cost?'bad':amt>=10000?'epic':'gold');
+    toast(amt<f.cost?t('fac.lost',{n:f.cost-amt}):amt===f.cost?t('fac.brokeEven'):t('fac.won',{n:amt-f.cost}));
+    if (amt>=20000) banner(t('banner.jackpot'));
     bump($('stGold').parentElement); syncStats();
   } else if (f.activeType==='pickup'){
     openPickup();
-  } else if (f.key==='steppe'){
+  } else if (f.activeType==='crest'){
     if (S.facCd.seal>0) return;
-    S.facCd.seal = f.cd;
-    let n=0;
-    S.enemies.forEach(e=>{ if(!e.dead){ e.stunT=Math.max(e.stunT,2.5); e.sealed=true; e.armor=0; e.regen=0; n++; } });
-    AudioFX.boss(); S.shake=Math.max(S.shake,6);
-    toast(`❋ Meteor Seal — ${n} enemies sealed`);
-    log(`❋ Meteor Seal stunned + sealed ${n} enemies`, 'good');
-    syncStats();
+    const sel = S.sel && (S.sel.loc==='bench'?S.bench[S.sel.idx]:S.field[S.sel.idx]);
+    if (!sel) return toast(t('fac.crestNeed'), true);
+    S.facCd.seal = f.cd; sel.crest = true;
+    const nm = UNIT_BY_ID[sel.id].name;
+    AudioFX.ascend();
+    toast(t('fac.crestToast',{name:nm}));
+    log(t('fac.crestLog',{name:nm}), 'good');
+    syncStats(); renderSelected();
   } else if (f.key==='echo'){
     if (S.facCd.focus>0) return;
     S.facCd.focus = f.cd; S.focusT = 6;
     const front = S.enemies.filter(e=>!e.dead).sort((a,b)=>b.d-a.d)[0];
     S.focusUid = front ? front.uid : null;
     AudioFX.wave();
-    toast('⧉ Fix Target — focus fire!');
-    log('⧉ Fix Target locked for 6s (+25% dmg)', 'good');
+    toast(t('fac.focusToast'));
+    log(t('fac.focusLog'), 'good');
     syncStats();
   } else if (f.activeType==='fusion'){
     doFusion();
   }
 }
 function doFusion(){
-  if (!S.bench.includes(null)) return toast('Bench is full!', true);
+  if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
   const pool = allUnits();
   for (let gv=5; gv>=1; gv--){
     const grade = GRADE_FROM_VAL[gv-1];
@@ -210,14 +228,14 @@ function doFusion(){
         arr[m.idx]=null;
       });
       const next = GRADE_FROM_VAL[gv];
-      giveServant(next, '⬢ Fusion');
-      AudioFX.ascend(); banner('⬢ FUSION ⬢');
-      log(`⬢ Fused ${FUSION_COUNT}×[${grade}] → [${next}]`, 'epic');
+      giveServant(next, t('src.fusion'));
+      AudioFX.ascend(); banner(t('banner.fusion'));
+      log(t('fac.fusionLog',{n:FUSION_COUNT,grade,next}), 'epic');
       select(null); syncStats();
       return;
     }
   }
-  toast(`Need ${FUSION_COUNT} equal-grade servants (E–A) to fuse.`, true);
+  toast(t('fac.fusionNeed',{n:FUSION_COUNT}), true);
 }
 /* pickup modal (Kitsune Covenant) */
 let pickupGrade = 'E';
@@ -245,19 +263,19 @@ function buildPickup(){
     c.innerHTML=`<img src="${portraitSVG(u)}" style="border-color:${GRADES[u.grade].color}" alt="">
       <b>${u.name}</b><span>${u.cls} · ⛨${u.pop}</span>`;
     c.onclick=()=>{
-      if (S.wisps<need) return toast('Not enough wisps!', true);
-      if (!S.bench.includes(null)) return toast('Bench is full!', true);
+      if (S.wisps<need) return toast(t('toast.noWisp'), true);
+      if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
       S.wisps-=need; S.summons++;
       const idx=S.bench.indexOf(null);
       S.bench[idx]={uid:uidSeq++, id:u.id, cd:0};
       AudioFX.summon(u.grade);
-      log(`✧ Pickup [${u.grade}] ${u.name} (−❋${need})`, 'good');
+      log(t('pickup.log',{grade:u.grade,name:u.name,need}), 'good');
       renderBench(idx); syncStats(); syncFaction();
       $('pickupOverlay').classList.remove('show');
     };
     grid.appendChild(c);
   });
-  $('pickupHint').textContent = `Spend ❋${need} wisps to summon the chosen [${pickupGrade}] servant. You have ❋${S.wisps}.`;
+  $('pickupHint').textContent = t('pickup.hintDyn',{need,grade:pickupGrade,have:S.wisps});
 }
 
 /* ---------------- gambling ---------------- */
@@ -268,7 +286,7 @@ function buildGambling(){
   GOLD_GAMBLES.forEach(g=>{
     const b=document.createElement('button');
     b.className='gambleBtn'; b.id='gamble_'+g.key;
-    b.innerHTML=`<b>${g.label}</b><span>${g.type==='gold'?`◈${g.cost} → ◈0–${g.payout}`:`◈${g.cost} → 25%: ✧1–3`}</span><em id="stock_${g.key}"></em>`;
+    b.innerHTML=`<b>${tl(g,'label')}</b><span>${g.type==='gold'?`◈${g.cost} → ◈0–${g.payout}`:`◈${g.cost} → 25%: ✧1–3`}</span><em id="stock_${g.key}"></em>`;
     b.onclick=()=>doGoldGamble(g.key);
     goldGrid.appendChild(b);
   });
@@ -281,7 +299,7 @@ function buildServantGambles(){
     const b=document.createElement('button');
     b.className='gambleBtn'; b.id='servant_'+g.key;
     b.style.borderColor=GRADES[g.grades[g.grades.length-1]].color;
-    b.innerHTML=`<b>[${g.label}] Servant</b><span>◈${g.cost}${g.spirit?` + ✧${g.spirit}`:''}</span><em>${chance}% success</em>`;
+    b.innerHTML=`<b>${t('gamble.servantLabel',{label:g.label})}</b><span>◈${g.cost}${g.spirit?` + ✧${g.spirit}`:''}</span><em>${t('gamble.success',{n:chance})}</em>`;
     b.onclick=()=>doServantGamble(g.key);
     grid.appendChild(b);
   });
@@ -297,7 +315,7 @@ function syncGambling(){
   GOLD_GAMBLES.forEach(g=>{
     const st=S.gambleStocks[g.key], b=$('gamble_'+g.key);
     b.disabled=S.mode!=='play'||S.gold<g.cost||st.n<1;
-    $('stock_'+g.key).textContent=`${st.n}/${g.charges} charges${st.n<g.charges?` · next ${Math.ceil(g.cd-st.t)}s`:''}`;
+    $('stock_'+g.key).textContent=t('gamble.charges',{n:st.n,max:g.charges})+(st.n<g.charges?t('gamble.next',{s:Math.ceil(g.cd-st.t)}):'');
   });
   SERVANT_GAMBLES.forEach(g=>{
     const b=$('servant_'+g.key);
@@ -308,42 +326,46 @@ function doGoldGamble(key){
   const g=GOLD_GAMBLES.find(x=>x.key===key);
   if (S.mode!=='play'||!g) return;
   const st=S.gambleStocks[key];
-  if (st.n<1) return toast('No charges — wait for recharge!', true);
-  if (S.gold<g.cost) return toast('Not enough gold!', true);
+  if (st.n<1) return toast(t('gamble.noCharges'), true);
+  if (S.gold<g.cost) return toast(t('toast.noGold'), true);
   st.n--; S.gold-=g.cost;
   if (g.type==='gold'){
     const amt=Math.floor(rand(0,g.payout+1));
     S.gold+=amt; S.goldEarned+=amt;
     const outcome=amt<g.cost?'lost':amt===g.cost?'same':'won';
-    log(`◈ ${g.label} paid ◈${amt} — ${outcome}`, outcome==='lost'?'bad':'gold');
-    toast(outcome==='lost'?`◈${amt}… What a loss!`:outcome==='same'?'Broke even!':`◈${amt} obtained!`);
+    log(t('gamble.goldLog',{label:tl(g,'label'),amt,outcome:t(outcome==='lost'?'gamble.outLost':outcome==='same'?'gamble.outSame':'gamble.outWon')}), outcome==='lost'?'bad':'gold');
+    toast(outcome==='lost'?t('gamble.goldLost',{amt}):outcome==='same'?t('gamble.goldSame'):t('gamble.goldWon',{amt}));
     outcome==='lost'?AudioFX.err():AudioFX.sell();
   } else {
     const amt=Math.random()<0.25?Math.floor(rand(1,4)):0;
     S.spirit+=amt;
-    log(`✧ Spirit Gamble → ${amt} spirit`, amt?'good':'bad');
-    toast(amt?`✧ +${amt} spirit`:'No spirit…');
+    log(t('gamble.spiritLog',{amt}), amt?'good':'bad');
+    toast(amt?t('gamble.spiritWon',{amt}):t('gamble.spiritNone'));
     amt?AudioFX.summon('A'):AudioFX.err();
     bump($('stSpirit').parentElement);
   }
   bump($('stGold').parentElement); syncStats(); syncGambling();
 }
+function servantChance(g){
+  const base = servantSpecial?g.special:g.chance;
+  return Math.min(95, base + (curFaction().key==='aurel'?20:0));
+}
 function doServantGamble(key){
   const g=SERVANT_GAMBLES.find(x=>x.key===key);
   if (S.mode!=='play'||!g) return;
-  if (!S.bench.includes(null)) return toast('Bench is full!', true);
-  if (S.gold<g.cost) return toast('Not enough gold!', true);
-  if (S.spirit<g.spirit) return toast('Not enough spirit!', true);
+  if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
+  if (S.gold<g.cost) return toast(t('toast.noGold'), true);
+  if (S.spirit<g.spirit) return toast(t('toast.noSpirit'), true);
   S.gold-=g.cost; S.spirit-=g.spirit;
   const chance=servantSpecial?g.special:g.chance;
   if (Math.random()*100<chance){
     S.summons++;
-    giveServant(pick(g.grades), `♦ ${servantSpecial?'Special ':''}Servant Gambling`);
-    banner('♦ SERVANT WON ♦');
+    giveServant(pick(g.grades), t(servantSpecial?'src.specialGamble':'src.servantGamble'));
+    banner(t('banner.servantWon'));
   } else {
     AudioFX.err();
-    log(`♦ [${g.label}] Servant Gambling failed (${chance}%)`, 'bad');
-    toast('Servant Gambling failure…', true);
+    log(t('gamble.servantFailLog',{label:g.label,chance}), 'bad');
+    toast(t('gamble.servantFail'), true);
   }
   bump($('stGold').parentElement); syncStats(); syncGambling();
 }
@@ -374,41 +396,53 @@ function banner(txt){
 function bump(el){ el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
 function buildFactionChips(){
   const box=$('facChips'); box.innerHTML='';
+  const startRow=$('startFactionRow'); startRow.innerHTML='';
   FACTIONS.forEach(f=>{
     const b=document.createElement('button');
     b.className='facChip'; b.dataset.k=f.key; b.style.color=f.color; b.title=f.name;
     b.innerHTML=`<i>${f.icon}</i><b>${f.tag}</b>`;
     b.onclick=()=>setFaction(f.key);
     box.appendChild(b);
+    const choice=document.createElement('button');
+    choice.className='facChoice'; choice.dataset.k=f.key; choice.style.color=f.color;
+    choice.innerHTML=`<i>${f.icon}</i><b>${f.tag}</b><span>${f.name}</span>`;
+    choice.onclick=()=>setFaction(f.key);
+    startRow.appendChild(choice);
   });
 }
 function syncFaction(){
   const f=curFaction(), lv=facLevel(), st=factionSave.fac[f.key];
-  document.querySelectorAll('.facChip').forEach(c=>{
+  const locked = S.mode !== 'menu' && S.mode !== 'lobby';
+  for (const c of [...$('facChips').children, ...$('startFactionRow').children]){
     const on=c.dataset.k===f.key;
     c.classList.toggle('sel',on);
     c.style.borderColor=on?f.color:'';
     c.style.background=on?f.color+'22':'';
-  });
+    c.disabled=locked;
+    c.setAttribute('aria-pressed', on?'true':'false');
+  }
+  $('factionPanel').classList.toggle('locked', locked);
+  $('facLockNote').textContent = locked ? t('fac.lockLocked') : t('fac.lockMenu');
+  $('startFactionDesc').textContent = `${tl(f,'passive')} ${t('fac.activeWord')} ${f.activeName} — ${tl(f,'activeDesc')}`;
   $('facName').textContent=f.name; $('facName').style.color=f.color;
   $('facTag').textContent=f.tag; $('facTag').style.background=f.color;
-  $('facLv').textContent = facMastered()?'★ MASTER':'Lv'+lv;
+  $('facLv').textContent = facMastered()?t('fac.mastered'):t('fac.lv',{lv});
   const req = lv>=FACTION_MAX_LEVEL?0:FACTION_XP_REQ[lv-1];
   $('facXpBar').style.width = (lv>=FACTION_MAX_LEVEL?100:Math.min(100,st.xp/req*100))+'%';
   $('facXpBar').style.background=f.color;
-  $('facXpTxt').textContent = lv>=FACTION_MAX_LEVEL?'Mastered':`${st.xp} / ${req} XP`;
-  $('facPassive').textContent=f.passive;
+  $('facXpTxt').textContent = lv>=FACTION_MAX_LEVEL?t('fac.xpMaster'):t('fac.xp',{xp:st.xp,req});
+  $('facPassive').textContent=tl(f,'passive');
   const btn=$('facActiveBtn');
   btn.style.borderColor=f.color; btn.style.color=f.color;
   let sub='', dis=S.mode!=='play';
   if (f.activeType==='supergold'){ sub=S.facCd.super>0?`${Math.ceil(S.facCd.super)}s`:`◈${f.cost}`; dis=dis||S.facCd.super>0||S.gold<f.cost; }
-  else if (f.activeType==='pickup'){ sub='❋ choose'; dis=dis||S.wisps<1||!S.bench.includes(null); }
-  else if (f.activeType==='fusion'){ sub=`${FUSION_COUNT}× same grade`; }
-  else if (f.key==='steppe'){ sub=S.facCd.seal>0?`${Math.ceil(S.facCd.seal)}s`:`${f.cd}s CD`; dis=dis||S.facCd.seal>0; }
-  else if (f.key==='echo'){ sub=S.facCd.focus>0?`${Math.ceil(S.facCd.focus)}s`:`${f.cd}s CD`; dis=dis||S.facCd.focus>0; }
+  else if (f.activeType==='pickup'){ sub=t('fac.pickupSub'); dis=dis||S.wisps<1||!S.bench.includes(null); }
+  else if (f.activeType==='fusion'){ sub=t('fac.fusionSub',{n:FUSION_COUNT}); }
+  else if (f.key==='steppe'){ sub=S.facCd.seal>0?`${Math.ceil(S.facCd.seal)}s`:t('fac.cdSub',{n:f.cd}); dis=dis||S.facCd.seal>0; }
+  else if (f.key==='echo'){ sub=S.facCd.focus>0?`${Math.ceil(S.facCd.focus)}s`:t('fac.cdSub',{n:f.cd}); dis=dis||S.facCd.focus>0; }
   btn.disabled=dis;
   btn.innerHTML=`${f.icon} ${f.activeName} <span class="cost">${sub}</span>`;
-  $('facActiveDesc').textContent=f.activeDesc;
+  $('facActiveDesc').textContent=tl(f,'activeDesc');
 }
 function syncStats(){
   $('stGold').textContent = Math.floor(S.gold);
@@ -416,25 +450,25 @@ function syncStats(){
   $('stWisps').textContent = S.wisps;
   $('stLives').textContent = S.lives;
   $('stWave').textContent = `${S.wave} / ${S.diff.waves}`;
-  $('stPop').textContent = `${popUsed()} / ${CFG.popCap}`;
+  $('stPop').textContent = `${popUsed()} / ${S.popCap}`;
   const sg = summonGrade();
   $('gachaLv').textContent = S.gachaLv;
   $('gachaGrade').textContent = GRADES[sg].label;
   $('gachaGrade').style.color = GRADES[sg].color;
-  $('summonCost').textContent = summonCost();
-  $('pityN').textContent = CFG.pityEvery - S.pity;
+  $('summonBtn').innerHTML = t('summon.btn',{cost:summonCost()});
+  $('pity').innerHTML = t('summon.pity',{n:CFG.pityEvery - S.pity});
   $('summonBtn').disabled = S.mode!=='play' || S.gold < summonCost() || !S.bench.includes(null);
   const up = $('gachaUpBtn');
-  if (S.gachaLv>=CFG.gachaMaxLv){ up.disabled=true; up.innerHTML='MAX GRADE'; }
-  else { const c=CFG.gachaUpCost(S.gachaLv); up.disabled=S.mode!=='play'||S.spirit<c; up.innerHTML=`▲ Upgrade Gacha <span class="cost">✧ ${c}</span>`; }
+  if (S.gachaLv>=CFG.gachaMaxLv){ up.disabled=true; up.innerHTML=t('summon.maxGrade'); }
+  else { const c=CFG.gachaUpCost(S.gachaLv); up.disabled=S.mode!=='play'||S.spirit<c; up.innerHTML=t('summon.up',{cost:c}); }
   $('wispGold').disabled = S.mode!=='play' || S.wisps<1;
   $('wispSpirit').disabled = S.mode!=='play' || S.wisps<1;
   $('wispGacha').disabled = S.mode!=='play' || S.wisps<1 || !S.bench.includes(null);
   const wb = $('waveBtn');
   wb.disabled = S.mode!=='play' || S.waveActive;
   wb.classList.toggle('pulse', S.mode==='play' && !S.waveActive);
-  wb.innerHTML = S.waveActive ? `≋ Wave ${S.wave}…` : (S.wave===0?'▶ Start Wave':`▶ Wave ${S.wave+1}`);
-  $('benchN').textContent = `${S.bench.filter(Boolean).length}/${CFG.benchSize}`;
+  wb.innerHTML = S.waveActive ? t('ctl.waveActive',{n:S.wave}) : (S.wave===0?t('ctl.wave'):t('ctl.waveNext',{n:S.wave+1}));
+  $('benchN').textContent = `${S.bench.filter(Boolean).length}/${S.benchSize}`;
   syncFaction(); syncGambling();
 }
 function renderBench(newIdx=-1){
@@ -471,6 +505,14 @@ function matStatus(recipe, baseRef){
     return { id:mid, have:!!found, ref:found };
   });
 }
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function skillsHTML(u, wrapClass){
+  const list = u.ferdSkills || [];
+  if (!list.length) return '';
+  return `<div class="${wrapClass}"><div class="skHead">${t('sel.skill')}</div>` +
+    list.map(s=>`<div class="sk"><b class="skn">${esc(s.name)}</b>${s.desc?`<span class="skd">${esc(s.desc).replace(/\n/g,'<br>')}</span>`:''}</div>`).join('') +
+    `</div>`;
+}
 function renderSelected(){
   const none = $('selNone'), card = $('selCard');
   const ref = S.sel && (S.sel.loc==='bench'?S.bench[S.sel.idx]:S.field[S.sel.idx]);
@@ -481,21 +523,22 @@ function renderSelected(){
   $('selName').textContent = u.name;
   $('selMeta').innerHTML =
     `<span class="gradeChip" style="background:${g.color}">${u.grade}</span><span>${u.cls}</span><span>⛨${u.pop}</span>` +
-    (S.sel.loc==='field'?'<span style="color:var(--success)">deployed</span>':'<span style="color:var(--info)">on bench</span>');
+    (S.sel.loc==='field'?`<span style="color:var(--success)">${t('sel.onField')}</span>`:`<span style="color:var(--info)">${t('sel.onBench')}</span>`);
   $('ssDmg').textContent = u.dmg; $('ssRate').textContent = u.rate; $('ssRange').textContent = u.range;
-  $('selDesc').textContent = u.desc;
-  $('sellBtn').textContent = `Release → ❋${Math.max(1,Math.round(gradeVal(u.grade)/2))}`;
+  $('selDesc').textContent = unitDesc(u);
+  $('selSkills').innerHTML = skillsHTML(u,'selSkills');
+  $('sellBtn').textContent = t('sel.release',{n:Math.max(1,Math.round(gradeVal(u.grade)/2))});
   $('ascendBtn').style.display='none';
   const rbox = $('recipeBox');
   const recs = recipesFor(ref.id);
   if (!recs.length){ rbox.style.display='none'; return; }
   rbox.style.display='block';
-  rbox.innerHTML = '<div class="rt">▲ ASCENSION PATHS</div>';
+  rbox.innerHTML = `<div class="rt">${t('sel.ascendPaths')}</div>`;
   recs.forEach(r=>{
     const res = UNIT_BY_ID[r.result];
     const status = matStatus(r, S.sel);
     const ok = status.every(m=>m.have);
-    const popOk = S.sel.loc!=='field' || popUsed()-u.pop+res.pop <= CFG.popCap;
+    const popOk = S.sel.loc!=='field' || popUsed()-u.pop+res.pop <= S.popCap;
     const row = document.createElement('div');
     row.style.cssText='margin-bottom:8px';
     row.innerHTML = `<div style="font-size:12px;font-weight:700;color:${GRADES[res.grade].color};margin-bottom:5px">→ ${res.name} <span style="color:var(--ink-faint);font-weight:400">(⛨${res.pop})</span></div>`;
@@ -509,7 +552,7 @@ function renderSelected(){
     });
     row.appendChild(chips);
     const btn = document.createElement('button');
-    btn.textContent = ok ? (popOk?'▲ ASCEND':'⛨ POP FULL') : 'MATERIALS MISSING';
+    btn.textContent = ok ? (popOk?t('sel.ascend'):t('sel.popFull')) : t('sel.matsMissing');
     btn.disabled = !ok || !popOk;
     btn.style.cssText='width:100%;padding:8px;border-radius:8px;font-weight:700;font-size:12px;background:linear-gradient(120deg,#a62e5b,var(--gEX));border:1px solid rgba(255,61,94,.5)';
     btn.onclick = ()=>ascend(r.ri);
@@ -521,7 +564,7 @@ function renderSelected(){
 /* ---------------- summon (gacha building) ---------------- */
 function giveServant(grade, source){
   const idx = S.bench.indexOf(null);
-  if (idx===-1){ toast('Bench is full!', true); return false; }
+  if (idx===-1){ toast(t('toast.benchFull'), true); return false; }
   const pool = GACHA_POOL[grade];
   const id = pick(pool);
   const u = UNIT_BY_ID[id];
@@ -529,7 +572,7 @@ function giveServant(grade, source){
   AudioFX.summon(grade);
   const epic = grade==='S'||grade==='EX'||grade==='STAR';
   log(`${source} [${GRADES[grade].label}] ${u.name}`, epic?'epic':grade==='A'?'gold':'');
-  if (epic) toast(`✦ ${GRADES[grade].label}-GRADE! ${u.name} answers the call!`);
+  if (epic) toast(t('summon.epicToast',{grade:GRADES[grade].label,name:u.name}));
   renderBench(idx); syncStats();
   if (S.sel) renderSelected();
   return true;
@@ -537,8 +580,8 @@ function giveServant(grade, source){
 function summon(){
   if (S.mode!=='play') return;
   const cost = summonCost();
-  if (S.gold < cost) return toast('Not enough gold!', true);
-  if (!S.bench.includes(null)) return toast('Bench is full!', true);
+  if (S.gold < cost) return toast(t('toast.noGold'), true);
+  if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
   S.gold -= cost; S.summons++;
   let lv = S.gachaLv;
   S.pity++;
@@ -546,17 +589,17 @@ function summon(){
   const grade = GACHA_GRADE[lv-1];
   if (grade==='S') S.pity = 0;
   bump($('stGold').parentElement);
-  giveServant(grade, 'Summoned');
+  giveServant(grade, t('src.summon'));
 }
 function upgradeGacha(){
   if (S.mode!=='play' || S.gachaLv>=CFG.gachaMaxLv) return;
   const c = CFG.gachaUpCost(S.gachaLv);
-  if (S.spirit < c) return toast('Not enough spirit!', true);
+  if (S.spirit < c) return toast(t('toast.noSpirit'), true);
   S.spirit -= c; S.gachaLv++;
   AudioFX.ascend();
   const g = summonGrade();
-  log(`▲ Gacha upgraded to Lv${S.gachaLv} — now summons [${GRADES[g].label}]`, 'gold');
-  toast(`▲ Gacha Lv${S.gachaLv}: [${GRADES[g].label}]-grade unlocked!`);
+  log(t('upgrade.log',{lv:S.gachaLv,grade:GRADES[g].label}), 'gold');
+  toast(t('upgrade.toast',{lv:S.gachaLv,grade:GRADES[g].label}));
   bump($('stSpirit').parentElement);
   syncStats();
 }
@@ -566,40 +609,55 @@ function wispToGold(){
   S.wisps--;
   const amt = Math.floor(rand(50+S.wave*2, 100+S.wave*10));
   S.gold += amt; S.goldEarned += amt;
-  AudioFX.sell(); log(`❋ Wisp → ◈${amt} gold`, 'gold');
-  toast(`❋ +◈${amt} gold`); bump($('stGold').parentElement); syncStats();
+  AudioFX.sell(); log(t('wisp.goldLog',{amt}), 'gold');
+  toast(t('wisp.goldToast',{amt})); bump($('stGold').parentElement); syncStats();
 }
 function wispToSpirit(){
   if (S.mode!=='play' || S.wisps<1) return;
   S.wisps--;
   const amt = Math.floor(rand(1,5.99));
   S.spirit += amt;
-  AudioFX.place(); log(`❋ Wisp → ✧${amt} spirit`, 'good');
-  toast(`❋ +✧${amt} spirit`); bump($('stSpirit').parentElement); syncStats();
+  AudioFX.place(); log(t('wisp.spiritLog',{amt}), 'good');
+  toast(t('wisp.spiritToast',{amt})); bump($('stSpirit').parentElement); syncStats();
 }
 function wispToGacha(){
   if (S.mode!=='play' || S.wisps<1) return;
-  if (!S.bench.includes(null)) return toast('Bench is full!', true);
+  if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
   S.wisps--; S.summons++;
   const grade = S.wave<15 ? 'E' : (Math.random()<0.5?'E':'D');
-  giveServant(grade, '❋ Wisp gacha');
+  giveServant(grade, t('src.wispGacha'));
   syncStats();
 }
 
 /* ---------------- placement / sell / ascend ---------------- */
-function tryPlace(slotIdx){
+function tryPlace(x, y, playerId=LOCAL_PLAYER){
   if (!S.sel || S.sel.loc!=='bench') return false;
   const u = S.bench[S.sel.idx];
-  if (!u || S.field[slotIdx]) return false;
+  if (!u) return false;
+  const reason = placementReason(x, y, S.field);
+  if (reason){
+    toast(t('toast.place.'+reason), true);
+    return false;
+  }
   const def = UNIT_BY_ID[u.id];
-  if (popUsed()+def.pop > CFG.popCap) { toast(`Population full! (${popUsed()}/${CFG.popCap})`, true); return false; }
-  S.field[slotIdx] = u; S.bench[S.sel.idx] = null;
+  if (popUsed()+def.pop > S.popCap) { toast(t('toast.popFull',{used:popUsed(),cap:S.popCap}), true); return false; }
+  let idx = S.field.findIndex(v=>!v);
+  if (idx<0) idx = S.field.length;
+  u.x=x; u.y=y; u.owner=playerId;
+  S.field[idx] = u; S.bench[S.sel.idx] = null;
   AudioFX.place();
-  ringFx(SLOTS[slotIdx].x, SLOTS[slotIdx].y, GRADES[def.grade].color, 40);
-  log(`Deployed ${def.name}`, 'good');
-  select({loc:'field', idx:slotIdx});
+  ringFx(x, y, GRADES[def.grade].color, 40);
+  log(t('toast.deployed',{name:def.name}), 'good');
+  select({loc:'field', idx});
   syncStats();
   return true;
+}
+function unitByUid(uid){
+  for (const [loc,arr] of [['bench',S.bench],['field',S.field]]){
+    const idx = arr.findIndex(u=>u && u.uid===uid);
+    if (idx>=0) return {u:arr[idx], loc, idx};
+  }
+  return null;
 }
 function sellSelected(){
   if (!S.sel) return;
@@ -610,8 +668,8 @@ function sellSelected(){
   S.wisps += w;
   arr[S.sel.idx] = null;
   AudioFX.sell();
-  log(`Released ${def.name} → ❋${w} wisp${w>1?'s':''}`, 'good');
-  toast(`❋ +${w} wisp${w>1?'s':''}`);
+  log(t('toast.released',{name:def.name,w}), 'good');
+  toast(t('toast.wispPlus',{w}));
   select(null); syncStats();
 }
 function ascend(ri){
@@ -621,11 +679,11 @@ function ascend(ri){
   const base = baseArr[S.sel.idx];
   if (!base || base.id!==r.base) return;
   const status = matStatus(r, S.sel);
-  if (!status.every(m=>m.have)) return toast('Materials missing!', true);
+  if (!status.every(m=>m.have)) return toast(t('toast.matsMissing'), true);
   const res = UNIT_BY_ID[r.result];
   const baseDef = UNIT_BY_ID[base.id];
-  if (S.sel.loc==='field' && popUsed()-baseDef.pop+res.pop > CFG.popCap)
-    return toast('Not enough population!', true);
+  if (S.sel.loc==='field' && popUsed()-baseDef.pop+res.pop > S.popCap)
+    return toast(t('toast.noPop'), true);
   status.forEach(m=>{
     const arr = m.ref.loc==='bench'?S.bench:S.field;
     arr[m.ref.idx] = null;
@@ -636,16 +694,16 @@ function ascend(ri){
   if (curFaction().key==='echo' && Math.random()<0.05*facMul() && S.bench.includes(null)){
     const idx=S.bench.indexOf(null);
     S.bench[idx]={uid:uidSeq++, id:r.result, cd:0};
-    log(`⧉ Doubled output → free copy of ${res.name}`, 'epic');
-    toast(`⧉ Echo copy: ${res.name}!`);
+    log(t('fac.echoLog',{name:res.name}), 'epic');
+    toast(t('fac.echoToast',{name:res.name}));
   }
   AudioFX.ascend();
-  const pos = S.sel.loc==='field' ? SLOTS[S.sel.idx] : null;
+  const pos = S.sel.loc==='field' ? base : null;
   const rc = GRADES[res.grade].color;
   if (pos){ ringFx(pos.x,pos.y,rc,90); ringFx(pos.x,pos.y,'#ffd23d',60); burst(pos.x,pos.y,rc,26); S.shake=Math.max(S.shake,6); }
-  banner(res.grade==='STAR'?'★ MOON CELL AUTOMATON ★':res.grade==='EX'?'▲ EX ASCENSION ▲':'▲ ASCENSION ▲');
-  log(`▲ ASCENDED into ${res.name}!`, 'epic');
-  toast(`▲ ${res.name} awakens!`);
+  banner(res.grade==='STAR'?t('banner.star'):res.grade==='EX'?t('banner.ex'):t('banner.ascend'));
+  log(t('log.ascended',{name:res.name}), 'epic');
+  toast(t('toast.awakens',{name:res.name}));
   renderBench(); renderSelected(); syncStats();
 }
 
@@ -680,9 +738,9 @@ function startWave(){
   S.spawnQueue = buildWave(S.wave);
   S.spawnT = 0.4;
   const boss = S.wave%5===0;
-  banner(boss ? `⚠ WAVE ${S.wave} — BOSS ⚠` : `WAVE ${S.wave}`);
+  banner(boss ? t('banner.waveBoss',{n:S.wave}) : t('banner.wave',{n:S.wave}));
   boss ? AudioFX.boss() : AudioFX.wave();
-  log(`Wave ${S.wave} incoming${boss?' — a boss approaches!':''}`, boss?'bad':'');
+  log(boss?t('log.boss',{n:S.wave}):t('log.wave',{n:S.wave}), boss?'bad':'');
   syncStats();
 }
 function spawnEnemy(type){
@@ -704,7 +762,7 @@ function endWave(){
   const spiritReward = curFaction().key==='kitsune' ? 2 : 1;
   S.spirit += spiritReward;
   addFactionXp(500);
-  log(`Wave ${S.wave} cleared! +◈${bonus}${interest?` (${interest} interest)`:''} · +❋${CFG.wispsPerWave} · +✧${spiritReward}`, 'gold');
+  log(t('log.waveCleared',{n:S.wave,bonus,interest:interest?t('log.interest',{n:interest}):'',wisps:CFG.wispsPerWave,spirit:spiritReward}), 'gold');
   bump($('stGold').parentElement);
   if (S.wave >= S.diff.waves) return gameOver(true);
   if (S.auto) S.autoT = 2.0;
@@ -715,15 +773,15 @@ function gameOver(win){
   addFactionXp(win?20000:S.wave*500);
   win ? AudioFX.win() : AudioFX.lose();
   const mins = Math.floor((S.time)/60), secs = Math.floor(S.time%60);
-  $('endTitle').textContent = win ? '✦ GRAIL SECURED ✦' : 'THE MOON CELL FALLS';
+  $('endTitle').textContent = win ? t('end.titleWin') : t('end.titleLose');
   $('endTitle').className = win?'win':'lose';
   $('endSub').textContent = win
-    ? `All ${S.diff.waves} waves repelled on ${S.diff.name}. The simulation is yours.`
-    : `Overrun on wave ${S.wave} (${S.diff.name}). The grail slips away…`;
-  $('endSub').textContent += ` ⚑ ${curFaction().name} ${facMastered()?'MASTER':'Lv'+facLevel()}.`;
+    ? t('end.subWin',{waves:S.diff.waves,diff:tl(S.diff,'name')})
+    : t('end.subLose',{wave:S.wave,diff:tl(S.diff,'name')});
+  $('endSub').textContent += t('end.facSuffix',{name:curFaction().name,rank:facMastered()?t('fac.mastered'):t('fac.lv',{lv:facLevel()})});
   $('endStats').innerHTML = [
-    [S.wave, 'WAVES'], [S.kills, 'KILLS'], [S.summons, 'SUMMONS'],
-    [S.ascensions, 'ASCENSIONS'], [Math.floor(S.goldEarned), 'GOLD EARNED'], [`${mins}:${String(secs).padStart(2,'0')}`, 'TIME'],
+    [S.wave, t('end.waves')], [S.kills, t('end.kills')], [S.summons, t('end.summons')],
+    [S.ascensions, t('end.ascensions')], [Math.floor(S.goldEarned), t('end.gold')], [`${mins}:${String(secs).padStart(2,'0')}`, t('end.time')],
   ].map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join('');
   $('endOverlay').classList.add('show');
 }
@@ -745,7 +803,7 @@ function damageEnemy(e, dmg, opts={}){
     S.kills++; S.gold += e.gold; S.goldEarned += e.gold;
     onKillReward(e, p);
     burst(p.x, p.y, e.color, e.boss?30:8);
-    if (e.boss){ S.shake = Math.max(S.shake, 9); ringFx(p.x,p.y,e.color,80); log(`Boss destroyed! +◈${e.gold}`, 'good'); }
+    if (e.boss){ S.shake = Math.max(S.shake, 9); ringFx(p.x,p.y,e.color,80); log(t('log.bossDestroyed',{gold:e.gold}), 'good'); }
     AudioFX.kill();
     bump($('stGold').parentElement);
     syncStats();
@@ -905,7 +963,7 @@ function update(dt){
       S.lives -= e.leak;
       S.leakFlash = 0.5; S.shake = Math.max(S.shake, e.boss?10:5);
       AudioFX.leak();
-      log(`${e.boss?'BOSS':'Enemy'} leaked! −${e.leak} ♥`, 'bad');
+      log(t('log.leaked',{type:e.boss?t('enemy.boss'):t('enemy.normal'),n:e.leak}), 'bad');
       bump($('stLives').parentElement);
       syncStats();
       if (S.lives<=0){ S.lives=0; syncStats(); return gameOver(false); }
@@ -917,8 +975,8 @@ function update(dt){
     if (!u) return;
     u.cd -= dt;
     if (u.cd<=0){
-      const def = UNIT_BY_ID[u.id], s = SLOTS[i];
-      if (unitAttack(u, def, s.x, s.y)) u.cd = 1/def.rate;
+      const def = UNIT_BY_ID[u.id];
+      if (unitAttack(u, def, u.x, u.y)) u.cd = 1/def.rate;
       else u.cd = 0.08;
     }
   });
@@ -944,12 +1002,61 @@ function update(dt){
 
 /* ---------------- codex ---------------- */
 function gradeLine(id){ const u=UNIT_BY_ID[id]; return `[${u.grade}] ${u.name}`; }
+let codexTab='recipes';
+let codexFilter={q:'',cls:'',grade:'',kind:''};
+const CODEX_CLASSES=[...new Set(UNITS.map(u=>u.cls))];
+const CODEX_GRADES=Object.keys(GRADES);
+const CODEX_KINDS=[...new Set(UNITS.map(u=>u.kind))];
+function unitSearchText(u){
+  return [u.name,u.cls,u.grade,u.kind,u.desc,unitDesc(u),u.exTitle||'',(u.ferdSkills||[]).map(s=>s.name+' '+s.desc).join(' ')].join(' ').toLowerCase();
+}
+function unitMatches(u){
+  const f=codexFilter;
+  if(f.cls&&u.cls!==f.cls)return false;
+  if(f.grade&&u.grade!==f.grade)return false;
+  if(f.kind&&u.kind!==f.kind)return false;
+  if(f.q&&!unitSearchText(u).includes(f.q.toLowerCase()))return false;
+  return true;
+}
+function recipeMatches(r){
+  const res=UNIT_BY_ID[r.result], f=codexFilter;
+  if(f.cls&&res.cls!==f.cls)return false;
+  if(f.grade&&res.grade!==f.grade)return false;
+  if(f.kind&&res.kind!==f.kind)return false;
+  if(f.q){
+    const hay=(unitSearchText(res)+' '+UNIT_BY_ID[r.base].name+' '+r.mats.map(m=>UNIT_BY_ID[m].name).join(' ')).toLowerCase();
+    if(!hay.includes(f.q.toLowerCase()))return false;
+  }
+  return true;
+}
+function buildCodexFilters(){
+  const fill=(id,values,labelFn,cur)=>{
+    const el=$(id); el.innerHTML='';
+    const all=document.createElement('option'); all.value=''; all.textContent=t('codex.all'); el.appendChild(all);
+    values.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=labelFn(v);el.appendChild(o);});
+    el.value=cur;
+  };
+  fill('codexClass',CODEX_CLASSES,v=>v,codexFilter.cls);
+  fill('codexGrade',CODEX_GRADES,v=>v,codexFilter.grade);
+  fill('codexKind',CODEX_KINDS,v=>t('klabel.'+v),codexFilter.kind);
+}
+function setCodexFilter(patch){
+  Object.assign(codexFilter,patch);
+  if('q' in patch)$('codexSearch').value=codexFilter.q;
+  if('cls' in patch)$('codexClass').value=codexFilter.cls;
+  if('grade' in patch)$('codexGrade').value=codexFilter.grade;
+  if('kind' in patch)$('codexKind').value=codexFilter.kind;
+  buildCodex(codexTab);
+}
 function buildCodex(tab){
+  codexTab=tab;
   const body=$('codexBody'); body.innerHTML='';
   $('tabRecipes').classList.toggle('sel',tab==='recipes');
   $('tabArchive').classList.toggle('sel',tab==='archive');
+  let count=0;
   if (tab==='recipes'){
-    RECIPES.forEach((r,i)=>{
+    const list=RECIPES.filter(recipeMatches); count=list.length;
+    list.forEach((r,i)=>{
       const res=UNIT_BY_ID[r.result], base=UNIT_BY_ID[r.base], g=GRADES[res.grade];
       const dates=['19/01/2022','22/01/2022','23/01/2022','23/01/2022','23/01/2022','29/01/2022','25/12/2021','26/12/2021','03/01/2022'];
       const el=document.createElement('div');
@@ -960,37 +1067,40 @@ function buildCodex(tab){
         <div class="e-head"><span class="nm">Atlas</span><span class="bot">✓ APP</span><span class="dt">${dates[i%dates.length]}</span></div>
         <div class="e-card" style="--accent:${i%3===0?'#5865f2':i%3===1?'#eb459e':g.color}">
           <img class="e-thumb" src="${portraitSVG(res)}" style="border-color:${g.color}" alt="">
-          <div class="e-class">${res.exTitle||'False '+res.cls}</div>
+          <div class="e-class">${res.exTitle||t('codex.false',{cls:res.cls})}</div>
           <div class="e-name">${res.name}</div>
-          <div class="e-sec">Base</div>
+          <div class="e-sec">${t('codex.base')}</div>
           <div class="e-line"><code>${gradeLine(r.base)}</code></div>
-          <div class="e-sec">Materials</div>
+          <div class="e-sec">${t('codex.materials')}</div>
           ${r.mats.map(m=>`<div class="e-line"><code>${gradeLine(m)}</code></div>`).join('')}
-          <div class="e-sec">Misc</div>
+          <div class="e-sec">${t('codex.misc')}</div>
           <div class="e-misc">${res.flavor}</div>
           <div class="e-icons">
             <div class="e-pop">${res.pop}</div>
             <img src="${portraitSVG(base)}" style="border-color:${GRADES[base.grade].color}" title="${base.name}">
             ${r.mats.map(m=>{const mu=UNIT_BY_ID[m];return `<img src="${portraitSVG(mu)}" style="border-color:${GRADES[mu.grade].color}" title="${mu.name}">`;}).join('')}
           </div>
-          <div class="e-foot">Information provided by the Moon Cell Archive</div>
+          <div class="e-foot">${t('codex.archiveFoot')}</div>
         </div>
       </div>`;
       body.appendChild(el);
     });
   } else {
+    const list=UNITS.filter(unitMatches); count=list.length;
     const grid=document.createElement('div'); grid.id='archiveGrid';
-    UNITS.forEach(u=>{
+    list.forEach(u=>{
       const g=GRADES[u.grade];
       const c=document.createElement('div');
       c.className='archCard'; c.style.borderLeftColor=g.color;
       c.innerHTML=`<img src="${portraitSVG(u)}" style="border-color:${g.color}" alt="">
         <div><b>${u.name}</b><div class="am">[${u.grade}] ${u.cls} · ⛨${u.pop} · ${u.dmg} dmg · ${u.rate}/s</div>
-        <div class="ad">${u.desc}</div></div>`;
+        <div class="ad">${unitDesc(u)}</div>${skillsHTML(u,'askills')}</div>`;
       grid.appendChild(c);
     });
-    body.appendChild(grid);
+    if(count)body.appendChild(grid);
   }
+  if(!count){const e=document.createElement('div');e.className='codexEmpty';e.textContent=t('codex.noResults');body.appendChild(e);}
+  $('codexCount').textContent=t('codex.results',{n:count});
 }
 
 /* ---------------- controls & overlays ---------------- */
@@ -1001,20 +1111,27 @@ function buildDiffCards(){
     const b=document.createElement('button');
     b.className='diffCard'+(k===selectedDiff?' sel':'');
     b.style.color=d.color;
-    b.innerHTML=`<b>${d.name}</b><span>${d.waves} waves · ♥${d.lives} · HP×${d.hp}<br><em>${d.blurb}</em></span>`;
+    b.innerHTML=`<b>${tl(d,'name')}</b><span>${t('diff.waves',{n:d.waves})} · ${t('diff.lives',{n:d.lives})} · ${t('diff.hp',{n:d.hp})}<br><em>${tl(d,'blurb')}</em></span>`;
     b.onclick=()=>{ selectedDiff=k; AudioFX.click(); buildDiffCards(); };
     row.appendChild(b);
   });
 }
-function startGame(){
-  S=freshState(selectedDiff);
+function startGame(options={}){
+  const factionKey = FACTION_BY_KEY[options.factionKey] ? options.factionKey : factionSave.cur;
+  const diffKey = DIFFICULTIES[options.diffKey] ? options.diffKey : selectedDiff;
+  const playerCount = Math.max(1, Math.min(4, options.playerCount|0 || 1));
+  S = freshState(diffKey, playerCount);
+  S.factionKey = factionKey;
+  S.players.forEach(p => { p.faction = factionKey; });
+  factionSave.cur = factionKey; persistFactionSave();
   S.mode='play'; S.startTime=performance.now();
   $('startOverlay').classList.remove('show');
   $('endOverlay').classList.remove('show');
   $('log').innerHTML='';
-  log(`Entered the Moon Cell on ${S.diff.name}. ${S.diff.waves} waves stand between you and the grail.`,'good');
-  log(`Summon [${GRADES[summonGrade()].label}] servants, upgrade the gacha with ✧spirit, spend ❋wisps wisely.`,'');
-  banner('DEFEND THE CELL');
+  log(t('log.entered',{diff:tl(S.diff,'name'),waves:S.diff.waves}),'good');
+  log(t('log.factionLocked',{name:curFaction().name,tag:curFaction().tag}),'good');
+  log(t('log.summonHint',{grade:GRADES[summonGrade()].label}),'');
+  banner(t('banner.defend'));
   AudioFX.wave();
   select(null); syncStats();
   $('autoBtn').classList.remove('on');
@@ -1022,8 +1139,24 @@ function startGame(){
   $('pauseBtn').textContent='⏸';
 }
 $('startBtn').onclick=()=>{ AudioFX.ensure(); startGame(); };
-$('endRestartBtn').onclick=()=>{ AudioFX.click(); $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); S.mode='menu'; };
-$('restartBtn').onclick=()=>{ AudioFX.click(); S.mode='menu'; $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); };
+$('endRestartBtn').onclick=()=>{ AudioFX.click(); $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); S.mode='menu'; syncFaction(); };
+$('restartBtn').onclick=()=>{ AudioFX.click(); S.mode='menu'; $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); syncFaction(); };
+function roomFallback(){
+  $('roomStatus').textContent=t('room.needServer');
+  $('roomStatus').className='warn';
+  toast(t('room.noServer'), true);
+}
+function callNet(method){
+  const net = window.Game && window.Game.net;
+  if (net && typeof net[method]==='function') return net[method]();
+  roomFallback();
+}
+function selectRoomMode(id){
+  for (const b of $('roomControls').children) b.classList.toggle('sel', b.id===id);
+}
+$('soloModeBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('soloModeBtn'); $('roomPanel').hidden=true; $('roomStatus').textContent=t('start.statusSolo'); $('roomStatus').className=''; };
+$('createRoomBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('createRoomBtn'); $('roomPanel').hidden=false; callNet('connectCreate'); };
+$('joinRoomBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('joinRoomBtn'); $('roomPanel').hidden=false; $('roomCodeInput').focus(); callNet('connectJoin'); };
 $('summonBtn').onclick=()=>{ AudioFX.ensure(); summon(); };
 $('gachaUpBtn').onclick=()=>{ AudioFX.ensure(); upgradeGacha(); };
 $('wispGold').onclick=()=>{ AudioFX.ensure(); wispToGold(); };
@@ -1038,14 +1171,20 @@ $('pickupClose').onclick=()=>{ AudioFX.click(); $('pickupOverlay').classList.rem
 $('pickupOverlay').addEventListener('click',ev=>{ if(ev.target===$('pickupOverlay')) $('pickupOverlay').classList.remove('show'); });
 $('waveBtn').onclick=()=>{ AudioFX.ensure(); startWave(); };
 $('sellBtn').onclick=sellSelected;
-$('autoBtn').onclick=function(){ S.auto=!S.auto; this.classList.toggle('on',S.auto); if(S.auto&&!S.waveActive)S.autoT=1.5; AudioFX.click(); toast(S.auto?'Auto-wave ON':'Auto-wave OFF'); };
+$('autoBtn').onclick=function(){ S.auto=!S.auto; this.classList.toggle('on',S.auto); if(S.auto&&!S.waveActive)S.autoT=1.5; AudioFX.click(); toast(S.auto?t('toast.autoOn'):t('toast.autoOff')); };
 $('speedBtn').onclick=function(){ S.speed=S.speed>=3?1:S.speed+1; this.textContent=S.speed+'×'; AudioFX.click(); };
 $('pauseBtn').onclick=function(){ if(S.mode!=='play')return; S.paused=!S.paused; this.textContent=S.paused?'▶':'⏸'; AudioFX.click(); };
 $('soundBtn').onclick=function(){ AudioFX.ensure(); AudioFX.muted=!AudioFX.muted; this.classList.toggle('on',!AudioFX.muted); this.classList.toggle('off',AudioFX.muted); this.textContent=AudioFX.muted?'♪̸':'♪'; if(!AudioFX.muted)AudioFX.click(); };
+$('langBtn').onclick=()=>{ AudioFX.click(); setLang(getLang()==='th'?'en':'th'); };
 $('codexBtn').onclick=()=>{ AudioFX.click(); buildCodex('recipes'); $('codexOverlay').classList.add('show'); };
 $('codexClose').onclick=()=>{ AudioFX.click(); $('codexOverlay').classList.remove('show'); };
 $('tabRecipes').onclick=()=>buildCodex('recipes');
 $('tabArchive').onclick=()=>buildCodex('archive');
+$('codexSearch').oninput=e=>setCodexFilter({q:e.target.value.trim()});
+$('codexClass').onchange=e=>setCodexFilter({cls:e.target.value});
+$('codexGrade').onchange=e=>setCodexFilter({grade:e.target.value});
+$('codexKind').onchange=e=>setCodexFilter({kind:e.target.value});
+$('codexClear').onclick=()=>{ AudioFX.click(); setCodexFilter({q:'',cls:'',grade:'',kind:''}); };
 $('codexOverlay').addEventListener('click',ev=>{ if(ev.target===$('codexOverlay')) $('codexOverlay').classList.remove('show'); });
 
 document.addEventListener('keydown',ev=>{
@@ -1064,17 +1203,40 @@ document.addEventListener('keydown',ev=>{
 });
 document.addEventListener('pointerdown',()=>AudioFX.ensure(),{once:true});
 
+/* ---------------- language helpers ---------------- */
+function unitDesc(u){
+  if (getLang()!=='th') return u.desc;
+  let s=t('kind.'+u.kind);
+  if(u.critC)s+=t('mod.crit',{c:Math.round(u.critC*100),x:u.critX});
+  if(u.greed)s+=t('mod.greed',{n:u.greed});
+  if(u.chain)s+=t('mod.chain',{n:u.chain});
+  if(u.multi)s+=t('mod.multi',{n:u.multi});
+  if(u.stunC)s+=t('mod.stun',{c:Math.round(u.stunC*100)});
+  if(u.pierce)s+=t('mod.pierce',{n:u.pierce});
+  if(u.slow)s+=t('mod.slow',{p:Math.round(u.slow*100)});
+  if(u.aura)s+=t('mod.aura',{p:Math.round(u.aura*100)});
+  return s;
+}
+function updateLangBtn(){ const b=$('langBtn'); if(b) b.textContent=getLang()==='th'?'EN':'ไทย'; }
+function onLangChange(){ updateLangBtn(); buildFactionChips(); buildGambling(); buildDiffCards(); renderBench(); syncStats(); renderSelected(); buildCodexFilters(); if($('codexOverlay').classList.contains('show'))buildCodex(codexTab); if($('pickupOverlay').classList.contains('show'))buildPickup(); }
+
 /* ---------------- expose API for the 3D layer ---------------- */
 window.Game = {
   get S(){ return S; },
   update, summon, upgradeGacha, wispToGold, wispToSpirit, wispToGacha,
   startWave, select, tryPlace, sellSelected, ascend, startGame,
+  placementReason:(x,y)=>placementReason(x,y,S.field), unitByUid,
   setFaction, factionActive, doFusion, addFactionXp, openPickup,
   doGoldGamble, doServantGamble,
-  popUsed, AudioFX,
+  popUsed, AudioFX, onLangChange,
 };
+UNITS.forEach(u=>{ u.ferdSkills = FERD_SKILLS[u.id] || []; });
 buildDiffCards();
 buildFactionChips();
 buildGambling();
 renderBench();
 syncStats();
+applyI18n();
+buildCodexFilters();
+updateLangBtn();
+updateLangBtn();

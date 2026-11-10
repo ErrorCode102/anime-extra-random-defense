@@ -1,0 +1,83 @@
+[
+ {
+  "tag": "A",
+  "faction": "NERO",
+  "index": 1,
+  "name": "Nero Claudius",
+  "ferdName": "네로",
+  "icon": "ReplaceableTextures\\CommandButtons\\Nero\\BTNNero_B.blp",
+  "lines": [
+   "Faction Talent - Movement Speed Increase: every added Servant gains A02V (aura Slo1=0.25) => +25% movement speed. Tag: '『Faction Talent - Movement Speed Increase』'. [war3map.j:1451-1457; war3map.w3a A02V]",
+   "Kill bonus: 50% chance (GetRandomInt(0,1)==0) on each kill to gain 1-15 gold. [war3map.wct TrigFactionNeroKillBonus / war3map.j:34939+]",
+   "Servant gambling success rate very high: Nero's gambling building H00F sells n009-n00D with success rates E/D=71%, C=66%, B=61%, A=56%, S=51% (normal building H002 sells g00E-g00S at 51%/46%/41%/36%/31%). [war3map.j:41141-41242; war3map.w3u H00F/H002 useu]",
+   "Emperor's Privilege (n01C, sold only by H00F): gamble yields GetRandomInt(0,25000) gold. [war3map.wct TrigFactionNeroSuperGamble]",
+   "Start gold: +1000 gold trickled as +10 every 0.03125 s when the convenience building is placed. [war3map.wct TrigFactionNeroStartGold]",
+   "Skill building H004 spells: Faction Spell A - Thunderclap(Q) | Faction Spell B - Crash & Trash(W) | Faction Spell C - Photonization(E) | Magic Recovery(R)"
+  ],
+  "unlock": "Basic faction - always selectable (non-Master random pool is factions 1-3).",
+  "notes": "Reference A: 'Servant gambling success rate very high; all servants movement speed increased; kill enemies for additional resources' - all three confirmed in code (71-51% gamble rates, +25% move speed aura, 1-15 gold kill bonus). In-map faction label is Korean '네로'; English name 'Nero Claudius' appears in the save-code preload (war3map.j:18924). The reference UI description sentence itself is not stored verbatim in the map; lines above are the in-map tooltips/constants implementing it."
+ },
+ {
+  "tag": "B",
+  "faction": "TAMAMO",
+  "index": 2,
+  "name": "Tamamo-no-Mae",
+  "ferdName": "타마모",
+  "icon": "ReplaceableTextures\\CommandButtons\\Tamamo\\BTNTamamo_B.blp",
+  "lines": [
+   "Enhanced MP skills (instant cast, hit Player Zone & Boss Zone): Faction Skill A - Curse: Thunderclap(Q) - Instant Cast\nFixed Damage: 2000\n\nDeals damage to all enemies in the Player Zone & Boss Zone and stuns them for 1 second.\n\nTamamo: \"I'm confident in my sorcery!\"\nZabio: \"I really hope you are!\"",
+   "Faction Spell B - Mantra: Aphotic Cave(W) - Instant Cast\nMinimum Fixed Damage: 30000\nMaximum Fixed Damage: 20% of Max HP\n \nDeals damage to all enemies in the Player Zone & Boss Zone and stuns them for 5 seconds.\nDeals a minimal amount of damage to large units (Mission/Boss units).\n\nZabio: \"Should I get help from Alter Ego?\"\nTamamo: \"Not at all.\"",
+   "Faction Spell C - Eightfold Blessings of Amaterasu on the Weight Stone under the Sunlit Watery Heavens(E) - Instant Cast\nCooldown: 60 seconds\n\nAccelerates all Servants in the Player Zone by 300% for 15 seconds.\n\nTamamo: \"Will I show you a god-like place for a bit?\"",
+   "MP regeneration: +100 MP to the player every game round. [war3map.wct TrigFactionTamamoMPRegen]",
+   "Summon a servant of your choice: Summon Selected Servant from Combination Table(V) - Consumes the Saint Quartz and summons the selected servant from the Combination Table.\n\nSaint Quartz Prices:\n - [E] = 1\n - [D] = 2\n - [C] = 5\n - [B] = 10\n   Servants above B-grade cannot be selected.\n   Servants that don't appear in Gacha cannot be selected. (cooldown 40 s)",
+   "Reduced teleport time: Tamamo servants get A0BQ '『Beam Transition』' with cast time acas=0.04 s instead of A0BP '『Teleport』' acas=3.0 s. [war3map.j:36860-36866; war3map.w3a A0BQ/A0BP]"
+  ],
+  "unlock": "Basic faction - always selectable (non-Master random pool is factions 1-3).",
+  "notes": "Reference B: 'enhanced MP skills; summon a servant of your choice; reduced teleport time' - confirmed: instant-cast upgraded faction spells A01E/A01G/A049 on building H00J, Summon Selected (A09D, Saint Quartz prices E=1/D=2/C=5/B=10), teleport cast 3.0 s -> 0.04 s. In-map faction label '타마모'; English name from save-code preload (war3map.j:18927). Reference description sentence not stored verbatim in-map."
+ },
+ {
+  "tag": "C",
+  "faction": "ALTERA",
+  "index": 3,
+  "name": "Attila",
+  "ferdName": "알테라",
+  "icon": "ReplaceableTextures\\CommandButtons\\Atila\\BTNAtila_B.blp",
+  "lines": [
+   "Kill enemies for additional draw opportunities: 1% chance (GetRandomInt(1,100)==1) per kill to gain +1 wisp (Saint Quartz); tag '영령 획득!' (Heroic Spirit acquired). [war3map.wct TrigFactionAlteraKillBonus / war3map.j:35413+]",
+   "All damage upgrades start advanced: on game init every upgrade R00E/R00D/R00C/R00B/R00A/R00S/R0EX/R0XS is set to researched level 15 (of 60). Upgrades are '<Grade>-grade Upgrade' - 'Increases damage and attack speed of <grade> Servants.' Debug text: '알테라 보너스 : 각 업그레이드 15회 완료' (Altera bonus: each upgrade completed 15 times). The reference's 'Lvl 1.5' corresponds to this level 15/60 head start. [war3map.wct FXTrig0SGameSetting.diagnosePlayer; war3map.w3q]",
+   "Blessing increases servant power: Grant Crest of the Wandering Star to the Servant(V) - Gives Crest of the Wandering Star effect to 1 selected Servant.\n\nIf you assign a Crest to another Servant, the previously given Crest disappears.\n\nEffect: Crest of the Wandering Star\nBoosts the Servant's speed and damage by 50%.\n\nRegardless of grade, a Servants \"Attila\" have a double effect. Implemented as +50 damage bonus & A07H aura (Slo1=0.5); on Attila servants (-ALA/-ALB/-ALS/-ALX) the effect doubles: +100 damage & A0EV (Slo1=1.0). [war3map.wct TrigFactionAlteraSeal; war3map.w3a A07H/A0EV]"
+  ],
+  "unlock": "Basic faction - always selectable (non-Master random pool is factions 1-3).",
+  "notes": "Reference C: 'kill enemies for additional draw opportunities; all damage upgrades start at Lvl 1.5; blessing increases servant power' - confirmed: 1% wisp-on-kill, all 8 grade upgrades pre-researched to level 15/60, Crest of the Wandering Star (+50% speed/damage, doubled on Attila). In-map faction label '알테라'; English name 'Attila' from save-code preload (war3map.j:18930). Reference description sentence not stored verbatim in-map."
+ },
+ {
+  "tag": "D",
+  "faction": "ANOTHER",
+  "index": 4,
+  "name": "Another",
+  "ferdName": "어나더",
+  "icon": "ReplaceableTextures\\CommandButtons\\Pendragon\\BTNPendragon_B.blp",
+  "lines": [
+   "Start with increased spirits: 15 wisps (Saint Quartz) at game start instead of the normal 4. [war3map.j:39900-39908]",
+   "Upgradeable Condensing Ray: special tower n008 'Condensing Ray' is created at the start location; Change Target(V) - Select the target to focus Condesing Ray on it.\n\nThe Condensing Ray requires a charge time of 3 seconds to attack a different target.\nWhile Condensing Ray continuously deals damage to the same target, the attack power of the Condensing Ray increases up to 400%. Upgrade building is H00D (unique to Another). [war3map.wct TrigFactionAnotherBatchBuilding/FixTarget]",
+   "Very low chance to double merging output: 5% (GetRandomReal(0,100) <= 5) on each merge to create a second copy of the result; message '세력 특성 『어나더 - 조합 결과 두 배』 발동' / in-map English tag 'Faction Talent 『Another - Combination results are doubled』 activated'. [war3map.j:35611-35620; war3map.wct TrigFactionAnotherDoubleServant]"
+  ],
+  "unlock": "Locked until Master status (FXIsPlayerMaster: master level > 0). Master is promoted when any faction reaches level 15 (FX_FACTION_MAX_LEVEL). UI gates factions >= FX_FACTION_ANOTHER behind FXIsPlayerMaster. [war3map.j:21882-21887, 21914-21917; war3map.wct FXRDPlayerFaction]",
+  "notes": "Reference D (unlock: master one basic faction A/B/C): 'start with increased spirits; upgradeable Condensing Ray; very low chance to double merging output' - confirmed: 15 starting wisps vs 4, Condensing Ray tower (3 s retarget charge, damage ramps to 400% on a sustained target), 5% double-merge. Code gate is Master status, earned by mastering any one faction (level 15). In-map label '어나더'; English 'Another' from save-code preload (war3map.j:18933). Reference description sentence not stored verbatim in-map."
+ },
+ {
+  "tag": "E",
+  "faction": "BB",
+  "index": 5,
+  "name": "BB",
+  "ferdName": "BB",
+  "icon": "ReplaceableTextures\\CommandButtons\\BB\\BTNBB_B.blp",
+  "lines": [
+   "Gain growth-type Servant BB: hero unit H014 '[★] MoonCancer' (MoonCancer) is granted when the convenience building is placed; it gains +1 BBxp per line enemy kill, and the BB gacha (n01E) randomly raises one of STR/AGI/INT by +10. [war3map.wct TrigFactionBBServant; war3map.w3u H014]",
+   "Upgrade by combining 3 same-grade units: Fusion(V) - By Three They Come...\n\nUnits placed on the Imaginary Space (center of the line) are fused and promoted to the next level.\n\n - Requires 3 units of the same grade.\n - Only Servants below S-grade can be used as materials.\n - Servants that cannot be drawn by Gacha do not appear. Code: FUSION_COUNT=3, result grade = material grade + 1, result gains +50 damage bonus and abilities A0GM/A0GN; fusion zone building n015 'Fusion Zone'. [war3map.wct TrigFactionBBHoradricCube]",
+   "Collect 5 specified units to unlock ultimate unit: [EX] Servant Modification(C) - 『Initiate synchronization with Moon Cell─── Let's start the tragedy.』\n\nIf you have all five A-class Servants presented in the center of the player's area, you gain a powerful Servant.\n\nLack of servants will be notified by message. Code: MAX_REQUIRED=5 random A-class Servants are displayed; owning all five unlocks a random EX-grade (rank 7) Servant. [war3map.wct TrigFactionBBUnlock]"
+  ],
+  "unlock": "Locked until Master status (FXIsPlayerMaster: master level > 0). Master is promoted when any faction reaches level 15 (FX_FACTION_MAX_LEVEL). UI gates factions >= FX_FACTION_ANOTHER behind FXIsPlayerMaster. [war3map.j:21882-21887, 21914-21917; war3map.wct FXRDPlayerFaction]",
+  "notes": "Reference E (unlock: master one basic faction): 'gain growth-type Servant BB; upgrade by combining 3 same-grade units; collect 5 specified units to unlock ultimate unit' - confirmed: MoonCancer hero BB (XP/ stat growth), 3-unit same-grade fusion to next grade, 5 specified A-class collection unlocking an EX servant. Code gate is Master status (any faction mastered to level 15). In-map label 'BB' (war3map.j:18936-18938). Reference description sentence not stored verbatim in-map."
+ }
+]

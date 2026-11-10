@@ -364,18 +364,18 @@ const RECIPES = [
 const GACHA_POOL = {"E": ["ATE", "GAE", "KIE", "SAE", "VLE"], "D": ["ATD", "GAD", "KID", "LUD", "MDD", "RHD", "SAD", "VLD", "YSD"], "C": ["ANC", "AQC", "ATC", "EMC", "ESC", "GAC", "KAC", "KHC", "KIC", "LUC", "MDC", "NCC", "PAC", "PDC", "RHC", "RYC", "SAC", "TAC", "TOC", "VLC", "YSC", "ZMC"], "B": ["ALB", "ANB", "APB", "AQB", "ATB", "BAB", "BBB", "EMB", "ESB", "FDB", "GAB", "GMB", "GOB", "JEB", "KAB", "KHB", "KIB", "LUB", "MDB", "NCB", "PAB", "PDB", "PTB", "RHB", "RYB", "SAB", "STB", "TAB", "TOB", "VLB", "YSB", "ZMB"], "A": ["AAA", "AEA", "ALA", "ANA", "APA", "AQA", "ATA", "BAA", "BBA", "BRA", "EMA", "ESA", "FDA", "GAA", "GMA", "GOA", "JAA", "JEA", "KAA", "KHA", "KIA", "LUA", "MDA", "NCA", "PAA", "PDA", "PTA", "RHA", "RYA", "SAA", "STA", "TAA", "TOA", "VLA", "YSA", "ZMA"], "S": ["AAS", "AES", "ALS", "ANS", "APS", "AQS", "ATS", "BAS", "BBS", "BRS", "EMS", "ESS", "FDS", "GAS", "GMS", "GOS", "JAS", "JES", "KAS", "KHS", "KIS", "LUS", "MDS", "NCS", "PAS", "PDS", "PTS", "RHS", "RYS", "SAS", "STS", "TAS", "TOS", "VLS", "YSS", "ZMS"]};
 
 const DIFFICULTIES = {
-  practice:{name:"Practice", blurb:"The training simulation. Gentle waves, generous lives.", waves:60, timeout:60, lives:80, speed:1.0, hp:1.0, gold:1.0, color:"#3dff9a"},
-  seraph:{name:"SE.RA.PH", blurb:"The standard grail war. The true starting line.", waves:80, timeout:50, lives:80, speed:1.05, hp:1.25, gold:1.0, color:"#4aa8ff"},
-  labyrinth:{name:"Sakura Labyrinth", blurb:"A twisting maze of tougher foes.", waves:90, timeout:40, lives:70, speed:1.2, hp:1.5, gold:1.0, color:"#ffd23d"},
-  abyss:{name:"Photonic Abyss", blurb:"Brutal light. The cell shows no mercy.", waves:100, timeout:40, lives:60, speed:1.35, hp:2.0, gold:1.0, color:"#ff9440"},
-  elite1:{name:"Imaginary Number Space I", blurb:"Elite proof I \u2014 the imaginary deepens.", waves:100, timeout:40, lives:50, speed:1.35, hp:2.25, gold:1.0, color:"#e14dff"},
-  elite2:{name:"Imaginary Number Space II", blurb:"Elite proof II \u2014 reality thins.", waves:100, timeout:40, lives:50, speed:1.35, hp:2.5, gold:1.0, color:"#e14dff"},
-  elite3:{name:"Imaginary Number Space III", blurb:"Elite proof III \u2014 the void presses in.", waves:100, timeout:40, lives:50, speed:1.35, hp:2.75, gold:1.0, color:"#c86aff"},
-  elite4:{name:"Imaginary Number Space IV", blurb:"Elite proof IV \u2014 faster, harder, merciless.", waves:100, timeout:40, lives:50, speed:1.5, hp:3.0, gold:1.0, color:"#c86aff"},
-  hell1:{name:"Hell Proof I", blurb:"The first hell. Few return.", waves:100, timeout:40, lives:40, speed:1.5, hp:3.25, gold:1.0, color:"#ff3d5e"},
-  hell2:{name:"Hell Proof II", blurb:"The second hell. The moon cell bleeds.", waves:100, timeout:40, lives:40, speed:1.5, hp:3.5, gold:1.0, color:"#ff3d5e"},
-  hell3:{name:"Hell Proof III", blurb:"The third hell. Despair has a name.", waves:100, timeout:40, lives:40, speed:1.5, hp:3.75, gold:1.0, color:"#ff3d5e"},
-  hell4:{name:"Hell Proof IV", blurb:"The final hell. Only legends survive.", waves:100, timeout:40, lives:40, speed:1.65, hp:4.0, gold:1.0, color:"#ff2d4e"},
+  practice:{name:"Practice", nameTh:"ฝึกซ้อม", blurb:"The training simulation. Gentle waves, generous lives.", blurbTh:"การจำลองฝึกซ้อม เวฟเบาบาง ชีวิตเหลือเฟือ", waves:60, timeout:60, lives:80, speed:1.0, hp:1.0, gold:1.0, color:"#3dff9a"},
+  seraph:{name:"SE.RA.PH", nameTh:"SE.RA.PH", blurb:"The standard grail war. The true starting line.", blurbTh:"สงครามจอกมาตรฐาน จุดเริ่มต้นที่แท้จริง", waves:80, timeout:50, lives:80, speed:1.05, hp:1.25, gold:1.0, color:"#4aa8ff"},
+  labyrinth:{name:"Sakura Labyrinth", nameTh:"เขาวงกตซากุระ", blurb:"A twisting maze of tougher foes.", blurbTh:"เขาวงกตคดเคี้ยวของศัตรูที่แกร่งกว่า", waves:90, timeout:40, lives:70, speed:1.2, hp:1.5, gold:1.0, color:"#ffd23d"},
+  abyss:{name:"Photonic Abyss", nameTh:"อเวจีโฟโตนิก", blurb:"Brutal light. The cell shows no mercy.", blurbTh:"แสงอันโหดร้าย เซลล์ไม่ปรานีใคร", waves:100, timeout:40, lives:60, speed:1.35, hp:2.0, gold:1.0, color:"#ff9440"},
+  elite1:{name:"Imaginary Number Space I", nameTh:"ห้วงจำนวนจินตภาพ I", blurb:"Elite proof I \u2014 the imaginary deepens.", blurbTh:"บทพิสูจน์ชั้นยอด I — ห้วงจินตภาพลึกลง", waves:100, timeout:40, lives:50, speed:1.35, hp:2.25, gold:1.0, color:"#e14dff"},
+  elite2:{name:"Imaginary Number Space II", nameTh:"ห้วงจำนวนจินตภาพ II", blurb:"Elite proof II \u2014 reality thins.", blurbTh:"บทพิสูจน์ชั้นยอด II — ความจริงบางเบา", waves:100, timeout:40, lives:50, speed:1.35, hp:2.5, gold:1.0, color:"#e14dff"},
+  elite3:{name:"Imaginary Number Space III", nameTh:"ห้วงจำนวนจินตภาพ III", blurb:"Elite proof III \u2014 the void presses in.", blurbTh:"บทพิสูจน์ชั้นยอด III — ความว่างเปล่าบีบคั้น", waves:100, timeout:40, lives:50, speed:1.35, hp:2.75, gold:1.0, color:"#c86aff"},
+  elite4:{name:"Imaginary Number Space IV", nameTh:"ห้วงจำนวนจินตภาพ IV", blurb:"Elite proof IV \u2014 faster, harder, merciless.", blurbTh:"บทพิสูจน์ชั้นยอด IV — เร็วขึ้น แข็งขึ้น ไร้ความปรานี", waves:100, timeout:40, lives:50, speed:1.5, hp:3.0, gold:1.0, color:"#c86aff"},
+  hell1:{name:"Hell Proof I", nameTh:"พิสูจน์นรก I", blurb:"The first hell. Few return.", blurbTh:"นรกขุมแรก แทบไม่มีใครรอดกลับ", waves:100, timeout:40, lives:40, speed:1.5, hp:3.25, gold:1.0, color:"#ff3d5e"},
+  hell2:{name:"Hell Proof II", nameTh:"พิสูจน์นรก II", blurb:"The second hell. The moon cell bleeds.", blurbTh:"นรกขุมที่สอง มูนเซลล์หลั่งเลือด", waves:100, timeout:40, lives:40, speed:1.5, hp:3.5, gold:1.0, color:"#ff3d5e"},
+  hell3:{name:"Hell Proof III", nameTh:"พิสูจน์นรก III", blurb:"The third hell. Despair has a name.", blurbTh:"นรกขุมที่สาม ความสิ้นหวังมีชื่อเรียก", waves:100, timeout:40, lives:40, speed:1.5, hp:3.75, gold:1.0, color:"#ff3d5e"},
+  hell4:{name:"Hell Proof IV", nameTh:"พิสูจน์นรก IV", blurb:"The final hell. Only legends survive.", blurbTh:"นรกขุมสุดท้าย เฉพาะตำนานเท่านั้นที่รอด", waves:100, timeout:40, lives:40, speed:1.65, hp:4.0, gold:1.0, color:"#ff2d4e"},
 };
 
 const CFG = {
@@ -396,34 +396,64 @@ const PICKUP_REQ = { E:1, D:2, C:5, B:10 };
 const FUSION_COUNT = 3;
 const FACTIONS = [
   { key:'aurel', tag:'A', name:'Aurel Court', color:'#d0d040', icon:'◈', master:'Golden Sovereign',
+    traits:[
+      {en:'Servant gambling success rate very high.',th:'อัตราสำเร็จพนันผู้รับใช้สูงมาก'},
+      {en:'All servants movement speed increased.',th:'ผู้รับใช้ทุกตัวเคลื่อนที่เร็วขึ้น'},
+      {en:'Kill enemies for additional resources.',th:'ฆ่าศัตรูเพื่อทรัพยากรเพิ่มเติม'}],
     passive:'Kill tribute — 50% chance on kill to loot +1–15 gold.',
+    passiveTh:'ส่วยสังหาร — ฆ่าศัตรูมีโอกาส 50% ได้ทอง +1–15',
     activeName:'Imperial Privilege', activeType:'supergold', cost:5000, cd:300,
-    activeDesc:'Spend ◈5000 for ◈0–25,000. Recharges in 300s.' },
+    activeDesc:'Spend ◈5000 for ◈0–25,000. Recharges in 300s.',
+    activeDescTh:'จ่าย ◈5000 ลุ้น ◈0–25,000 ฟื้นใน 300 วิ' },
   { key:'kitsune', tag:'B', name:'Kitsune Covenant', color:'#d0d0d0', icon:'✧', master:'Ninefox Matriarch',
+    traits:[
+      {en:'Enhanced MP skills.',th:'สกิล MP แรงขึ้น'},
+      {en:'Summon a servant of your choice.',th:'อัญเชิญผู้รับใช้ที่เลือกเอง'},
+      {en:'Reduced teleport time.',th:'เวลาวาร์ปลดลง'}],
     passive:'Shrine meditation — +1 extra spirit every wave.',
+    passiveTh:'สมาธิศาลเจ้า — ได้สปิริตเพิ่ม +1 ทุกเวฟ',
     activeName:'Servant Pickup', activeType:'pickup', cost:0,
-    activeDesc:'Spend ❋wisps (E1/D2/C5/B10) to choose an exact servant.' },
+    activeDesc:'Spend ❋wisps (E1/D2/C5/B10) to choose an exact servant.',
+    activeDescTh:'ใช้ ❋วิสป์ (E1/D2/C5/B10) เลือกผู้รับใช้ที่ตรงใจ' },
   { key:'steppe', tag:'C', name:'Steppe Horde', color:'#8080d0', icon:'❋', master:'Storm Khan',
+    traits:[
+      {en:'Kill enemies for additional draw opportunities.',th:'ฆ่าศัตรูเพื่อโอกาสจับเพิ่ม'},
+      {en:'All damage upgrades start at Lvl 1.5.',th:'อัปเกรดดาเมจทั้งหมดเริ่มที่ Lvl 1.5'},
+      {en:'Blessing increases servant power.',th:'พรเพิ่มพลังผู้รับใช้'}],
     passive:'Spirit plunder — 1% chance on kill to capture +1 wisp.',
-    activeName:'Meteor Seal', activeType:'cd', cd:30,
-    activeDesc:'Stun all enemies 2.5s and seal their armor + regen.' },
-  { key:'echo', tag:'D', name:'Echo Syndicate', color:'#d08000', icon:'⧉', master:'Mirror Prime',
+    passiveTh:'ปล้นสปิริต — ฆ่าศัตรูมีโอกาส 1% ยึดวิสป์ +1',
+    activeName:'Crest of the Wandering Star', activeType:'crest', cd:30,
+    activeDesc:'Bless the selected servant: +50% damage and shot speed.',
+    activeDescTh:'ประทานพรผู้รับใช้ที่เลือก: ดาเมจ+50% และกระสุนเร็วขึ้น' },
+  { key:'echo', tag:'D', name:'Echo Syndicate', color:'#d08000', icon:'⧉', master:'Mirror Prime', reqMaster:true,
+    traits:[
+      {en:'Start with increased spirits.',th:'เริ่มด้วยสปิริตมากขึ้น'},
+      {en:'Upgradeable Condensing Ray.',th:'Condensing Ray อัปเกรดได้'},
+      {en:'Very low chance to double merging output.',th:'โอกาสต่ำมากที่ผลรวมจะคูณสอง'}],
     passive:'Doubled output — 5% chance on ascension to copy the result.',
-    activeName:'Fix Target', activeType:'cd', cd:25,
-    activeDesc:'Lock all servants onto one mark for 6s with +25% damage.' },
-  { key:'mooncell', tag:'E', name:'Mooncell Bloc', color:'#d040d0', icon:'⬢', master:'Cell Automaton',
+    passiveTh:'ผลคูณสอง — เลื่อนขั้นมีโอกาส 5% ได้สำเนาผลลัพธ์',
+    activeName:'Condensing Ray', activeType:'cd', cd:25,
+    activeDesc:'Focus a ray on one mark; damage ramps up to 400% while held.',
+    activeDescTh:'โฟกัสลำแสงใส่เป้าเดียว ดาเมจไล่ขึ้นถึง 400% ขณะล็อก' },
+  { key:'mooncell', tag:'E', name:'Mooncell Bloc', color:'#d040d0', icon:'⬢', master:'Cell Automaton', reqMaster:true,
+    traits:[
+      {en:'Gain growth-type Servant BB.',th:'ได้ผู้รับใช้โตแบบ BB'},
+      {en:'Upgrade by combining 3 same-grade units.',th:'เลื่อนขั้นโดยรวมยูนิตเกรดเดียวกัน 3 ตัว'},
+      {en:'Collect 5 specified units to unlock ultimate unit.',th:'สะสมยูนิตที่กำหนด 5 ตัวเพื่อปลดล็อกยูนิตสุดยอด'}],
     passive:'BB bounty — kills grant +50% faction XP.',
+    passiveTh:'ค่าหัว BB — ฆ่าศัตรูได้ XP แฟคชั่น +50%',
     activeName:'Horadric Fusion', activeType:'fusion', cost:0,
-    activeDesc:'Fuse 3 equal-grade servants into one random next-grade servant.' },
+    activeDesc:'Fuse 3 equal-grade servants into one random next-grade servant.',
+    activeDescTh:'รวมผู้รับใช้เกรดเดียวกัน 3 ตัว เป็นผู้รับใช้เกรดถัดไปแบบสุ่ม 1 ตัว' },
 ];
 const FACTION_BY_KEY = Object.fromEntries(FACTIONS.map(f=>[f.key,f]));
 
 /* exact FERD gambling costs, payouts, success chances, charges and cooldowns */
 const GOLD_GAMBLES = [
-  { key:'g10', label:'10 Gold Gacha', cost:10, payout:100, charges:10, cd:10, type:'gold' },
-  { key:'g100', label:'100 Gold Gacha', cost:100, payout:500, charges:5, cd:30, type:'gold' },
-  { key:'g500', label:'500 Gold Gacha', cost:500, payout:1500, charges:2, cd:60, type:'gold' },
-  { key:'spirit', label:'Spirit Gamble', cost:500, payout:3, charges:10, cd:10, type:'spirit' },
+  { key:'g10', label:'10 Gold Gacha', labelTh:'กาชาทอง 10', cost:10, payout:100, charges:10, cd:10, type:'gold' },
+  { key:'g100', label:'100 Gold Gacha', labelTh:'กาชาทอง 100', cost:100, payout:500, charges:5, cd:30, type:'gold' },
+  { key:'g500', label:'500 Gold Gacha', labelTh:'กาชาทอง 500', cost:500, payout:1500, charges:2, cd:60, type:'gold' },
+  { key:'spirit', label:'Spirit Gamble', labelTh:'พนันสปิริต', cost:500, payout:3, charges:10, cd:10, type:'spirit' },
 ];
 const SERVANT_GAMBLES = [
   { key:'ED', label:'E–D', grades:['E','D'], cost:500, spirit:0, chance:50, special:70 },
@@ -457,6 +487,23 @@ const SLOTS = [
   {x:120,y:60},{x:840,y:60},{x:840,y:580},{x:120,y:580},
   {x:95,y:225},{x:95,y:415},{x:865,y:225},{x:865,y:415},
 ];
+
+const PLACEMENT = { minX:24, maxX:936, minY:24, maxY:616, roadPadding:22, unitGap:30 };
+function placementReason(x, y, field=[], ignoreUid=null){
+  if (!Number.isFinite(x) || !Number.isFinite(y) || x<PLACEMENT.minX || x>PLACEMENT.maxX || y<PLACEMENT.minY || y>PLACEMENT.maxY) return 'bounds';
+  const clearance = CFG.ring.w/2 + PLACEMENT.roadPadding;
+  if (Math.abs(y-CFG.H/2)<=clearance && (x<CFG.ring.l || x>CFG.ring.r)) return 'gate';
+  for (const s of PATH_SEG){
+    const dx=s.x2-s.x1, dy=s.y2-s.y1;
+    const t=Math.max(0,Math.min(1,((x-s.x1)*dx+(y-s.y1)*dy)/(s.len*s.len)));
+    if (Math.hypot(x-(s.x1+dx*t), y-(s.y1+dy*t))<=clearance) return 'road';
+  }
+  for (const u of field){
+    if (!u || u.uid===ignoreUid) continue;
+    if (Math.hypot(x-u.x,y-u.y)<PLACEMENT.unitGap) return 'too-close';
+  }
+  return '';
+}
 
 /* ============ procedural anime portraits ============ */
 function shade(hex,f){

@@ -22,24 +22,25 @@
   <header id="topbar">
     <div id="logo">
       <svg class="star" viewBox="0 0 32 32"><path d="M16 2l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#ffc93d"/><path d="M16 8l2.4 6 6 2.4-6 2.4-2.4 6-2.4-6-6-2.4 6-2.4z" fill="#ff3d8e"/></svg>
-      <div><div class="t1">ANIME EXTRA</div><div class="t2">RANDOM DEFENCE</div></div>
+      <div><div class="t1" data-i18n="app.title">ANIME EXTRA</div><div class="t2" data-i18n="app.title2">RANDOM DEFENCE</div></div>
     </div>
     <div id="stats">
-      <div class="stat gold" title="Gold"><span class="ic">◈</span><span id="stGold">0</span></div>
-      <div class="stat spirit" title="Spirit (upgrades gacha)"><span class="ic">✧</span><span id="stSpirit">0</span></div>
-      <div class="stat wisps" title="Wisps"><span class="ic">❋</span><span id="stWisps">0</span></div>
-      <div class="stat lives" title="Lives"><span class="ic">♥</span><span id="stLives">0</span></div>
-      <div class="stat wave" title="Wave"><span class="ic">≋</span><span id="stWave">0 / 60</span></div>
-      <div class="stat pop" title="Population"><span class="ic">⛨</span><span id="stPop">0 / 18</span></div>
+      <div class="stat gold" data-i18n-title="stat.gold" title="Gold"><span class="ic">◈</span><span id="stGold">0</span></div>
+      <div class="stat spirit" data-i18n-title="stat.spirit" title="Spirit (upgrades gacha)"><span class="ic">✧</span><span id="stSpirit">0</span></div>
+      <div class="stat wisps" data-i18n-title="stat.wisps" title="Wisps"><span class="ic">❋</span><span id="stWisps">0</span></div>
+      <div class="stat lives" data-i18n-title="stat.lives" title="Lives"><span class="ic">♥</span><span id="stLives">0</span></div>
+      <div class="stat wave" data-i18n-title="stat.wave" title="Wave"><span class="ic">≋</span><span id="stWave">0 / 60</span></div>
+      <div class="stat pop" data-i18n-title="stat.pop" title="Population"><span class="ic">⛨</span><span id="stPop">0 / 18</span></div>
     </div>
     <div id="controls">
-      <button class="ctl primary pulse" id="waveBtn" title="Space">▶ Start Wave</button>
-      <button class="ctl" id="autoBtn" title="Auto-start next wave">AUTO</button>
-      <button class="ctl" id="speedBtn" title="Game speed">1×</button>
-      <button class="ctl" id="pauseBtn" title="Pause (P)">⏸</button>
-      <button class="ctl on" id="soundBtn" title="Sound on/off">♪</button>
-      <button class="ctl" id="codexBtn" title="Ascension recipes">✦ Codex</button>
-      <button class="ctl" id="restartBtn" title="Restart">↺</button>
+      <button class="ctl primary pulse" id="waveBtn" data-i18n-title="ctl.waveTitle" title="Start the next wave (Space)">▶ Start Wave</button>
+      <button class="ctl" id="autoBtn" data-i18n="ctl.auto" data-i18n-title="ctl.autoTitle" title="Auto-start next wave">AUTO</button>
+      <button class="ctl" id="speedBtn" data-i18n-title="ctl.speedTitle" title="Game speed">1×</button>
+      <button class="ctl" id="pauseBtn" data-i18n-title="ctl.pauseTitle" title="Pause (P)">⏸</button>
+      <button class="ctl on" id="soundBtn" data-i18n-title="ctl.soundTitle" title="Sound on/off">♪</button>
+      <button class="ctl" id="codexBtn" data-i18n="ctl.codex" data-i18n-title="ctl.codexTitle" title="Ascension recipes & unit archive">✦ Codex</button>
+      <button class="ctl" id="langBtn" data-i18n-title="ctl.langTitle" title="Switch language Thai / English">ไทย</button>
+      <button class="ctl" id="restartBtn" data-i18n-title="ctl.restartTitle" title="Restart">↺</button>
     </div>
   </header>
 
@@ -47,15 +48,16 @@
     <div id="stage">
       <canvas id="game"></canvas>
       <div id="hitFlash"></div>
-      <div id="orbitHint"><span>drag</span> orbit &nbsp;·&nbsp; <span>scroll</span> zoom &nbsp;·&nbsp; <span>click</span> a platform</div>
+      <div id="orbitHint" data-i18n-html="hint.orbit"><span>drag</span> orbit &nbsp;·&nbsp; <span>scroll</span> zoom &nbsp;·&nbsp; <span>click</span> valid ground to deploy</div>
       <div id="waveBanner"></div>
       <div id="toast"></div>
     </div>
 
     <aside id="side">
       <section class="panel" id="factionPanel">
-        <h3>⚑ FACTION <span id="facLv" class="facLv">Lv1</span></h3>
+        <h3><span data-i18n="panel.faction">⚑ FACTION</span> <span id="facLv" class="facLv">Lv1</span></h3>
         <div id="facChips"></div>
+        <div id="facLockNote" data-i18n="fac.lockMenu">Choose before the run begins</div>
         <div id="facTitle"><span id="facTag">A</span><b id="facName">Aurel Court</b></div>
         <div id="facXp"><div id="facXpBar"></div></div>
         <div id="facXpTxt">0 / 20000 XP</div>
@@ -65,58 +67,59 @@
       </section>
 
       <section class="panel">
-        <h3>◈ SUMMONING CIRCLE <span class="gachaTag">Lv<b id="gachaLv">1</b> · <b id="gachaGrade">E</b></span></h3>
+        <h3><span data-i18n="panel.summon">◈ SUMMONING CIRCLE</span> <span class="gachaTag">Lv<b id="gachaLv">1</b> · <b id="gachaGrade">E</b></span></h3>
         <button id="summonBtn">✦ SUMMON SERVANT<span class="cost">◈ <b id="summonCost">30</b> gold &nbsp;·&nbsp; key G</span></button>
         <button id="gachaUpBtn" class="upBtn">▲ Upgrade Gacha <span class="cost">✧ 14</span></button>
         <div id="pity">Pity boost in <b id="pityN">15</b> summons · higher gacha Lv = higher grade</div>
       </section>
 
       <section class="panel">
-        <h3>❋ WISP ALTAR <span style="letter-spacing:0;color:var(--ink-faint)">spend wisps</span></h3>
+        <h3><span data-i18n="panel.wisp">❋ WISP ALTAR</span> <span style="letter-spacing:0;color:var(--ink-faint)" data-i18n="panel.spendWisps">spend wisps</span></h3>
         <div id="wispRow">
-          <button id="wispGold" class="wispBtn gold" title="Convert a wisp to gold">❋→◈<span>Gold</span></button>
-          <button id="wispSpirit" class="wispBtn spirit" title="Convert a wisp to spirit">❋→✧<span>Spirit</span></button>
-          <button id="wispGacha" class="wispBtn gacha" title="Convert a wisp to an E/D servant">❋→✦<span>Gacha</span></button>
+          <button id="wispGold" class="wispBtn gold" data-i18n-title="wisp.goldTitle" title="Convert a wisp to gold">❋→◈<span data-i18n="wisp.gold">Gold</span></button>
+          <button id="wispSpirit" class="wispBtn spirit" data-i18n-title="wisp.spiritTitle" title="Convert a wisp to spirit">❋→✧<span data-i18n="wisp.spirit">Spirit</span></button>
+          <button id="wispGacha" class="wispBtn gacha" data-i18n-title="wisp.gachaTitle" title="Convert a wisp to an E/D servant">❋→✦<span data-i18n="wisp.gacha">Gacha</span></button>
         </div>
-        <div class="wispHint">+2 wisps each wave · release servants to recover wisps</div>
+        <div class="wispHint" data-i18n="wisp.hint">+2 wisps each wave · release servants to recover wisps</div>
       </section>
 
       <section class="panel" id="gamblingPanel">
-        <h3>♦ GAMBLING <span style="letter-spacing:0;color:var(--ink-faint)">risk it all</span></h3>
+        <h3><span data-i18n="panel.gambling">♦ GAMBLING</span> <span style="letter-spacing:0;color:var(--ink-faint)" data-i18n="panel.risk">risk it all</span></h3>
         <div id="gambleTabs">
-          <button id="tabGoldGamble" class="sel">◈ Gold</button>
-          <button id="tabServantGamble">✦ Servant</button>
+          <button id="tabGoldGamble" class="sel" data-i18n="gamble.gold">◈ Gold</button>
+          <button id="tabServantGamble" data-i18n="gamble.servant">✦ Servant</button>
         </div>
         <div id="goldGamble">
           <div id="goldGambleGrid"></div>
-          <div class="gambleHint">Exact FERD payouts · charges recharge over time</div>
+          <div class="gambleHint" data-i18n="gamble.hintGold">Exact FERD payouts · charges recharge over time</div>
         </div>
         <div id="servantGamble" style="display:none">
-          <div id="servantMode"><button id="servantModeNormal" class="sel">Normal</button><button id="servantModeSpecial">Special</button></div>
+          <div id="servantMode"><button id="servantModeNormal" class="sel" data-i18n="gamble.normal">Normal</button><button id="servantModeSpecial" data-i18n="gamble.special">Special</button></div>
           <div id="servantGambleGrid"></div>
-          <div class="gambleHint">Failure loses the cost · Special has +20% success</div>
+          <div class="gambleHint" data-i18n="gamble.hintServant">Failure loses the cost · Special has +20% success</div>
         </div>
       </section>
 
       <section class="panel">
-        <h3>⛨ BENCH <span id="benchN" style="letter-spacing:0;color:var(--ink-faint)"></span></h3>
+        <h3><span data-i18n="panel.bench">⛨ BENCH</span> <span id="benchN" style="letter-spacing:0;color:var(--ink-faint)"></span></h3>
         <div id="bench"></div>
       </section>
 
       <section class="panel" id="selPanel">
-        <h3>✦ SELECTED</h3>
-        <div class="none" id="selNone">Select a servant from the bench,<br>then click a platform to deploy.<br>Combine units to ascend them.</div>
+        <h3 data-i18n="panel.selected">✦ SELECTED</h3>
+        <div class="none" id="selNone" data-i18n-html="sel.none">Select a servant from the bench,<br>then click valid ground to deploy.<br>Combine units to ascend them.</div>
         <div id="selCard" style="display:none">
           <div id="selHead">
             <img id="selImg" alt="">
             <div><div id="selName"></div><div id="selMeta"></div></div>
           </div>
           <div id="selStats">
-            <div><b id="ssDmg"></b><span>DMG</span></div>
-            <div><b id="ssRate"></b><span>ATK/S</span></div>
-            <div><b id="ssRange"></b><span>RANGE</span></div>
+            <div><b id="ssDmg"></b><span data-i18n="sel.dmg">DMG</span></div>
+            <div><b id="ssRate"></b><span data-i18n="sel.rate">ATK/S</span></div>
+            <div><b id="ssRange"></b><span data-i18n="sel.range">RANGE</span></div>
           </div>
           <div id="selDesc"></div>
+          <div id="selSkills"></div>
           <div id="recipeBox" style="display:none">
             <div class="rt">▲ ASCENSION RECIPE → <span id="recipeResult"></span></div>
             <div id="recipeMats"></div>
@@ -129,7 +132,7 @@
       </section>
 
       <section class="panel" id="logPanel">
-        <h3>≋ BATTLE LOG</h3>
+        <h3 data-i18n="panel.log">≋ BATTLE LOG</h3>
         <div id="log"></div>
       </section>
     </aside>
@@ -140,19 +143,31 @@
 <div class="overlay show" id="startOverlay">
   <div class="box">
     <div class="bigTitle">ANIME EXTRA<br>RANDOM DEFENCE</div>
-    <div class="subTitle">A GRAIL-WAR RANDOM TOWER DEFENCE</div>
-    <div class="howto">
-      <b>How to play</b><br>
-      <span class="k">①</span> <b>Summon</b> servants with gold. The gacha starts at <b>E</b>-grade — spend <b>✧ spirit</b> to upgrade it through <b>D·C·B·A·S</b>.<br>
-      <span class="k">②</span> Select a servant on the <b>bench</b>, click a <b>platform</b> to deploy. Population is limited!<br>
-      <span class="k">③</span> <b>Combine</b> servants by recipe to ascend the grade ladder <b>E→D→C→B→A→S→EX→★</b>. Open the <b>✦ Codex</b> for all 177 recipes.<br>
-      <span class="k">④</span> Earn <b>❋ wisps</b> each wave; convert them to gold, spirit, or free summons. Release servants to recover wisps.<br>
-      <span class="k">⑤</span> Choose a <b>Faction A–E</b> for a unique passive + active. Faction XP persists between runs. Try <b>Gold / Servant Gambling</b> if you dare.<br>
-      <span class="k">⑥</span> Enemies march the ring <b>1½ laps</b>. Survive every wave (bosses every 5). Choose your difficulty — up to <b>100 waves</b>.<br>
-      <span style="color:var(--ink-faint)">Keys: Space = wave · G = summon · P = pause · Esc = deselect</span>
+    <div class="subTitle" data-i18n="app.sub">A GRAIL-WAR RANDOM TOWER DEFENCE</div>
+    <div class="howto" data-i18n-html="start.howto"></div>
+    <div class="startSection">
+      <div class="startLabel"><span data-i18n="fac.choose">⚑ CHOOSE YOUR FACTION</span> <span data-i18n="fac.chooseSub">locked when the run begins</span></div>
+      <div id="startFactionRow"></div>
+      <div id="startFactionDesc"></div>
     </div>
     <div id="diffRow"></div>
-    <button class="bigBtn" id="startBtn">ENTER THE MOON CELL</button>
+    <div id="roomControls">
+      <button id="soloModeBtn" class="roomMode sel" data-i18n="start.solo">Solo</button>
+      <button id="createRoomBtn" class="roomMode" data-i18n="start.create">Create Room</button>
+      <button id="joinRoomBtn" class="roomMode" data-i18n="start.join">Join Room</button>
+    </div>
+    <div id="roomStatus" data-i18n="start.statusSolo">Solo run — no room required.</div>
+    <div id="roomPanel" hidden>
+      <input id="playerNameInput" maxlength="18" data-i18n-placeholder="start.namePh" placeholder="Your name" value="Player" autocomplete="nickname">
+      <input id="roomCodeInput" maxlength="6" data-i18n-placeholder="start.codePh" placeholder="ROOM CODE" autocapitalize="characters" spellcheck="false">
+      <div id="lobbyPlayers"></div>
+      <div id="roomActions">
+        <button id="readyBtn" hidden data-i18n="start.ready">Ready</button>
+        <button id="startRoomBtn" hidden data-i18n="start.startRun">Start Run</button>
+        <button id="leaveRoomBtn" hidden data-i18n="start.leave">Leave</button>
+      </div>
+    </div>
+    <button class="bigBtn" id="startBtn" data-i18n="start.enter">ENTER THE MOON CELL</button>
   </div>
 </div>
 
@@ -162,7 +177,7 @@
     <div id="endTitle"></div>
     <div id="endSub" style="color:var(--ink-dim);font-size:14px"></div>
     <div id="endStats"></div>
-    <button class="bigBtn" id="endRestartBtn">↺ PLAY AGAIN</button>
+    <button class="bigBtn" id="endRestartBtn" data-i18n="end.playAgain">↺ PLAY AGAIN</button>
   </div>
 </div>
 
@@ -170,12 +185,20 @@
 <div class="overlay" id="codexOverlay">
   <div class="box">
     <div id="codexHead">
-      <h2>✦ Ascension Codex</h2>
+      <h2 data-i18n="codex.title">✦ Ascension Codex</h2>
       <div id="codexTabs">
-        <button id="tabRecipes" class="sel">Recipes</button>
-        <button id="tabArchive">Unit Archive</button>
+        <button id="tabRecipes" class="sel" data-i18n="codex.recipes">Recipes</button>
+        <button id="tabArchive" data-i18n="codex.archive">Unit Archive</button>
       </div>
       <button id="codexClose">✕</button>
+    </div>
+    <div id="codexFilters">
+      <input id="codexSearch" type="search" autocomplete="off" data-i18n-placeholder="codex.searchPh" placeholder="Search name or skill…">
+      <label class="cf"><span data-i18n="codex.class">Class</span><select id="codexClass"></select></label>
+      <label class="cf"><span data-i18n="codex.grade">Grade</span><select id="codexGrade"></select></label>
+      <label class="cf"><span data-i18n="codex.kind">Skill type</span><select id="codexKind"></select></label>
+      <button id="codexClear" data-i18n="codex.clear">Clear</button>
+      <span id="codexCount"></span>
     </div>
     <div id="codexBody"></div>
   </div>
@@ -184,14 +207,16 @@
 <!-- faction servant pickup -->
 <div class="overlay" id="pickupOverlay">
   <div class="box" id="pickupBox">
-    <div id="pickupHead"><h2>✧ Servant Pickup</h2><button id="pickupClose">✕</button></div>
+    <div id="pickupHead"><h2 data-i18n="pickup.title">✧ Servant Pickup</h2><button id="pickupClose">✕</button></div>
     <div id="pickupTabs"></div>
     <div id="pickupGrid"></div>
     <div id="pickupHint"></div>
   </div>
 </div>
 
+<script src="i18n.js"></script>
 <script src="data.js"></script>
+<script src="ferd-skills.js"></script>
 <script src="game.js"></script>
 <script src="scene3d.js"></script>
 </body>

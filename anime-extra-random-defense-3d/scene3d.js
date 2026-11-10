@@ -169,8 +169,14 @@ function buildArena() {
   buildGate(wx(-30), wz(320), '#35e0ff');
   buildGate(wx(990), wz(320), '#ff3d5e');
 
-  /* platforms */
-  SLOTS.forEach((s, i) => buildPlatform(i, wx(s.x), wz(s.y)));
+  /* deployment boundary — free ground inside the logical arena */
+  const bw = (PLACEMENT.maxX - PLACEMENT.minX) * WS, bh = (PLACEMENT.maxY - PLACEMENT.minY) * WS;
+  const boundGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-bw / 2, 0, -bh / 2), new THREE.Vector3(bw / 2, 0, -bh / 2),
+    new THREE.Vector3(bw / 2, 0, bh / 2), new THREE.Vector3(-bw / 2, 0, bh / 2),
+  ]);
+  const bound = new THREE.LineLoop(boundGeo, new THREE.LineBasicMaterial({ color: '#8b5cff', transparent: true, opacity: 0.35 }));
+  bound.position.set(0, 0.04, 0); world.add(bound);
 }
 
 function buildGate(x, z, color) {
@@ -192,23 +198,9 @@ function buildGate(x, z, color) {
   world.add(g);
 }
 
-const platforms = [];
-const pickMeshes = [];
-function buildPlatform(i, x, z) {
-  const g = new THREE.Group(); g.position.set(x, 0, z);
-  const base = new THREE.Mesh(geo('platBase', () => new THREE.CylinderGeometry(1.55, 1.75, 0.5, 6)),
-    std('platBase', { color: '#241d47', metalness: 0.6, roughness: 0.4 }));
-  base.position.y = 0.25; base.castShadow = true; base.receiveShadow = true; g.add(base);
-  const top = new THREE.Mesh(geo('platTop', () => new THREE.CylinderGeometry(1.32, 1.32, 0.14, 6)),
-    std('platTop', { color: '#2e2658', metalness: 0.5, roughness: 0.35, emissive: '#3a2f70', emissiveIntensity: 0.4 }));
-  top.position.y = 0.5; top.receiveShadow = true; top.userData.slot = i; g.add(top);
-  pickMeshes.push(top);
-  const ringMat = new THREE.MeshBasicMaterial({ color: '#35e0ff', transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, depthWrite: false });
-  const ring = new THREE.Mesh(geo('platRing', () => new THREE.RingGeometry(1.16, 1.42, 6)), ringMat);
-  ring.rotation.x = -Math.PI / 2; ring.position.y = 0.585; g.add(ring);
-  world.add(g);
-  platforms.push({ group: g, ring, ringMat, x, z });
-}
+/* ground picking plane (logical y=0) */
+const groundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+const groundHit = new THREE.Vector3();
 
 /* range preview disc */
 const rangeDisc = new THREE.Group();
@@ -477,7 +469,8 @@ const enemyMap = new Map();  // uid -> entry
 
 /* ============================ SYNC ============================ */
 const tmpColor = new THREE.Color();
-let hoverSlot = null;
+let hoverGround = null;
+let hoverValid = false;
 
 function syncUnits(S, elapsed) {
   const live = new Set();
@@ -486,16 +479,26 @@ function syncUnits(S, elapsed) {
     live.add(i);
     let ent = unitMap.get(i);
     if (!ent || ent.uid !== u.uid || ent.id !== u.id) {
-      if (ent) { world.remove(ent.group); }
+      if (ent) { world.remove(ent.group); world.remove(ent.ring); ent.ring.material.dispose(); }
       const def = UNIT_BY_ID[u.id];
       const group = makeUnit(def);
-      group.position.set(platforms[i].x, 0.56, platforms[i].z);
+      group.userData.uid = u.uid;
+      group.position.set(wx(u.x), 0.1, wz(u.y));
       world.add(group);
-      ent = { group, uid: u.uid, id: u.id, def };
+      const ring = new THREE.Mesh(geo('unitSelRing', () => new THREE.RingGeometry(0.78, 0.92, 32)),
+        new THREE.MeshBasicMaterial({ color: GRADES[def.grade].color, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, depthWrite: false }));
+      ring.rotation.x = -Math.PI / 2; ring.position.set(wx(u.x), 0.08, wz(u.y)); ring.visible = false; world.add(ring);
+      ent = { group, ring, uid: u.uid, id: u.id, def };
       unitMap.set(i, ent);
     }
     const g = ent.group;
-    g.position.y = 0.56 + Math.sin(elapsed * 2 + i) * 0.05;
+    g.position.x = wx(u.x); g.position.z = wz(u.y);
+    g.position.y = 0.1 + Math.sin(elapsed * 2 + i) * 0.05;
+    g.userData.uid = u.uid;
+    ent.ring.position.set(wx(u.x), 0.08, wz(u.y));
+    const isSel = S.sel && S.sel.loc === 'field' && S.sel.idx === i;
+    ent.ring.visible = isSel;
+    if (isSel) { ent.ring.rotation.z = elapsed * 0.8; ent.ring.material.opacity = 0.65 + 0.3 * Math.sin(elapsed * 4); }
     if (g.userData.gem) { g.userData.gem.rotation.y = elapsed * 1.5; g.userData.gem.rotation.x = elapsed * 0.7; }
     if (g.userData.halo) g.userData.halo.rotation.z = elapsed * 0.8;
     /* face nearest enemy in range */
@@ -503,7 +506,7 @@ function syncUnits(S, elapsed) {
     for (const e of S.enemies) {
       if (e.dead) continue;
       const p = pathPos(e.d);
-      const d = (p.x - SLOTS[i].x) ** 2 + (p.y - SLOTS[i].y) ** 2;
+      const d = (p.x - u.x) ** 2 + (p.y - u.y) ** 2;
       if (d < def.range * def.range && d < bd) { bd = d; best = p; }
     }
     if (best) {
@@ -516,7 +519,7 @@ function syncUnits(S, elapsed) {
     }
   });
   for (const [i, ent] of unitMap) {
-    if (!live.has(i)) { world.remove(ent.group); unitMap.delete(i); }
+    if (!live.has(i)) { world.remove(ent.group); world.remove(ent.ring); ent.ring.material.dispose(); unitMap.delete(i); }
   }
 }
 
@@ -629,36 +632,23 @@ function syncFloats(S) {
   for (let i = S.floats.length; i < floatPool.length; i++) floatPool[i].visible = false;
 }
 
-function syncPlatforms(S, elapsed) {
+function syncPlacement(S, elapsed) {
   const benchSel = S.sel && S.sel.loc === 'bench' ? S.bench[S.sel.idx] : null;
-  const pulse = 0.5 + 0.5 * Math.sin(elapsed * 4);
-  platforms.forEach((pl, i) => {
-    const occ = S.field[i];
-    const isSel = S.sel && S.sel.loc === 'field' && S.sel.idx === i;
-    const isHover = hoverSlot === i;
-    const placeable = benchSel && !occ;
-    let color, opacity;
-    if (occ) { color = GRADES[UNIT_BY_ID[occ.id].grade].color; opacity = isSel ? 0.95 : 0.5; }
-    else if (placeable) { color = '#3dff9a'; opacity = (isHover ? 0.85 : 0.4 + pulse * 0.3); }
-    else { color = '#35e0ff'; opacity = isHover ? 0.75 : 0.2; }
-    pl.ringMat.color.set(color);
-    pl.ringMat.opacity = opacity;
-    pl.ring.rotation.z = elapsed * (isSel ? 0.8 : 0.15);
-  });
-  /* range preview */
   let showRange = false, rx = 0, rz = 0, rr = 0, rc = '#35e0ff';
   if (S.sel && S.sel.loc === 'field' && S.field[S.sel.idx]) {
-    const def = UNIT_BY_ID[S.field[S.sel.idx].id];
-    rx = platforms[S.sel.idx].x; rz = platforms[S.sel.idx].z; rr = def.range * WS; rc = GRADES[def.grade].color; showRange = true;
-  } else if (benchSel && hoverSlot != null && !S.field[hoverSlot]) {
+    const u = S.field[S.sel.idx], def = UNIT_BY_ID[u.id];
+    rx = wx(u.x); rz = wz(u.y); rr = def.range * WS; rc = GRADES[def.grade].color; showRange = true;
+  } else if (benchSel && hoverGround) {
     const def = UNIT_BY_ID[benchSel.id];
-    rx = platforms[hoverSlot].x; rz = platforms[hoverSlot].z; rr = def.range * WS; rc = GRADES[def.grade].color; showRange = true;
+    rx = wx(hoverGround.x); rz = wz(hoverGround.y); rr = def.range * WS;
+    rc = hoverValid ? GRADES[def.grade].color : '#ff3d5e'; showRange = true;
   }
   rangeDisc.visible = showRange;
   if (showRange) {
     rangeDisc.position.set(rx, 0.09, rz);
     rangeDisc.scale.setScalar(rr);
     rangeFill.material.color.set(rc); rangeEdge.material.color.set(rc);
+    rangeEdge.material.opacity = 0.4 + 0.2 * Math.sin(elapsed * 4);
   }
 }
 
@@ -692,16 +682,30 @@ function setPointer(ev) {
   pointer.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
   pointer.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
 }
-function pickSlot() {
+function pickGround() {
   raycaster.setFromCamera(pointer, camera);
-  const hits = raycaster.intersectObjects(pickMeshes, false);
-  return hits.length ? hits[0].object.userData.slot : null;
+  const hit = raycaster.ray.intersectPlane(groundPlane, groundHit);
+  return hit ? { x: hit.x / WS + 480, y: hit.z / WS + 320 } : null;
+}
+function pickUnit() {
+  raycaster.setFromCamera(pointer, camera);
+  const groups = [...unitMap.values()].map(e => e.group);
+  const hits = raycaster.intersectObjects(groups, true);
+  if (!hits.length) return null;
+  let obj = hits[0].object;
+  while (obj && obj.userData.uid == null) obj = obj.parent;
+  if (!obj) return null;
+  const found = Game.unitByUid(obj.userData.uid);
+  return found && found.loc === 'field' ? { loc: 'field', idx: found.idx } : null;
 }
 canvas.addEventListener('pointermove', ev => {
   setPointer(ev);
   if (ev.buttons) { dragged = true; return; }
-  hoverSlot = pickSlot();
-  canvas.style.cursor = hoverSlot != null ? 'pointer' : 'grab';
+  hoverGround = pickGround();
+  const S = Game.S;
+  const benchSel = S.sel && S.sel.loc === 'bench' ? S.bench[S.sel.idx] : null;
+  hoverValid = !!(benchSel && hoverGround && Game.placementReason(hoverGround.x, hoverGround.y) === '');
+  canvas.style.cursor = pickUnit() ? 'pointer' : benchSel ? (hoverValid ? 'copy' : 'not-allowed') : 'grab';
 });
 canvas.addEventListener('pointerdown', ev => {
   downX = ev.clientX; downY = ev.clientY; downT = performance.now(); dragged = false;
@@ -709,23 +713,27 @@ canvas.addEventListener('pointerdown', ev => {
   if (hint) hint.classList.add('hide');
 });
 canvas.addEventListener('pointerup', ev => {
-  canvas.style.cursor = hoverSlot != null ? 'pointer' : 'grab';
   const dist = Math.hypot(ev.clientX - downX, ev.clientY - downY);
-  if (dist > 7 || performance.now() - downT > 500 || dragged) return;
+  if (dist > 7 || performance.now() - downT > 500 || dragged) { canvas.style.cursor = 'grab'; return; }
   setPointer(ev);
-  const slot = pickSlot();
   const S = Game.S;
-  if (slot == null) { Game.select(null); return; }
-  if (S.sel && S.sel.loc === 'bench' && S.bench[S.sel.idx] && !S.field[slot]) {
-    Game.tryPlace(slot);
-  } else if (S.field[slot]) {
-    Game.select(S.sel && S.sel.loc === 'field' && S.sel.idx === slot ? null : { loc: 'field', idx: slot });
+  const unitSel = pickUnit();
+  if (unitSel) {
+    Game.select(S.sel && S.sel.loc === 'field' && S.sel.idx === unitSel.idx ? null : unitSel);
     Game.AudioFX.click();
+    canvas.style.cursor = 'pointer';
+    return;
+  }
+  const benchSel = S.sel && S.sel.loc === 'bench' ? S.bench[S.sel.idx] : null;
+  const ground = pickGround();
+  if (benchSel && ground) {
+    Game.tryPlace(Math.round(ground.x), Math.round(ground.y));
   } else {
     Game.select(null);
   }
+  canvas.style.cursor = benchSel ? (hoverValid ? 'copy' : 'not-allowed') : 'grab';
 });
-canvas.addEventListener('pointerleave', () => { hoverSlot = null; });
+canvas.addEventListener('pointerleave', () => { hoverGround = null; hoverValid = false; });
 canvas.addEventListener('contextmenu', ev => ev.preventDefault());
 setTimeout(() => { if (hint) hint.classList.add('hide'); }, 9000);
 
@@ -733,6 +741,8 @@ setTimeout(() => { if (hint) hint.classList.add('hide'); }, 9000);
 function resize() {
   const w = stage.clientWidth, h = stage.clientHeight;
   if (!w || !h) return;
+  const tb = document.getElementById('topbar');
+  if (tb) document.documentElement.style.setProperty('--topbar-h', tb.offsetHeight + 'px');
   renderer.setSize(w, h, false);
   composer.setSize(w, h);
   bloom.setSize(w, h);
@@ -740,6 +750,7 @@ function resize() {
   camera.updateProjectionMatrix();
 }
 new ResizeObserver(resize).observe(stage);
+new ResizeObserver(resize).observe(document.getElementById('topbar'));
 resize();
 
 /* ============================ LOOP ============================ */
@@ -760,7 +771,7 @@ function frame(dt) {
   syncRings(S);
   syncParticles(S);
   syncFloats(S);
-  syncPlatforms(S, elapsed);
+  syncPlacement(S, elapsed);
 
   /* camera shake via world offset */
   const sh = S.shake * 0.012;
