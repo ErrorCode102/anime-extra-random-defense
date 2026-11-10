@@ -1295,13 +1295,14 @@ $('startBtn').onclick=()=>{ AudioFX.ensure(); startGame(); };
 $('endRestartBtn').onclick=()=>{ AudioFX.click(); $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); S.mode='menu'; syncFaction(); syncPenaltyBtn(); };
 $('restartBtn').onclick=()=>{ AudioFX.click(); S.mode='menu'; $('endOverlay').classList.remove('show'); $('startOverlay').classList.add('show'); syncFaction(); syncPenaltyBtn(); };
 function roomFallback(){
-  $('roomStatus').textContent=t('room.needServer');
-  $('roomStatus').className='warn';
-  toast(t('room.noServer'), true);
+  const s=$('roomStatus');
+  if (s){ s.textContent='Networking not available — reload the page'; s.className='warn'; }
+  toast('Cannot connect to server', true);
 }
 function callNet(method){
   const net = window.Game && window.Game.net;
-  if (net && typeof net[method]==='function') return net[method]();
+  if (net && typeof net[method]==='function'){ console.log('[COOP] callNet:', method); return net[method](); }
+  console.warn('[COOP] callNet failed — net not available, method:', method);
   roomFallback();
 }
 function selectRoomMode(id){
@@ -1315,6 +1316,8 @@ $('joinRoomBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('joinRoomBtn'); $
 $('readyBtn').onclick=()=>{ AudioFX.click(); callNet('toggleReady'); };
 $('startRoomBtn').onclick=()=>{ AudioFX.ensure(); const net=window.Game&&window.Game.net; if(net){ net.startRoom(selectedDiff); startGame({diffKey:selectedDiff, playerCount:net.getPlayerCount()}); } };
 $('leaveRoomBtn').onclick=()=>{ AudioFX.click(); callNet('leave'); };
+$('roomCodeInput').addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); callNet('connectJoin'); } });
+$('playerNameInput').addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); $('roomCodeInput').focus(); } });
 $('summonBtn').onclick=()=>{ AudioFX.ensure(); summon(); };
 $('gachaUpBtn').onclick=()=>{ AudioFX.ensure(); upgradeGacha(); };
 $('wispGold').onclick=()=>{ AudioFX.ensure(); wispToGold(); };
