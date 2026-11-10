@@ -1,0 +1,13 @@
+{
+  "name": "anime-extra-random-defence",
+  "version": "1.0.0",
+  "description": "Anime Extra Random Defence — co-op tower defense",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js 8765"
+  },
+  "dependencies": {
+    "ws": "^8.18.1"
+  }
+}

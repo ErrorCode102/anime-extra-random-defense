@@ -1,249 +1,391 @@
 'use strict';
-/* ============ CO-OP NETWORKING — PeerJS WebRTC P2P ============ */
-console.log('[COOP] net.js loaded, Peer available:', typeof Peer !== 'undefined');
-(function(){
-  const COOP = window.COOP || {maxPlayers:4, playerColors:['#35e0ff','#ff3d8e','#ffc93d','#3dff9a']};
-  const $ = id => document.getElementById(id);
-  const SYNC_MS = 66;          // ~15 Hz state broadcast
-  const PREFIX = 'aerd3d-';    // peer-id prefix to avoid collisions with the 2D build
+/* ============================================================
+   Anime Extra Random Defence — Co-op Networking  (net.js)
 
-  let peer=null, conns=[], isHost=false, started=false;
-  let playerSlot=0, lobbyPlayers=[];
-  let lastSync=0;
+   Architecture:
+   • WebSocket signaling server (server.js / ws) handles room
+     management and relays WebRTC offer/answer/ICE.
+   • After handshake each peer opens an RTCDataChannel directly
+     to every other peer (mesh for ≤4 players).
+   • Host is authoritative: runs the full simulation, broadcasts
+     state at ~15 Hz.  Clients forward actions.
 
-  // ---- helpers ----
-  function shortCode(){ return Math.random().toString(36).slice(2,7); }
-  function colors(){ return COOP.playerColors; }
+   Fallback: if WebRTC is unavailable all messages go through
+   the WebSocket relay directly (adds ~5 ms but always works).
+   ============================================================ */
+console.log('[net] net.js loading…');
 
-  // ---- host: create room ----
-  function connectCreate(){
-    if (typeof Peer === 'undefined'){ fail('PeerJS not loaded — check your internet'); return; }
-    // clean up any existing peer
-    if (peer){ try{ peer.destroy(); }catch(e){} peer=null; }
-    conns = [];
-    isHost=true; playerSlot=0;
-    const name = ($('playerNameInput')?.value || 'Host').slice(0,18);
-    const rid = PREFIX + shortCode();
-    console.log('[COOP] creating room, peer id:', rid);
-    try { peer = new Peer(rid); } catch(e){ fail('Could not start networking: '+e.message); return; }
-    $('roomStatus').textContent = 'Connecting to server…';
-    $('roomStatus').className = '';
-    // timeout: if peer doesn't open in 12s, show error
-    const createTimer = setTimeout(()=>{
-      if (!peer || !peer.id){ fail('Cannot reach PeerJS server — check your internet or try again'); }
-    }, 12000);
+(function () {
+  /* ---- config ---- */
+  const COOP = window.COOP || {
+    maxPlayers: 4,
+    playerColors: ['#35e0ff', '#ff3d8e', '#ffc93d', '#3dff9a'],
+  };
+  const ICE = {
+    iceServers: [
+      { urls: 'stun:stun.l.google.com:19302' },
+      { urls: 'stun:stun1.l.google.com:19302' },
+      { urls: 'stun:stun2.l.google.com:19302' },
+    ],
+  };
+  const SYNC_MS  = 66;   // ~15 Hz
 
-    peer.on('open', id=>{
-      clearTimeout(createTimer);
-      const code = id.slice(PREFIX.length).toUpperCase();
-      console.log('[COOP] room created, code:', code);
-      $('roomCodeInput').value = code;
-      $('roomStatus').textContent = `Room ${code} — share this code`;
-      $('roomStatus').className = 'ok';
-      lobbyPlayers = [{name, slot:0, ready:true, host:true}];
-      renderLobby();
-      $('startRoomBtn').hidden = false;
-      $('leaveRoomBtn').hidden = false;
-      $('readyBtn').hidden = true;
-    });
-
-    peer.on('connection', conn=>{
-      console.log('[COOP] incoming connection from peer');
-      if (conns.length >= COOP.maxPlayers-1){
-        conn.on('open', ()=> conn.send({type:'reject', reason:'Room full'}));
-        return;
-      }
-      conn.on('open', ()=>{
-        const slot = conns.length + 1;
-        conn._slot = slot;
-        conns.push(conn);
-        console.log('[COOP] client connected, slot:', slot);
-        conn.send({type:'welcome', slot});
-      });
-      conn.on('data', d=> handleClientMsg(conn, d));
-      conn.on('close', ()=> removeConn(conn));
-      conn.on('error', ()=> removeConn(conn));
-    });
-
-    peer.on('error', err=>{
-      console.error('[COOP] host peer error:', err.type, err.message||'');
-      fail('Peer error: ' + err.type);
-    });
+  /* ---- auto-detect server URL ---- */
+  /* If the page was served by server.js the WebSocket lives on the same host */
+  function signalingUrl() {
+    const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+    return `${proto}://${location.host}`;
   }
 
-  // ---- client: join room ----
-  function connectJoin(){
-    if (typeof Peer === 'undefined'){ fail('PeerJS not loaded — check your internet'); return; }
-    // clean up any existing peer
-    if (peer){ try{ peer.destroy(); }catch(e){} peer=null; }
-    conns = [];
-    isHost=false;
-    const name = ($('playerNameInput')?.value || 'Player').slice(0,18);
-    const code = ($('roomCodeInput')?.value || '').toUpperCase().trim();
-    if (!code){ $('roomCodeInput').focus(); fail('Enter the room code first'); return; }
-    console.log('[COOP] joining room:', code);
-    try { peer = new Peer(); } catch(e){ fail('Could not start networking: '+e.message); return; }
-    $('roomStatus').textContent = 'Connecting to server…';
-    $('roomStatus').className = '';
+  /* ---- state ---- */
+  let ws       = null;   // WebSocket to signaling server
+  let isHost   = false;
+  let mySlot   = 0;
+  let roomCode = '';
+  let started  = false;
+  let lobbyPlayers = [];
+  let lastSync = 0;
 
-    peer.on('open', ()=>{
-      const targetId = PREFIX + code.toLowerCase();
-      console.log('[COOP] my peer open, connecting to:', targetId);
-      const conn = peer.connect(targetId, {reliable:true});
-      conn.on('open', ()=>{
-        conns = [conn];
-        console.log('[COOP] connected to host!');
-        conn.send({type:'join', name});
-        $('roomStatus').textContent = 'Connected — waiting for host';
-        $('roomStatus').className = 'ok';
-        $('readyBtn').hidden = false;
-        $('leaveRoomBtn').hidden = false;
-        $('startRoomBtn').hidden = true;
-      });
-      conn.on('data', d=> handleServerMsg(d));
-      conn.on('close', ()=>{
-        $('roomStatus').textContent = 'Disconnected from host';
-        $('roomStatus').className = 'warn';
+  /* peer connections: slot -> { pc: RTCPeerConnection, dc: RTCDataChannel } */
+  const peers = {};
+
+  const $ = id => document.getElementById(id);
+
+  /* ================================================================
+     WebSocket helpers
+  ================================================================ */
+  function sigSend(obj) {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify(obj));
+    }
+  }
+
+  function openWs(onOpen) {
+    if (ws) { try { ws.close(); } catch (e) {} }
+    const url = signalingUrl();
+    console.log('[net] connecting to signaling server:', url);
+    setStatus('Connecting to server…', '');
+
+    ws = new WebSocket(url);
+
+    ws.onopen = () => {
+      console.log('[net] signaling WS open');
+      onOpen();
+    };
+
+    ws.onmessage = e => {
+      let msg;
+      try { msg = JSON.parse(e.data); } catch (_) { return; }
+      handleSig(msg);
+    };
+
+    ws.onerror = err => {
+      console.error('[net] WS error', err);
+      setStatus('Cannot reach server — is server.js running?', 'warn');
+    };
+
+    ws.onclose = () => {
+      console.warn('[net] WS closed');
+      if (started) {
         const G = window.Game;
         if (G && G.net && G.net.onDisconnect) G.net.onDisconnect();
-      });
-      conn.on('error', (e)=>{
-        console.error('[COOP] conn error:', e);
-        $('roomStatus').textContent = 'Connection error: '+e.message;
-        $('roomStatus').className = 'warn';
-      });
-      // timeout: if host doesn't respond in 15s, show error
-      setTimeout(()=>{
-        if (!conns.length || !conns[0].open){
-          fail('Connection timed out — check the room code');
+      }
+    };
+  }
+
+  /* ================================================================
+     Signaling message router
+  ================================================================ */
+  function handleSig(msg) {
+    console.log('[net] sig ←', msg.type, msg);
+    switch (msg.type) {
+
+      case 'created':
+        mySlot   = msg.slot;
+        roomCode = msg.code;
+        $('roomCodeInput').value = msg.code;
+        setStatus(`Room  ${msg.code}  — share this code`, 'ok');
+        lobbyPlayers = [{ slot: 1, name: nameVal(), ready: true, host: true }];
+        renderLobby();
+        showBtns({ startRoom: true, leave: true });
+        break;
+
+      case 'joined':
+        mySlot   = msg.slot;
+        roomCode = msg.code;
+        lobbyPlayers = msg.players || [];
+        setStatus('Connected — waiting for host', 'ok');
+        renderLobby();
+        showBtns({ ready: true, leave: true });
+        /* initiate WebRTC to everyone already in room */
+        (msg.players || []).forEach(p => {
+          if (p.slot !== mySlot) initPeerConn(p.slot, true /* initiator */);
+        });
+        break;
+
+      case 'lobby':
+        lobbyPlayers = msg.players || [];
+        renderLobby();
+        break;
+
+      case 'player_left':
+        lobbyPlayers = (lobbyPlayers || []).filter(p => p.slot !== msg.slot);
+        renderLobby();
+        break;
+
+      case 'host_left':
+        setStatus('Host disconnected', 'warn');
+        const G = window.Game;
+        if (G && G.net && G.net.onDisconnect) G.net.onDisconnect();
+        break;
+
+      case 'start':
+        started = true;
+        const GG = window.Game;
+        if (GG && GG.net && GG.net.onStart) GG.net.onStart(msg.diffKey, msg.playerCount);
+        break;
+
+      case 'offer':
+        handleOffer(msg.from, msg.offer);
+        break;
+
+      case 'answer':
+        handleAnswer(msg.from, msg.answer);
+        break;
+
+      case 'ice':
+        handleIce(msg.from, msg.candidate);
+        break;
+
+      /* Fallback relay: host ← client action */
+      case 'action':
+        if (isHost) {
+          const H = window.Game;
+          if (H && H.net && H.net.onAction) H.net.onAction(msg.action, msg.payload, msg.fromSlot);
         }
-      }, 15000);
-    });
+        break;
 
-    peer.on('error', err=>{
-      console.error('[COOP] peer error:', err.type, err.message||'');
-      if (err.type === 'peer-unavailable')
-        fail('Room not found — check the code');
-      else if (err.type === 'network' || err.type === 'server-error')
-        fail('Cannot reach PeerJS server — try again');
-      else
-        fail('Peer error: ' + err.type);
-    });
+      /* Fallback relay: clients ← state */
+      case 'state':
+        if (!isHost) {
+          const H = window.Game;
+          if (H && H.net && H.net.onState) H.net.onState(msg.state);
+        }
+        break;
+
+      case 'error':
+        const reasons = {
+          room_not_found: 'Room not found — check the code',
+          already_started: 'That game has already started',
+          room_full: 'Room is full (max 4 players)',
+        };
+        setStatus(reasons[msg.reason] || 'Server error: ' + msg.reason, 'warn');
+        break;
+
+      case 'pong': break;
+    }
   }
 
-  // ---- host: message from client ----
-  function handleClientMsg(conn, d){
+  /* ================================================================
+     WebRTC peer connection (one per remote player)
+  ================================================================ */
+  function initPeerConn(remoteSlot, initiator) {
+    if (peers[remoteSlot]) {
+      try { peers[remoteSlot].pc.close(); } catch (e) {}
+    }
+    console.log('[net] initPeerConn slot', remoteSlot, 'initiator:', initiator);
+    const pc = new RTCPeerConnection(ICE);
+    peers[remoteSlot] = { pc, dc: null };
+
+    /* ICE candidates */
+    pc.onicecandidate = ({ candidate }) => {
+      if (candidate) sigSend({ type: 'ice', to: remoteSlot, candidate });
+    };
+    pc.oniceconnectionstatechange = () => {
+      console.log('[net] ICE', remoteSlot, pc.iceConnectionState);
+    };
+
+    /* data channel */
+    if (initiator) {
+      const dc = pc.createDataChannel('game', { ordered: false, maxRetransmits: 0 });
+      peers[remoteSlot].dc = dc;
+      dc.onopen = () => {
+        console.log('[net] DataChannel open to slot', remoteSlot);
+        setStatus('P2P connected!', 'ok');
+      };
+      dc.onmessage = e => handleDcMsg(remoteSlot, e.data);
+      dc.onerror   = err => console.error('[net] DC error:', err);
+
+      pc.createOffer().then(offer => {
+        pc.setLocalDescription(offer);
+        sigSend({ type: 'offer', to: remoteSlot, offer });
+      });
+    } else {
+      pc.ondatachannel = ({ channel: dc }) => {
+        peers[remoteSlot].dc = dc;
+        dc.onopen    = () => console.log('[net] DataChannel open from slot', remoteSlot);
+        dc.onmessage = e => handleDcMsg(remoteSlot, e.data);
+        dc.onerror   = err => console.error('[net] DC error:', err);
+      };
+    }
+
+    return pc;
+  }
+
+  function handleOffer(fromSlot, offer) {
+    const pc = initPeerConn(fromSlot, false);
+    pc.setRemoteDescription(new RTCSessionDescription(offer)).then(() =>
+      pc.createAnswer()
+    ).then(answer => {
+      pc.setLocalDescription(answer);
+      sigSend({ type: 'answer', to: fromSlot, answer });
+    }).catch(e => console.error('[net] handleOffer error:', e));
+  }
+
+  function handleAnswer(fromSlot, answer) {
+    const p = peers[fromSlot];
+    if (p) p.pc.setRemoteDescription(new RTCSessionDescription(answer));
+  }
+
+  function handleIce(fromSlot, candidate) {
+    const p = peers[fromSlot];
+    if (p && candidate) p.pc.addIceCandidate(new RTCIceCandidate(candidate)).catch(() => {});
+  }
+
+  /* ================================================================
+     Data channel messaging (fast path) + WS relay fallback
+  ================================================================ */
+  function dcSend(slot, obj) {
+    const p = peers[slot];
+    if (p && p.dc && p.dc.readyState === 'open') {
+      try { p.dc.send(JSON.stringify(obj)); return true; } catch (e) {}
+    }
+    return false; // fall through to WS
+  }
+
+  function handleDcMsg(fromSlot, raw) {
+    let msg;
+    try { msg = JSON.parse(raw); } catch (_) { return; }
     const G = window.Game;
-    if (d.type==='join'){
-      lobbyPlayers.push({name:d.name, slot:conn._slot, ready:false, host:false});
-      broadcastLobby(); renderLobby();
-    } else if (d.type==='ready'){
-      const p = lobbyPlayers.find(p=>p.slot===conn._slot);
-      if (p) p.ready = d.ready;
-      broadcastLobby(); renderLobby();
-    } else if (d.type==='action'){
-      if (G && G.net && G.net.onAction) G.net.onAction(d.action, d.payload, conn._slot);
-    }
+    if (!G || !G.net) return;
+    if (msg.type === 'action' && isHost && G.net.onAction)
+      G.net.onAction(msg.action, msg.payload, fromSlot);
+    if (msg.type === 'state' && !isHost && G.net.onState)
+      G.net.onState(msg.state);
   }
 
-  // ---- client: message from host ----
-  function handleServerMsg(d){
-    const G = window.Game;
-    if (d.type==='reject'){
-      $('roomStatus').textContent = 'Rejected: ' + d.reason;
-      $('roomStatus').className = 'warn';
-      conns.forEach(c=>c.close()); conns=[];
-      return;
-    }
-    if (d.type==='welcome'){ playerSlot = d.slot; }
-    if (d.type==='lobby'){ lobbyPlayers = d.players; renderLobby(); }
-    if (d.type==='start'){
-      started = true;
-      if (G && G.net && G.net.onStart) G.net.onStart(d.diffKey, d.playerCount);
-    }
-    if (d.type==='state'){
-      if (G && G.net && G.net.onState) G.net.onState(d.state);
-    }
+  /* ================================================================
+     Public interface
+  ================================================================ */
+  function connectCreate() {
+    isHost = true; mySlot = 0; started = false;
+    peers_cleanup();
+    openWs(() => sigSend({ type: 'create', name: nameVal() }));
   }
 
-  // ---- lobby helpers ----
-  function broadcastLobby(){
-    conns.forEach(c=>{ if(c.open) c.send({type:'lobby', players:lobbyPlayers, yourSlot:c._slot}); });
-  }
-  function renderLobby(){
-    const box = $('lobbyPlayers'); if (!box) return;
-    const cs = colors();
-    box.innerHTML = lobbyPlayers.map(p=>
-      `<div class="lobbyPlayer ${p.ready?'ready':''}">
-        <span class="lpDot" style="background:${cs[p.slot%4]}"></span>
-        <span class="lpName">${p.name}${p.host?' ★':''}</span>
-        <span class="lpStat">${p.ready?'✓ ready':'…'}</span>
-      </div>`).join('');
-    if (isHost) $('startRoomBtn').hidden = lobbyPlayers.length < 1;
-  }
-  function fail(msg){
-    const s = $('roomStatus');
-    if (s){ s.textContent = msg; s.className = 'warn'; }
+  function connectJoin() {
+    const code = ($('roomCodeInput')?.value || '').toUpperCase().trim();
+    if (!code) { $('roomCodeInput')?.focus(); setStatus('Enter the room code first', 'warn'); return; }
+    isHost = false; mySlot = 0; started = false;
+    peers_cleanup();
+    openWs(() => sigSend({ type: 'join', code, name: nameVal() }));
   }
 
-  // ---- client: toggle ready ----
-  function toggleReady(){
-    if (isHost) return;
-    const me = lobbyPlayers.find(p=>p.slot===playerSlot);
-    const ready = me ? !me.ready : true;
-    conns.forEach(c=>{ if(c.open) c.send({type:'ready', ready}); });
+  function toggleReady() {
+    sigSend({ type: 'ready', ready: true });
   }
 
-  // ---- host: start the run for everyone ----
-  function startRoom(diffKey){
+  function startRoom(diffKey) {
     if (!isHost) return;
-    const pc = lobbyPlayers.length;
-    started = true;
-    conns.forEach(c=>{ if(c.open) c.send({type:'start', diffKey, playerCount:pc}); });
+    sigSend({ type: 'start', diffKey });
   }
 
-  // ---- host: broadcast serialised game state ----
-  function syncState(state){
+  /* Send game state to all clients (~15 Hz, host only) */
+  function syncState(state) {
     if (!isHost || !started) return;
     const now = performance.now();
     if (now - lastSync < SYNC_MS) return;
     lastSync = now;
-    /* strip enemy & def references from projectiles so JSON is clean */
-    const s = state;
-    if (s.projectiles){
-      s.projectiles = s.projectiles.map(p=>{
-        const c = Object.assign({}, p);
-        if (c.t){ c.tUid = c.t.uid; delete c.t; }
-        if (c.def){ c.defId = c.def.id; delete c.def; }
-        return c;
-      });
+    const msg = JSON.stringify({ type: 'state', state });
+    Object.entries(peers).forEach(([slot, p]) => {
+      if (p.dc && p.dc.readyState === 'open') {
+        try { p.dc.send(msg); return; } catch (e) {}
+      }
+      /* fallback: relay via WS */
+      sigSend({ type: 'state', state, to: +slot });
+    });
+    /* also broadcast via WS signaling for clients without P2P yet */
+    sigSend({ type: 'state', state });
+  }
+
+  /* Send action to host (client only) */
+  function sendAction(action, payload = {}) {
+    if (isHost) return;
+    const obj = { type: 'action', action, payload };
+    /* try direct P2P to host (slot 1) first */
+    if (!dcSend(1, obj)) {
+      /* fallback: relay via WS */
+      sigSend({ ...obj, to: 1 });
     }
-    const msg = {type:'state', state:s};
-    conns.forEach(c=>{ if(c.open) c.send(msg); });
   }
 
-  // ---- client: send action to host ----
-  function sendAction(action, payload={}){
-    if (isHost || !conns.length) return;
-    conns.forEach(c=>{ if(c.open) c.send({type:'action', action, payload}); });
-  }
-
-  // ---- leave / teardown ----
-  function leave(){
-    conns.forEach(c=>c.close()); conns = [];
-    if (peer){ try{ peer.destroy(); }catch(e){} peer = null; }
-    isHost = false; started = false; lobbyPlayers = []; playerSlot = 0;
+  function leave() {
+    peers_cleanup();
+    if (ws) { try { ws.close(); } catch (e) {} ws = null; }
+    isHost = false; started = false; lobbyPlayers = []; mySlot = 0; roomCode = '';
     const rp = $('roomPanel'); if (rp) rp.hidden = true;
-    const rs = $('roomStatus'); if (rs){ rs.textContent=''; rs.className=''; }
-    ['readyBtn','startRoomBtn','leaveRoomBtn'].forEach(id=>{ const e=$(id); if(e) e.hidden=true; });
+    setStatus('', '');
+    showBtns({});
     const lp = $('lobbyPlayers'); if (lp) lp.innerHTML = '';
     const sm = $('soloModeBtn'); if (sm) sm.classList.add('sel');
-    ['createRoomBtn','joinRoomBtn'].forEach(id=>{ const e=$(id); if(e) e.classList.remove('sel'); });
+    ['createRoomBtn', 'joinRoomBtn'].forEach(id => $(''+id)?.classList.remove('sel'));
   }
 
-  // ---- public API ----
-  window.Game = window.Game || {};
-  window.Game.net = {
+  function peers_cleanup() {
+    Object.values(peers).forEach(p => { try { p.pc.close(); } catch (e) {} });
+    Object.keys(peers).forEach(k => delete peers[k]);
+  }
+
+  /* ================================================================
+     UI helpers
+  ================================================================ */
+  function nameVal() {
+    return ($('playerNameInput')?.value || 'Player').slice(0, 18);
+  }
+
+  function setStatus(text, cls) {
+    const el = $('roomStatus');
+    if (!el) return;
+    el.textContent = text;
+    el.className   = cls || '';
+  }
+
+  function showBtns({ ready, startRoom: sr, leave: lv } = {}) {
+    const rb = $('readyBtn');     if (rb) rb.hidden     = !ready;
+    const sb = $('startRoomBtn'); if (sb) sb.hidden     = !sr;
+    const lb = $('leaveRoomBtn'); if (lb) lb.hidden     = !lv;
+  }
+
+  function renderLobby() {
+    const box = $('lobbyPlayers');
+    if (!box) return;
+    const cs = COOP.playerColors;
+    box.innerHTML = (lobbyPlayers || []).map(p =>
+      `<div class="lobbyPlayer ${p.ready ? 'ready' : ''}">
+        <span class="lpDot" style="background:${cs[(p.slot - 1) % 4]}"></span>
+        <span class="lpName">${p.name}${p.host ? ' ★' : ''}</span>
+        <span class="lpStat">${p.ready ? '✓ ready' : '…'}</span>
+      </div>`
+    ).join('');
+    /* enable start button only on host screen */
+    const sr = $('startRoomBtn');
+    if (sr && isHost) sr.hidden = lobbyPlayers.length < 1;
+  }
+
+  /* ================================================================
+     Attach to window.Game
+  ================================================================ */
+  const net = {
     connectCreate,
     connectJoin,
     toggleReady,
@@ -251,15 +393,22 @@ console.log('[COOP] net.js loaded, Peer available:', typeof Peer !== 'undefined'
     syncState,
     sendAction,
     leave,
-    getIsHost: ()=>isHost,
-    isStarted: ()=>started,
-    getPlayerCount: ()=>lobbyPlayers.length,
-    onState: null,    // (state) => void   — client receives full state
-    onAction: null,   // (action, payload, slot) => void — host receives client action
-    onStart: null,     // (diffKey, playerCount) => void — client: host started
-    onDisconnect: null,// () => void — client: host left
+    getIsHost:     () => isHost,
+    isStarted:     () => started,
+    getPlayerCount: () => lobbyPlayers.length,
+    /* callbacks set by game.js via setupNetCallbacks() */
+    onState:       null,
+    onAction:      null,
+    onStart:       null,
+    onDisconnect:  null,
   };
-  /* tell game.js to wire up its callbacks now that net is available */
+
+  window.Game = window.Game || {};
+  window.Game.net = net;
+
+  /* wire up game callbacks immediately if game.js already loaded */
   const G = window.Game;
   if (G && typeof G.setupNetCallbacks === 'function') G.setupNetCallbacks();
+
+  console.log('[net] net.js ready — using WebSocket signaling at', signalingUrl());
 })();
