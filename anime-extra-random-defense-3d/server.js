@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 /* ============================================================
    Anime Extra Random Defence — Co-op Signaling + Game Server
-   WebSocket signaling for WebRTC data-channel connections.
-   Also serves static files so you only need: node server.js
 
    Usage:
-     npm install ws           (one-time)
-     node server.js           (default port 8765)
-     node server.js 3000      (custom port)
+     node server.js           → http://localhost:8765
+     node server.js 3000      → http://localhost:3000
 
-   Both players open  http://localhost:PORT  (or use IP/ngrok)
+   For internet play, run ngrok in another terminal:
+     ngrok http 8765
+   Then use  wss://xxxx.ngrok-free.app  as server address.
    ============================================================ */
 const http   = require('http');
 const fs     = require('fs');
@@ -27,6 +26,9 @@ const MIME = {
   '.woff2':'font/woff2', '.woff':'font/woff',
 };
 const httpServer = http.createServer((req, res) => {
+  /* CORS — allow Vercel frontend to load static files if needed */
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
   let urlPath = req.url.split('?')[0];
   if (urlPath === '/') urlPath = '/index.html';
   const filePath = path.join(ROOT, urlPath.replace(/\.\./g, ''));
@@ -37,7 +39,6 @@ const httpServer = http.createServer((req, res) => {
     } else {
       res.writeHead(200, {
         'Content-Type': MIME[ext] || 'application/octet-stream',
-        'Access-Control-Allow-Origin': '*',
         'Cache-Control': 'no-cache',
       });
       res.end(data);

@@ -31,8 +31,22 @@ console.log('[net] net.js loading…');
   const SYNC_MS  = 66;   // ~15 Hz
 
   /* ---- auto-detect server URL ---- */
-  /* If the page was served by server.js the WebSocket lives on the same host */
+  /* Priority:
+     1. URL param  ?sig=ws://...
+     2. Same host (when served by server.js locally)
+     3. Fallback: localhost:8765
+  */
   function signalingUrl() {
+    // ?sig=ws://1.2.3.4:8765
+    const param = new URLSearchParams(location.search).get('sig');
+    if (param) return param;
+
+    // served directly by server.js — same host, same port
+    if (location.hostname !== 'localhost' && !location.hostname.startsWith('127.')) {
+      // hosted on Vercel / GitHub Pages / etc → must use localhost or custom server
+      return null; // will show config UI
+    }
+
     const proto = location.protocol === 'https:' ? 'wss' : 'ws';
     return `${proto}://${location.host}`;
   }
@@ -60,9 +74,19 @@ console.log('[net] net.js loading…');
     }
   }
 
+  function getEffectiveSigUrl() {
+    const auto = signalingUrl();
+    if (auto) return auto;
+    // read from server address input (shown when not localhost)
+    const inp = $('sigServerInput');
+    const val = inp ? inp.value.trim() : '';
+    if (val) return val.startsWith('ws') ? val : 'ws://' + val;
+    return 'ws://localhost:8765'; // last-resort default
+  }
+
   function openWs(onOpen) {
     if (ws) { try { ws.close(); } catch (e) {} }
-    const url = signalingUrl();
+    const url = getEffectiveSigUrl();
     console.log('[net] connecting to signaling server:', url);
     setStatus('Connecting to server…', '');
 
@@ -410,5 +434,5 @@ console.log('[net] net.js loading…');
   const G = window.Game;
   if (G && typeof G.setupNetCallbacks === 'function') G.setupNetCallbacks();
 
-  console.log('[net] net.js ready — using WebSocket signaling at', signalingUrl());
+  console.log('[net] net.js ready — signaling:', signalingUrl() || '(needs manual server address)');
 })();

@@ -1318,6 +1318,19 @@ $('startRoomBtn').onclick=()=>{ AudioFX.ensure(); const net=window.Game&&window.
 $('leaveRoomBtn').onclick=()=>{ AudioFX.click(); callNet('leave'); };
 $('roomCodeInput').addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); callNet('connectJoin'); } });
 $('playerNameInput').addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); $('roomCodeInput').focus(); } });
+/* show server address field only when served from a remote host (Vercel/etc) */
+(()=>{
+  const isLocal = location.hostname==='localhost' || location.hostname.startsWith('127.') || location.hostname.startsWith('192.168') || new URLSearchParams(location.search).has('sig');
+  const row = $('sigServerRow');
+  if (row) row.style.display = isLocal ? 'none' : '';
+  /* pre-fill from localStorage */
+  const inp = $('sigServerInput');
+  if (inp){
+    const saved = localStorage.getItem('aerd_sigserver');
+    if (saved) inp.value = saved;
+    inp.addEventListener('change', ()=> localStorage.setItem('aerd_sigserver', inp.value.trim()));
+  }
+})();
 $('summonBtn').onclick=()=>{ AudioFX.ensure(); summon(); };
 $('gachaUpBtn').onclick=()=>{ AudioFX.ensure(); upgradeGacha(); };
 $('wispGold').onclick=()=>{ AudioFX.ensure(); wispToGold(); };
