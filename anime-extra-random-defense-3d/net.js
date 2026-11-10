@@ -74,21 +74,50 @@ console.log('[net] net.js loading…');
     }
   }
 
+  /* ---- resolve signaling URL from all sources ---- */
   function getEffectiveSigUrl() {
-    const auto = signalingUrl();
-    if (auto) return auto;
-    // read from server address input (shown when not localhost)
+    // 1. URL param:  ?sig=wss://abc.ngrok-free.app
+    const param = new URLSearchParams(location.search).get('sig');
+    if (param) return param;
+
+    // 2. Input field (shown when remote)
     const inp = $('sigServerInput');
     const val = inp ? inp.value.trim() : '';
-    if (val) return val.startsWith('ws') ? val : 'ws://' + val;
-    return 'ws://localhost:8765'; // last-resort default
+    if (val) {
+      // auto-upgrade ws: → wss: when page is https:
+      if (location.protocol === 'https:' && val.startsWith('ws://'))
+        return 'wss://' + val.slice(5);
+      return val.startsWith('ws') ? val : 'ws://' + val;
+    }
+
+    // 3. Same host (page served by server.js locally)
+    if (location.hostname === 'localhost' || location.hostname.startsWith('127.') || location.hostname.match(/^192\.168\./)) {
+      const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+      return `${proto}://${location.host}`;
+    }
+
+    // 4. Remote host (Vercel/GitHub Pages) — need manual address
+    return null;
   }
 
   function openWs(onOpen) {
-    if (ws) { try { ws.close(); } catch (e) {} }
+function openWs(onOpen) {
+    if (ws) { try { ws.close(); } catch (e) {} ws = null; }
     const url = getEffectiveSigUrl();
+
+    if (!url) {
+      setStatus('Enter your server address first (e.g. wss://abc.ngrok-free.app)', 'warn');
+      const inp = $('sigServerInput');
+      if (inp) { inp.focus(); const row=$('sigServerRow'); if(row) row.style.display=''; }
+      return;
+    }
+    if (location.protocol === 'https:' && url.startsWith('ws://')) {
+      setStatus('⚠ Use wss:// not ws:// (page is HTTPS)', 'warn');
+      return;
+    }
+
     console.log('[net] connecting to signaling server:', url);
-    setStatus('Connecting to server…', '');
+    setStatus('Connecting to ' + url + '…', '');
 
     ws = new WebSocket(url);
 
@@ -105,7 +134,11 @@ console.log('[net] net.js loading…');
 
     ws.onerror = err => {
       console.error('[net] WS error', err);
-      setStatus('Cannot reach server — is server.js running?', 'warn');
+      const url = getEffectiveSigUrl() || '';
+      if (url.startsWith('ws://') && location.protocol === 'https:')
+        setStatus('⚠ Cannot use ws:// from https:// page — use wss://', 'warn');
+      else
+        setStatus('Cannot connect to server — is server.js running?', 'warn');
     };
 
     ws.onclose = () => {

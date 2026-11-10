@@ -1320,15 +1320,24 @@ $('roomCodeInput').addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ ev.pr
 $('playerNameInput').addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); $('roomCodeInput').focus(); } });
 /* show server address field only when served from a remote host (Vercel/etc) */
 (()=>{
-  const isLocal = location.hostname==='localhost' || location.hostname.startsWith('127.') || location.hostname.startsWith('192.168') || new URLSearchParams(location.search).has('sig');
+  const isLocal = location.hostname==='localhost'
+    || location.hostname.startsWith('127.')
+    || location.hostname.match(/^192\.168\./)
+    || new URLSearchParams(location.search).has('sig');
   const row = $('sigServerRow');
-  if (row) row.style.display = isLocal ? 'none' : '';
+  if (row) row.style.display = isLocal ? 'none' : 'flex';
   /* pre-fill from localStorage */
   const inp = $('sigServerInput');
   if (inp){
     const saved = localStorage.getItem('aerd_sigserver');
     if (saved) inp.value = saved;
-    inp.addEventListener('change', ()=> localStorage.setItem('aerd_sigserver', inp.value.trim()));
+    inp.addEventListener('blur', ()=>{
+      const v = inp.value.trim();
+      if (v) localStorage.setItem('aerd_sigserver', v);
+    });
+    inp.addEventListener('keydown', ev=>{
+      if (ev.key==='Enter'){ ev.preventDefault(); $('roomCodeInput').focus(); }
+    });
   }
 })();
 $('summonBtn').onclick=()=>{ AudioFX.ensure(); summon(); };

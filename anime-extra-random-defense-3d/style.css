@@ -292,13 +292,14 @@ main{display:flex;gap:12px;align-items:flex-start}
 #roomPanel input{padding:9px 11px;border-radius:9px;background:var(--bg2);border:1.5px solid var(--line);color:var(--ink);font-family:var(--font);font-size:13px;outline:none}
 #roomPanel input:focus{border-color:var(--cyan);box-shadow:0 0 12px rgba(53,224,255,.25)}
 #roomCodeInput{text-transform:uppercase;letter-spacing:3px;font-weight:700}
-#sigServerRow{display:flex;flex-direction:column;gap:4px}
-#sigServerInput{padding:9px 11px;border-radius:9px;background:var(--bg2);border:1.5px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:12px;outline:none}
-#sigServerInput:focus{border-color:var(--gold)}
+#sigServerRow{display:flex;flex-direction:column;gap:4px;padding:6px 8px;background:rgba(255,201,61,.06);border:1px solid rgba(255,201,61,.25);border-radius:9px}
+#sigServerInput{padding:9px 11px;border-radius:8px;background:var(--bg2);border:1.5px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:12px;outline:none}
+#sigServerInput:focus{border-color:var(--gold);box-shadow:0 0 10px rgba(255,201,61,.2)}
 #sigServerInput::placeholder{color:var(--ink-faint);font-family:var(--mono)}
-.sigHint{font-size:10px;color:var(--ink-faint);line-height:1.5;padding:0 2px}
+.sigHint{font-size:10px;color:var(--ink-dim);line-height:1.6;padding:0 2px}
 .sigHint a{color:var(--cyan);text-decoration:none}.sigHint a:hover{text-decoration:underline}
 .sigHint code{background:var(--bg);padding:1px 5px;border-radius:4px;font-family:var(--mono);font-size:10px;color:var(--gold)}
+.sigHint b{color:var(--warn)}
 #lobbyPlayers{display:flex;flex-direction:column;gap:5px}
 .lobbyPlayer{display:flex;align-items:center;gap:8px;padding:6px 9px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);font-size:11.5px}
 .lobbyPlayer b{flex:1}.lobbyPlayer .ready{color:var(--success);font-weight:700}.lobbyPlayer .waiting{color:var(--ink-faint)}

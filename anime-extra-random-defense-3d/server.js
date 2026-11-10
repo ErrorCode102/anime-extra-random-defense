@@ -204,8 +204,18 @@ wss.on('connection', ws => {
   ws.on('error', err => console.error('[sig] ws error:', err.message));
 });
 
-httpServer.listen(PORT, () => {
-  console.log('');
+httpServer.on('error', err => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n  Port ${PORT} is already in use.`);
+    console.error(`  Kill the other process first, or use a different port:\n`);
+    console.error(`    node server.js 3000\n`);
+  } else {
+    console.error('[server] error:', err.message);
+  }
+  process.exit(1);
+});
+
+httpServer.listen(PORT, () => {  console.log('');
   console.log('  ╔══════════════════════════════════════════╗');
   console.log('  ║  Anime Extra Random Defence — Co-op      ║');
   console.log(`  ║  Server running on port ${PORT}             ║`);

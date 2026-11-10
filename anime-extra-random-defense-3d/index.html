@@ -163,8 +163,14 @@
       <input id="playerNameInput" maxlength="18" data-i18n-placeholder="start.namePh" placeholder="Your name" value="Player" autocomplete="nickname">
       <input id="roomCodeInput" maxlength="6" data-i18n-placeholder="start.codePh" placeholder="ROOM CODE" autocapitalize="characters" spellcheck="false">
       <div id="sigServerRow">
-        <input id="sigServerInput" placeholder="Server address  e.g. ws://192.168.1.5:8765" spellcheck="false" autocomplete="off">
-        <div class="sigHint">Run <code>node server.js</code> on a local machine, then enter its address above. <a href="https://github.com/ErrorCode102/anime-extra-random-defense#co-op" target="_blank">Help ↗</a></div>
+        <input id="sigServerInput" placeholder="wss://abc.ngrok-free.app  or  ws://192.168.1.x:8765" spellcheck="false" autocomplete="off">
+        <div class="sigHint">
+          <b>⚠ This page is HTTPS</b> — you must use <code>wss://</code> not <code>ws://</code><br>
+          Run <code>node server.js</code> then tunnel it:<br>
+          • <b>cloudflared:</b> <code>cloudflared tunnel --url http://localhost:8765</code><br>
+          • <b>ngrok:</b> <code>ngrok http 8765</code><br>
+          Copy the <code>https://…</code> URL and change to <code>wss://…</code>
+        </div>
       </div>
       <div id="lobbyPlayers"></div>
       <div id="roomActions">
