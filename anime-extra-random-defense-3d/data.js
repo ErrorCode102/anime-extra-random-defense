@@ -540,6 +540,18 @@ function placementReason(x, y, field=[], ignoreUid=null){
   return '';
 }
 
+/* ============ co-op config ============ */
+const COOP = {
+  maxPlayers: 4,
+  playerColors: ['#35e0ff', '#ff3d8e', '#ffc93d', '#3dff9a'],
+  /* difficulty scaling per extra player (1 = solo, 4 = full party) */
+  hpScale:    0.25,   // +25% enemy HP per extra player
+  countScale: 0.30,   // +30% enemy count per extra player
+  goldScale:  0.15,   // +15% gold reward per extra player
+  livesBonus: 10,     // +10 shared lives per extra player
+  speedScale: 0.05,   // +5% enemy speed per extra player
+};
+
 /* ============ procedural anime portraits ============ */
 function shade(hex,f){
   const n=parseInt(hex.slice(1),16);

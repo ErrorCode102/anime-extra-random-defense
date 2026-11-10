@@ -67,13 +67,16 @@ const AudioFX = {
 let S = null;
 let uidSeq = 1;
 const LOCAL_PLAYER = 'p1';
+/* co-op helpers: clients forward actions to the host instead of executing locally */
+const isClient = () => window.Game && window.Game.net && window.Game.net.isStarted() && !window.Game.net.getIsHost();
+const fwd = (action, payload={}) => { if (window.Game && window.Game.net) window.Game.net.sendAction(action, payload); };
 function freshState(diffKey, playerCount=1){
   const diff = DIFFICULTIES[diffKey];
   const benchSize = CFG.benchSize + 2*(playerCount-1);
   return {
     mode:'menu', diffKey, diff,
     gold:CFG.startGold, spirit:CFG.startSpirit, wisps:CFG.startWisps, gachaLv:1,
-    lives:diff.lives, wave:0,
+    lives:diff.lives + (COOP?COOP.livesBonus:10)*(playerCount-1), wave:0,
     playerCount, players:Array.from({length:playerCount},(_,i)=>({id:`p${i+1}`})),
     popCap:CFG.popCap + 6*(playerCount-1), benchSize,
     bench:Array(benchSize).fill(null),
@@ -192,6 +195,7 @@ function onKillReward(e, p){
   }
 }
 function factionActive(){
+  if (isClient()) return fwd('factionActive');
   if (S.mode!=='play') return;
   const f = curFaction();
   if (f.activeType==='supergold'){
@@ -231,6 +235,7 @@ function factionActive(){
   }
 }
 function doFusion(){
+  if (isClient()) return fwd('doFusion');
   if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
   const pool = allUnits();
   for (let gv=5; gv>=1; gv--){
@@ -620,6 +625,7 @@ function checkCollection(){
   log(t('fac.collectLog'), 'epic');
 }
 function summon(){
+  if (isClient()) return fwd('summon');
   if (S.mode!=='play') return;
   const cost = summonCost();
   if (S.gold < cost) return toast(t('toast.noGold'), true);
@@ -634,6 +640,7 @@ function summon(){
   giveServant(grade, t('src.summon'));
 }
 function upgradeGacha(){
+  if (isClient()) return fwd('upgradeGacha');
   if (S.mode!=='play' || S.gachaLv>=CFG.gachaMaxLv) return;
   const c = CFG.gachaUpCost(S.gachaLv);
   if (S.spirit < c) return toast(t('toast.noSpirit'), true);
@@ -647,6 +654,7 @@ function upgradeGacha(){
 }
 /* ---------------- wisp economy ---------------- */
 function wispToGold(){
+  if (isClient()) return fwd('wispToGold');
   if (S.mode!=='play' || S.wisps<1) return;
   S.wisps--;
   const amt = Math.floor(rand(50+S.wave*2, 100+S.wave*10));
@@ -655,6 +663,7 @@ function wispToGold(){
   toast(t('wisp.goldToast',{amt})); bump($('stGold').parentElement); syncStats();
 }
 function wispToSpirit(){
+  if (isClient()) return fwd('wispToSpirit');
   if (S.mode!=='play' || S.wisps<1) return;
   S.wisps--;
   const amt = Math.floor(rand(1,5.99));
@@ -663,6 +672,7 @@ function wispToSpirit(){
   toast(t('wisp.spiritToast',{amt})); bump($('stSpirit').parentElement); syncStats();
 }
 function wispToGacha(){
+  if (isClient()) return fwd('wispToGacha');
   if (S.mode!=='play' || S.wisps<1) return;
   if (!S.bench.includes(null)) return toast(t('toast.benchFull'), true);
   S.wisps--; S.summons++;
@@ -673,6 +683,7 @@ function wispToGacha(){
 
 /* ---------------- placement / sell / ascend ---------------- */
 function tryPlace(x, y, playerId=LOCAL_PLAYER){
+  if (isClient()){ fwd('deploy', {x, y, benchIdx: S.sel? S.sel.idx : -1}); return false; }
   if (!S.sel || S.sel.loc!=='bench') return false;
   const u = S.bench[S.sel.idx];
   if (!u) return false;
@@ -702,6 +713,7 @@ function unitByUid(uid){
   return null;
 }
 function sellSelected(){
+  if (isClient()){ fwd('sell', {loc:S.sel.loc, idx:S.sel.idx}); return; }
   if (!S.sel) return;
   if (hasPen('sellDisabled')) return toast(t('penalty.sellBlocked'), true);
   const arr = S.sel.loc==='bench'?S.bench:S.field;
@@ -718,6 +730,7 @@ function sellSelected(){
 function ascend(ri){
   const r = RECIPES[ri];
   if (!S.sel) return;
+  if (isClient()){ fwd('ascend', {ri, selLoc:S.sel.loc, selIdx:S.sel.idx}); return; }
   const baseArr = S.sel.loc==='bench'?S.bench:S.field;
   const base = baseArr[S.sel.idx];
   if (!base || base.id!==r.base) return;
@@ -759,7 +772,9 @@ function ascend(ri){
 /* ---------------- waves & enemies ---------------- */
 function buildWave(w){
   const q = [];
-  const count = Math.min(hasPen('raid')?60:30, (8 + Math.floor(w*0.55)) * (hasPen('raid')?2:1));
+  const pc = S.playerCount || 1;
+  const coopMul = 1 + (COOP?COOP.countScale:0.3)*(pc-1);
+  const count = Math.min(hasPen('raid')?60:30, Math.round((8 + Math.floor(w*0.55)) * (hasPen('raid')?2:1) * coopMul));
   const isBoss = w%5===0;
   for (let i=0;i<count;i++){
     let type='normal';
@@ -781,6 +796,7 @@ const ETYPES = {
   bigboss:{hp:16, sp:40,  r:21, color:'#ff3d5e', gold:25,  leak:8, boss:true },
 };
 function startWave(){
+  if (isClient()) return fwd('startWave');
   if (S.mode!=='play' || S.waveActive) return;
   S.wave++;
   S.waveActive = true;
@@ -795,13 +811,16 @@ function startWave(){
 }
 function spawnEnemy(type){
   const t = ETYPES[type], w = S.wave;
+  const pc = S.playerCount || 1;
+  const coopHp = 1 + (COOP?COOP.hpScale:0.25)*(pc-1);
+  const coopSp = 1 + (COOP?COOP.speedScale:0.05)*(pc-1);
   const finalBoss = t.boss && w===S.diff.waves;
   const leader = hasPen('powerfulLeader') && S.waveSpawnCount===0;
   const raidMul = hasPen('raid') ? 0.5 : 1;
-  const hp = Math.round((10 + 4*w + 0.5*w*w) * t.hp * S.diff.hp * (finalBoss?1.5:1) * (leader?20:1) * raidMul);
+  const hp = Math.round((10 + 4*w + 0.5*w*w) * t.hp * S.diff.hp * (finalBoss?1.5:1) * (leader?20:1) * raidMul * coopHp);
   S.enemies.push({
     uid:uidSeq++, type, d:0, hp, maxHp:hp,
-    sp:t.sp*S.diff.speed*rand(0.92,1.08)*(hasPen('enemyBoost')?1.5:1), r:t.r, color:t.color,
+    sp:t.sp*S.diff.speed*rand(0.92,1.08)*(hasPen('enemyBoost')?1.5:1)*coopSp, r:t.r, color:t.color,
     gold:Math.round((3+w*0.7)*t.gold*S.diff.gold*(leader?10:1)*raidMul), leak:t.leak, boss:!!t.boss,
     armor:t.armor||0, regen:(t.regen||0)+(hasPen('enemyHeal')?0.005:0), slowT:0, slowF:0, stunT:0, dots:[], dead:false,
     leader,
@@ -810,8 +829,10 @@ function spawnEnemy(type){
 }
 function endWave(){
   S.waveActive = false;
+  const pc = S.playerCount || 1;
+  const coopMul = 1 + (COOP?COOP.goldScale:0.15)*(pc-1);
   const interest = Math.min(60, Math.floor(S.gold*0.08));
-  const bonus = Math.round((30 + S.wave*5) * S.diff.gold) + interest;
+  const bonus = Math.round((30 + S.wave*5) * S.diff.gold * coopMul) + interest;
   S.gold += bonus; S.goldEarned += bonus;
   const wispGain = Math.max(0, CFG.wispsPerWave - (hasPen('lessWisp')?1:0));
   S.wisps += wispGain;
@@ -1285,10 +1306,15 @@ function callNet(method){
 }
 function selectRoomMode(id){
   for (const b of $('roomControls').children) b.classList.toggle('sel', b.id===id);
+  const sb = $('startBtn');
+  if (sb) sb.style.visibility = id==='soloModeBtn' ? '' : 'hidden';
 }
-$('soloModeBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('soloModeBtn'); $('roomPanel').hidden=true; $('roomStatus').textContent=t('start.statusSolo'); $('roomStatus').className=''; };
+$('soloModeBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('soloModeBtn'); $('roomPanel').hidden=true; $('roomStatus').textContent=t('start.statusSolo'); $('roomStatus').className=''; callNet('leave'); };
 $('createRoomBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('createRoomBtn'); $('roomPanel').hidden=false; callNet('connectCreate'); };
 $('joinRoomBtn').onclick=()=>{ AudioFX.click(); selectRoomMode('joinRoomBtn'); $('roomPanel').hidden=false; $('roomCodeInput').focus(); callNet('connectJoin'); };
+$('readyBtn').onclick=()=>{ AudioFX.click(); callNet('toggleReady'); };
+$('startRoomBtn').onclick=()=>{ AudioFX.ensure(); const net=window.Game&&window.Game.net; if(net){ net.startRoom(selectedDiff); startGame({diffKey:selectedDiff, playerCount:net.getPlayerCount()}); } };
+$('leaveRoomBtn').onclick=()=>{ AudioFX.click(); callNet('leave'); };
 $('summonBtn').onclick=()=>{ AudioFX.ensure(); summon(); };
 $('gachaUpBtn').onclick=()=>{ AudioFX.ensure(); upgradeGacha(); };
 $('wispGold').onclick=()=>{ AudioFX.ensure(); wispToGold(); };
@@ -1303,9 +1329,9 @@ $('pickupClose').onclick=()=>{ AudioFX.click(); $('pickupOverlay').classList.rem
 $('pickupOverlay').addEventListener('click',ev=>{ if(ev.target===$('pickupOverlay')) $('pickupOverlay').classList.remove('show'); });
 $('waveBtn').onclick=()=>{ AudioFX.ensure(); startWave(); };
 $('sellBtn').onclick=sellSelected;
-$('autoBtn').onclick=function(){ S.auto=!S.auto; this.classList.toggle('on',S.auto); if(S.auto&&!S.waveActive)S.autoT=1.5; AudioFX.click(); toast(S.auto?t('toast.autoOn'):t('toast.autoOff')); };
-$('speedBtn').onclick=function(){ S.speed=S.speed>=3?1:S.speed+1; this.textContent=S.speed+'×'; AudioFX.click(); };
-$('pauseBtn').onclick=function(){ if(S.mode!=='play')return; S.paused=!S.paused; this.textContent=S.paused?'▶':'⏸'; AudioFX.click(); };
+$('autoBtn').onclick=function(){ if(isClient()) return fwd('auto'); S.auto=!S.auto; this.classList.toggle('on',S.auto); if(S.auto&&!S.waveActive)S.autoT=1.5; AudioFX.click(); toast(S.auto?t('toast.autoOn'):t('toast.autoOff')); };
+$('speedBtn').onclick=function(){ if(isClient()) return fwd('speed'); S.speed=S.speed>=3?1:S.speed+1; this.textContent=S.speed+'×'; AudioFX.click(); };
+$('pauseBtn').onclick=function(){ if(isClient()) return fwd('pause'); if(S.mode!=='play')return; S.paused=!S.paused; this.textContent=S.paused?'▶':'⏸'; AudioFX.click(); };
 $('soundBtn').onclick=function(){ AudioFX.ensure(); AudioFX.muted=!AudioFX.muted; this.classList.toggle('on',!AudioFX.muted); this.classList.toggle('off',AudioFX.muted); this.textContent=AudioFX.muted?'♪̸':'♪'; if(!AudioFX.muted)AudioFX.click(); };
 $('langBtn').onclick=()=>{ AudioFX.click(); setLang(getLang()==='th'?'en':'th'); };
 $('codexBtn').onclick=()=>{ AudioFX.click(); buildCodex('recipes'); $('codexOverlay').classList.add('show'); };
@@ -1359,15 +1385,93 @@ function updateLangBtn(){ const b=$('langBtn'); if(b) b.textContent=getLang()===
 function onLangChange(){ updateLangBtn(); buildFactionChips(); buildGambling(); buildDiffCards(); renderBench(); syncStats(); renderSelected(); buildCodexFilters(); syncPenaltyBtn(); if($('codexOverlay').classList.contains('show'))buildCodex(codexTab); if($('pickupOverlay').classList.contains('show'))buildPickup(); if($('penaltyOverlay').classList.contains('show'))buildPenalties(); }
 
 /* ---------------- expose API for the 3D layer ---------------- */
+function serializeState(){
+  return {
+    mode:S.mode, diffKey:S.diffKey,
+    gold:S.gold, spirit:S.spirit, wisps:S.wisps, gachaLv:S.gachaLv,
+    lives:S.lives, wave:S.wave,
+    playerCount:S.playerCount, players:S.players,
+    popCap:S.popCap, benchSize:S.benchSize,
+    bench:S.bench, field:S.field,
+    enemies:S.enemies, projectiles:S.projectiles,
+    beams:S.beams, rings:S.rings, particles:S.particles, floats:S.floats,
+    spawnQueue:S.spawnQueue, spawnT:S.spawnT,
+    waveActive:S.waveActive, auto:S.auto, autoT:S.autoT,
+    speed:S.speed, paused:S.paused,
+    pity:S.pity, kills:S.kills, summons:S.summons, ascensions:S.ascensions,
+    goldEarned:S.goldEarned,
+    factionKey:S.factionKey,
+    facCd:S.facCd, focusT:S.focusT, focusUid:S.focusUid,
+    penalties:S.penalties,
+    gambleStocks:S.gambleStocks,
+    time:S.time, shake:S.shake, leakFlash:S.leakFlash,
+    stasisT:S.stasisT, stormT:S.stormT,
+    waveSpawnCount:S.waveSpawnCount,
+    collectionDone:S.collectionDone,
+  };
+}
+function applyState(state){
+  if (state.diffKey) state.diff = DIFFICULTIES[state.diffKey];
+  if (state.projectiles){
+    state.projectiles.forEach(pr=>{
+      if (pr.tUid!=null) pr.t = state.enemies.find(e=>e.uid===pr.tUid);
+      if (pr.defId) pr.def = UNIT_BY_ID[pr.defId];
+    });
+  }
+  const localSel = S.sel;
+  Object.assign(S, state);
+  S.sel = localSel;
+  syncStats(); renderBench(); renderSelected();
+}
+function setupNetCallbacks(){
+  const net = window.Game && window.Game.net;
+  if (!net) return;
+  net.onAction = (action, payload)=>{
+    switch(action){
+      case 'summon': summon(); break;
+      case 'deploy':
+        S.sel = {loc:'bench', idx:payload.benchIdx};
+        tryPlace(payload.x, payload.y);
+        break;
+      case 'sell':
+        S.sel = {loc:payload.loc, idx:payload.idx};
+        sellSelected();
+        break;
+      case 'ascend':
+        S.sel = {loc:payload.selLoc, idx:payload.selIdx};
+        ascend(payload.ri);
+        break;
+      case 'startWave': startWave(); break;
+      case 'auto': S.auto = !S.auto; $('autoBtn').classList.toggle('on', S.auto); break;
+      case 'speed': S.speed = S.speed>=3?1:S.speed+1; $('speedBtn').textContent = S.speed+'×'; break;
+      case 'pause': S.paused = !S.paused; $('pauseBtn').textContent = S.paused?'▶':'⏸'; break;
+      case 'upgradeGacha': upgradeGacha(); break;
+      case 'wispToGold': wispToGold(); break;
+      case 'wispToSpirit': wispToSpirit(); break;
+      case 'wispToGacha': wispToGacha(); break;
+      case 'factionActive': factionActive(); break;
+      case 'doFusion': doFusion(); break;
+    }
+  };
+  net.onState = (state)=> applyState(state);
+  net.onStart = (diffKey, playerCount)=> startGame({diffKey, playerCount});
+  net.onDisconnect = ()=>{
+    S.mode='menu';
+    $('endOverlay').classList.remove('show');
+    $('startOverlay').classList.add('show');
+    toast('Host disconnected', true);
+  };
+}
 window.Game = {
   get S(){ return S; },
+  serializeState, applyState,
   update, summon, upgradeGacha, wispToGold, wispToSpirit, wispToGacha,
   startWave, select, tryPlace, sellSelected, ascend, startGame,
   placementReason:(x,y)=>placementReason(x,y,S.field), unitByUid,
   setFaction, factionActive, doFusion, addFactionXp, openPickup,
   doGoldGamble, doServantGamble,
   togglePenalty, buildPenalties, openPenalties,
-  popUsed, AudioFX, onLangChange,
+  popUsed, AudioFX, onLangChange, setupNetCallbacks,
 };
 UNITS.forEach(u=>{ u.ferdSkills = FERD_SKILLS[u.id] || []; });
 buildDiffCards();
@@ -1380,3 +1484,4 @@ applyI18n();
 buildCodexFilters();
 updateLangBtn();
 updateLangBtn();
+setupNetCallbacks(); /* will re-run after net.js loads */

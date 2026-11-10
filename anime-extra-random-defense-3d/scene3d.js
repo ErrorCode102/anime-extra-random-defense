@@ -761,7 +761,14 @@ let elapsed = 0;
 function frame(dt) {
   elapsed += dt;
   const S = Game.S;
-  if (S.mode === 'play' && !S.paused) Game.update(dt * S.speed);
+  if (S.mode === 'play' && !S.paused) {
+    const net = Game.net;
+    const client = net && net.isStarted() && !net.getIsHost();
+    if (!client) {
+      Game.update(dt * S.speed);
+      if (net && net.getIsHost() && net.isStarted()) net.syncState(Game.serializeState());
+    }
+  }
 
   syncAmbient(elapsed, dt);
   syncUnits(S, elapsed);
