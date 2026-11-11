@@ -159,7 +159,8 @@ console.log('[net] net.js loading…');
     } else if (msg.type === 'start') {
       started = true;
       var GG = window.Game;
-      if (GG && GG.net && GG.net.onStart) GG.net.onStart(msg.diffKey, msg.playerCount);
+      // host already started locally via startRoomBtn; only clients boot from the echo
+      if (!isHost && GG && GG.net && GG.net.onStart) GG.net.onStart(msg.diffKey, msg.playerCount);
 
     } else if (msg.type === 'offer') {
       handleOffer(msg.from, msg.offer);
@@ -311,15 +312,17 @@ console.log('[net] net.js loading…');
     if (now - lastSync < SYNC_MS) return;
     lastSync = now;
     var msg = JSON.stringify({ type: 'state', state: state });
-    Object.keys(peers).forEach(function(slot) {
-      var p = peers[slot];
-      if (p.dc && p.dc.readyState === 'open') {
+    var needWs = false;
+    lobbyPlayers.forEach(function(pl) {
+      if (pl.slot === 1) return;
+      var p = peers[pl.slot];
+      if (p && p.dc && p.dc.readyState === 'open') {
         try { p.dc.send(msg); return; } catch (_) {}
       }
-      sigSend({ type: 'state', state: state, to: +slot });
+      needWs = true;
     });
-    // broadcast via WS for clients still negotiating P2P
-    sigSend({ type: 'state', state: state });
+    // WS fallback for clients without an open data channel (still negotiating or NAT-blocked)
+    if (needWs) sigSend({ type: 'state', state: state });
   }
 
   function sendAction(action, payload) {
@@ -373,10 +376,13 @@ console.log('[net] net.js loading…');
     var box = $('lobbyPlayers');
     if (!box) return;
     var cs = COOP.playerColors;
+    var escName = function(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
     box.innerHTML = lobbyPlayers.map(function(p) {
       return '<div class="lobbyPlayer ' + (p.ready ? 'ready' : '') + '">' +
         '<span class="lpDot" style="background:' + cs[(p.slot - 1) % 4] + '"></span>' +
-        '<span class="lpName">' + p.name + (p.host ? ' ★' : '') + '</span>' +
+        '<span class="lpName">' + escName(p.name) + (p.host ? ' ★' : '') + '</span>' +
         '<span class="lpStat">' + (p.ready ? '✓ ready' : '…') + '</span>' +
         '</div>';
     }).join('');

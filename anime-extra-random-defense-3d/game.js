@@ -921,7 +921,7 @@ function unitAttack(u, def, x, y){
   const g = GRADES[def.grade];
   AudioFX.shoot();
   const fire = (target, dmg, extra={}) => {
-    S.projectiles.push({ uid:uidSeq++, x, y, t:target.e, tx:target.p.x, ty:target.p.y, sp:460*(curFaction().key==='aurel'?1.25:1)*(u.crest?1.5:1), dmg, color:g.color, def, src:u.uid, ...extra });
+    S.projectiles.push({ uid:uidSeq++, x, y, t:target.e, tUid:target.e.uid, tx:target.p.x, ty:target.p.y, sp:460*(curFaction().key==='aurel'?1.25:1)*(u.crest?1.5:1), dmg, color:g.color, def, defId:def.id, src:u.uid, ...extra });
   };
   switch (def.kind){
     case 'single': fire(first, def.dmg*mult, {greed:def.greed}); break;
@@ -1418,7 +1418,8 @@ function serializeState(){
     playerCount:S.playerCount, players:S.players,
     popCap:S.popCap, benchSize:S.benchSize,
     bench:S.bench, field:S.field,
-    enemies:S.enemies, projectiles:S.projectiles,
+    enemies:S.enemies,
+    projectiles:S.projectiles.map(p=>{ const {t,def,...rest}=p; return rest; }),
     beams:S.beams, rings:S.rings, particles:S.particles, floats:S.floats,
     spawnQueue:S.spawnQueue, spawnT:S.spawnT,
     waveActive:S.waveActive, auto:S.auto, autoT:S.autoT,

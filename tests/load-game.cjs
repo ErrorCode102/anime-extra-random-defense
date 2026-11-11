@@ -35,7 +35,8 @@ function loadGame() {
     localStorage: { getItem: k => storage.get(k) || null, setItem: (k, v) => storage.set(k, v) },
     performance: { now: () => 1000 },
     Image: class { set src(value) { this._src = value; } get src() { return this._src; } },
-    setTimeout, clearTimeout, Math, JSON, Date,
+    setTimeout, clearTimeout, Math, JSON, Date, URLSearchParams,
+    location: { hostname: 'localhost', protocol: 'http:', host: 'localhost:8765', search: '' },
     window: {},
   };
   context.window = context;
